@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+:root,
+.dark {
+  --bg-primary: #000000;
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --text-primary: #ffffff;
+  --navbar-bg: rgba(0, 0, 0, 0.6);
+}
+
+.light {
+  --bg-primary: #f8fafc;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --text-primary: #1e293b;
+  --navbar-bg: rgba(255, 255, 255, 0.75);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
