@@ -1,5 +1,3 @@
-import { Canvas } from '@react-three/fiber'
-import { Stars, Sparkles } from '@react-three/drei'
 import { useTheme } from './ThemeContext'
 
 export default function Background3D() {
@@ -17,11 +15,11 @@ export default function Background3D() {
   }
 
   return (
-    <div className="fixed inset-0 z-[-1] bg-black">
-      <Canvas camera={{ position: [0, 0, 1] }}>
-        <Stars radius={300} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
-        <Sparkles count={100} scale={12} size={4} speed={0.4} opacity={0.5} color="#a855f7" />
-      </Canvas>
-    </div>
+    <div 
+      className="fixed inset-0 z-[-1]"
+      style={{
+        background: 'radial-gradient(ellipse at top, #1e1b4b 0%, #0f0f1a 50%, #000000 100%)',
+      }}
+    />
   )
 }
