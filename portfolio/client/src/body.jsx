@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import profileImage from './assets/hero.png'
+import profileImage from './assets/hero.svg'
 
 export default function Body() {
   return (

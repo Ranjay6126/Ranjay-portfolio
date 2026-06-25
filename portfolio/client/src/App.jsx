@@ -5,7 +5,6 @@ import Contact from './contact'
 import RotatingText from './components/RotatingText'
 import Background3D from './Backgroun3D'
 import { ThemeProvider, useTheme } from './ThemeContext'
-import heroImg from './assets/hero.png'
 
 function AppContent() {
   const { theme, toggleTheme } = useTheme()
