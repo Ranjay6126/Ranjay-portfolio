@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #09090f;
+  --bg-card: #ffffff0d;
+  --bg-card-hover: #ffffff1a;
+  --border-color: #ffffff1a;
+  --border-hover: #fff3;
+  --text-primary: #fff;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --navbar-bg: #0f0f16e6;
+  --glow-a: #6366f11a;
+  --glow-b: #a855f71a;
+  --scrollbar-track: #000;
+}
+
+html.light {
+  --bg-primary: #f0f2ff;
+  --bg-card: #ffffffbf;
+  --bg-card-hover: #fffffff2;
+  --border-color: #6366f133;
+  --border-hover: #6366f173;
+  --text-primary: #1e1b4b;
+  --text-secondary: #374151;
+  --text-muted: #6b7280;
+  --navbar-bg: #f0f2ffeb;
+  --glow-a: #6366f126;
+  --glow-b: #a855f71f;
+  --scrollbar-track: #dde1f9;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html.light .bg-white\/5,
+html.light .bg-white\/10 {
+  box-shadow: 0 4px 24px #6366f114;
+  background-color: var(--bg-card) !important;
+}
+
+html.light .hover\:bg-white\/20:hover {
+  background-color: var(--bg-card-hover) !important;
+}
+
+html.light .border-white\/10,
+html.light .border-white\/5 {
+  border-color: var(--border-color) !important;
+}
+
+html.light .hover\:border-white\/20:hover {
+  border-color: var(--border-hover) !important;
+}
+
+html.light .text-gray-400 {
+  color: var(--text-secondary) !important;
+}
+
+html.light .text-gray-500,
+html.light .text-gray-300 {
+  color: var(--text-muted) !important;
+}
+
+html.light .text-white {
+  color: var(--text-primary) !important;
+}
+
+html.light section {
+  background-color: transparent;
+}
+
+html.light .text-gray-300.border-white\/10 {
+  color: #4338ca !important;
+  background-color: #6366f114 !important;
+  border-color: #6366f140 !important;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
