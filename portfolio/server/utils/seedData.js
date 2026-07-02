@@ -6,12 +6,12 @@ dotenv.config();
 
 export const portfolioSeedData = {
   profile: {
-    name: "Raj Verma",
-    firstName: "Raj",
-    lastName: "Verma",
-    rotatingTexts: ["Full Stack Developer", "UI/UX Enthusiast", "Problem Solver"],
+    name: "Ranjay Prajapati",
+    firstName: "Ranjay",
+    lastName: "Prajapati",
+    rotatingTexts: ["Full Stack Developer", "Problem Solver"],
     description:
-      "Passionate about building scalable web applications and crafting intuitive user experiences. I bridge the gap between complex engineering and elegant design.",
+      "I have a degree in Computer Science and I am interested in developing software, solving problems and learning new things. I love building scalable web applications and creating intuitive user experiences and I try to bridge the gap between complex engineering and elegant design. I have a wide range of projects that demonstrate my proficiency in C++, JavaScript, web development, data structures and algorithms, SQL, and backend development. Hands-on projects and 300+ coding challenges helped me build a strong foundation to develop robust, scalable and user-centric applications. I am looking for new opportunities to contribute and grow professionally and to build impactful technology solutions that deliver real-world value.",
     stats: [
       { value: "8+", label: "Projects Completed" },
       { value: "500+", label: "DSA Problems" },
