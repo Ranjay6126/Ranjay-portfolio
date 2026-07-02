@@ -16,7 +16,7 @@ export const portfolioSeedData = {
       { value: "8+", label: "Projects Completed" },
       { value: "500+", label: "DSA Problems" },
     ],
-    email: "rajkumargrd56@gmail.com",
+    email: "panditranjay33@gmail.com",
     github: "https://github.com/rajverma04",
     linkedin: "https://www.linkedin.com/in/rajverma04/",
     instagram: "https://www.instagram.com/rajjo.4/",
