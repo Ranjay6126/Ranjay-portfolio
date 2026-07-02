@@ -1,90 +1,81 @@
-import express from 'express'
-import mongoose from 'mongoose'
-import cors from 'cors'
-import dotenv from 'dotenv'
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
+import connectDB from "./config/db.js";
+import errorHandler from "./middleware/errorHandler.js";
+import portfolioRoutes from "./routes/portfolioRoutes.js";
+import contactRoutes from "./routes/contactRoutes.js";
+import chatRoutes from "./routes/chatRoutes.js";
+import { ensureSeeded } from "./utils/ensureSeeded.js";
 
-dotenv.config()
+dotenv.config();
 
-const app = express()
-app.use(cors())
-app.use(express.json())
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const contactSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  subject: String,
-  message: String,
-  createdAt: { type: Date, default: Date.now },
-})
+const app = express();
+const PORT = process.env.PORT || 5000;
 
-const Contact = mongoose.model('Contact', contactSchema)
+const startServer = async () => {
+  await connectDB();
+  await ensureSeeded();
 
-const memoryContacts = []
-let useMemoryStore = false
+  app.use(
+    cors({
+      origin: process.env.CLIENT_URL || "http://localhost:5173",
+      credentials: true,
+    })
+  );
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
 
-const isPlaceholderMongoUri = (uri) =>
-  !uri ||
-  uri.includes('YOUR_USER') ||
-  uri.includes('YOUR_PASSWORD') ||
-  uri.includes('xxxxx')
+  app.get("/api/health", (req, res) => {
+    res.json({ success: true, message: "Portfolio API is running" });
+  });
 
-const saveContact = async (data) => {
-  if (useMemoryStore) {
-    memoryContacts.push({ ...data, createdAt: new Date() })
-    return
+  app.use("/api/portfolio", portfolioRoutes);
+  app.use("/api/contact", contactRoutes);
+  app.use("/api/chat", chatRoutes);
+
+  if (process.env.NODE_ENV === "production") {
+    const clientDist = path.join(__dirname, "..", "client", "dist");
+    app.use(express.static(clientDist));
+    app.get("*", (req, res, next) => {
+      if (req.path.startsWith("/api")) return next();
+      res.sendFile(path.join(clientDist, "index.html"));
+    });
   }
-  await Contact.create(data)
-}
 
-app.post('/api/contact', async (req, res) => {
-  try {
-    const { name, email, subject, message } = req.body
-    if (!name || !email || !subject || !message) {
-      return res.status(400).json({ error: 'All fields required' })
+  app.use((req, res, next) => {
+    res.status(404);
+    next(new Error(`Not found - ${req.originalUrl}`));
+  });
+
+  app.use(errorHandler);
+
+  const server = app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+
+  server.on("error", (err) => {
+    if (err.code === "EADDRINUSE") {
+      console.error(
+        `\nPort ${PORT} is already in use.\n` +
+          `Another server instance is likely still running.\n\n` +
+          `Fix (PowerShell):\n` +
+          `  netstat -ano | findstr :${PORT}\n` +
+          `  taskkill /PID <PID> /F\n\n` +
+          `Or stop the other terminal running "npm run dev" / "npm run server".\n`
+      );
+      process.exit(1);
     }
-    await saveContact({ name, email, subject, message })
-    res.status(201).json({ success: true })
-  } catch (err) {
-    console.error(err)
-    res.status(500).json({ error: 'Server error' })
-  }
-})
+    throw err;
+  });
+};
 
-app.get('/api/health', (_, res) =>
-  res.json({ ok: true, storage: useMemoryStore ? 'memory' : 'mongodb' })
-)
-
-const PORT = process.env.PORT || 5000
-
-const startServer = () => {
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
-    if (useMemoryStore) {
-      console.log('Using in-memory contact storage (set MONGODB_URI in .env for persistence)')
-    }
-  })
-}
-
-const connectDatabase = async () => {
-  const uri = process.env.MONGODB_URI
-
-  if (isPlaceholderMongoUri(uri)) {
-    useMemoryStore = true
-    console.warn('MONGODB_URI not configured — using in-memory contact storage')
-    startServer()
-    return
-  }
-
-  try {
-    await mongoose.connect(uri)
-    console.log('Connected to MongoDB')
-    startServer()
-  } catch (err) {
-    console.error('MongoDB connection error:', err.message)
-    useMemoryStore = true
-    console.warn('Falling back to in-memory contact storage')
-    startServer()
-  }
-}
-
-connectDatabase()
+startServer().catch((err) => {
+  console.error("Failed to start server:", err.message);
+  process.exit(1);
+});
