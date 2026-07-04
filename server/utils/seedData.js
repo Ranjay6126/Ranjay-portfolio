@@ -6,22 +6,22 @@ dotenv.config();
 
 export const portfolioSeedData = {
   profile: {
-    name: "Raj Verma",
-    firstName: "Raj",
-    lastName: "Verma",
-    rotatingTexts: ["Full Stack Developer", "UI/UX Enthusiast", "Problem Solver"],
+    name: "Ranjay Prajapati",
+    firstName: "Ranjay",
+    lastName: "Prajapati",
+    rotatingTexts: ["Full Stack Developer","Problem Solver"],
     description:
       "Passionate about building scalable web applications and crafting intuitive user experiences. I bridge the gap between complex engineering and elegant design.",
     stats: [
-      { value: "8+", label: "Projects Completed" },
-      { value: "500+", label: "DSA Problems" },
+      { value: "10+", label: "Projects Completed" },
+      { value: "300+", label: "DSA Problems" },
     ],
-    email: "rajkumargrd56@gmail.com",
-    github: "https://github.com/rajverma04",
-    linkedin: "https://www.linkedin.com/in/rajverma04/",
-    instagram: "https://www.instagram.com/rajjo.4/",
-    resumePdf: "/RAJ_CV.pdf",
-    profileImage: "/images/dsc_0499.ffccdb9d.jpg",
+    email: "panditranjay33@gmail.com",
+    github: "https://github.com/Ranjay6126",
+    linkedin: "https://www.linkedin.com/in/ranjay-pandit-prajapati-2b2455227/",
+    instagram: "https://www.instagram.com/er.ranjay_prajapati/",
+    resumePdf: "/resume.pdf",
+    profileImage: "/images/Ranjay image.jpg",
   },
   skillCategories: [
     {
