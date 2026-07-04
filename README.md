@@ -25,3 +25,72 @@ Backend: Node.js, Express.js
 Database: MongoDB
 Version Control: Git & GitHub
 Deployment: AWS
+
+# Ranjay Prajapati Portfolio – MERN Stack
+
+Full-stack portfolio with React frontend and Express + MongoDB backend.
+
+## Structure
+
+```
+├── client/     # React (Vite) frontend
+└── server/     # Express API (MVC) + MongoDB
+```
+
+## Quick Start
+
+**Requirements:** Node.js 18+, MongoDB running locally
+
+```bash
+# 1. Install all dependencies
+npm run install:all
+
+# 2. Start frontend + backend together
+npm run dev
+```
+
+- Frontend: http://localhost:5173
+- Backend:  http://localhost:5000
+
+Portfolio data is **auto-seeded** on first server start if the database is empty.
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start client + server |
+| `npm run client` | Frontend only |
+| `npm run server` | Backend only |
+| `npm run seed` | Re-seed database manually |
+| `npm run build` | Build frontend for production |
+
+## API
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/health` | Health check |
+| GET | `/api/portfolio` | All portfolio content |
+| POST | `/api/contact` | Submit contact form |
+| POST | `/api/chat` | AI chatbot (optional) |
+
+## Environment
+
+Copy `server/.env.example` to `server/.env`:
+
+```
+PORT=5000
+MONGODB_URI=mongodb://127.0.0.1:27017/portfolio
+CLIENT_URL=http://localhost:5173
+```
+
+Optional: add SMTP settings for email notifications and `GEMINI_API_KEY` for chatbot.
+
+## Production
+
+```bash
+npm run build
+set NODE_ENV=production
+npm start
+```
+
+Server serves the built client from `client/dist`.
