@@ -6,12 +6,12 @@ dotenv.config();
 
 export const portfolioSeedData = {
   profile: {
-    name: "Ranjay Prajapati",
+    name: "< Ranjay Prajapati />",
     firstName: "Ranjay",
     lastName: "Prajapati",
     rotatingTexts: ["Full Stack Developer","Problem Solver"],
     description:
-      "Passionate about building scalable web applications and crafting intuitive user experiences. I bridge the gap between complex engineering and elegant design.",
+      "Full-Stack Software Engineer with expertise in the MERN stack, experienced in developing scalable, secure, and high-performance web applications. Passionate about building modern user-centric solutions with clean code and intuitive design. Demonstrated strong problem solving and analytical skills with a solid understanding of Data Structures and Algorithms with 300+ problems solved. I am passionate about learning & developing new software solutions.",
     stats: [
       { value: "10+", label: "Projects Completed" },
       { value: "300+", label: "DSA Problems" },
@@ -141,15 +141,27 @@ export const portfolioSeedData = {
       date: "Mar 24 - May 24",
     },
     {
-      title: "File Distributed System",
-      img: "/images/filedistribution.0cb6712a.jpg",
+      title: "Food-Order-App",
+      img: "/images/food.png",
       description:
-        "Developed a distributed file system for efficient file storage and access using Flask and C++. Focused on backend architecture and scalability.",
-      tech: ["Flask", "C++", "Networking"],
-      liveLink: "https://file-recovery-system.vercel.app/",
-      githubLink: "https://github.com/rajverma04/Distribute-File-System",
-      date: "Apr 25",
+        "Developed a full-stack food ordering application that allows users to browse food items, add products to the cart, place orders, and track order status. Implemented secure user authentication, responsive UI design, and RESTful APIs for efficient data management. Integrated MongoDB for storing user, menu, and order data, ensuring a seamless and user-friendly ordering experience across devices.",
+      tech: ["RESTful API", "React UI", "MongoDB" , "Node.js"],
+      liveLink: "https://github.com/Ranjay6126/Learning-React-/tree/main/Learning-React-/FoodOrder_App",
+      githubLink: "https://github.com/Ranjay6126/Learning-React-/tree/main/Learning-React-/FoodOrder_App",
+      date: "Apr 26",
     },
+
+     {
+      title: "Amazon Clone 🛒",
+      img: "/images/Amazon.png",
+      description:
+      "A responsive Amazon clone built using HTML and CSS, designed to replicate the core layout and visual experience of the Amazon e-commerce platform. This project focuses on front-end structure, styling, and responsive design to closely match the original user interface.",
+      tech: ["HTML", "CSS", "JavaScript"],
+      liveLink: "https://github.com/Ranjay6126/Amazon_clone",
+      githubLink: "https://github.com/Ranjay6126/Amazon_clone",
+      date: "Dec 23",
+    },
+
   ],
   certificates: [
     {
