@@ -153,75 +153,76 @@ export const portfolioSeedData = {
   ],
   certificates: [
     {
-      title: "Privacy and Security in Online Social Media",
-      issuer: "NPTEL",
-      img: "/images/privacy.7d3f8c39.jpg",
+      title: "Full Stack Web Development - Skill Up",
+      issuer: "GeeksforGeeks",
+      img: "/images/Fullstack.png",
       verifyLink:
-        "https://archive.nptel.ac.in/content/noc/NOC25/SEM2/Ecertificates/106/noc25-cs117/Course/NPTEL25CS117S145870241810758329.pdf",
-      date: "Oct 25",
+        "https://www.geeksforgeeks.org/certificate/1a7269239921954f96d5f50c9ba65c08",
+      date: "jan 26",
     },
     {
-      title: "Cloud Computing",
-      issuer: "NPTEL",
-      img: "/images/cloud.7da458bc.jpg",
+      title: "Data Structures and Algorithms",
+      issuer: "GeeksforGeeks",
+      img: "/images/DSA.png",
       verifyLink:
-        "https://archive.nptel.ac.in/content/noc/NOC25/SEM1/Ecertificates/106/noc25-cs11/Course/NPTEL25CS11S153730233404247365.pdf",
-      date: "Apr 25",
+        "https://drive.google.com/file/d/1XAzkNBXkmUcf_1YEM2i1ag_R64hN3cM6/view",
+      date: "jun 24",
     },
     {
-      title: "Coding Ninjas Premier League",
-      issuer: "Coding Ninjas",
-      img: "/images/codingninjas.6ba94676.jpg",
+      title: "Backend Development Course",
+      issuer: "Physics Wallah",
+      img: "/images/Backend.png",
       verifyLink:
-        "https://ninjasfiles.s3.amazonaws.com/event_certi_image3924276e95e39f6c7f05eaf56e1248069d2109.jpg",
-      date: "May 24",
+        "https://drive.google.com/file/d/143N_LTE5ygGV9YWAIHYzkpghRl7QBsjF/view?pli=1",
+      date: "Aug 24",
+    },
+
+     {
+      title: "SQL (Structured Query Language)",
+      issuer: "Great Learning",
+      img: "/images/sql.png",
+      verifyLink:
+        "https://drive.google.com/file/d/1nA9xuBUdikGHf30lr-xhtET2UmOjwpZN/view",
+      date: "Nov 23",
+    },
+     {
+      title: "CompTIA Linux+ XK0-005",
+      issuer: "Cybrary",
+      img: "/images/linux.png",
+      verifyLink:
+        "https://drive.google.com/file/d/1WUCJAAewLZO0XnL5WlGujsPqO_s6tUgx/view",
+      date: "Sep 24",
     },
   ],
   achievements: [
-    {
-      title: "LeetCode Contest Rating",
-      description: "Achieved a peak contest rating of 1653 on LeetCode.",
-      link: "https://leetcode.com/u/rajverma04",
-      date: "Feb 2026",
-    },
+   
     {
       title: "DSA Problem Solving",
-      description: "Solved 500+ DSA problems across LeetCode and GeeksforGeeks platforms.",
-      link: "https://codolio.com/profile/rajverma04",
-      date: "Jan 2026",
+      description: "Solved 300+ DSA problems across LeetCode and GeeksforGeeks platforms.",
+      link: "https://leetcode.com/u/Ranjay_201/",
+      date: "July 2026",
     },
-    {
-      title: "Coding Ninjas Premier League",
-      description: "Secured AIR-7 rank in Coding Ninjas Premier League coding competition.",
-      link: "https://ninjasfiles.s3.amazonaws.com/event_certi_image3924276e95e39f6c7f05eaf56e1248069d2109.jpg",
-      date: "May 2024",
-    },
+    
   ],
   codingProfiles: [
     {
       platform: "LeetCode",
-      link: "https://leetcode.com/u/rajverma04/",
+      link: "https://leetcode.com/u/Ranjay_201/",
       iconKey: "SiLeetcode",
       desc: "Solved 300+ Problems",
       color: "from-[#FFA116] to-[#FFD700]",
     },
     {
       platform: "GeeksforGeeks",
-      link: "https://auth.geeksforgeeks.org/user/rajverma04/practice/",
+      link: "https://www.geeksforgeeks.org/profile/panditrageon?tab=activity",
       iconKey: "SiGeeksforgeeks",
       desc: "Institute Rank 4891",
       color: "from-[#00A86B] to-[#2E8B57]",
     },
-    {
-      platform: "Codeforces",
-      link: "https://codeforces.com/profile/rajverma04",
-      iconKey: "SiCodeforces",
-      desc: "",
-      color: "from-[#1F8ACB] to-[#3FA7F0]",
-    },
+   
     {
       platform: "HackerRank",
-      link: "https://www.hackerrank.com/rajverma04",
+      link: "https://www.hackerrank.com/profile/panditranjay33",
       iconKey: "SiHackerrank",
       desc: "5 Star Gold Badge",
       color: "from-[#2EC866] to-[#00FF00]",
@@ -231,20 +232,20 @@ export const portfolioSeedData = {
     {
       title: "Bachelor of Technology - B.Tech (CSE)",
       institution: "Lovely Professional University, Punjab",
-      duration: "Aug 2023 – Present",
-      grade: "CGPA: 7.76",
+      duration: "Aug 2021 – May 2025 ",
+      grade: "CGPA: 6.7",
     },
     {
-      title: "Higher Secondary Certificate (XII)",
-      institution: "B N Saha DAV Pub School, Giridih, Jharkhand",
-      duration: "Apr 2020 – Feb 2022",
-      grade: "Percentage: 83%",
+      title: "National Examinations Board(XI) & (XII)",
+      institution: "Hetauda School of Management",
+      duration: "Apr 2018 – Mar 2020",
+      grade: "Percentage: 71.25%",
     },
     {
-      title: "Secondary School Certificate (X)",
-      institution: "B N Saha DAV Pub School, Giridih, Jharkhand",
-      duration: "Apr 2019 – Feb 2020",
-      grade: "Percentage: 82%",
+      title: "Secondary Education Examination (X)",
+      institution: "Adhunik Rastriya Secondary School",
+      duration: "Apr 2017 – Mar 2018",
+      grade: "Percentage: 81.25%",
     },
   ],
 };
