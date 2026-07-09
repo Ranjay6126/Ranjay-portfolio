@@ -24,7 +24,7 @@ Frontend: React.js, HTML5, CSS3, JavaScript
 Backend: Node.js, Express.js
 Database: MongoDB
 Version Control: Git & GitHub
-Deployment: AWS
+Deployment: AWS cloud
 
 # Ranjay Prajapati Portfolio – MERN Stack
 
