@@ -8,6 +8,11 @@ import {
   FaGithub,
   FaGitAlt,
   FaDocker,
+  FaCss3,
+  FaAws,
+  FaLinux,
+  FaMicrochip,
+  FaNetworkWired,
 } from "react-icons/fa";
 import {
   SiMongodb,
@@ -17,10 +22,13 @@ import {
   SiTailwindcss,
   SiReactrouter,
   SiCplusplus,
+  SiTypescript,
+  SiJsonwebtokens,
+  SiGraphql,
 } from "react-icons/si";
 import { VscVscodeInsiders } from "react-icons/vsc";
 import { PiFigmaLogoFill } from "react-icons/pi";
-import { GrMysql } from "react-icons/gr";
+import { GrMysql, GrDatabase } from "react-icons/gr";
 import { motion } from "framer-motion";
 
 const categories = [
@@ -43,6 +51,7 @@ const categories = [
       { node: <SiReactrouter className="text-5xl text-[#CA4245]" />, title: "React Router" },
       { node: <SiRedux className="text-5xl text-[#764ABC]" />, title: "Redux" },
       { node: <FaJs className="text-5xl text-[#f4e11e]" />, title: "JavaScript" },
+      { node: <FaCss3 className="text-5xl text-[#264de4]" />, title: "CSS" },
     ],
   },
   {
@@ -52,6 +61,8 @@ const categories = [
       { node: <SiCplusplus className="text-5xl text-[#0c4a86]" />, title: "C++" },
       { node: <FaJava className="text-5xl text-[#f89820]" />, title: "Java" },
       { node: <FaPython className="text-5xl text-[#3776AB]" />, title: "Python" },
+      { node: <FaJs className="text-5xl text-[#f4e11e]" />, title: "JavaScript" },
+      { node: <SiTypescript className="text-5xl text-[#3178c6]" />, title: "TypeScript" },
     ],
   },
   {
@@ -62,6 +73,8 @@ const categories = [
       { node: <FaNodeJs className="text-5xl text-[#3c873a]" />, title: "Node.js" },
       { node: <SiExpress className="text-5xl text-gray-300" />, title: "Express.js" },
       { node: <GrMysql className="text-5xl text-[#00758F]" />, title: "MySQL" },
+      { node: <SiJsonwebtokens className="text-5xl text-[#000]" />, title: "JWT" },
+      { node: <SiGraphql className="text-5xl text-[#e535ab]" />, title: "GraphQL" },
     ],
   },
   {
@@ -74,6 +87,18 @@ const categories = [
       { node: <VscVscodeInsiders className="text-5xl text-[#3e9dd7]" />, title: "VS Code" },
       { node: <SiPostman className="text-5xl text-[#f75403]" />, title: "Postman" },
       { node: <PiFigmaLogoFill className="text-5xl text-[#8a1bfc]" />, title: "Figma" },
+    ],
+  },
+  {
+    title: "Core CS",
+    icon: "🖥️",
+    tech: [
+      { node: <GrDatabase className="text-5xl text-[#00758F]" />, title: "DBMS" },
+      { node: <FaMicrochip className="text-5xl text-[#7a81ff]" />, title: "OS" },
+      { node: <FaNetworkWired className="text-5xl text-[#00758F]" />, title: "CN" },
+      { node: <FaAws className="text-5xl text-[#ff9900]" />, title: "AWS" },
+      { node: <FaLinux className="text-5xl text-[#fcc624]" />, title: "Linux" },
+      { node: <FaJava className="text-5xl text-[#f89820]" />, title: "OOPs" },
     ],
   },
 ];

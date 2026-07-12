@@ -8,7 +8,6 @@ import TechStack from "./components/TechStack";
 import Projects from "./components/Projects";
 import Certificates from "./components/Certificates";
 import Achievements from "./components/Achievements";
-import CodingProfiles from "./components/CodingProfiles";
 import Education from "./components/Education";
 import Contact from "./components/Contact";
 import Background3D from "./components/Background3D";
@@ -46,7 +45,6 @@ function Portfolio() {
             <Projects />
             <Certificates certificates={portfolio?.certificates} />
             <Achievements achievements={portfolio?.achievements} />
-            <CodingProfiles profiles={portfolio?.codingProfiles} />
             <Education education={portfolio?.education} />
             <Contact />
           </>

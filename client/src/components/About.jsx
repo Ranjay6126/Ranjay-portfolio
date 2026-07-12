@@ -1,6 +1,7 @@
 import { faGithub, faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
+import { faFileAlt, faDownload, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { SiLeetcode } from "react-icons/si";
 import { motion } from "framer-motion";
 import Body from "./Body";
 import RotatingText from "./RotatingText";
@@ -9,8 +10,10 @@ export default function About({ profile }) {
   if (!profile) return null;
 
   const handleGitHubClick = () => window.open(profile.github, "_blank");
+  const handleLeetCodeClick = () => window.open("https://leetcode.com/u/Ranjay_201/", "_blank");
   const handleLinkedinClick = () => window.open(profile.linkedin, "_blank");
   const handleInstagramClick = () => window.open(profile.instagram, "_blank");
+  const handleGmailClick = () => window.open(`mailto:${profile.email}`, "_blank");
 
   return (
     <section
@@ -37,11 +40,8 @@ export default function About({ profile }) {
           </div>
 
           <div>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-4 text-white">
-              {profile.firstName}{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
-                {profile.lastName}
-              </span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 text-white">
+              {profile.name}
             </h1>
             <div className="flex items-center gap-3 text-xl sm:text-2xl text-gray-300 font-medium">
               <span>I am a</span>
@@ -71,7 +71,7 @@ export default function About({ profile }) {
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-4 pt-2">
+          <div className="flex flex-wrap gap-4 pt-2 items-center">
             <a
               href={profile.resumePdf}
               target="_blank"
@@ -80,6 +80,7 @@ export default function About({ profile }) {
             >
               <FontAwesomeIcon icon={faFileAlt} />
               <span>Resume</span>
+              <FontAwesomeIcon icon={faDownload} className="text-sm" />
             </a>
 
             <div className="flex gap-3">
@@ -89,6 +90,13 @@ export default function About({ profile }) {
                 aria-label="GitHub"
               >
                 <FontAwesomeIcon icon={faGithub} className="text-xl" />
+              </button>
+              <button
+                onClick={handleLeetCodeClick}
+                className="p-4 rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer"
+                aria-label="LeetCode"
+              >
+                <SiLeetcode className="text-xl" />
               </button>
               <button
                 onClick={handleLinkedinClick}
@@ -103,6 +111,13 @@ export default function About({ profile }) {
                 aria-label="Instagram"
               >
                 <FontAwesomeIcon icon={faInstagram} className="text-xl" />
+              </button>
+              <button
+                onClick={handleGmailClick}
+                className="p-4 rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer"
+                aria-label="Gmail"
+              >
+                <FontAwesomeIcon icon={faEnvelope} className="text-xl" />
               </button>
             </div>
           </div>

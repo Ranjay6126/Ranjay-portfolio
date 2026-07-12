@@ -1,83 +1,9 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { usePortfolio } from "../hooks/usePortfolio";
 
 const DESCRIPTION_LIMIT = 120;
-
-const projects = [
-  {
-    title: "Taksy",
-    img: "/images/taksyImg.34aba66a.jpg",
-    description:
-      "Developed a real-time chat application using WebSocket technology enabling instant messaging and seamless file sharing between devices on the same local network. Implemented end-to-end encryption to ensure secure and private communication, preventing unauthorized access during transmission. Designed a scalable room-based chat architecture allowing users to create, join, and manage both public and private chat rooms efficiently. Enhanced user interaction by adding advanced messaging features such as message reactions and dynamic message updates including edit and delete functionality.",
-    tech: [
-      "MERN Stack",
-      "WebSocket",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "React.js",
-      "Lucide-React",
-      "Multer",
-      "End-to-End Encryption",
-    ],
-    liveLink: "https://chat-appdev.vercel.app/",
-    githubLink: "https://github.com/rajverma04/ChatApp",
-    date: "Jan - Feb 26",
-  },
-  {
-    title: "CodeNexus",
-    img: "/images/codenexus.143040f6.jpg",
-    description:
-      "Developed a scalable MERN-based coding platform supporting multiple programming languages with real-time code execution via Judge0 API. Implemented Redis caching to optimize repeated API and database calls, improving backend performance. Built an AI-powered debugging assistant using Google Gemini API to analyze runtime/compiler errors and provide contextual fix suggestions. Integrated the Monaco Editor to deliver a VS Code–like coding experience with syntax highlighting and auto-completion. Implemented secure JWT-based authentication with OTP email verification and optimized performance and technical SEO, achieving Lighthouse scores of 100 in Performance and SEO.",
-    tech: [
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "Redis",
-      "Monaco Editor",
-      "Judge0 API",
-      "Google Gemini API",
-      "JWT Authentication",
-      "Cloudinary",
-      "Tailwind CSS",
-    ],
-    liveLink: "https://codenexusdev.vercel.app/",
-    githubLink: "https://github.com/rajverma04/CodeNexus",
-    date: "Nov - Dec 25",
-  },
-  {
-    title: "GST-INVOICE GENERATOR",
-    img: "/images/gstinvoice.459e8460.jpg",
-    description:
-      "Developed a responsive GST billing application that enables users to generate GST-compliant invoices with automated CGST, SGST, and IGST calculations. Implemented dynamic item management with real-time invoice creation and auto-calculated totals. Integrated MongoDB for storing shop details and transport IDs with an optimized schema for efficient retrieval. Utilized html2canvas to convert the invoice UI into images and jsPDF to generate and download compressed PDF invoices seamlessly.",
-    tech: ["React.js", "Node.js", "Express.js", "MongoDB", "Bootstrap", "html2canvas", "jsPDF"],
-    liveLink: "https://gstinvoice.vercel.app",
-    githubLink: "https://github.com/rajverma04/gstinvoice",
-    date: "Jul - Aug 25",
-  },
-  {
-    title: "AI CHATBOT",
-    img: "/images/ailearning.8735f36b.jpg",
-    description:
-      "A personalized AI-powered chatbot designed to assist students with learning and Q&A. Focused on user experience and intelligent interactions.",
-    tech: ["Python", "Flask", "NLP"],
-    liveLink: "https://ai-personalized-learning.vercel.app/",
-    githubLink: "https://github.com/rajverma04/AI_Personalized_Learning",
-    date: "Apr 25",
-  },
-  {
-    title: "File Distributed System",
-    img: "/images/filedistribution.0cb6712a.jpg",
-    description:
-      "Developed a distributed file system for efficient file storage and access using Flask and C++. Focused on backend architecture and scalability.",
-    tech: ["Flask", "C++", "Networking"],
-    liveLink: "https://file-recovery-system.vercel.app/",
-    githubLink: "https://github.com/rajverma04/Distribute-File-System",
-    date: "Apr 25",
-  },
-];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -91,12 +17,15 @@ const cardVariants = {
 
 export default function Projects() {
   const [expanded, setExpanded] = useState({});
+  const { portfolio } = usePortfolio();
 
   const toggleExpand = (i) => setExpanded((prev) => ({ ...prev, [i]: !prev[i] }));
 
   const openInNewTab = (url) => {
     if (url && url !== "#") window.open(url, "_blank", "noopener,noreferrer");
   };
+
+  const projects = portfolio?.projects || [];
 
   return (
     <section id="projects" className="min-h-screen flex py-10 flex-col items-center relative overflow-hidden">

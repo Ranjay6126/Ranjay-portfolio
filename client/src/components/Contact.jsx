@@ -160,6 +160,11 @@ export default function Contact() {
           </div>
         </motion.form>
       </div>
+
+      <footer className="w-full mt-16 text-center text-gray-500 text-sm">
+        <p>© 2025 All Rights Reserved | Powered by Ranjay Prajapati</p>
+        <p className="mt-2">Thank you 😍 for visiting my Portfolio</p>
+      </footer>
     </section>
   );
 }
