@@ -1,8 +1,7 @@
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
-import { MdAlternateEmail } from "react-icons/md";
 import Body from "./Body";
 import RotatingText from "./RotatingText";
 
@@ -11,6 +10,7 @@ export default function About({ profile }) {
 
   const handleGitHubClick = () => window.open(profile.github, "_blank");
   const handleLinkedinClick = () => window.open(profile.linkedin, "_blank");
+  const handleInstagramClick = () => window.open(profile.instagram, "_blank");
 
   return (
     <section
@@ -98,11 +98,11 @@ export default function About({ profile }) {
                 <FontAwesomeIcon icon={faLinkedin} className="text-xl" />
               </button>
               <button
-                onClick={() => (window.location.href = `mailto:${profile.email}`)}
-                className="p-4 rounded-2xl text-white bg-gradient-to-tr from-[#C5221F] via-[#FBBC05] to-[#C5221F] transition-all hover:scale-105 cursor-pointer shadow-md"
-                aria-label="Gmail"
+                onClick={handleInstagramClick}
+                className="p-4 rounded-2xl text-white bg-gradient-to-tr from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] transition-all hover:scale-105 cursor-pointer shadow-md"
+                aria-label="Instagram"
               >
-                <MdAlternateEmail className="text-2xl" />
+                <FontAwesomeIcon icon={faInstagram} className="text-xl" />
               </button>
             </div>
           </div>
