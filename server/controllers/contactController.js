@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 import asyncHandler from "../middleware/asyncHandler.js";
-import Contact from "../models/contact.js";
+import Contact from "../models/Contact.js";
 
 const sendEmail = async ({ from_name, from_email, subject, message }) => {
   if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
