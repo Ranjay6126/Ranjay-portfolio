@@ -16,7 +16,14 @@ const portfolioSchema = new mongoose.Schema(
       resumePdf: String,
       profileImage: String,
     },
-    skillCategories: [
+    leftSkillCategories: [
+      {
+        title: String,
+        icon: String,
+        tech: [{ title: String, iconKey: String }],
+      },
+    ],
+    rightSkillCategories: [
       {
         title: String,
         icon: String,

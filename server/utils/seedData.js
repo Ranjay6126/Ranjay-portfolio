@@ -23,7 +23,7 @@ export const portfolioSeedData = {
     resumePdf: "/resume.pdf",
     profileImage: "/images/Ranjay image.jpg",
   },
-  skillCategories: [
+  leftSkillCategories: [
     {
       title: "MERN Stack",
       icon: "🌐",
@@ -39,11 +39,11 @@ export const portfolioSeedData = {
       icon: "🎨",
       tech: [
         { title: "HTML5", iconKey: "FaHtml5" },
-        { title: "Tailwind CSS", iconKey: "SiTailwindcss" },
+        { title: "CSS", iconKey: "FaCss3" },
+        { title: "JavaScript", iconKey: "FaJs" },
         { title: "React Router", iconKey: "SiReactrouter" },
         { title: "Redux", iconKey: "SiRedux" },
-        { title: "JavaScript", iconKey: "FaJs" },
-        { title: "CSS", iconKey: "FaCss3" },
+        { title: "Tailwind CSS", iconKey: "SiTailwindcss" },
       ],
     },
     {
@@ -57,6 +57,8 @@ export const portfolioSeedData = {
         { title: "TypeScript", iconKey: "SiTypescript" },
       ],
     },
+  ],
+  rightSkillCategories: [
     {
       title: "Backend & DB",
       icon: "🗄️",
@@ -90,7 +92,7 @@ export const portfolioSeedData = {
         { title: "CN", iconKey: "FaNetworkWired" },
         { title: "AWS", iconKey: "FaAws" },
         { title: "Linux", iconKey: "FaLinux" },
-        { title: "OOPs", iconKey: "FaJava" },
+        { title: "OOP", iconKey: "FaJava" },
       ],
     },
   ],
