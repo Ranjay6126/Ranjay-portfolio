@@ -29,95 +29,142 @@ import {
 import { VscVscodeInsiders } from "react-icons/vsc";
 import { PiFigmaLogoFill } from "react-icons/pi";
 import { GrMysql, GrDatabase } from "react-icons/gr";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { usePortfolio } from "../hooks/usePortfolio";
 
-const categories = [
-  {
-    title: "MERN Stack",
-    icon: "🌐",
-    tech: [
-      { node: <FaReact className="text-5xl text-[#20d9ff]" />, title: "React" },
-      { node: <SiExpress className="text-5xl text-gray-300" />, title: "Express.js" },
-      { node: <FaNodeJs className="text-5xl text-[#3c873a]" />, title: "Node.js" },
-      { node: <SiMongodb className="text-5xl text-[#4db33d]" />, title: "MongoDB" },
-    ],
-  },
-  {
-    title: "Frontend",
-    icon: "🎨",
-    tech: [
-      { node: <FaHtml5 className="text-5xl text-[#f75403]" />, title: "HTML5" },
-      { node: <SiTailwindcss className="text-5xl text-[#38BDF8]" />, title: "Tailwind CSS" },
-      { node: <SiReactrouter className="text-5xl text-[#CA4245]" />, title: "React Router" },
-      { node: <SiRedux className="text-5xl text-[#764ABC]" />, title: "Redux" },
-      { node: <FaJs className="text-5xl text-[#f4e11e]" />, title: "JavaScript" },
-      { node: <FaCss3 className="text-5xl text-[#264de4]" />, title: "CSS" },
-    ],
-  },
-  {
-    title: "Languages",
-    icon: "💻",
-    tech: [
-      { node: <SiCplusplus className="text-5xl text-[#0c4a86]" />, title: "C++" },
-      { node: <FaJava className="text-5xl text-[#f89820]" />, title: "Java" },
-      { node: <FaPython className="text-5xl text-[#3776AB]" />, title: "Python" },
-      { node: <FaJs className="text-5xl text-[#f4e11e]" />, title: "JavaScript" },
-      { node: <SiTypescript className="text-5xl text-[#3178c6]" />, title: "TypeScript" },
-    ],
-  },
-  {
-    title: "Backend & DB",
-    icon: "🗄️",
-    tech: [
-      { node: <SiMongodb className="text-5xl text-[#4db33d]" />, title: "MongoDB" },
-      { node: <FaNodeJs className="text-5xl text-[#3c873a]" />, title: "Node.js" },
-      { node: <SiExpress className="text-5xl text-gray-300" />, title: "Express.js" },
-      { node: <GrMysql className="text-5xl text-[#00758F]" />, title: "MySQL" },
-      { node: <SiJsonwebtokens className="text-5xl text-[#000]" />, title: "JWT" },
-      { node: <SiGraphql className="text-5xl text-[#e535ab]" />, title: "GraphQL" },
-    ],
-  },
-  {
-    title: "Tools",
-    icon: "🧰",
-    tech: [
-      { node: <FaGitAlt className="text-5xl text-[#f05032]" />, title: "Git" },
-      { node: <FaGithub className="text-5xl text-white" />, title: "GitHub" },
-      { node: <FaDocker className="text-5xl text-[#2496ED]" />, title: "Docker" },
-      { node: <VscVscodeInsiders className="text-5xl text-[#3e9dd7]" />, title: "VS Code" },
-      { node: <SiPostman className="text-5xl text-[#f75403]" />, title: "Postman" },
-      { node: <PiFigmaLogoFill className="text-5xl text-[#8a1bfc]" />, title: "Figma" },
-    ],
-  },
-  {
-    title: "Core CS",
-    icon: "🖥️",
-    tech: [
-      { node: <GrDatabase className="text-5xl text-[#00758F]" />, title: "DBMS" },
-      { node: <FaMicrochip className="text-5xl text-[#7a81ff]" />, title: "OS" },
-      { node: <FaNetworkWired className="text-5xl text-[#00758F]" />, title: "CN" },
-      { node: <FaAws className="text-5xl text-[#ff9900]" />, title: "AWS" },
-      { node: <FaLinux className="text-5xl text-[#fcc624]" />, title: "Linux" },
-      { node: <FaJava className="text-5xl text-[#f89820]" />, title: "OOPs" },
-    ],
-  },
-];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
+const iconMap = {
+  FaHtml5: FaHtml5,
+  FaCss3: FaCss3,
+  FaJs: FaJs,
+  FaReact: FaReact,
+  FaNodeJs: FaNodeJs,
+  FaPython: FaPython,
+  FaJava: FaJava,
+  FaGithub: FaGithub,
+  FaGitAlt: FaGitAlt,
+  FaDocker: FaDocker,
+  FaAws: FaAws,
+  FaLinux: FaLinux,
+  FaMicrochip: FaMicrochip,
+  FaNetworkWired: FaNetworkWired,
+  SiMongodb: SiMongodb,
+  SiExpress: SiExpress,
+  SiPostman: SiPostman,
+  SiRedux: SiRedux,
+  SiTailwindcss: SiTailwindcss,
+  SiReactrouter: SiReactrouter,
+  SiCplusplus: SiCplusplus,
+  SiTypescript: SiTypescript,
+  SiJsonwebtokens: SiJsonwebtokens,
+  SiGraphql: SiGraphql,
+  VscVscodeInsiders: VscVscodeInsiders,
+  PiFigmaLogoFill: PiFigmaLogoFill,
+  GrMysql: GrMysql,
+  GrDatabase: GrDatabase,
 };
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+const IconRenderer = ({ iconKey, title }) => {
+  const IconComponent = iconMap[iconKey];
+  if (!IconComponent) return null;
+
+  const getColor = (key) => {
+    const colorMap = {
+      FaReact: "#20d9ff",
+      SiExpress: "#e2e8f0",
+      FaNodeJs: "#3c873a",
+      SiMongodb: "#4db33d",
+      FaHtml5: "#f75403",
+      FaCss3: "#264de4",
+      FaJs: "#f4e11e",
+      SiTailwindcss: "#38BDF8",
+      SiReactrouter: "#CA4245",
+      SiRedux: "#764ABC",
+      SiCplusplus: "#0c4a86",
+      FaJava: "#f89820",
+      FaPython: "#3776AB",
+      SiTypescript: "#3178c6",
+      GrMysql: "#00758F",
+      SiJsonwebtokens: "#000",
+      SiGraphql: "#e535ab",
+      FaGitAlt: "#f05032",
+      FaGithub: "#ffffff",
+      FaDocker: "#2496ED",
+      VscVscodeInsiders: "#3e9dd7",
+      SiPostman: "#f75403",
+      PiFigmaLogoFill: "#8a1bfc",
+      GrDatabase: "#00758F",
+      FaMicrochip: "#7a81ff",
+      FaNetworkWired: "#00758F",
+      FaAws: "#ff9900",
+      FaLinux: "#fcc624",
+    };
+    return colorMap[key] || "#ffffff";
+  };
+
+  return (
+    <div className="flex flex-col items-center gap-2 min-w-[100px]">
+      <div className="p-3 rounded-xl bg-black/30 border border-white/10">
+        <IconComponent className="text-4xl" style={{ color: getColor(iconKey) }} />
+      </div>
+      <span className="text-xs font-medium text-gray-400">{title}</span>
+    </div>
+  );
 };
 
-const iconVariants = {
-  hover: { scale: 1.2, rotate: 5, transition: { type: "spring", stiffness: 300 } },
+const Marquee = ({ techs, direction = "left" }) => {
+  const combinedTechs = [...techs, ...techs];
+
+  return (
+    <div className="w-full overflow-hidden">
+      <motion.div
+        className="flex gap-8"
+        animate={{
+          x: direction === "left" ? [0, -1000] : [-1000, 0],
+        }}
+        transition={{
+          x: {
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: 10,
+            ease: "linear",
+          },
+        }}
+      >
+        {combinedTechs.map((tech, i) => (
+          <IconRenderer key={`${tech.title}-${i}`} iconKey={tech.iconKey} title={tech.title} />
+        ))}
+      </motion.div>
+    </div>
+  );
 };
 
 export default function TechStack() {
+  const { portfolio } = usePortfolio();
+  const [leftCategoryIndex, setLeftCategoryIndex] = useState(0);
+  const [rightCategoryIndex, setRightCategoryIndex] = useState(0);
+
+  const leftCategories = portfolio?.leftSkillCategories || [];
+  const rightCategories = portfolio?.rightSkillCategories || [];
+
+  useEffect(() => {
+    if (leftCategories.length > 0) {
+      const interval = setInterval(() => {
+        setLeftCategoryIndex((prev) => (prev + 1) % leftCategories.length);
+      }, 15000);
+      return () => clearInterval(interval);
+    }
+  }, [leftCategories.length]);
+
+  useEffect(() => {
+    if (rightCategories.length > 0) {
+      const interval = setInterval(() => {
+        setRightCategoryIndex((prev) => (prev + 1) % rightCategories.length);
+      }, 15000);
+      return () => clearInterval(interval);
+    }
+  }, [rightCategories.length]);
+
   return (
     <section id="skills" className="min-h-screen flex py-10 flex-col items-center relative overflow-hidden">
       <div className="container mx-auto max-w-6xl relative z-10">
@@ -126,7 +173,7 @@ export default function TechStack() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-10"
+          className="text-center mb-12"
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent inline-block">
             Technical Skills
@@ -136,45 +183,83 @@ export default function TechStack() {
           </p>
         </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
-        >
-          {categories.map((category, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors duration-300 group"
-            >
-              <div className="flex items-center gap-3 mb-8">
-                <span className="text-3xl">{category.icon}</span>
-                <h3 className="text-2xl font-bold text-white group-hover:text-indigo-400 transition-colors">
-                  {category.title}
-                </h3>
-              </div>
-              <div className="flex flex-wrap gap-6 justify-center">
-                {category.tech.map((tech, i) => (
-                  <motion.div
-                    key={i}
-                    variants={iconVariants}
-                    whileHover="hover"
-                    className="flex flex-col items-center gap-2 group/icon"
-                  >
-                    <div className="relative p-3 rounded-xl bg-black/20 border border-white/5 group-hover/icon:border-white/20 transition-colors">
-                      {tech.node}
-                    </div>
-                    <span className="text-xs font-medium text-gray-400 group-hover/icon:text-white transition-colors">
-                      {tech.title}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+        <div className="grid grid-cols-1 gap-6">
+          {/* Left Rectangle */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col gap-4"
+          >
+            <div className="flex items-center justify-center gap-2">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`left-${leftCategoryIndex}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.5 }}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/20 border border-indigo-500/30"
+                >
+                  <span className="text-2xl">{leftCategories[leftCategoryIndex]?.icon}</span>
+                  <h3 className="text-xl font-bold text-indigo-300">{leftCategories[leftCategoryIndex]?.title}</h3>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-tl-[3rem] rounded-br-[3rem] p-3 overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`left-tech-${leftCategoryIndex}`}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.05 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Marquee techs={leftCategories[leftCategoryIndex]?.tech || []} direction="left" />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </motion.div>
+
+          {/* Right Rectangle */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col gap-4"
+          >
+            <div className="flex items-center justify-center gap-2">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`right-${rightCategoryIndex}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.5 }}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30"
+                >
+                  <span className="text-2xl">{rightCategories[rightCategoryIndex]?.icon}</span>
+                  <h3 className="text-xl font-bold text-purple-300">{rightCategories[rightCategoryIndex]?.title}</h3>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-tl-[3rem] rounded-br-[3rem] p-3 overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`right-tech-${rightCategoryIndex}`}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.05 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Marquee techs={rightCategories[rightCategoryIndex]?.tech || []} direction="right" />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
