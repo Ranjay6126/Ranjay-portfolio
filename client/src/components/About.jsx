@@ -40,7 +40,7 @@ export default function About({ profile }) {
           </div>
 
           <div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 text-white">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl italic font-thin tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]">
               {profile.name}
             </h1>
             <div className="flex items-center gap-3 text-xl sm:text-2xl text-gray-300 font-medium">
