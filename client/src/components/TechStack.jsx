@@ -13,6 +13,8 @@ import {
   FaLinux,
   FaMicrochip,
   FaNetworkWired,
+  FaCode,
+  FaKey,
 } from "react-icons/fa";
 import {
   SiMongodb,
@@ -48,6 +50,8 @@ const iconMap = {
   FaLinux: FaLinux,
   FaMicrochip: FaMicrochip,
   FaNetworkWired: FaNetworkWired,
+  FaCode: FaCode,
+  FaKey: FaKey,
   SiMongodb: SiMongodb,
   SiExpress: SiExpress,
   SiPostman: SiPostman,
@@ -98,6 +102,7 @@ const IconRenderer = ({ iconKey, title }) => {
       FaNetworkWired: "#00758F",
       FaAws: "#ff9900",
       FaLinux: "#fcc624",
+      FaCode: "#61DAFB",
     };
     return colorMap[key] || "#ffffff";
   };
@@ -126,7 +131,7 @@ const Marquee = ({ techs, direction = "left" }) => {
           x: {
             repeat: Infinity,
             repeatType: "loop",
-            duration: 10,
+            duration: 5,
             ease: "linear",
           },
         }}
@@ -166,7 +171,7 @@ export default function TechStack() {
   }, [rightCategories.length]);
 
   return (
-    <section id="skills" className="min-h-screen flex py-10 flex-col items-center relative overflow-hidden">
+    <section id="skills" className="min-h-screen flex pt-2 pb-2 flex-col items-center relative overflow-hidden">
       <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
