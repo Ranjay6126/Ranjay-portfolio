@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
-import { SiLeetcode, SiGeeksforgeeks, SiHackerrank, SiCodeforces } from "react-icons/si";
+import { SiLeetcode, SiGeeksforgeeks, SiHackerrank } from "react-icons/si";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 const iconMap = {
   SiLeetcode: <SiLeetcode className="text-5xl text-[#FFA116]" />,
   SiGeeksforgeeks: <SiGeeksforgeeks className="text-5xl text-[#00A86B]" />,
-  SiCodeforces: <SiCodeforces className="text-5xl text-[#1F8ACB]" />,
   SiHackerrank: <SiHackerrank className="text-5xl text-[#2EC866]" />,
 };
 
