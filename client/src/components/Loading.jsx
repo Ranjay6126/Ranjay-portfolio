@@ -35,7 +35,7 @@ export default function Loading({ onComplete }) {
     const timer = setTimeout(() => {
       setVisible(false);
       onComplete?.();
-    }, 2000);
+    }, 300);
 
     return () => clearTimeout(timer);
   }, [onComplete]);
