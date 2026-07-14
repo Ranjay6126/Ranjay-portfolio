@@ -11,7 +11,7 @@ export const portfolioSeedData = {
     lastName: "Prajapati",
     rotatingTexts: ["Full Stack Developer", "Problem Solver"],
     description:
-      "Full-Stack Software Engineer with expertise in the MERN stack, experienced in developing scalable, secure, and high-performance web applications. Passionate about building modern user-centric solutions with clean code and intuitive design. Demonstrated strong problem solving and analytical skills with a solid understanding of Data Structures and Algorithms with 300+ problems solved. I am passionate about learning & developing new software solutions.",
+      "Full-Stack Software Engineer with expertise in the MERN stack, experienced in developing scalable, secure, and high-performance web applications. Passionate about building modern user-centric solutions with clean code and intuitive design. Demonstrated strong problem-solving and analytical skills with a solid understanding of Data Structures and Algorithms, with 300+ problems solved. I am passionate about learning and developing new software solutions.",
     stats: [
       { value: "10+", label: "Projects Completed" },
       { value: "300+", label: "DSA Problems" },
@@ -32,6 +32,7 @@ export const portfolioSeedData = {
         { title: "Express.js", iconKey: "SiExpress" },
         { title: "Node.js", iconKey: "FaNodeJs" },
         { title: "MongoDB", iconKey: "SiMongodb" },
+        { title: "SQL", iconKey: "GrMysql" },
       ],
     },
     {
@@ -92,7 +93,7 @@ export const portfolioSeedData = {
         { title: "CN", iconKey: "FaNetworkWired" },
         { title: "AWS", iconKey: "FaAws" },
         { title: "Linux", iconKey: "FaLinux" },
-        { title: "OOP", iconKey: "FaJava" },
+        { title: "OOP", iconKey: "FaCode" },
       ],
     },
   ],
