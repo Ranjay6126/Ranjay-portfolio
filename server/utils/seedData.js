@@ -234,6 +234,29 @@ export const portfolioSeedData = {
       date: "July 2026",
     },
   ],
+  codingProfiles: [
+    {
+      platform: "LeetCode",
+      link: "https://leetcode.com/u/Ranjay_201/",
+      iconKey: "SiLeetcode",
+      desc: "Solved 300+ DSA problems",
+      color: "from-orange-500 to-yellow-500"
+    },
+    {
+      platform: "GeeksforGeeks",
+      link: "https://www.geeksforgeeks.org/profile/panditrageon?tab=activity",
+      iconKey: "SiGeeksforgeeks",
+      desc: "Active problem solver",
+      color: "from-green-600 to-green-400"
+    },
+    {
+      platform: "HackerRank",
+      link: "https://www.hackerrank.com/profile/panditranjay33",
+      iconKey: "SiHackerrank",
+      desc: "Competitive programming",
+      color: "from-green-500 to-emerald-400"
+    }
+  ],
   education: [
     {
       title: "Bachelor of Technology - B.Tech (CSE)",
