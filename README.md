@@ -2,7 +2,7 @@
 
 My personal developer portfolio featuring real-world projects, technical skills, education, certifications, and professional achievements. Designed with a clean UI, responsive layout, and modern web development practices using the MERN Stack and other industry-standard tools.
 
-Ranjay Portfolio
+// Ranjay Portfolio //
 
 A modern, fully responsive personal portfolio website that showcases my journey as a Full-Stack Developer. This portfolio highlights my real-world projects, technical expertise, educational background, certifications, achievements, and professional experience in software development.
 
