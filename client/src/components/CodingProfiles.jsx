@@ -2,13 +2,31 @@ import { motion } from "framer-motion";
 import { SiLeetcode, SiGeeksforgeeks, SiHackerrank } from "react-icons/si";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
-const iconMap = {
-  SiLeetcode: <SiLeetcode className="text-5xl text-[#FFA116]" />,
-  SiGeeksforgeeks: <SiGeeksforgeeks className="text-5xl text-[#00A86B]" />,
-  SiHackerrank: <SiHackerrank className="text-5xl text-[#2EC866]" />,
-};
+const platformData = [
+  {
+    platform: "LeetCode",
+    link: "https://leetcode.com/u/Ranjay_201/",
+    icon: SiLeetcode,
+    color: "#FFA116",
+    desc: "Solved 300+ Problems"
+  },
+  {
+    platform: "GeeksforGeeks",
+    link: "https://www.geeksforgeeks.org/profile/panditrageon?tab=activity",
+    icon: SiGeeksforgeeks,
+    color: "#00A86B",
+    desc: "Active Problem Solver"
+  },
+  {
+    platform: "HackerRank",
+    link: "https://www.hackerrank.com/profile/panditranjay33",
+    icon: SiHackerrank,
+    color: "#2EC866",
+    desc: "Competitive Programming"
+  }
+];
 
-export default function CodingProfiles({ profiles = [] }) {
+export default function CodingProfiles() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
@@ -23,9 +41,8 @@ export default function CodingProfiles({ profiles = [] }) {
     <section
       id="coding"
       className="min-h-[60vh] flex flex-col items-center px-6 py-10 relative overflow-hidden pointer-events-auto"
-      style={{ color: "var(--text-primary)" }}
     >
-      <div className="max-w-6xl w-full relative z-10">
+      <div className="max-w-7xl w-full relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -34,10 +51,10 @@ export default function CodingProfiles({ profiles = [] }) {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent inline-block">
-            🏆 Coding Profiles
+            Coding Profiles
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Showcasing my problem-solving journey across top platforms.
+            My problem-solving journey across platforms
           </p>
         </motion.div>
 
@@ -46,41 +63,52 @@ export default function CodingProfiles({ profiles = [] }) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full"
         >
-          {profiles.map((profile, index) => (
+          {platformData.map((profile, index) => (
             <motion.a
               key={index}
               href={profile.link}
               target="_blank"
               rel="noopener noreferrer"
               variants={cardVariants}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="group relative w-full max-w-[350px] cursor-pointer"
+              whileHover={{ y: -8 }}
+              className="group relative cursor-pointer"
             >
-              <div className={`absolute -inset-0.5 bg-gradient-to-r ${profile.color} rounded-2xl opacity-0 group-hover:opacity-75 blur transition duration-500`} />
-              <div
-                className="relative h-full border border-white/10 rounded-2xl p-8 flex flex-col items-center gap-6 transition-all duration-300"
-                style={{ backgroundColor: "var(--bg-card)" }}
-              >
-                <div className="p-4 rounded-full bg-white/5 border border-white/10 group-hover:scale-110 transition-transform duration-300">
-                  {iconMap[profile.iconKey]}
-                </div>
-                <div className="text-center space-y-2">
-                  <h3
-                    className="text-2xl font-bold group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-400 group-hover:to-purple-400 transition-all"
-                    style={{ color: "var(--text-primary)" }}
-                  >
-                    {profile.platform}
-                  </h3>
-                  {profile.desc && <p className="text-gray-400 text-sm font-medium">{profile.desc}</p>}
-                </div>
-                <div
-                  className="mt-2 flex items-center gap-2 text-sm font-bold opacity-70 group-hover:opacity-100 transition-opacity"
-                  style={{ color: "var(--text-primary)" }}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 blur-xl rounded-3xl transition-all duration-500" />
+              
+              <div className="relative bg-[#12121a] border border-white/10 rounded-3xl p-10 flex flex-col items-center gap-6 transition-all duration-300 hover:border-white/20">
+                {/* Logo Circle */}
+                <div 
+                  className="w-32 h-32 rounded-full flex items-center justify-center bg-white/5 border border-white/10 group-hover:bg-white/10 transition-all duration-300"
+                  style={{ 
+                    boxShadow: `0 0 30px ${profile.color}33`,
+                  }}
                 >
+                  <profile.icon 
+                    className="text-7xl transition-all duration-300" 
+                    style={{ color: profile.color }}
+                  />
+                </div>
+
+                {/* Platform Name */}
+                <h3 className="text-3xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r transition-all duration-300"
+                    style={{ 
+                      backgroundImage: `linear-gradient(to right, ${profile.color}, ${profile.color}dd)`
+                    }}
+                >
+                  {profile.platform}
+                </h3>
+
+                {/* Description */}
+                <p className="text-gray-400 text-lg font-medium">
+                  {profile.desc}
+                </p>
+
+                {/* View Profile Link */}
+                <div className="flex items-center gap-2 mt-4 text-gray-300 font-semibold group-hover:text-white transition-all duration-300">
                   <span>View Profile</span>
-                  <FaExternalLinkAlt className="text-xs group-hover:translate-x-1 transition-transform" />
+                  <FaExternalLinkAlt className="text-sm group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
               </div>
             </motion.a>
