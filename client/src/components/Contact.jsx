@@ -88,9 +88,8 @@ export default function Contact() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="relative z-50 pointer-events-auto bg-white/5 backdrop-blur-2xl border border-white/10 p-8 sm:p-12 rounded-3xl space-y-6 shadow-2xl group"
+          className="relative z-50 pointer-events-auto bg-white/5 backdrop-blur-2xl border border-white/10 p-8 sm:p-12 rounded-3xl space-y-6 shadow-2xl"
         >
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 rounded-3xl opacity-0 group-hover:opacity-100 blur-2xl transition-all duration-500 -z-10" />
           
           <div className="relative">
             <label className="block text-sm font-semibold text-gray-300 mb-3">Your Name</label>
