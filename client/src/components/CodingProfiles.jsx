@@ -77,38 +77,34 @@ export default function CodingProfiles() {
             >
               <div className="absolute -inset-0.5 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 blur-xl rounded-3xl transition-all duration-500" />
               
-              <div className="relative bg-[#12121a] border border-white/10 rounded-3xl p-10 flex flex-col items-center gap-6 transition-all duration-300 hover:border-white/20">
+              <div className="relative bg-[#12121a] border border-white/10 rounded-3xl p-6 flex flex-col items-center gap-4 transition-all duration-300 hover:border-white/20">
                 {/* Logo Circle */}
                 <div 
-                  className="w-32 h-32 rounded-full flex items-center justify-center bg-white/5 border border-white/10 group-hover:bg-white/10 transition-all duration-300"
+                  className="w-24 h-24 rounded-full flex items-center justify-center bg-white/5 border border-white/10 group-hover:bg-white/10 transition-all duration-300"
                   style={{ 
-                    boxShadow: `0 0 30px ${profile.color}33`,
+                    boxShadow: `0 0 20px ${profile.color}22`,
                   }}
                 >
                   <profile.icon 
-                    className="text-7xl transition-all duration-300" 
+                    className="text-5xl transition-all duration-300" 
                     style={{ color: profile.color }}
                   />
                 </div>
 
                 {/* Platform Name */}
-                <h3 className="text-3xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r transition-all duration-300"
-                    style={{ 
-                      backgroundImage: `linear-gradient(to right, ${profile.color}, ${profile.color}dd)`
-                    }}
-                >
+                <h3 className="text-2xl font-bold text-white">
                   {profile.platform}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-400 text-lg font-medium">
+                <p className="text-gray-400 text-base font-medium">
                   {profile.desc}
                 </p>
 
                 {/* View Profile Link */}
-                <div className="flex items-center gap-2 mt-4 text-gray-300 font-semibold group-hover:text-white transition-all duration-300">
+                <div className="flex items-center gap-2 mt-2 text-gray-300 font-semibold group-hover:text-white transition-all duration-300">
                   <span>View Profile</span>
-                  <FaExternalLinkAlt className="text-sm group-hover:translate-x-1 transition-transform duration-300" />
+                  <FaExternalLinkAlt className="text-xs group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
               </div>
             </motion.a>
