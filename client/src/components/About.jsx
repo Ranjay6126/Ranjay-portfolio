@@ -18,7 +18,7 @@ export default function About({ profile }) {
   return (
     <section
       id="about"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 py-10"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 py-10 pb-2"
     >
       <div className="absolute top-20 left-[-10%] w-96 h-96 bg-indigo-500/20 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-20 right-[-10%] w-96 h-96 bg-purple-500/20 blur-[120px] rounded-full pointer-events-none" />
@@ -28,7 +28,7 @@ export default function About({ profile }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="pointer-events-auto bg-white/5 backdrop-blur-2xl border border-white/10 p-8 md:p-12 rounded-[2.5rem] max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center relative z-10 shadow-2xl"
+        className="pointer-events-auto bg-white/5 backdrop-blur-2xl border border-white/10 p-10 md:p-14 rounded-[2.5rem] max-w-7xl w-full grid md:grid-cols-2 gap-12 items-center relative z-10 shadow-2xl"
       >
         <div className="space-y-8 order-2 md:order-1">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-medium">
@@ -40,9 +40,18 @@ export default function About({ profile }) {
           </div>
 
           <div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl italic font-thin tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]">
+            <motion.h1
+              whileHover={{
+                scale: 0.95,
+                transition: {
+                  duration: 0.2,
+                  ease: "easeInOut",
+                },
+              }}
+              className="text-3xl sm:text-4xl md:text-3xl italic font-thin tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 drop-shadow-[0_0_25px_rgba(168,85,247,0.7)] cursor-default"
+            >
               {profile.name}
-            </h1>
+            </motion.h1>
             <div className="flex items-center gap-3 text-xl sm:text-2xl text-gray-300 font-medium">
               <span>I am a</span>
               <RotatingText
@@ -60,7 +69,9 @@ export default function About({ profile }) {
             </div>
           </div>
 
-          <p className="text-lg text-gray-400 leading-relaxed max-w-lg">{profile.description}</p>
+          <p className="text-lg text-gray-400 leading-relaxed max-w-2xl">
+            {profile.description}
+          </p>
 
           <div className="flex gap-8 border-t border-white/10 pt-8">
             {profile.stats.map((stat, i) => (
@@ -123,7 +134,7 @@ export default function About({ profile }) {
           </div>
         </div>
 
-        <div className="order-1 md:order-2 flex justify-center md:justify-end">
+        <div className="order-1 md:order-2 flex justify-center items-center">
           <Body profileImage={profile.profileImage} />
         </div>
       </motion.div>
