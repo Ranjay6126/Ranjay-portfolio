@@ -19,7 +19,7 @@ const sendEmail = async ({ from_name, from_email, subject, message }) => {
 
   await transporter.sendMail({
     from: process.env.SMTP_USER,
-    to: process.env.CONTACT_RECEIVER || process.env.SMTP_USER,
+    to: "panditranjay33@gmail.com",
     replyTo: from_email,
     subject: `[Portfolio] ${subject}`,
     text: `Name: ${from_name}\nEmail: ${from_email}\n\n${message}`,

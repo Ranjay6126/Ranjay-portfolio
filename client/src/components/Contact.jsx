@@ -145,7 +145,7 @@ export default function Contact() {
               className={`w-full sm:w-auto px-10 py-4 rounded-2xl font-bold text-white flex items-center justify-center gap-3 transition-all duration-300 mx-auto ${
                 isSending || !isFormValid()
                   ? "bg-white/10 text-gray-500 cursor-not-allowed"
-                  : "bg-gradient-to-r from-indigo-600 to-purple-600 hover:shadow-2xl hover:shadow-indigo-500/40 hover:scale-[1.03] active:scale-[0.98]"
+                  : "bg-gradient-to-r from-green-600 to-emerald-600 hover:shadow-2xl hover:shadow-green-500/40 hover:scale-[1.03] active:scale-[0.98]"
               }`}
             >
               {isSending ? "Sending..." : <><FaPaperPlane className="text-base" /> Send Message</>}
