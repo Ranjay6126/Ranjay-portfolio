@@ -9,7 +9,12 @@ async function request(endpoint, options = {}) {
     ...options,
   });
 
-  const data = await response.json();
+  let data;
+  try {
+    data = await response.json();
+  } catch (e) {
+    data = { message: "Invalid server response. Please try again later." };
+  }
 
   if (!response.ok) {
     throw new Error(data.message || "Request failed");
