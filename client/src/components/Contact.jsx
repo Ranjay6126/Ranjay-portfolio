@@ -74,7 +74,7 @@ export default function Contact() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent inline-block">
-            📬 Contact Me
+            📬 Get in Touch
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
             Have a question or want to work together? Drop me a message!
@@ -88,19 +88,21 @@ export default function Contact() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="relative z-50 pointer-events-auto bg-white/5 backdrop-blur-xl border border-white/10 p-8 sm:p-10 rounded-3xl space-y-6 shadow-2xl"
+          className="relative z-50 pointer-events-auto bg-white/5 backdrop-blur-2xl border border-white/10 p-8 sm:p-12 rounded-3xl space-y-6 shadow-2xl group"
         >
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Your Name</label>
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 rounded-3xl opacity-0 group-hover:opacity-100 blur-2xl transition-all duration-500 -z-10" />
+          
+          <div className="relative">
+            <label className="block text-sm font-semibold text-gray-300 mb-3">Your Name</label>
             <input
               name="from_name"
               required
-              className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition-all"
+              className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/50 outline-none transition-all duration-300 hover:border-white/20"
               placeholder="John Doe"
             />
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Your Email</label>
+          <div className="relative">
+            <label className="block text-sm font-semibold text-gray-300 mb-3">Your Email</label>
             <input
               name="from_email"
               type="email"
@@ -108,51 +110,51 @@ export default function Contact() {
               value={email}
               onChange={handleEmailChange}
               onBlur={() => validateEmailValue(email)}
-              className={`w-full px-4 py-3 rounded-xl bg-white/5 border text-white outline-none transition-all ${
+              className={`w-full px-5 py-4 rounded-2xl bg-white/5 border text-white placeholder-gray-500 outline-none transition-all duration-300 hover:border-white/20 ${
                 emailError
-                  ? "border-red-500/50 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                  : "border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+                  ? "border-red-500/60 focus:border-red-500 focus:ring-2 focus:ring-red-500/50"
+                  : "border-white/10 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/50"
               }`}
               placeholder="john@example.com"
             />
-            {emailError && <p className="mt-2 text-xs text-red-400">{emailError}</p>}
+            {emailError && <p className="mt-2 text-xs text-red-400 font-medium">{emailError}</p>}
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Subject</label>
+          <div className="relative">
+            <label className="block text-sm font-semibold text-gray-300 mb-3">Subject</label>
             <input
               name="subject"
               required
-              className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition-all"
+              className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/50 outline-none transition-all duration-300 hover:border-white/20"
               placeholder="Project Inquiry"
             />
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Message</label>
+          <div className="relative">
+            <label className="block text-sm font-semibold text-gray-300 mb-3">Message</label>
             <textarea
               name="message"
               rows="5"
               required
-              className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition-all resize-none"
+              className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/50 outline-none transition-all duration-300 resize-none hover:border-white/20"
               placeholder="Tell me about your project..."
             />
           </div>
-          <div className="text-center pt-4">
+          <div className="text-center pt-6">
             <button
               type="submit"
               disabled={isSending || !isFormValid()}
-              className={`w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-white flex items-center justify-center gap-2 transition-all duration-300 mx-auto ${
+              className={`w-full sm:w-auto px-10 py-4 rounded-2xl font-bold text-white flex items-center justify-center gap-3 transition-all duration-300 mx-auto ${
                 isSending || !isFormValid()
-                  ? "bg-white/5 text-gray-500 cursor-not-allowed"
-                  : "bg-gradient-to-r from-indigo-600 to-purple-600 hover:shadow-lg hover:shadow-indigo-500/25 hover:scale-[1.02]"
+                  ? "bg-white/10 text-gray-500 cursor-not-allowed"
+                  : "bg-gradient-to-r from-indigo-600 to-purple-600 hover:shadow-2xl hover:shadow-indigo-500/40 hover:scale-[1.03] active:scale-[0.98]"
               }`}
             >
-              {isSending ? "Sending..." : <><FaPaperPlane className="text-sm" /> Send Message</>}
+              {isSending ? "Sending..." : <><FaPaperPlane className="text-base" /> Send Message</>}
             </button>
             {statusMessage && (
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className={`mt-4 text-sm font-medium ${statusMessage.includes("✅") ? "text-green-400" : "text-red-400"}`}
+                className={`mt-5 text-sm font-semibold ${statusMessage.includes("✅") ? "text-green-400" : "text-red-400"}`}
               >
                 {statusMessage}
               </motion.p>
@@ -161,9 +163,9 @@ export default function Contact() {
         </motion.form>
       </div>
 
-      <footer className="w-full mt-16 text-center text-gray-500 text-sm">
-        <p>© 2025 All Rights Reserved | Powered by Ranjay Prajapati</p>
-        <p className="mt-2">Thank you 😍 for visiting my Portfolio</p>
+      <footer className="w-full mt-20 text-center text-white text-sm">
+        <p className="font-medium">© 2025 All Rights Reserved | Powered by Ranjay Prajapati</p>
+        <p className="mt-3 font-medium">Thank you 😍 for visiting my Portfolio</p>
       </footer>
     </section>
   );
