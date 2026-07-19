@@ -3,9 +3,14 @@ import asyncHandler from "../middleware/asyncHandler.js";
 import Contact from "../models/Contact.js";
 
 const sendEmail = async ({ from_name, from_email, subject, message }) => {
+  console.log("[Email] Starting email send process...");
+  
   if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    console.warn("[Email] SMTP credentials not set - skipping email send");
     return;
   }
+
+  console.log("[Email] Creating transporter with SMTP_USER:", process.env.SMTP_USER);
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST || "smtp.gmail.com",
@@ -17,17 +22,34 @@ const sendEmail = async ({ from_name, from_email, subject, message }) => {
     },
   });
 
-  await transporter.sendMail({
+  // Verify connection
+  try {
+    await transporter.verify();
+    console.log("[Email] SMTP connection verified successfully");
+  } catch (verifyError) {
+    console.error("[Email] SMTP connection verification failed:", verifyError.message);
+    throw verifyError;
+  }
+
+  const mailOptions = {
     from: process.env.SMTP_USER,
     to: "panditranjay33@gmail.com",
     replyTo: from_email,
     subject: `[Portfolio] ${subject}`,
     text: `Name: ${from_name}\nEmail: ${from_email}\n\n${message}`,
     html: `<p><strong>Name:</strong> ${from_name}</p><p><strong>Email:</strong> ${from_email}</p><p><strong>Subject:</strong> ${subject}</p><p>${message}</p>`,
-  });
+  };
+
+  console.log("[Email] Sending email with options:", { ...mailOptions, html: "[REDACTED]" });
+
+  const info = await transporter.sendMail(mailOptions);
+  console.log("[Email] Email sent successfully! Message ID:", info.messageId);
+  return info;
 };
 
 export const createContact = asyncHandler(async (req, res) => {
+  console.log("[Contact] New form submission received:", req.body);
+  
   const { from_name, from_email, subject, message } = req.body;
 
   if (!from_name || !from_email || !subject || !message) {
@@ -42,11 +64,12 @@ export const createContact = asyncHandler(async (req, res) => {
   }
 
   const contact = await Contact.create({ from_name, from_email, subject, message });
+  console.log("[Contact] Saved to database successfully:", contact._id);
 
   try {
     await sendEmail({ from_name, from_email, subject, message });
   } catch (emailError) {
-    console.warn("Email notification failed:", emailError.message);
+    console.error("[Contact] Email notification failed completely:", emailError);
   }
 
   res.status(201).json({
