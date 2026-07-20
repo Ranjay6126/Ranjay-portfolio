@@ -73,7 +73,7 @@ export default function Contact() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent inline-block">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
             📬 Get in Touch
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
@@ -96,7 +96,7 @@ export default function Contact() {
             <input
               name="from_name"
               required
-              className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/50 outline-none transition-all duration-300 hover:border-white/20"
+              className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 outline-none transition-all duration-300 hover:border-white/20"
               placeholder="John Doe"
             />
           </div>
@@ -112,7 +112,7 @@ export default function Contact() {
               className={`w-full px-5 py-4 rounded-2xl bg-white/5 border text-white placeholder-gray-500 outline-none transition-all duration-300 hover:border-white/20 ${
                 emailError
                   ? "border-red-500/60 focus:border-red-500 focus:ring-2 focus:ring-red-500/50"
-                  : "border-white/10 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/50"
+                  : "border-white/10 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50"
               }`}
               placeholder="john@example.com"
             />
@@ -123,7 +123,7 @@ export default function Contact() {
             <input
               name="subject"
               required
-              className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/50 outline-none transition-all duration-300 hover:border-white/20"
+              className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 outline-none transition-all duration-300 hover:border-white/20"
               placeholder="Project Inquiry"
             />
           </div>
@@ -133,7 +133,7 @@ export default function Contact() {
               name="message"
               rows="5"
               required
-              className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/50 outline-none transition-all duration-300 resize-none hover:border-white/20"
+              className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 outline-none transition-all duration-300 resize-none hover:border-white/20"
               placeholder="Tell me about your project..."
             />
           </div>
@@ -141,10 +141,10 @@ export default function Contact() {
             <button
               type="submit"
               disabled={isSending || !isFormValid()}
-              className={`w-full sm:w-auto px-10 py-4 rounded-2xl font-bold text-white flex items-center justify-center gap-3 transition-all duration-300 mx-auto ${
+              className={`w-full sm:w-auto px-10 py-4 rounded-2xl font-bold flex items-center justify-center gap-3 transition-all duration-300 mx-auto ${
                 isSending || !isFormValid()
-                  ? "bg-white/10 text-gray-500 cursor-not-allowed"
-                  : "bg-gradient-to-r from-green-600 to-emerald-600 hover:shadow-2xl hover:shadow-green-500/40 hover:scale-[1.03] active:scale-[0.98]"
+                  ? "bg-gradient-to-r from-green-800/50 to-emerald-800/50 text-gray-300 cursor-not-allowed border border-green-700/30"
+                  : "bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:shadow-2xl hover:shadow-green-500/40 hover:scale-[1.03] active:scale-[0.98]"
               }`}
             >
               {isSending ? "Sending..." : <><FaPaperPlane className="text-base" /> Send Message</>}
