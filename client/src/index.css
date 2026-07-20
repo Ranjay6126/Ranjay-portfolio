@@ -3,33 +3,37 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #09090f;
-  --bg-card: #ffffff0d;
-  --bg-card-hover: #ffffff1a;
-  --border-color: #ffffff1a;
-  --border-hover: #fff3;
-  --text-primary: #fff;
-  --text-secondary: #9ca3af;
-  --text-muted: #6b7280;
-  --navbar-bg: #0f0f16e6;
-  --glow-a: #6366f11a;
-  --glow-b: #a855f71a;
+  --bg-primary: #0a0a0f;
+  --bg-card: rgba(255,255,255,0.05);
+  --bg-card-hover: rgba(255,255,255,0.1);
+  --border-color: rgba(255,255,255,0.1);
+  --border-hover: rgba(255,255,255,0.2);
+  --text-primary: #ffffff;
+  --text-secondary: #a0aec0;
+  --text-muted: #718096;
+  --navbar-bg: rgba(15,15,22,0.9);
+  --glow-a: rgba(59,130,246,0.1);
+  --glow-b: rgba(14,165,233,0.1);
   --scrollbar-track: #000;
+  --nav-active-bg: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  --nav-active-shadow: rgba(37,99,235,0.3);
 }
 
 html.light {
-  --bg-primary: #f0f2ff;
-  --bg-card: #ffffffbf;
-  --bg-card-hover: #fffffff2;
-  --border-color: #6366f133;
-  --border-hover: #6366f173;
-  --text-primary: #1e1b4b;
-  --text-secondary: #374151;
-  --text-muted: #6b7280;
-  --navbar-bg: #f0f2ffeb;
-  --glow-a: #6366f126;
-  --glow-b: #a855f71f;
-  --scrollbar-track: #dde1f9;
+  --bg-primary: #f8fafc;
+  --bg-card: rgba(255,255,255,0.8);
+  --bg-card-hover: rgba(255,255,255,0.95);
+  --border-color: rgba(59,130,246,0.2);
+  --border-hover: rgba(59,130,246,0.4);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --navbar-bg: rgba(248,250,252,0.9);
+  --glow-a: rgba(59,130,246,0.15);
+  --glow-b: rgba(14,165,233,0.1);
+  --scrollbar-track: #e2e8f0;
+  --nav-active-bg: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
+  --nav-active-shadow: rgba(14,165,233,0.25);
 }
 
 body {

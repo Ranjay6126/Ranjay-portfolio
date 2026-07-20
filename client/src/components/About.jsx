@@ -42,13 +42,13 @@ export default function About({ profile }) {
           <div>
             <motion.h1
               whileHover={{
-                scale: 0.95,
+                scale: 0.98,
                 transition: {
                   duration: 0.2,
                   ease: "easeInOut",
                 },
               }}
-              className="text-3xl sm:text-4xl md:text-3xl italic font-thin tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 drop-shadow-[0_0_25px_rgba(168,85,247,0.7)] cursor-default"
+              className="text-3xl sm:text-4xl md:text-3xl italic font-semibold tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-cyan-500 to-sky-500 drop-shadow-[0_0_30px_rgba(59,130,246,0.6)] cursor-default"
             >
               {profile.name}
             </motion.h1>

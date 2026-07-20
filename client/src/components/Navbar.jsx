@@ -79,7 +79,7 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className={`flex items-center ${
           isMobile ? "justify-around px-2" : "gap-1"
-        } backdrop-blur-md border border-white/10 rounded-full p-1.5 shadow-lg shadow-purple-500/10`}
+        } backdrop-blur-md border border-white/10 rounded-full p-1.5 shadow-lg`}
         style={{ backgroundColor: "var(--navbar-bg)" }}
       >
         {NAV_ITEMS.map((item) => (
@@ -90,9 +90,13 @@ export default function Navbar() {
               isMobile ? "p-3" : "px-5 py-2.5"
             } ${
               activeSection === item.id
-                ? "bg-[#6d28d9] text-white shadow-lg shadow-purple-500/25"
+                ? "text-white shadow-lg"
                 : "text-gray-400 hover:text-white hover:bg-white/5 hover:cursor-pointer"
             }`}
+            style={activeSection === item.id ? {
+              background: "var(--nav-active-bg)",
+              boxShadow: "0 10px 25px -5px var(--nav-active-shadow)"
+            } : {}}
           >
             <FontAwesomeIcon icon={item.icon} className={isMobile ? "w-5 h-5" : "w-4 h-4"} />
             <span className={isMobile ? "hidden" : "hidden md:inline"}>{item.label}</span>

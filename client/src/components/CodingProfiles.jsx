@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { SiLeetcode, SiGeeksforgeeks, SiHackerrank } from "react-icons/si";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { useTheme } from "../context/ThemeContext";
 
 const platformData = [
   {
@@ -27,6 +28,7 @@ const platformData = [
 ];
 
 export default function CodingProfiles() {
+  const { theme } = useTheme();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
@@ -50,10 +52,10 @@ export default function CodingProfiles() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent inline-block">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
             Coding Profiles
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          <p className={`text-lg max-w-2xl mx-auto ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
             My problem-solving journey across platforms
           </p>
         </motion.div>
@@ -75,14 +77,22 @@ export default function CodingProfiles() {
               whileHover={{ y: -8 }}
               className="group relative cursor-pointer"
             >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 blur-xl rounded-3xl transition-all duration-500" />
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 blur-xl rounded-3xl transition-all duration-500 -z-10"></div>
               
-              <div className="relative bg-[#12121a] border border-white/10 rounded-3xl p-6 flex flex-col items-center gap-4 transition-all duration-300 hover:border-white/20">
+              <div 
+                className="relative border rounded-3xl p-6 flex flex-col items-center gap-4 transition-all duration-300"
+                style={{
+                  backgroundColor: theme === 'dark' ? '#12121a' : 'rgba(255,255,255,0.8)',
+                  borderColor: theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(59,130,246,0.2)'
+                }}
+              >
                 {/* Logo Circle */}
                 <div 
-                  className="w-24 h-24 rounded-full flex items-center justify-center bg-white/5 border border-white/10 group-hover:bg-white/10 transition-all duration-300"
+                  className="w-24 h-24 rounded-full flex items-center justify-center border transition-all duration-300"
                   style={{ 
-                    boxShadow: `0 0 20px ${profile.color}22`,
+                    backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(59,130,246,0.05)',
+                    borderColor: theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(59,130,246,0.2)',
+                    boxShadow: `0 0 20px ${profile.color}33`,
                   }}
                 >
                   <profile.icon 
@@ -92,17 +102,17 @@ export default function CodingProfiles() {
                 </div>
 
                 {/* Platform Name */}
-                <h3 className="text-2xl font-bold text-white">
+                <h3 className="text-2xl font-bold" style={{ color: theme === 'dark' ? '#ffffff' : '#0f172a' }}>
                   {profile.platform}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-400 text-base font-medium">
+                <p className="text-base font-medium" style={{ color: theme === 'dark' ? '#a0aec0' : '#475569' }}>
                   {profile.desc}
                 </p>
 
                 {/* View Profile Link */}
-                <div className="flex items-center gap-2 mt-2 text-gray-300 font-semibold group-hover:text-white transition-all duration-300">
+                <div className="flex items-center gap-2 mt-2 font-semibold transition-all duration-300" style={{ color: theme === 'dark' ? '#cbd5e0' : '#334155' }}>
                   <span>View Profile</span>
                   <FaExternalLinkAlt className="text-xs group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
