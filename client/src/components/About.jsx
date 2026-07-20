@@ -20,8 +20,8 @@ export default function About({ profile }) {
       id="about"
       className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 py-10 pb-2"
     >
-      <div className="absolute top-20 left-[-10%] w-96 h-96 bg-indigo-500/20 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-20 right-[-10%] w-96 h-96 bg-purple-500/20 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-20 left-[-10%] w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-20 right-[-10%] w-96 h-96 bg-cyan-500/20 blur-[120px] rounded-full pointer-events-none" />
 
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -48,7 +48,7 @@ export default function About({ profile }) {
                   ease: "easeInOut",
                 },
               }}
-              className="text-3xl sm:text-4xl md:text-3xl italic font-semibold tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-cyan-500 to-sky-500 drop-shadow-[0_0_30px_rgba(59,130,246,0.6)] cursor-default"
+              className="text-3xl sm:text-4xl md:text-3xl italic font-semibold tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-slate-400 to-slate-600 drop-shadow-[0_0_30px_rgba(148,163,184,0.6)] cursor-default"
             >
               {profile.name}
             </motion.h1>
@@ -56,7 +56,7 @@ export default function About({ profile }) {
               <span>I am a</span>
               <RotatingText
                 texts={profile.rotatingTexts}
-                mainClassName="text-indigo-400 font-semibold"
+                mainClassName="text-blue-400 font-semibold"
                 staggerFrom="last"
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
