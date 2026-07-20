@@ -15,7 +15,7 @@ export default function Body({ profileImage }) {
       >
         <div className="w-[250px] h-[250px] relative">
           <div className="absolute -inset-1 bg-gradient-to-br from-blue-600 via-cyan-500 to-sky-400 rounded-full blur-md opacity-70 group-hover:opacity-100 transition duration-500"></div>
-          <div className="w-[250px] h-[250px] rounded-full overflow-hidden border-2 border-blue-400/50 relative z-10 bg-white">
+          <div className="w-[250px] h-[250px] rounded-full overflow-hidden border-2 border-blue-400/50 relative z-10 bg-white shadow-xl shadow-blue-900/30">
             <img
               src={profileImage}
               alt="Profile"
