@@ -82,11 +82,11 @@ export default function CodingProfiles({ profiles }) {
               <div 
                 className="relative w-full aspect-[1/1] flex items-center justify-center"
               >
-                {/* Background Triangle with rounded corners */}
+                {/* Background Triangle with smooth rounded corners */}
                 <div 
                   className="absolute inset-0"
                   style={{
-                    clipPath: 'polygon(50% 0%, 90% 15%, 100% 50%, 90% 85%, 50% 100%, 10% 85%, 0% 50%, 10% 15%)',
+                    clipPath: 'path("M50 4 C30 10 10 30 8 50 C6 70 25 88 50 96 C75 88 94 70 92 50 C90 30 70 10 50 4 Z")',
                     backgroundColor: theme === 'dark' ? '#12121a' : '#f8fafc',
                     border: `2px solid ${theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(59,130,246,0.2)'}`,
                     boxShadow: `0 20px 40px rgba(0,0,0,0.3), 0 0 40px ${profile.color}22`,
