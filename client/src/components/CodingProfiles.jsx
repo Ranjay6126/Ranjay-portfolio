@@ -91,18 +91,18 @@ function TriangleCard({ icon, title, subtitle, link, color, theme }) {
 
 const platformData = [
   {
-    platform: "LeetCode",
-    link: "https://leetcode.com/u/Ranjay_201/",
-    icon: SiLeetcode,
-    color: "#FFA116",
-    desc: "Solved 300+ Problems"
-  },
-  {
     platform: "GeeksforGeeks",
     link: "https://www.geeksforgeeks.org/profile/panditrageon?tab=activity",
     icon: SiGeeksforgeeks,
     color: "#00A86B",
     desc: "Active Problem Solver"
+  },
+  {
+    platform: "LeetCode",
+    link: "https://leetcode.com/u/Ranjay_201/",
+    icon: SiLeetcode,
+    color: "#FFA116",
+    desc: "Solved 300+ Problems"
   },
   {
     platform: "HackerRank",
