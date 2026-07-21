@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { FaPaperPlane } from "react-icons/fa";
 import { api } from "../services/api";
@@ -49,13 +50,71 @@ export default function Contact() {
     };
 
     try {
-      const res = await api.sendContact(payload);
-      setStatusMessage("✅ " + res.message);
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      if (serviceId && templateId && publicKey) {
+        const emailResult = await emailjs.send(
+          serviceId,
+          templateId,
+          {
+            from_name: payload.from_name,
+            from_email: payload.from_email,
+            subject: payload.subject,
+            message: payload.message,
+            to_email: "panditranjay33@gmail.com",
+          },
+          publicKey
+        );
+
+        if (emailResult.status === 200) {
+          setStatusMessage("✅ Message sent successfully!");
+          formRef.current.reset();
+          setEmail("");
+          setEmailError("");
+          return;
+        }
+      }
+
+      const messageBody = `Name: ${payload.from_name}\nEmail: ${payload.from_email}\nSubject: ${payload.subject}\n\nMessage:\n${payload.message}`;
+
+      const response = await fetch("https://formsubmit.co/ajax/panditranjay33@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: payload.from_name,
+          email: payload.from_email,
+          subject: `[Portfolio] ${payload.subject}`,
+          message: messageBody,
+          _subject: `[Portfolio] ${payload.subject}`,
+          _template: "table",
+          _captcha: "false",
+          _next: window.location.origin,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to deliver the message right now.");
+      }
+
+      setStatusMessage("✅ Message sent successfully!");
       formRef.current.reset();
       setEmail("");
       setEmailError("");
     } catch (error) {
-      setStatusMessage("❌ " + (error.message || "Failed to send. Please try again later."));
+      try {
+        const res = await api.sendContact(payload);
+        setStatusMessage("✅ " + res.message);
+        formRef.current.reset();
+        setEmail("");
+        setEmailError("");
+      } catch (fallbackError) {
+        setStatusMessage("❌ " + (fallbackError.message || "Failed to send. Please try again later."));
+      }
     } finally {
       setIsSending(false);
     }
