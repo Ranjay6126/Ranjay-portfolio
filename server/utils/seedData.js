@@ -21,7 +21,7 @@ export const portfolioSeedData = {
     linkedin: "https://www.linkedin.com/in/ranjay-pandit-prajapati-2b2455227/",
     instagram: "https://www.instagram.com/er.ranjay_prajapati/",
     resumePdf: "/resume.pdf",
-    profileImage: "/images/Ranjay image.jpg",
+    profileImage: "/images/Ranjay image.png",
   },
   leftSkillCategories: [
     {
