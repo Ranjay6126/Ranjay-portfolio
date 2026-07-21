@@ -27,7 +27,8 @@ const platformData = [
   }
 ];
 
-export default function CodingProfiles() {
+export default function CodingProfiles({ profiles }) {
+  const profileList = profiles?.length ? profiles : platformData;
   const { theme } = useTheme();
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -42,7 +43,7 @@ export default function CodingProfiles() {
   return (
     <section
       id="coding"
-      className="min-h-[60vh] flex flex-col items-center px-6 py-10 relative overflow-hidden pointer-events-auto"
+      className="min-h-[70vh] flex flex-col items-center px-4 sm:px-6 py-10 sm:py-12 relative overflow-hidden pointer-events-auto"
     >
       <div className="max-w-7xl w-full relative z-10">
         <motion.div
@@ -50,12 +51,12 @@ export default function CodingProfiles() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-14 sm:mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
             Coding Profiles
           </h2>
-          <p className={`text-lg max-w-2xl mx-auto ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+          <p className={`text-base sm:text-lg max-w-2xl mx-auto ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
             My problem-solving journey across platforms
           </p>
         </motion.div>
@@ -65,56 +66,64 @@ export default function CodingProfiles() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 xl:gap-12 w-full items-center"
         >
-          {platformData.map((profile, index) => (
+          {profileList.map((profile, index) => (
             <motion.a
               key={index}
               href={profile.link}
               target="_blank"
               rel="noopener noreferrer"
               variants={cardVariants}
-              whileHover={{ y: -8 }}
-              className="group relative cursor-pointer"
+              whileHover={{ scale: 1.05, y: -10 }}
+              className="group mx-auto w-full max-w-xs lg:max-w-sm"
             >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 blur-xl rounded-3xl transition-all duration-500 -z-10"></div>
-              
+              {/* Triangular Card */}
               <div 
-                className="relative border rounded-3xl p-6 flex flex-col items-center gap-4 transition-all duration-300"
-                style={{
-                  backgroundColor: theme === 'dark' ? '#12121a' : 'rgba(255,255,255,0.8)',
-                  borderColor: theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(59,130,246,0.2)'
-                }}
+                className="relative w-full aspect-[1/1] flex items-center justify-center"
               >
-                {/* Logo Circle */}
+                {/* Background Triangle */}
                 <div 
-                  className="w-24 h-24 rounded-full flex items-center justify-center border transition-all duration-300"
-                  style={{ 
-                    backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(59,130,246,0.05)',
-                    borderColor: theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(59,130,246,0.2)',
-                    boxShadow: `0 0 20px ${profile.color}33`,
+                  className="absolute inset-0"
+                  style={{
+                    clipPath: 'polygon(50% 5%, 95% 95%, 5% 95%)',
+                    backgroundColor: theme === 'dark' ? '#12121a' : '#f8fafc',
+                    border: `2px solid ${theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(59,130,246,0.2)'}`,
+                    boxShadow: `0 20px 40px rgba(0,0,0,0.3), 0 0 40px ${profile.color}22`,
                   }}
-                >
-                  <profile.icon 
-                    className="text-5xl transition-all duration-300" 
-                    style={{ color: profile.color }}
-                  />
-                </div>
+                />
+                
+                {/* Content */}
+                <div className="relative z-10 flex flex-col items-center justify-center gap-5 px-6 pt-16 pb-10 text-center">
+                  {/* Icon Circle */}
+                  <div
+                    className="w-20 h-20 rounded-full flex items-center justify-center transition-all duration-300"
+                    style={{
+                      backgroundColor: theme === 'dark' ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.9)',
+                      boxShadow: `0 0 30px ${profile.color}55`,
+                    }}
+                  >
+                    <profile.icon
+                      className="text-4xl transition-all duration-300"
+                      style={{ color: profile.color }}
+                    />
+                  </div>
 
-                {/* Platform Name */}
-                <h3 className="text-2xl font-bold" style={{ color: theme === 'dark' ? '#ffffff' : '#0f172a' }}>
-                  {profile.platform}
-                </h3>
+                  {/* Platform Name */}
+                  <h3 className="text-2xl font-extrabold" style={{ color: theme === 'dark' ? '#ffffff' : '#0f172a' }}>
+                    {profile.platform}
+                  </h3>
 
-                {/* Description */}
-                <p className="text-base font-medium" style={{ color: theme === 'dark' ? '#a0aec0' : '#475569' }}>
-                  {profile.desc}
-                </p>
+                  {/* Description */}
+                  <p className="text-sm font-medium" style={{ color: theme === 'dark' ? '#94a3b8' : '#475569' }}>
+                    {profile.desc}
+                  </p>
 
-                {/* View Profile Link */}
-                <div className="flex items-center gap-2 mt-2 font-semibold transition-all duration-300" style={{ color: theme === 'dark' ? '#cbd5e0' : '#334155' }}>
-                  <span>View Profile</span>
-                  <FaExternalLinkAlt className="text-xs group-hover:translate-x-1 transition-transform duration-300" />
+                  {/* View Profile Link */}
+                  <div className="flex items-center gap-2 mt-2 font-semibold transition-all duration-300" style={{ color: theme === 'dark' ? '#e2e8f0' : '#334155' }}>
+                    <span>View Profile</span>
+                    <FaExternalLinkAlt className="text-xs group-hover:translate-x-1 transition-transform duration-300" />
+                  </div>
                 </div>
               </div>
             </motion.a>
