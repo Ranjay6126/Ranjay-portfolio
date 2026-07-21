@@ -1,39 +1,58 @@
 import nodemailer from "nodemailer";
 import asyncHandler from "../middleware/asyncHandler.js";
 import Contact from "../models/Contact.js";
+import { resolveRecipientEmail } from "../utils/contactEmail.js";
 
 const sendEmail = async ({ from_name, from_email, subject, message }) => {
   console.log("[Email] Starting email send process...");
-  
+
   if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
     console.warn("[Email] SMTP credentials not set - skipping email send");
     return;
   }
 
-  console.log("[Email] Creating transporter with SMTP_USER:", process.env.SMTP_USER);
+  const smtpUser = process.env.SMTP_USER.trim();
+  const smtpPass = process.env.SMTP_PASS.trim();
+
+  if (!smtpUser.endsWith("@gmail.com") && !smtpUser.endsWith("@googlemail.com")) {
+    throw new Error("SMTP_USER must be a Gmail address.");
+  }
+
+  if (smtpPass === "your_app_password_here" || smtpPass.length < 10) {
+    throw new Error("SMTP_PASS is not set correctly. Use a Gmail app password instead of your regular account password.");
+  }
+
+  console.log("[Email] Creating transporter with SMTP_USER:", smtpUser);
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST || "smtp.gmail.com",
     port: Number(process.env.SMTP_PORT) || 587,
     secure: false,
+    requireTLS: true,
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
+      user: smtpUser,
+      pass: smtpPass,
     },
   });
 
-  // Verify connection
   try {
     await transporter.verify();
     console.log("[Email] SMTP connection verified successfully");
   } catch (verifyError) {
     console.error("[Email] SMTP connection verification failed:", verifyError.message);
-    throw verifyError;
+    throw new Error(
+      `Gmail SMTP authentication failed. Use a Google App Password for ${smtpUser}. ${verifyError.message}`
+    );
   }
+
+  const recipientEmail = resolveRecipientEmail({
+    contactEmail: process.env.CONTACT_EMAIL,
+    smtpUser: process.env.SMTP_USER,
+  });
 
   const mailOptions = {
     from: process.env.SMTP_USER,
-    to: "panditranjay33@gmail.com",
+    to: recipientEmail,
     replyTo: from_email,
     subject: `[Portfolio] ${subject}`,
     text: `Name: ${from_name}\nEmail: ${from_email}\n\n${message}`,
@@ -70,6 +89,8 @@ export const createContact = asyncHandler(async (req, res) => {
     await sendEmail({ from_name, from_email, subject, message });
   } catch (emailError) {
     console.error("[Contact] Email notification failed completely:", emailError);
+    res.status(500);
+    throw new Error(emailError.message || "Email delivery failed. Check your Gmail app password.");
   }
 
   res.status(201).json({
