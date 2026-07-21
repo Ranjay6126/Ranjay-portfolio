@@ -80,13 +80,13 @@ export default function CodingProfiles({ profiles }) {
             >
               {/* Triangular Card */}
               <div 
-                className="relative w-full aspect-[1/1] flex items-center justify-center"
+                className="relative w-full aspect-[1.1/1] flex items-center justify-center"
               >
                 {/* Background Triangle with smooth rounded corners */}
                 <div 
                   className="absolute inset-0"
                   style={{
-                    clipPath: 'path("M50 4 C30 10 10 30 8 50 C6 70 25 88 50 96 C75 88 94 70 92 50 C90 30 70 10 50 4 Z")',
+                    clipPath: 'path("M50 3 C25 10 5 35 5 55 C5 75 25 95 50 97 C75 95 95 75 95 55 C95 35 75 10 50 3 Z")',
                     backgroundColor: theme === 'dark' ? '#12121a' : '#f8fafc',
                     border: `2px solid ${theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(59,130,246,0.2)'}`,
                     boxShadow: `0 20px 40px rgba(0,0,0,0.3), 0 0 40px ${profile.color}22`,
