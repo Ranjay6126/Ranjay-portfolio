@@ -94,33 +94,33 @@ export default function CodingProfiles({ profiles }) {
                 />
                 
                 {/* Content */}
-                <div className="relative z-10 flex flex-col items-center justify-center gap-5 px-6 pt-16 pb-10 text-center">
+                <div className="relative z-10 flex flex-col items-center justify-center gap-4 px-6 pt-10 pb-8 text-center">
                   {/* Icon Circle */}
                   <div
-                    className="w-20 h-20 rounded-full flex items-center justify-center transition-all duration-300"
+                    className="w-24 h-24 rounded-full flex items-center justify-center transition-all duration-300"
                     style={{
-                      backgroundColor: theme === 'dark' ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.9)',
-                      boxShadow: `0 0 30px ${profile.color}55`,
+                      backgroundColor: theme === 'dark' ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.9)',
+                      boxShadow: `0 0 40px ${profile.color}66`,
                     }}
                   >
                     <profile.icon
-                      className="text-4xl transition-all duration-300"
+                      className="text-5xl transition-all duration-300"
                       style={{ color: profile.color }}
                     />
                   </div>
 
                   {/* Platform Name */}
-                  <h3 className="text-2xl font-extrabold" style={{ color: theme === 'dark' ? '#ffffff' : '#0f172a' }}>
+                  <h3 className="text-xl font-bold" style={{ color: theme === 'dark' ? '#ffffff' : '#0f172a' }}>
                     {profile.platform}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-sm font-medium" style={{ color: theme === 'dark' ? '#94a3b8' : '#475569' }}>
+                  <p className="text-base font-medium" style={{ color: theme === 'dark' ? '#94a3b8' : '#475569' }}>
                     {profile.desc}
                   </p>
 
                   {/* View Profile Link */}
-                  <div className="flex items-center gap-2 mt-2 font-semibold transition-all duration-300" style={{ color: theme === 'dark' ? '#e2e8f0' : '#334155' }}>
+                  <div className="flex items-center gap-2 mt-1 font-semibold transition-all duration-300" style={{ color: theme === 'dark' ? '#e2e8f0' : '#334155' }}>
                     <span>View Profile</span>
                     <FaExternalLinkAlt className="text-xs group-hover:translate-x-1 transition-transform duration-300" />
                   </div>
