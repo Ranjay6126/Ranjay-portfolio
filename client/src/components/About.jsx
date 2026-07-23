@@ -1,4 +1,4 @@
-import { faGithub, faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin, faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faFileAlt, faDownload, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SiLeetcode } from "react-icons/si";
@@ -13,6 +13,7 @@ export default function About({ profile }) {
   const handleLeetCodeClick = () => window.open("https://leetcode.com/u/Ranjay_201/", "_blank");
   const handleLinkedinClick = () => window.open(profile.linkedin, "_blank");
   const handleInstagramClick = () => window.open(profile.instagram, "_blank");
+  const handleFacebookClick = () => window.open(profile.facebook, "_blank");
   const handleGmailClick = () => window.open(`mailto:${profile.email}`, "_blank");
 
   return (
@@ -48,7 +49,7 @@ export default function About({ profile }) {
                   ease: "easeInOut",
                 },
               }}
-              className="text-3xl sm:text-4xl md:text-3xl italic font-semibold tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-slate-400 to-slate-600 drop-shadow-[0_0_30px_rgba(148,163,184,0.6)] cursor-default"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 text-white drop-shadow-[0_0_20px_rgba(148,163,184,0.5)] cursor-default"
             >
               {profile.name}
             </motion.h1>
@@ -122,6 +123,13 @@ export default function About({ profile }) {
                 aria-label="Instagram"
               >
                 <FontAwesomeIcon icon={faInstagram} className="text-xl" />
+              </button>
+              <button
+                onClick={handleFacebookClick}
+                className="p-4 rounded-2xl text-white bg-gradient-to-tr from-[#1877F2] to-[#0d5bc5] transition-all hover:scale-105 cursor-pointer shadow-md"
+                aria-label="Facebook"
+              >
+                <FontAwesomeIcon icon={faFacebook} className="text-xl" />
               </button>
               <button
                 onClick={handleGmailClick}
