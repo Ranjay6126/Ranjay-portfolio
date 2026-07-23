@@ -225,7 +225,7 @@ export default function Contact() {
       <footer className="w-full mt-20 text-center text-white text-sm">
         {/* Social Links */}
         <div className="flex justify-center gap-8 mb-6">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors">
+          <a href="https://www.facebook.com/mrranjay.prajapati/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors">
             <FaFacebook className="text-3xl" />
           </a>
           <a href="https://x.com/Ranjay10220" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors">
@@ -234,7 +234,7 @@ export default function Contact() {
           <a href="https://www.instagram.com/er.ranjay_prajapati/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors">
             <FaInstagram className="text-3xl" />
           </a>
-          <a href="https://www.linkedin.com/in/ranjay-pandit-prajapati-2b2455227/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors">
+          <a href="https://www.linkedin.com/in/ranjay-pandit-prajapati/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors">
             <FaLinkedin className="text-3xl" />
           </a>
         </div>
