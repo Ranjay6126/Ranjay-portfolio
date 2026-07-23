@@ -28,7 +28,7 @@ export default function Projects() {
   const projects = portfolio?.projects || [];
 
   return (
-    <section id="projects" className="min-h-screen flex -mt-16 pb-10 flex-col items-center relative overflow-hidden">
+    <section id="projects" className="min-h-[80vh] flex -mt-16 pb-6 flex-col items-center relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
         <div className="absolute top-[20%] left-[10%] w-96 h-96 bg-indigo-500/10 rounded-full blur-[100px]" />
         <div className="absolute bottom-[20%] right-[10%] w-96 h-96 bg-purple-500/10 rounded-full blur-[100px]" />
@@ -40,7 +40,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent inline-block">
             💻 My Projects
@@ -55,7 +55,7 @@ export default function Projects() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-5"
         >
           {projects.map((project, i) => {
             const isLive = project.liveLink && project.liveLink !== "#";
@@ -66,9 +66,9 @@ export default function Projects() {
                 key={i}
                 variants={cardVariants}
                 whileHover={{ y: -10 }}
-                className="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-5 hover:border-white/20 transition-colors duration-300 flex flex-col h-full"
+                className="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 hover:border-white/20 transition-colors duration-300 flex flex-col h-full"
               >
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex items-start justify-between mb-3">
                   <h3 className="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors">
                     {project.title}
                   </h3>
@@ -78,12 +78,12 @@ export default function Projects() {
                 </div>
 
                 {project.img && (
-                  <div className="mb-4">
+                  <div className="mb-3">
                     <img src={project.img} alt={project.title} className="w-full h-auto rounded-2xl object-cover" />
                   </div>
                 )}
 
-                <div className="mb-6">
+                <div className="mb-4">
                   <p className="text-gray-400 text-sm leading-relaxed">
                     {project.description.length > DESCRIPTION_LIMIT && !expanded[i]
                       ? project.description.slice(0, DESCRIPTION_LIMIT) + "…"
@@ -99,7 +99,7 @@ export default function Projects() {
                   )}
                 </div>
 
-                <div className="flex flex-wrap gap-1.5 mb-3">
+                <div className="flex flex-wrap gap-1.5 mb-2">
                   {project.tech.map((t, idx) => (
                     <span
                       key={idx}
@@ -114,7 +114,7 @@ export default function Projects() {
                   <button
                     onClick={() => hasGithub && openInNewTab(project.githubLink)}
                     disabled={!hasGithub}
-                    className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                    className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
                       hasGithub
                         ? "bg-white/10 text-white hover:bg-white/20 hover:scale-[1.02] cursor-pointer border border-white/10"
                         : "bg-white/5 text-gray-500 cursor-not-allowed border border-white/5"
@@ -126,7 +126,7 @@ export default function Projects() {
                   <button
                     onClick={() => isLive && openInNewTab(project.liveLink)}
                     disabled={!isLive}
-                    className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                    className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
                       isLive
                         ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:shadow-lg hover:shadow-indigo-500/25 hover:scale-[1.02] cursor-pointer"
                         : "bg-white/5 text-gray-500 cursor-not-allowed border border-white/5"
