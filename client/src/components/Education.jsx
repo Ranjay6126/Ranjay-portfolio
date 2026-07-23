@@ -4,7 +4,7 @@ import { GraduationCap, Landmark, Calendar } from "lucide-react";
 export default function Education({ education = [] }) {
   return (
     <section id="education" className="min-h-screen flex flex-col items-center text-white px-6 py-10 relative overflow-hidden">
-      <div className="max-w-6xl w-full relative z-10">
+      <div className="max-w-7xl w-full relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
