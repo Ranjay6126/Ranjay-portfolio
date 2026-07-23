@@ -270,13 +270,13 @@ export const portfolioSeedData = {
       title: "National Examinations Board (XI) & (XII)",
       institution: "Hetauda School of Management",
       duration: "Apr 2018 – Mar 2020",
-      grade: "Percentage: 71.25%",
+      grade: "CGPA: 7.12",
     },
     {
       title: "Secondary Education Examination (X)",
       institution: "Adhunik Rastriya Secondary School",
       duration: "Apr 2017 – Mar 2018",
-      grade: "Percentage: 81.25%",
+      grade: "CGPA: 8.12",
     },
   ],
 };
