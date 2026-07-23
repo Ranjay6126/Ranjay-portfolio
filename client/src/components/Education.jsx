@@ -61,11 +61,18 @@ export default function Education({ education = [] }) {
 
                       <span className="text-gray-600 hidden sm:inline">|</span>
 
-                      {/* Date and CGPA */}
+                      {/* Date */}
                       <div className="flex items-center gap-2">
                         <Calendar className="w-5 h-5 text-indigo-400 shrink-0" />
-                        <span>{edu.duration} | {edu.grade}</span>
+                        <span>{edu.duration}</span>
                       </div>
+
+                      <span className="text-gray-600 hidden sm:inline">|</span>
+
+                      {/* CGPA Badge */}
+                      <span className="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full bg-indigo-950/60 text-indigo-300 border border-indigo-800/50">
+                        {edu.grade}
+                      </span>
                     </div>
 
                     {/* Description Paragraph */}
