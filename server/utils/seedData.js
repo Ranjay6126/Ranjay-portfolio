@@ -264,6 +264,7 @@ export const portfolioSeedData = {
       institution: "Lovely Professional University, Punjab",
       duration: "Aug 2021 – May 2025",
       grade: "CGPA: 6.7",
+      description: "With a strong foundation in HTML, CSS, JavaScript, and the MERN stack, I am proficient in both frontend and backend development. I have hands-on experience with Git, GitHub, Postman, and MongoDB. Additionally, I am familiar with cybersecurity tools and technologies, including Wireshark, Nmap, Linux, Burp Suite, and Metasploit.",
     },
     {
       title: "National Examinations Board (XI) & (XII)",

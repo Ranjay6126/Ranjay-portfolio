@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { FaGraduationCap, FaCalendarAlt } from "react-icons/fa";
+import { FaGraduationCap, FaCalendarAlt, FaBuilding } from "react-icons/fa";
 
 export default function Education({ education = [] }) {
   return (
     <section id="education" className="min-h-screen flex flex-col items-center text-white px-6 py-10 relative overflow-hidden">
-      <div className="max-w-4xl w-full relative z-10">
+      <div className="max-w-5xl w-full relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -41,23 +41,33 @@ export default function Education({ education = [] }) {
                     <span className="absolute -inset-1 rounded-full bg-green-500 opacity-75 animate-ping" />
                   )}
                 </div>
-                <div className="ml-6 md:ml-0 md:w-1/2">
+                <div className="ml-6 md:ml-0 md:w-3/5">
                   <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-indigo-500/30 transition-colors duration-300 group">
-                    <div className="flex items-center gap-3 mb-2 text-indigo-400">
-                      <FaGraduationCap className="text-xl" />
-                      <h3 className="text-lg font-bold text-white group-hover:text-indigo-300 transition-colors">{edu.title}</h3>
+                    <div className="flex items-center gap-3 mb-4 text-indigo-400">
+                      <FaGraduationCap className="text-3xl" />
+                      <h3 className="text-2xl font-bold text-white group-hover:text-indigo-300 transition-colors">{edu.title}</h3>
                     </div>
-                    <p className="text-gray-300 font-medium mb-2">{edu.institution}</p>
-                    <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                      <FaCalendarAlt />
-                      <span>{edu.duration}</span>
+                    <div className="flex flex-wrap items-center gap-3 mb-4 text-gray-300">
+                      <div className="flex items-center gap-2">
+                        <FaBuilding className="text-xl" />
+                        <span className="text-lg">{edu.institution}</span>
+                      </div>
+                      <span className="text-gray-500">|</span>
+                      <div className="flex items-center gap-2">
+                        <FaCalendarAlt className="text-xl" />
+                        <span className="text-lg">{edu.duration}</span>
+                      </div>
+                      <span className="text-gray-500">|</span>
+                      <div className="px-4 py-1 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-lg font-semibold text-indigo-300">
+                        {edu.grade}
+                      </div>
                     </div>
-                    <div className="inline-block px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-semibold text-indigo-300">
-                      {edu.grade}
-                    </div>
+                    {edu.description && (
+                      <p className="text-gray-400 text-xl leading-relaxed">{edu.description}</p>
+                    )}
                   </div>
                 </div>
-                <div className="hidden md:block md:w-1/2" />
+                <div className="hidden md:block md:w-2/5" />
               </motion.div>
             ))}
           </div>
