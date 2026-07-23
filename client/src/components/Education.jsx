@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaGraduationCap, FaCalendarAlt, FaBuilding } from "react-icons/fa";
+import { GraduationCap, Landmark, Calendar } from "lucide-react";
 
 export default function Education({ education = [] }) {
   return (
@@ -42,28 +42,44 @@ export default function Education({ education = [] }) {
                   )}
                 </div>
                 <div className="ml-6 md:ml-0 md:w-3/5">
-                  <div className="bg-white/5 backdrop-blur-xl border border-white/20 rounded-3xl p-8 hover:border-indigo-500/40 transition-colors duration-300 group">
-                    <div className="flex items-center gap-3 mb-4 text-indigo-400">
-                      <FaGraduationCap className="text-3xl" />
-                      <h3 className="text-2xl font-bold text-white group-hover:text-indigo-300 transition-colors">{edu.title}</h3>
+                  <div className="w-full rounded-2xl border border-gray-800/80 bg-[#12131a] p-6 sm:p-8 shadow-xl text-gray-200 hover:border-indigo-500/40 transition-colors duration-300">
+                    {/* Header: Degree Title */}
+                    <div className="flex items-center gap-3 mb-4">
+                      <GraduationCap className="w-8 h-8 text-indigo-400 shrink-0" />
+                      <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                        {edu.title}
+                      </h2>
                     </div>
-                    <div className="flex flex-wrap items-center gap-3 mb-4 text-gray-300">
+
+                    {/* Sub-header / Metadata Row */}
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm sm:text-base text-gray-400 mb-6">
+                      {/* University */}
                       <div className="flex items-center gap-2">
-                        <FaBuilding className="text-xl" />
-                        <span className="text-lg">{edu.institution}</span>
+                        <Landmark className="w-5 h-5 text-indigo-400 shrink-0" />
+                        <span>{edu.institution}</span>
                       </div>
-                      <span className="text-gray-500">|</span>
+
+                      <span className="text-gray-600 hidden sm:inline">|</span>
+
+                      {/* Date */}
                       <div className="flex items-center gap-2">
-                        <FaCalendarAlt className="text-xl" />
-                        <span className="text-lg">{edu.duration}</span>
+                        <Calendar className="w-5 h-5 text-indigo-400 shrink-0" />
+                        <span>{edu.duration}</span>
                       </div>
-                      <span className="text-gray-500">|</span>
-                      <div className="px-4 py-1 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-lg font-semibold text-indigo-300">
+
+                      <span className="text-gray-600 hidden sm:inline">|</span>
+
+                      {/* CGPA Badge */}
+                      <span className="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full bg-indigo-950/60 text-indigo-300 border border-indigo-800/50">
                         {edu.grade}
-                      </div>
+                      </span>
                     </div>
+
+                    {/* Description Paragraph */}
                     {edu.description && (
-                      <p className="text-gray-400 text-xl leading-relaxed">{edu.description}</p>
+                      <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
+                        {edu.description}
+                      </p>
                     )}
                   </div>
                 </div>
