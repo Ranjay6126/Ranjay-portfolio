@@ -270,7 +270,7 @@ export const portfolioSeedData = {
       title: "National Examinations Board (XI) & (XII)",
       institution: "Hetauda School of Management",
       duration: "Apr 2018 – Mar 2020",
-      grade: "CGPA: 7.12",
+      grade: "Percentage: 71.25%",
     },
     {
       title: "Secondary Education Examination (X)",
