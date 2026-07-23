@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
-import { FaPaperPlane } from "react-icons/fa";
+import { FaPaperPlane, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { api } from "../services/api";
 
 export default function Contact() {
@@ -222,6 +223,23 @@ export default function Contact() {
       </div>
 
       <footer className="w-full mt-20 text-center text-white text-sm">
+        {/* Social Links */}
+        <div className="flex justify-center gap-8 mb-6">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors">
+            <FaFacebook className="text-3xl" />
+          </a>
+          <a href="https://x.com/Ranjay10220" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors">
+            <FaXTwitter className="text-3xl" />
+          </a>
+          <a href="https://www.instagram.com/er.ranjay_prajapati/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors">
+            <FaInstagram className="text-3xl" />
+          </a>
+          <a href="https://www.linkedin.com/in/ranjay-pandit-prajapati-2b2455227/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors">
+            <FaLinkedin className="text-3xl" />
+          </a>
+        </div>
+        {/* Line */}
+        <div className="w-3/4 mx-auto border-t border-white/30 mb-6" />
         <p className="font-medium">© 2025 All Rights Reserved | Powered by Ranjay Prajapati</p>
         <p className="mt-3 font-medium">Thank you 😍 for visiting my Portfolio</p>
       </footer>
