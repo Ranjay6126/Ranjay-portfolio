@@ -6,7 +6,7 @@ dotenv.config();
 
 export const portfolioSeedData = {
   profile: {
-    name: "< Ranjay Prajapati />",
+    name: "Ranjay Prajapati",
     firstName: "Ranjay",
     lastName: "Prajapati",
     rotatingTexts: ["Full Stack Developer", "Problem Solver"],
@@ -18,8 +18,9 @@ export const portfolioSeedData = {
     ],
     email: "panditranjay33@gmail.com",
     github: "https://github.com/Ranjay6126",
-    linkedin: "https://www.linkedin.com/in/ranjay-pandit-prajapati-2b2455227/",
+    linkedin: "https://www.linkedin.com/in/ranjay-pandit-prajapati/",
     instagram: "https://www.instagram.com/er.ranjay_prajapati/",
+    facebook: "https://www.facebook.com/mrranjay.prajapati/",
     resumePdf: "/resume.pdf",
     profileImage: "/images/Ranjay image.png",
   },
