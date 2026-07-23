@@ -42,7 +42,7 @@ export default function Education({ education = [] }) {
                   )}
                 </div>
                 <div className="ml-6 md:ml-0 md:w-3/5">
-                  <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-indigo-500/30 transition-colors duration-300 group">
+                  <div className="bg-white/5 backdrop-blur-xl border border-white/20 rounded-3xl p-8 hover:border-indigo-500/40 transition-colors duration-300 group">
                     <div className="flex items-center gap-3 mb-4 text-indigo-400">
                       <FaGraduationCap className="text-3xl" />
                       <h3 className="text-2xl font-bold text-white group-hover:text-indigo-300 transition-colors">{edu.title}</h3>
