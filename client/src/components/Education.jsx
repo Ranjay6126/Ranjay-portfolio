@@ -4,7 +4,7 @@ import { GraduationCap, Landmark, Calendar } from "lucide-react";
 export default function Education({ education = [] }) {
   return (
     <section id="education" className="min-h-screen flex flex-col items-center text-white px-6 py-10 relative overflow-hidden">
-      <div className="max-w-5xl w-full relative z-10">
+      <div className="max-w-6xl w-full relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -61,18 +61,11 @@ export default function Education({ education = [] }) {
 
                       <span className="text-gray-600 hidden sm:inline">|</span>
 
-                      {/* Date */}
+                      {/* Date and CGPA */}
                       <div className="flex items-center gap-2">
                         <Calendar className="w-5 h-5 text-indigo-400 shrink-0" />
-                        <span>{edu.duration}</span>
+                        <span>{edu.duration} | {edu.grade}</span>
                       </div>
-
-                      <span className="text-gray-600 hidden sm:inline">|</span>
-
-                      {/* CGPA Badge */}
-                      <span className="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full bg-indigo-950/60 text-indigo-300 border border-indigo-800/50">
-                        {edu.grade}
-                      </span>
                     </div>
 
                     {/* Description Paragraph */}
