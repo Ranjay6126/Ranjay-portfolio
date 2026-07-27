@@ -28,10 +28,10 @@ export default function About({ profile }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="pointer-events-auto bg-white/5 backdrop-blur-2xl border border-white/10 p-10 md:p-14 rounded-[2.5rem] max-w-7xl w-full grid md:grid-cols-5 gap-12 items-center relative z-10 shadow-2xl"
+        className="pointer-events-auto bg-white/5 backdrop-blur-2xl border border-white/10 p-6 sm:p-10 md:p-14 rounded-[2rem] sm:rounded-[2.5rem] max-w-6xl md:max-w-7xl w-full grid md:grid-cols-6 gap-8 md:gap-10 lg:gap-12 items-center relative z-10 shadow-2xl"
       >
-        <div className="space-y-8 order-2 md:order-1 md:col-span-3">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-medium">
+        <div className="space-y-6 sm:space-y-8 order-2 md:order-1 md:col-span-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs sm:text-sm font-medium">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -48,86 +48,87 @@ export default function About({ profile }) {
                   ease: "easeInOut",
                 },
               }}
-              className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-wide mb-4 text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.25)] cursor-default"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-wide mb-3 sm:mb-4 text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.25)] cursor-default"
             >
               {profile.name}
             </motion.h1>
-            <div className="flex items-center gap-3 text-xl sm:text-2xl text-white font-medium">
-              <span>I am a</span>
+            <div className="flex flex-wrap items-baseline gap-2 sm:gap-3 text-lg sm:text-xl md:text-2xl text-white font-medium">
+              <span className="whitespace-nowrap">I am a</span>
               <RotatingText
                 texts={profile.rotatingTexts}
-                mainClassName="text-blue-400 font-semibold"
-                staggerFrom="last"
-                initial={{ y: "100%", opacity: 0 }}
+                mainClassName="text-blue-400 font-semibold whitespace-nowrap"
+                staggerFrom="first"
+                splitBy="words"
+                initial={{ y: "120%", opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: "-120%", opacity: 0 }}
-                staggerDuration={0.05}
-                splitLevelClassName="overflow-hidden"
-                transition={{ type: "spring", damping: 40, stiffness: 200 }}
-                rotationInterval={4000}
+                staggerDuration={0.08}
+                splitLevelClassName="overflow-hidden pb-0.5"
+                transition={{ type: "spring", damping: 45, stiffness: 140 }}
+                rotationInterval={4500}
               />
             </div>
           </div>
 
-          <p className="text-lg text-white leading-relaxed max-w-2xl">
+          <p className="text-base sm:text-[15px] md:text-base lg:text-[17px] text-white leading-relaxed max-w-none">
             {profile.description}
           </p>
 
-          <div className="border-t border-white/10 pt-8">
-            <div className="flex gap-8 flex-wrap items-center">
+          <div className="border-t border-white/10 pt-6 sm:pt-8">
+            <div className="flex gap-6 sm:gap-8 flex-wrap items-center">
               {profile.stats.map((stat, i) => (
                 <div key={i} className="flex flex-col items-center">
-                  <h4 className="text-3xl font-bold text-white">{stat.value}</h4>
-                  <p className="text-sm text-gray-500">{stat.label}</p>
+                  <h4 className="text-2xl sm:text-3xl font-bold text-white">{stat.value}</h4>
+                  <p className="text-xs sm:text-sm text-gray-400">{stat.label}</p>
                 </div>
               ))}
-              <div className="flex items-center gap-3 text-white ml-2 font-medium">
-                <FontAwesomeIcon icon={faEnvelope} className="text-xl text-white" />
-                <span>{profile.email}</span>
+              <div className="flex items-center gap-2 sm:gap-3 text-white ml-0 sm:ml-2 font-normal sm:font-medium text-sm sm:text-base">
+                <FontAwesomeIcon icon={faEnvelope} className="text-base sm:text-xl text-white" />
+                <span className="break-all">{profile.email}</span>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-4 pt-2 items-center">
+          <div className="flex flex-wrap gap-3 sm:gap-4 pt-2 items-center">
             <a
               href={profile.resumePdf}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 border-1 rounded-2xl bg-white text-black font-bold transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] flex items-center gap-2 cursor-pointer"
+              className="px-6 sm:px-8 py-3 sm:py-4 border-1 rounded-2xl bg-white text-black font-bold transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] flex items-center gap-2 cursor-pointer text-sm sm:text-base"
             >
               <FontAwesomeIcon icon={faFileAlt} />
               <span>Resume</span>
-              <FontAwesomeIcon icon={faDownload} className="text-sm" />
+              <FontAwesomeIcon icon={faDownload} className="text-xs sm:text-sm" />
             </a>
 
-            <div className="flex gap-3">
+            <div className="flex gap-2 sm:gap-3">
               <button
                 onClick={handleGitHubClick}
-                className="p-4 rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer"
+                className="p-3 sm:p-4 rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer"
                 aria-label="GitHub"
               >
-                <FontAwesomeIcon icon={faGithub} className="text-xl" />
+                <FontAwesomeIcon icon={faGithub} className="text-lg sm:text-xl" />
               </button>
               <button
                 onClick={handleLeetCodeClick}
-                className="p-4 rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer"
+                className="p-3 sm:p-4 rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer"
                 aria-label="LeetCode"
               >
-                <SiLeetcode className="text-xl" />
+                <SiLeetcode className="text-lg sm:text-xl" />
               </button>
               <button
                 onClick={handleLinkedinClick}
-                className="p-4 rounded-2xl text-white bg-gradient-to-tr from-[#0A66C2] to-[#0077B5] transition-all hover:scale-105 cursor-pointer shadow-md"
+                className="p-3 sm:p-4 rounded-2xl text-white bg-gradient-to-tr from-[#0A66C2] to-[#0077B5] transition-all hover:scale-105 cursor-pointer shadow-md"
                 aria-label="LinkedIn"
               >
-                <FontAwesomeIcon icon={faLinkedin} className="text-xl" />
+                <FontAwesomeIcon icon={faLinkedin} className="text-lg sm:text-xl" />
               </button>
               <button
                 onClick={handleInstagramClick}
-                className="p-4 rounded-2xl text-white bg-gradient-to-tr from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] transition-all hover:scale-105 cursor-pointer shadow-md"
+                className="p-3 sm:p-4 rounded-2xl text-white bg-gradient-to-tr from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] transition-all hover:scale-105 cursor-pointer shadow-md"
                 aria-label="Instagram"
               >
-                <FontAwesomeIcon icon={faInstagram} className="text-xl" />
+                <FontAwesomeIcon icon={faInstagram} className="text-lg sm:text-xl" />
               </button>
             </div>
           </div>
