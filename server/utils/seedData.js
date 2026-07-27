@@ -6,12 +6,12 @@ dotenv.config();
 
 export const portfolioSeedData = {
   profile: {
-    name: "< Ranjay Prajapati />",
+    name: "<Ranjay Prajapati/>",
     firstName: "Ranjay",
     lastName: "Prajapati",
-    rotatingTexts: ["Full-Stack Software Engineer", "Problem Solver & Cyber Security Enthusiast "],
+    rotatingTexts: ["Full-Stack Software Engineer", "Problem Solve & Cyber Security Enthusiast"],
     description:
-      "I am a results-driven Full-Stack Software Engineer with a B.Tech in Computer Science Engineering (specialization in Software and Cyber Security) from Lovely Professional University. I specialize in the MERN stack and focus on delivering scalable, secure, and high-performance web applications. My approach combines clean architecture, strong fundamentals in Data Structures & Algorithms (300+ problems solved), and a passion for creating intuitive, user-centric experiences. I am always exploring new technologies and best practices to build better software.",
+      "I am a results-driven Full-Stack Software Engineer with a B.Tech in Computer Science Engineering (specialization in Software & Cyber Security) from Lovely Professional University. I specialize in the MERN stack and focus on delivering scalable, secure, and high-performance web applications. My approach combines clean architecture, strong fundamentals in Data Structures & Algorithms (300+ problems solved), and a passion for creating intuitive, user-centric experiences. I am always exploring new technologies and best practices to build better software.",
     stats: [
       { value: "10+", label: "Projects Completed" },
       { value: "300+", label: "DSA Problems" },
@@ -306,9 +306,9 @@ Your goal is to answer questions strictly related to Ranjay's professional backg
 If a user asks about general knowledge, jokes, math, or anything unrelated to the portfolio, politely refuse and redirect them to the portfolio topics.
 
 Details about Ranjay Prajapati:
-- **Role**: Full Stack Developer, Problem Solver.
+- **Role**: Full-Stack Software Engineer, Problem Solve & Cyber Security Enthusiast.
 - **Availability**: Available for work.
-- **Experience**: Full-Stack Software Engineer with expertise in the MERN stack, building scalable, secure, and high-performance web applications.
+- **Experience**: I am a results-driven Full-Stack Software Engineer with a B.Tech in Computer Science Engineering (specialization in Software and Cyber Security) from Lovely Professional University. I specialize in the MERN stack and focus on delivering scalable, secure, and high-performance web applications. My approach combines clean architecture, strong fundamentals in Data Structures & Algorithms (300+ problems solved), and a passion for creating intuitive, user-centric experiences. I am always exploring new technologies and best practices to build better software.
 - **Stats**: 10+ Projects Completed, 300+ DSA Problems solved.
 - **Email**: panditranjay33@gmail.com
 - **Socials**: GitHub (Ranjay6126), LinkedIn (ranjay-pandit-prajapati-2b2455227), Instagram (er.ranjay_prajapati).
