@@ -19,12 +19,15 @@ export async function ensureSeeded() {
   const expectedImage = portfolioSeedData.profile.profileImage;
   const currentRotating = JSON.stringify(existingPortfolio?.profile?.rotatingTexts ?? []);
   const expectedRotating = JSON.stringify(portfolioSeedData.profile.rotatingTexts);
+  const currentLocation = existingPortfolio?.profile?.location ?? "";
+  const expectedLocation = portfolioSeedData.profile.location;
 
   const needsFullUpdate =
     currentName !== expectedName ||
     currentDesc !== expectedDesc ||
     currentImage !== expectedImage ||
-    currentRotating !== expectedRotating;
+    currentRotating !== expectedRotating ||
+    currentLocation !== expectedLocation;
 
   if (needsFullUpdate) {
     await Portfolio.updateMany({}, { $set: portfolioSeedData });

@@ -9,7 +9,7 @@ export const portfolioSeedData = {
     name: "<Ranjay Prajapati/>",
     firstName: "Ranjay",
     lastName: "Prajapati",
-    rotatingTexts: ["Full-Stack Software Engineer", "Problem Solve & Cyber Security Enthusiast"],
+    rotatingTexts: ["Full-Stack Software Engineer", "Problem Solver & Cyber Security"],
     description:
       "I am a results-driven Full-Stack Software Engineer with a Bachelor of Technology (B.Tech.) in Computer Science and Engineering, specializing in Software Engineering and Cyber Security, from Lovely Professional University. I have expertise in the MERN Stack (MongoDB, Express.js, React.js, and Node.js), building secure, scalable, and user-centric web applications with a strong emphasis on clean architecture, maintainable code, and exceptional user experiences. With a solid foundation in Data Structures and Algorithms, demonstrated by solving 300+ coding problems, I enjoy tackling complex engineering challenges and transforming ideas into efficient, reliable software. Driven by curiosity and continuous improvement, I am passionate about innovation and actively explore emerging technologies, particularly Artificial Intelligence, to broaden my technical expertise.",
     stats: [
@@ -17,9 +17,11 @@ export const portfolioSeedData = {
       { value: "300+", label: "DSA Problems" },
     ],
     email: "panditranjay33@gmail.com",
+    location: "Bengaluru, Whitefield",
     github: "https://github.com/Ranjay6126",
     linkedin: "https://www.linkedin.com/in/ranjay-pandit-prajapati/",
     instagram: "https://www.instagram.com/er.ranjay_prajapati/",
+    twitter: "https://x.com/Ranjay10220",
     facebook: "https://www.facebook.com/mrranjay.prajapati/",
     resumePdf: "/resume.pdf",
     profileImage: "/images/Ranjay image.png",
