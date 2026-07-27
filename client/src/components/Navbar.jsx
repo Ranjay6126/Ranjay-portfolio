@@ -91,7 +91,7 @@ export default function Navbar() {
             } ${
               activeSection === item.id
                 ? "text-white shadow-lg"
-                : "text-gray-400 hover:text-white hover:bg-white/5 hover:cursor-pointer"
+                : "text-white hover:text-gray-100 hover:bg-white/5 hover:cursor-pointer"
             }`}
             style={activeSection === item.id ? {
               background: "var(--nav-active-bg)",
@@ -107,7 +107,7 @@ export default function Navbar() {
           title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
           className={`relative rounded-full transition-all duration-300 flex items-center justify-center ${
             isMobile ? "p-3" : "px-3 py-2.5"
-          } text-gray-400 hover:text-white hover:bg-white/5 hover:cursor-pointer`}
+          } text-white hover:text-gray-100 hover:bg-white/5 hover:cursor-pointer`}
         >
           {theme === "dark" ? (
             <svg

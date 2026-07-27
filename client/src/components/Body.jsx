@@ -16,7 +16,7 @@ export default function Body({ profileImage }) {
         className="relative z-10 flex items-center justify-center"
       >
         <div className="w-[160px] h-[160px] sm:w-[200px] sm:h-[200px] md:w-[220px] md:h-[220px] lg:w-[230px] lg:h-[230px] relative flex items-center justify-center">
-          <div className="w-full h-full rounded-full overflow-hidden border border-white/20 relative z-10 bg-white shadow-sm shadow-black/10">
+          <div className="profile-image-ring w-full h-full rounded-full overflow-hidden border border-white/20 relative z-10 bg-white shadow-sm shadow-black/10">
             <img
               src={imageSrc}
               alt="Profile"

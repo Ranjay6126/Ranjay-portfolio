@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
 import { GraduationCap, Landmark, Calendar } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 
 export default function Education({ education = [] }) {
+  const { theme } = useTheme();
+  const isLightMode = theme === "light";
   return (
-    <section id="education" className="min-h-screen flex flex-col items-center text-white px-6 py-10 relative overflow-hidden">
+    <section id="education" className={`min-h-screen flex flex-col items-center px-6 py-10 relative overflow-hidden ${isLightMode ? "text-slate-900" : "text-white"}`}>
       <div className="max-w-7xl w-full relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -15,11 +18,11 @@ export default function Education({ education = [] }) {
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent inline-block">
             🎓 Education
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">My academic journey and milestones.</p>
+          <p className={`${isLightMode ? "text-slate-600" : "text-gray-400"} max-w-2xl mx-auto text-lg`}>My academic journey and milestones.</p>
         </motion.div>
 
         <div className="relative">
-          <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-px bg-gradient-to-b from-indigo-500/0 via-indigo-500/50 to-indigo-500/0" />
+          <div className={`absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-px ${isLightMode ? "bg-gradient-to-b from-slate-200/0 via-slate-400/40 to-slate-200/0" : "bg-gradient-to-b from-indigo-500/0 via-indigo-500/50 to-indigo-500/0"}`} />
           <div className="space-y-12">
             {education.map((edu, index) => (
               <motion.div
@@ -31,7 +34,7 @@ export default function Education({ education = [] }) {
                 className={`relative flex flex-col md:flex-row gap-8 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
               >
                 <div
-                  className={`absolute left-[-8px] md:left-1/2 md:-translate-x-1/2 top-0 w-4 h-4 rounded-full border-4 border-black z-10 ${
+                  className={`absolute left-[-8px] md:left-1/2 md:-translate-x-1/2 top-0 w-4 h-4 rounded-full border-4 ${isLightMode ? "border-slate-300" : "border-black"} z-10 ${
                     edu.duration.includes("Present")
                       ? "bg-green-500 shadow-[0_0_15px_rgba(34,197,94,0.8)]"
                       : "bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]"
@@ -46,7 +49,7 @@ export default function Education({ education = [] }) {
                     {/* Header: Degree Title */}
                     <div className="flex items-center gap-3 mb-4">
                       <GraduationCap className="w-8 h-8 text-indigo-400 shrink-0" />
-                      <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                      <h2 className={`text-xl sm:text-2xl font-bold tracking-tight ${isLightMode ? "text-slate-900" : "text-white"}`}>
                         {edu.title}
                       </h2>
                     </div>
@@ -77,7 +80,7 @@ export default function Education({ education = [] }) {
 
                     {/* Description Paragraph */}
                     {edu.description && (
-                      <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
+                      <p className={`leading-relaxed text-sm sm:text-base ${isLightMode ? "text-slate-700" : "text-gray-300"}`}>
                         {edu.description}
                       </p>
                     )}

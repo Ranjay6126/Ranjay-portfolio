@@ -1,24 +1,34 @@
-import { faGithub, faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { faFileAlt, faDownload, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedin, faInstagram, faTwitter, faFacebookF } from "@fortawesome/free-brands-svg-icons";
+import { faFileAlt, faDownload, faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SiLeetcode } from "react-icons/si";
 import { motion } from "framer-motion";
+import { useTheme } from "../context/ThemeContext";
 import Body from "./Body";
 import RotatingText from "./RotatingText";
 
 export default function About({ profile }) {
   if (!profile) return null;
 
+  const { theme } = useTheme();
+  const isLightMode = theme === "light";
+
+  const displayName = profile.name?.includes("Ranjay Prajapati")
+    ? profile.name
+    : profile.name || "<Ranjay Prajapati/>";
+
   const handleGitHubClick = () => window.open(profile.github, "_blank");
   const handleLeetCodeClick = () => window.open("https://leetcode.com/u/Ranjay_201/", "_blank");
   const handleLinkedinClick = () => window.open(profile.linkedin, "_blank");
   const handleInstagramClick = () => window.open(profile.instagram, "_blank");
+  const handleTwitterClick = () => window.open(profile.twitter || "https://x.com/Ranjay10220", "_blank");
+  const handleFacebookClick = () => window.open(profile.facebook || "https://www.facebook.com/mrranjay.prajapati/", "_blank");
   const handleGmailClick = () => window.open(`mailto:${profile.email}`, "_blank");
 
   return (
     <section
       id="about"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 py-10 pb-2"
+      className="min-h-[68vh] sm:min-h-[72vh] lg:min-h-[66vh] flex items-center justify-center relative overflow-hidden px-4 py-4 pb-2 sm:px-6 sm:py-5 md:py-6"
     >
       <div className="absolute top-20 left-[-10%] w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-20 right-[-10%] w-96 h-96 bg-cyan-500/20 blur-[120px] rounded-full pointer-events-none" />
@@ -48,15 +58,16 @@ export default function About({ profile }) {
                   ease: "easeInOut",
                 },
               }}
-              className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-wide mb-3 sm:mb-4 text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.25)] cursor-default"
+              className="about-name text-2xl sm:text-3xl md:text-4xl font-bold tracking-wide mb-3 sm:mb-4 bg-gradient-to-r from-cyan-300 via-sky-400 to-indigo-400 bg-clip-text text-transparent drop-shadow-[0_0_18px_rgba(56,189,248,0.35)] cursor-default"
+              style={{ color: isLightMode ? "#000000" : "#ffffff", WebkitTextFillColor: isLightMode ? "#000000" : "#ffffff" }}
             >
-              {profile.name}
+              {displayName}
             </motion.h1>
             <div className="flex flex-wrap items-baseline gap-2 sm:gap-3 text-lg sm:text-xl md:text-2xl text-white font-medium">
               <span className="whitespace-nowrap">I am a</span>
               <RotatingText
-                texts={profile.rotatingTexts}
-                mainClassName="text-blue-400 font-semibold whitespace-nowrap"
+                texts={["Full-Stack Software Engineer", "Problem Solver & Cyber Security Enthusiast"]}
+                mainClassName="text-blue-400 font-semibold whitespace-nowrap italic"
                 staggerFrom="first"
                 splitBy="words"
                 initial={{ y: "120%", opacity: 0 }}
@@ -75,17 +86,23 @@ export default function About({ profile }) {
           </p>
 
           <div className="border-t border-white/10 pt-6 sm:pt-8">
-            <div className="flex gap-6 sm:gap-8 flex-wrap items-center">
+            <div className="flex gap-5 sm:gap-7 md:gap-8 flex-wrap items-center">
               {profile.stats.map((stat, i) => (
                 <div key={i} className="flex flex-col items-center">
                   <h4 className="text-2xl sm:text-3xl font-bold text-white">{stat.value}</h4>
                   <p className="text-xs sm:text-sm text-gray-400">{stat.label}</p>
                 </div>
               ))}
-              <div className="flex items-center gap-2 sm:gap-3 text-white ml-0 sm:ml-2 font-normal sm:font-medium text-sm sm:text-base">
+              <div className="flex items-center gap-2 sm:gap-3 text-white ml-0 font-normal sm:font-medium text-sm sm:text-base">
                 <FontAwesomeIcon icon={faEnvelope} className="text-base sm:text-xl text-white" />
                 <span className="break-all">{profile.email}</span>
               </div>
+              {profile.location && (
+                <div className="flex items-center gap-2 sm:gap-3 text-white ml-0 font-normal sm:font-medium text-sm sm:text-base">
+                  <FontAwesomeIcon icon={faLocationDot} className="text-base sm:text-xl text-white" />
+                  <span className="whitespace-nowrap">{profile.location}</span>
+                </div>
+              )}
             </div>
           </div>
 
@@ -94,7 +111,7 @@ export default function About({ profile }) {
               href={profile.resumePdf}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 sm:px-8 py-3 sm:py-4 border-1 rounded-2xl bg-white text-black font-bold transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] flex items-center gap-2 cursor-pointer text-sm sm:text-base"
+              className="about-action-btn h-11 sm:h-12 px-6 sm:px-8 rounded-2xl bg-white text-black font-bold transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] flex items-center justify-center gap-2 cursor-pointer text-sm sm:text-base"
             >
               <FontAwesomeIcon icon={faFileAlt} />
               <span>Resume</span>
@@ -104,31 +121,45 @@ export default function About({ profile }) {
             <div className="flex gap-2 sm:gap-3">
               <button
                 onClick={handleGitHubClick}
-                className="p-3 sm:p-4 rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer"
+                className="social-icon-btn flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer"
                 aria-label="GitHub"
               >
                 <FontAwesomeIcon icon={faGithub} className="text-lg sm:text-xl" />
               </button>
               <button
                 onClick={handleLeetCodeClick}
-                className="p-3 sm:p-4 rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer"
+                className="social-icon-btn flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer"
                 aria-label="LeetCode"
               >
                 <SiLeetcode className="text-lg sm:text-xl" />
               </button>
               <button
                 onClick={handleLinkedinClick}
-                className="p-3 sm:p-4 rounded-2xl text-white bg-gradient-to-tr from-[#0A66C2] to-[#0077B5] transition-all hover:scale-105 cursor-pointer shadow-md"
+                className="social-icon-btn flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#0A66C2] to-[#0077B5] transition-all hover:scale-105 cursor-pointer shadow-md"
                 aria-label="LinkedIn"
               >
                 <FontAwesomeIcon icon={faLinkedin} className="text-lg sm:text-xl" />
               </button>
               <button
                 onClick={handleInstagramClick}
-                className="p-3 sm:p-4 rounded-2xl text-white bg-gradient-to-tr from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] transition-all hover:scale-105 cursor-pointer shadow-md"
+                className="social-icon-btn flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] transition-all hover:scale-105 cursor-pointer shadow-md"
                 aria-label="Instagram"
               >
                 <FontAwesomeIcon icon={faInstagram} className="text-lg sm:text-xl" />
+              </button>
+              <button
+                onClick={handleTwitterClick}
+                className="social-icon-btn flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#1DA1F2] to-[#0D8BD9] transition-all hover:scale-105 cursor-pointer shadow-md"
+                aria-label="Twitter"
+              >
+                <FontAwesomeIcon icon={faTwitter} className="text-lg sm:text-xl" />
+              </button>
+              <button
+                onClick={handleFacebookClick}
+                className="social-icon-btn flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#1877F2] to-[#0E5BD3] transition-all hover:scale-105 cursor-pointer shadow-md"
+                aria-label="Facebook"
+              >
+                <FontAwesomeIcon icon={faFacebookF} className="text-lg sm:text-xl" />
               </button>
             </div>
           </div>

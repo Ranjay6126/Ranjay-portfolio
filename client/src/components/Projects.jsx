@@ -28,7 +28,10 @@ export default function Projects() {
   const projects = portfolio?.projects || [];
 
   return (
-    <section id="projects" className="min-h-[80vh] flex -mt-8 sm:-mt-16 pb-6 px-4 sm:px-6 flex-col items-center relative overflow-hidden">
+    <section
+      id="projects"
+      className="relative flex flex-col items-center px-4 pb-5 pt-3 sm:px-6 sm:pt-4 md:pt-5 lg:pt-6 overflow-hidden"
+    >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
         <div className="absolute top-[20%] left-[10%] w-80 h-80 sm:w-96 sm:h-96 bg-indigo-500/10 rounded-full blur-[100px]" />
         <div className="absolute bottom-[20%] right-[10%] w-80 h-80 sm:w-96 sm:h-96 bg-purple-500/10 rounded-full blur-[100px]" />
@@ -40,13 +43,13 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8 sm:mb-10"
+          className="text-center mb-6 sm:mb-8 md:mb-10"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent inline-block">
             💻 My Projects
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-2">
-            A selection of projects demonstrating full-stack development, API integrations, and practical system design.
+          <p className="text-white max-w-5xl mx-auto text-center text-sm sm:text-base md:text-lg px-2 leading-7">
+            A selection of full-stack projects showcasing scalable architecture, secure authentication, API integrations, responsive user interfaces, and practical system design.
           </p>
         </motion.div>
 
@@ -55,7 +58,7 @@ export default function Projects() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 lg:gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 lg:gap-6 md:items-stretch"
         >
           {projects.map((project, i) => {
             const isLive = project.liveLink && project.liveLink !== "#";

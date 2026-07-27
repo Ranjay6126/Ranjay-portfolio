@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../services/api";
 
-const CACHE_KEY = "portfolio_cache_v4";
+const CACHE_KEY = "portfolio_cache_v5";
 const CACHE_TTL = 5 * 60 * 1000;
 
 export function usePortfolio() {

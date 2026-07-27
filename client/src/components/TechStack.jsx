@@ -108,12 +108,21 @@ const IconRenderer = ({ iconKey, title }) => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-2 min-w-[80px] sm:min-w-[100px] md:min-w-[110px]">
+    <motion.div
+      whileHover={{ rotate: [0, -6, 6, 0], scale: 1.04, transition: { duration: 0.35 } }}
+      className="flex flex-col items-center gap-2 min-w-[80px] sm:min-w-[100px] md:min-w-[110px]"
+    >
       <div className="p-2 sm:p-3 rounded-xl bg-black/30 border border-white/10">
-        <IconComponent className="text-3xl sm:text-4xl" style={{ color: getColor(iconKey) }} />
+        <motion.div
+          initial={{ rotate: 0 }}
+          animate={{ rotate: [0, 8, 0] }}
+          transition={{ duration: 2.2, ease: "easeInOut" }}
+        >
+          <IconComponent className="text-3xl sm:text-4xl" style={{ color: getColor(iconKey) }} />
+        </motion.div>
       </div>
       <span className="text-[11px] sm:text-xs font-medium text-gray-400 whitespace-nowrap">{title}</span>
-    </div>
+    </motion.div>
   );
 };
 
@@ -171,20 +180,20 @@ export default function TechStack() {
   }, [rightCategories.length]);
 
   return (
-    <section id="skills" className="min-h-screen flex pt-2 pb-2 px-4 sm:px-6 flex-col items-center relative overflow-hidden">
+    <section id="skills" className="flex py-3 px-4 sm:px-6 sm:py-4 md:py-5 flex-col items-center relative overflow-hidden">
       <div className="container mx-auto max-w-6xl md:max-w-7xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8 sm:mb-10 md:mb-12"
+          className="text-center mb-6 sm:mb-8 md:mb-10"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent inline-block">
             Technical Skills
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-2">
-            The tools and technologies I use to bring ideas to life.
+          <p className="text-white max-w-4xl mx-auto text-center text-sm sm:text-base md:text-lg px-2 leading-7">
+            The tools, technologies, and frameworks I use to bring ideas to life by building secure, scalable, and high-performance applications.
           </p>
         </motion.div>
 
