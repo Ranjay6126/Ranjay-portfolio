@@ -6,12 +6,12 @@ dotenv.config();
 
 export const portfolioSeedData = {
   profile: {
-    name: "Ranjay Prajapati",
+    name: "< Ranjay Prajapati />",
     firstName: "Ranjay",
     lastName: "Prajapati",
-    rotatingTexts: ["Full Stack Developer", "Problem Solver"],
+    rotatingTexts: ["Full-Stack Software Engineer", "Problem Solver & Cyber Security Enthusiast "],
     description:
-      "Full-Stack Software Engineer with expertise in the MERN stack, experienced in developing scalable, secure, and high-performance web applications. Passionate about building modern user-centric solutions with clean code and intuitive design. Demonstrated strong problem-solving and analytical skills with a solid understanding of Data Structures and Algorithms, with 300+ problems solved. I am passionate about learning and developing new software solutions.",
+      "I am a results-driven Full-Stack Software Engineer with a B.Tech in Computer Science Engineering (specialization in Software and Cyber Security) from Lovely Professional University. I specialize in the MERN stack and focus on delivering scalable, secure, and high-performance web applications. My approach combines clean architecture, strong fundamentals in Data Structures & Algorithms (300+ problems solved), and a passion for creating intuitive, user-centric experiences. I am always exploring new technologies and best practices to build better software.",
     stats: [
       { value: "10+", label: "Projects Completed" },
       { value: "300+", label: "DSA Problems" },

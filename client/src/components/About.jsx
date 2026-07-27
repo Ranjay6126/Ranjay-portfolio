@@ -1,4 +1,4 @@
-import { faGithub, faLinkedin, faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faFileAlt, faDownload, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SiLeetcode } from "react-icons/si";
@@ -13,7 +13,6 @@ export default function About({ profile }) {
   const handleLeetCodeClick = () => window.open("https://leetcode.com/u/Ranjay_201/", "_blank");
   const handleLinkedinClick = () => window.open(profile.linkedin, "_blank");
   const handleInstagramClick = () => window.open(profile.instagram, "_blank");
-  const handleFacebookClick = () => window.open(profile.facebook, "_blank");
   const handleGmailClick = () => window.open(`mailto:${profile.email}`, "_blank");
 
   return (
@@ -29,9 +28,9 @@ export default function About({ profile }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="pointer-events-auto bg-white/5 backdrop-blur-2xl border border-white/10 p-10 md:p-14 rounded-[2.5rem] max-w-7xl w-full grid md:grid-cols-2 gap-12 items-center relative z-10 shadow-2xl"
+        className="pointer-events-auto bg-white/5 backdrop-blur-2xl border border-white/10 p-10 md:p-14 rounded-[2.5rem] max-w-7xl w-full grid md:grid-cols-5 gap-12 items-center relative z-10 shadow-2xl"
       >
-        <div className="space-y-8 order-2 md:order-1">
+        <div className="space-y-8 order-2 md:order-1 md:col-span-3">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-medium">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -49,7 +48,7 @@ export default function About({ profile }) {
                   ease: "easeInOut",
                 },
               }}
-              className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 text-white drop-shadow-[0_0_20px_rgba(148,163,184,0.5)] cursor-default"
+              className="text-3xl sm:text-4xl md:text-5xl font-light italic tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 drop-shadow-[0_0_20px_rgba(99,102,241,0.6)] cursor-default"
             >
               {profile.name}
             </motion.h1>
@@ -74,13 +73,20 @@ export default function About({ profile }) {
             {profile.description}
           </p>
 
-          <div className="flex gap-8 border-t border-white/10 pt-8">
-            {profile.stats.map((stat, i) => (
-              <div key={i}>
-                <h4 className="text-3xl font-bold text-white">{stat.value}</h4>
-                <p className="text-sm text-gray-500">{stat.label}</p>
-              </div>
-            ))}
+          <div className="border-t border-white/10 pt-8">
+            <div className="flex gap-8 flex-wrap">
+              {profile.stats.map((stat, i) => (
+                <div key={i} className="flex flex-col items-center">
+                  <div className="text-3xl mb-1">{i === 0 ? "🚀" : "💡"}</div>
+                  <h4 className="text-3xl font-bold text-white">{stat.value}</h4>
+                  <p className="text-sm text-gray-500">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 flex items-center gap-3 text-gray-400">
+              <FontAwesomeIcon icon={faEnvelope} className="text-xl" />
+              <span>{profile.email}</span>
+            </div>
           </div>
 
           <div className="flex flex-wrap gap-4 pt-2 items-center">
@@ -124,25 +130,11 @@ export default function About({ profile }) {
               >
                 <FontAwesomeIcon icon={faInstagram} className="text-xl" />
               </button>
-              <button
-                onClick={handleFacebookClick}
-                className="p-4 rounded-2xl text-white bg-gradient-to-tr from-[#1877F2] to-[#0d5bc5] transition-all hover:scale-105 cursor-pointer shadow-md"
-                aria-label="Facebook"
-              >
-                <FontAwesomeIcon icon={faFacebook} className="text-xl" />
-              </button>
-              <button
-                onClick={handleGmailClick}
-                className="p-4 rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer"
-                aria-label="Gmail"
-              >
-                <FontAwesomeIcon icon={faEnvelope} className="text-xl" />
-              </button>
             </div>
           </div>
         </div>
 
-        <div className="order-1 md:order-2 flex justify-center items-center">
+        <div className="order-1 md:order-2 md:col-span-2 flex justify-center items-center">
           <Body profileImage={profile.profileImage} />
         </div>
       </motion.div>
