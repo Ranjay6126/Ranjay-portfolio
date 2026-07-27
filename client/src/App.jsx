@@ -24,8 +24,19 @@ function Portfolio() {
     return () => document.removeEventListener("contextmenu", disableContextMenu);
   }, []);
 
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
+
   const handleLoadingComplete = () => {
     setIsLoading(false);
+    setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      window.location.hash = "";
+    }, 0);
   };
 
   return (
