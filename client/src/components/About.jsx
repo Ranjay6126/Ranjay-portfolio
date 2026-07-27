@@ -48,7 +48,7 @@ export default function About({ profile }) {
                   ease: "easeInOut",
                 },
               }}
-              className="text-3xl sm:text-4xl md:text-5xl font-light italic tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 drop-shadow-[0_0_20px_rgba(99,102,241,0.6)] cursor-default"
+              className="text-2xl sm:text-3xl md:text-4xl font-extralight italic tracking-wide mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 drop-shadow-[0_0_18px_rgba(99,102,241,0.55)] cursor-default"
             >
               {profile.name}
             </motion.h1>
@@ -74,18 +74,17 @@ export default function About({ profile }) {
           </p>
 
           <div className="border-t border-white/10 pt-8">
-            <div className="flex gap-8 flex-wrap">
+            <div className="flex gap-8 flex-wrap items-center">
               {profile.stats.map((stat, i) => (
                 <div key={i} className="flex flex-col items-center">
-                  <div className="text-3xl mb-1">{i === 0 ? "🚀" : "💡"}</div>
                   <h4 className="text-3xl font-bold text-white">{stat.value}</h4>
                   <p className="text-sm text-gray-500">{stat.label}</p>
                 </div>
               ))}
-            </div>
-            <div className="mt-6 flex items-center gap-3 text-gray-400">
-              <FontAwesomeIcon icon={faEnvelope} className="text-xl" />
-              <span>{profile.email}</span>
+              <div className="flex items-center gap-3 text-gray-400 ml-2">
+                <FontAwesomeIcon icon={faEnvelope} className="text-xl" />
+                <span>{profile.email}</span>
+              </div>
             </div>
           </div>
 
