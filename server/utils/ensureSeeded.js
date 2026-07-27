@@ -11,14 +11,23 @@ export async function ensureSeeded() {
   }
 
   const existingPortfolio = await Portfolio.findOne().sort({ createdAt: -1 });
-  const needsUpdate = existingPortfolio?.profile?.profileImage !== portfolioSeedData.profile.profileImage;
+  const currentName = existingPortfolio?.profile?.name ?? "";
+  const expectedName = portfolioSeedData.profile.name;
+  const currentDesc = existingPortfolio?.profile?.description ?? "";
+  const expectedDesc = portfolioSeedData.profile.description;
+  const currentImage = existingPortfolio?.profile?.profileImage ?? "";
+  const expectedImage = portfolioSeedData.profile.profileImage;
+  const currentRotating = JSON.stringify(existingPortfolio?.profile?.rotatingTexts ?? []);
+  const expectedRotating = JSON.stringify(portfolioSeedData.profile.rotatingTexts);
 
-  if (needsUpdate) {
-    await Portfolio.updateMany({}, {
-      $set: {
-        "profile.profileImage": portfolioSeedData.profile.profileImage,
-      },
-    });
-    console.log("Portfolio image path normalized to the correct PNG file.");
+  const needsFullUpdate =
+    currentName !== expectedName ||
+    currentDesc !== expectedDesc ||
+    currentImage !== expectedImage ||
+    currentRotating !== expectedRotating;
+
+  if (needsFullUpdate) {
+    await Portfolio.updateMany({}, { $set: portfolioSeedData });
+    console.log("Portfolio database updated with latest seed data.");
   }
 }
