@@ -108,11 +108,11 @@ const IconRenderer = ({ iconKey, title }) => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-2 min-w-[100px]">
-      <div className="p-3 rounded-xl bg-black/30 border border-white/10">
-        <IconComponent className="text-4xl" style={{ color: getColor(iconKey) }} />
+    <div className="flex flex-col items-center gap-2 min-w-[80px] sm:min-w-[100px] md:min-w-[110px]">
+      <div className="p-2 sm:p-3 rounded-xl bg-black/30 border border-white/10">
+        <IconComponent className="text-3xl sm:text-4xl" style={{ color: getColor(iconKey) }} />
       </div>
-      <span className="text-xs font-medium text-gray-400">{title}</span>
+      <span className="text-[11px] sm:text-xs font-medium text-gray-400 whitespace-nowrap">{title}</span>
     </div>
   );
 };
@@ -123,15 +123,15 @@ const Marquee = ({ techs, direction = "left" }) => {
   return (
     <div className="w-full overflow-hidden">
       <motion.div
-        className="flex gap-8"
+        className="flex gap-4 sm:gap-6 md:gap-8"
         animate={{
-          x: direction === "left" ? [0, -1000] : [-1000, 0],
+          x: direction === "left" ? [0, -1200] : [-1200, 0],
         }}
         transition={{
           x: {
             repeat: Infinity,
             repeatType: "loop",
-            duration: 5,
+            duration: 20,
             ease: "linear",
           },
         }}
@@ -171,31 +171,31 @@ export default function TechStack() {
   }, [rightCategories.length]);
 
   return (
-    <section id="skills" className="min-h-screen flex pt-2 pb-2 flex-col items-center relative overflow-hidden">
-      <div className="container mx-auto max-w-6xl relative z-10">
+    <section id="skills" className="min-h-screen flex pt-2 pb-2 px-4 sm:px-6 flex-col items-center relative overflow-hidden">
+      <div className="container mx-auto max-w-6xl md:max-w-7xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-10 md:mb-12"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent inline-block">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent inline-block">
             Technical Skills
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-2">
             The tools and technologies I use to bring ideas to life.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-1 gap-5 sm:gap-6">
           {/* Left Rectangle */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col gap-4"
+            className="flex flex-col gap-3 sm:gap-4"
           >
             <div className="flex items-center justify-center gap-2">
               <AnimatePresence mode="wait">
@@ -205,14 +205,14 @@ export default function TechStack() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.5 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/20 border border-indigo-500/30"
+                  className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-indigo-500/20 border border-indigo-500/30"
                 >
-                  <span className="text-2xl">{leftCategories[leftCategoryIndex]?.icon}</span>
-                  <h3 className="text-xl font-bold text-indigo-300">{leftCategories[leftCategoryIndex]?.title}</h3>
+                  <span className="text-xl sm:text-2xl">{leftCategories[leftCategoryIndex]?.icon}</span>
+                  <h3 className="text-lg sm:text-xl font-bold text-indigo-300">{leftCategories[leftCategoryIndex]?.title}</h3>
                 </motion.div>
               </AnimatePresence>
             </div>
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-tl-[3rem] rounded-br-[3rem] p-3 overflow-hidden">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-tl-[2.5rem] sm:rounded-tl-[3rem] rounded-br-[2.5rem] sm:rounded-br-[3rem] p-2 sm:p-3 overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`left-tech-${leftCategoryIndex}`}
@@ -233,7 +233,7 @@ export default function TechStack() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col gap-4"
+            className="flex flex-col gap-3 sm:gap-4"
           >
             <div className="flex items-center justify-center gap-2">
               <AnimatePresence mode="wait">
@@ -243,14 +243,14 @@ export default function TechStack() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.5 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30"
+                  className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-purple-500/20 border border-purple-500/30"
                 >
-                  <span className="text-2xl">{rightCategories[rightCategoryIndex]?.icon}</span>
-                  <h3 className="text-xl font-bold text-purple-300">{rightCategories[rightCategoryIndex]?.title}</h3>
+                  <span className="text-xl sm:text-2xl">{rightCategories[rightCategoryIndex]?.icon}</span>
+                  <h3 className="text-lg sm:text-xl font-bold text-purple-300">{rightCategories[rightCategoryIndex]?.title}</h3>
                 </motion.div>
               </AnimatePresence>
             </div>
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-tl-[3rem] rounded-br-[3rem] p-3 overflow-hidden">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-tl-[2.5rem] sm:rounded-tl-[3rem] rounded-br-[2.5rem] sm:rounded-br-[3rem] p-2 sm:p-3 overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`right-tech-${rightCategoryIndex}`}
