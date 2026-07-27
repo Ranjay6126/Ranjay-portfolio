@@ -48,28 +48,28 @@ export default function About({ profile }) {
                   ease: "easeInOut",
                 },
               }}
-              className="text-2xl sm:text-3xl md:text-4xl font-extralight italic tracking-wide mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 drop-shadow-[0_0_18px_rgba(99,102,241,0.55)] cursor-default"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-wide mb-4 text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.25)] cursor-default"
             >
               {profile.name}
             </motion.h1>
-            <div className="flex items-center gap-3 text-xl sm:text-2xl text-gray-300 font-medium">
+            <div className="flex items-center gap-3 text-xl sm:text-2xl text-white font-medium">
               <span>I am a</span>
               <RotatingText
                 texts={profile.rotatingTexts}
                 mainClassName="text-blue-400 font-semibold"
                 staggerFrom="last"
-                initial={{ y: "100%" }}
-                animate={{ y: 0 }}
-                exit={{ y: "-120%" }}
-                staggerDuration={0.025}
+                initial={{ y: "100%", opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: "-120%", opacity: 0 }}
+                staggerDuration={0.05}
                 splitLevelClassName="overflow-hidden"
-                transition={{ type: "spring", damping: 30, stiffness: 400 }}
-                rotationInterval={2000}
+                transition={{ type: "spring", damping: 40, stiffness: 200 }}
+                rotationInterval={4000}
               />
             </div>
           </div>
 
-          <p className="text-lg text-gray-400 leading-relaxed max-w-2xl">
+          <p className="text-lg text-white leading-relaxed max-w-2xl">
             {profile.description}
           </p>
 
@@ -81,8 +81,8 @@ export default function About({ profile }) {
                   <p className="text-sm text-gray-500">{stat.label}</p>
                 </div>
               ))}
-              <div className="flex items-center gap-3 text-gray-400 ml-2">
-                <FontAwesomeIcon icon={faEnvelope} className="text-xl" />
+              <div className="flex items-center gap-3 text-white ml-2 font-medium">
+                <FontAwesomeIcon icon={faEnvelope} className="text-xl text-white" />
                 <span>{profile.email}</span>
               </div>
             </div>
