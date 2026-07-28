@@ -1,17 +1,15 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
-import { FolderKanban } from "lucide-react";
-import { useTheme } from "../context/ThemeContext";
 import { usePortfolio } from "../hooks/usePortfolio";
+import SectionIcon from "./SectionIcon";
+import { SECTION_EMOJIS } from "../constants/navIcons";
 
 const DESCRIPTION_LIMIT = 120;
 
 export default function Projects() {
   const [expanded, setExpanded] = useState({});
   const { portfolio } = usePortfolio();
-  const { theme } = useTheme();
-  const isLightMode = theme === "light";
 
   const toggleExpand = (i) => setExpanded((prev) => ({ ...prev, [i]: !prev[i] }));
 
@@ -24,7 +22,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative flex min-h-[70vh] md:min-h-[80vh] lg:min-h-[85vh] flex-col items-center px-4 pb-8 pt-8 sm:px-6 sm:pt-10 sm:pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16 overflow-hidden"
+      className="relative flex min-h-0 md:min-h-[80vh] flex-col items-center px-4 pb-8 pt-6 sm:px-6 sm:pt-10 sm:pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16 overflow-hidden"
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
         <div className="absolute top-[20%] left-[10%] w-80 h-80 sm:w-96 sm:h-96 bg-indigo-500/10 rounded-full blur-[100px]" />
@@ -33,9 +31,9 @@ export default function Projects() {
 
       <div className="max-w-6xl md:max-w-7xl w-full relative z-10">
         <div className="text-center mb-6 sm:mb-8 md:mb-10">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex items-center gap-2 sm:gap-3">
-            <FolderKanban className={`w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 drop-shadow-lg ${isLightMode ? "text-indigo-600" : "text-cyan-300"}`} />
-            <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">My Projects</span>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-baseline justify-center gap-2 sm:gap-3">
+            <SectionIcon emoji={SECTION_EMOJIS.projects} />
+            <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">My Projects</span>
           </h2>
           <p className="text-white max-w-5xl mx-auto text-center text-sm sm:text-base md:text-lg px-2 leading-7">
             A selection of full-stack projects showcasing scalable architecture, secure authentication, API integrations, responsive user interfaces, and practical system design.
@@ -52,10 +50,10 @@ export default function Projects() {
                 key={i}
                 initial={{ opacity: 1, y: 0 }}
                 whileHover={{ y: -10 }}
-                className="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:p-5 hover:border-white/20 transition-colors duration-300 flex flex-col h-full"
+                className="group relative portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:p-5 transition-colors duration-300 flex flex-col h-full"
               >
                 <div className="flex items-start justify-between mb-3 gap-2">
-                  <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-indigo-400 transition-colors">
+                  <h3 className="portfolio-card-title text-base sm:text-lg font-bold text-white transition-colors">
                     {project.title}
                   </h3>
                   <span className="text-xs font-medium text-indigo-300 bg-indigo-500/10 px-2 sm:px-3 py-1 rounded-full border border-indigo-500/20 whitespace-nowrap">
@@ -96,11 +94,11 @@ export default function Projects() {
                   ))}
                 </div>
 
-                <div className="flex items-center gap-4 mt-auto">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-auto">
                   <button
                     onClick={() => hasGithub && openInNewTab(project.githubLink)}
                     disabled={!hasGithub}
-                    className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                    className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
                       hasGithub
                         ? "bg-white/10 text-white hover:bg-white/20 hover:scale-[1.02] cursor-pointer border border-white/10"
                         : "bg-white/5 text-gray-500 cursor-not-allowed border border-white/5"
@@ -112,9 +110,9 @@ export default function Projects() {
                   <button
                     onClick={() => isLive && openInNewTab(project.liveLink)}
                     disabled={!isLive}
-                    className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                    className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
                       isLive
-                        ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:shadow-lg hover:shadow-indigo-500/25 hover:scale-[1.02] cursor-pointer"
+                        ? "btn-accent cursor-pointer"
                         : "bg-white/5 text-gray-500 cursor-not-allowed border border-white/5"
                     }`}
                   >
