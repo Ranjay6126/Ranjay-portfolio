@@ -15,10 +15,11 @@ export default function Education({ education = [] }) {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent inline-block">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
             🎓 Education
           </h2>
-          <p className={`${isLightMode ? "text-slate-600" : "text-gray-400"} max-w-2xl mx-auto text-lg`}>My academic journey and milestones.</p>
+          <p className={`${isLightMode ? "text-slate-600" : "text-white"} text-sm sm:text-base md:text-lg px-2 whitespace-nowrap`}>A comprehensive overview of my academic journey, showcasing educational milestones, institutions attended, completion timelines, academic performance CGPA, and the technical knowledge and professional skills developed throughout school, higher secondary, and university education.</p>
+
         </motion.div>
 
         <div className="relative">
@@ -34,7 +35,7 @@ export default function Education({ education = [] }) {
                 className={`relative flex flex-col md:flex-row gap-8 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
               >
                 <div
-                  className={`absolute left-[-8px] md:left-1/2 md:-translate-x-1/2 top-0 w-4 h-4 rounded-full border-4 ${isLightMode ? "border-slate-300" : "border-black"} z-10 ${
+                  className={`absolute left-[-8px] md:left-1/2 md:-translate-x-1/2 top-0 w-4 h-4 rounded-full border-4 ${isLightMode ? "border-white" : "border-black"} z-10 ${
                     edu.duration.includes("Present")
                       ? "bg-green-500 shadow-[0_0_15px_rgba(34,197,94,0.8)]"
                       : "bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]"
@@ -45,42 +46,42 @@ export default function Education({ education = [] }) {
                   )}
                 </div>
                 <div className="ml-6 md:ml-0 md:w-3/5">
-                  <div className="w-full rounded-2xl border border-gray-800/80 bg-[#12131a] p-6 sm:p-8 shadow-xl text-gray-200 hover:border-indigo-500/40 transition-colors duration-300">
+                  <div className={`w-full rounded-2xl p-6 sm:p-8 shadow-xl hover:border-indigo-500/40 transition-colors duration-300 ${isLightMode ? "bg-white border border-slate-200/80 text-slate-800" : "bg-[#12131a] border border-gray-800/80 text-gray-200"}`}>
                     {/* Header: Degree Title */}
                     <div className="flex items-center gap-3 mb-4">
-                      <GraduationCap className="w-8 h-8 text-indigo-400 shrink-0" />
+                      <GraduationCap className="w-8 h-8 text-indigo-500 shrink-0" />
                       <h2 className={`text-xl sm:text-2xl font-bold tracking-tight ${isLightMode ? "text-slate-900" : "text-white"}`}>
                         {edu.title}
                       </h2>
                     </div>
 
                     {/* Sub-header / Metadata Row */}
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm sm:text-base text-gray-400 mb-6">
+                    <div className={`flex flex-wrap items-center gap-x-3 gap-y-2 text-sm sm:text-base mb-6 ${isLightMode ? "text-slate-500" : "text-gray-400"}`}>
                       {/* University */}
                       <div className="flex items-center gap-2">
-                        <Landmark className="w-5 h-5 text-indigo-400 shrink-0" />
+                        <Landmark className="w-5 h-5 text-indigo-500 shrink-0" />
                         <span>{edu.institution}</span>
                       </div>
 
-                      <span className="text-gray-600 hidden sm:inline">|</span>
+                      <span className={`${isLightMode ? "text-slate-300" : "text-gray-600"} hidden sm:inline`}>|</span>
 
                       {/* Date */}
                       <div className="flex items-center gap-2">
-                        <Calendar className="w-5 h-5 text-indigo-400 shrink-0" />
+                        <Calendar className="w-5 h-5 text-indigo-500 shrink-0" />
                         <span>{edu.duration}</span>
                       </div>
 
-                      <span className="text-gray-600 hidden sm:inline">|</span>
+                      <span className={`${isLightMode ? "text-slate-300" : "text-gray-600"} hidden sm:inline`}>|</span>
 
                       {/* CGPA Badge */}
-                      <span className="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full bg-indigo-950/60 text-indigo-300 border border-indigo-800/50">
+                      <span className={`inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full border ${isLightMode ? "bg-indigo-50 text-indigo-600 border-indigo-200/60" : "bg-indigo-950/60 text-indigo-300 border-indigo-800/50"}`}>
                         {edu.grade}
                       </span>
                     </div>
 
                     {/* Description Paragraph */}
                     {edu.description && (
-                      <p className={`leading-relaxed text-sm sm:text-base ${isLightMode ? "text-slate-700" : "text-gray-300"}`}>
+                      <p className={`leading-relaxed text-sm sm:text-base ${isLightMode ? "text-slate-600" : "text-gray-300"}`}>
                         {edu.description}
                       </p>
                     )}
