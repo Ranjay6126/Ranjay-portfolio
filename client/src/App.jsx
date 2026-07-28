@@ -52,7 +52,7 @@ function Portfolio() {
           <Navbar />
         </header>
 
-        <main className="relative z-10 pt-10">
+        <main className="relative z-10 pt-4 sm:pt-8 md:pt-10 pb-28 md:pb-10">
           {error ? (
             <div className="min-h-screen flex items-center justify-center text-red-400 px-6 text-center">
               {error}. Make sure the server is running and database is seeded.
