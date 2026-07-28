@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { FolderKanban } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 import { usePortfolio } from "../hooks/usePortfolio";
 
 const DESCRIPTION_LIMIT = 120;
@@ -8,6 +10,8 @@ const DESCRIPTION_LIMIT = 120;
 export default function Projects() {
   const [expanded, setExpanded] = useState({});
   const { portfolio } = usePortfolio();
+  const { theme } = useTheme();
+  const isLightMode = theme === "light";
 
   const toggleExpand = (i) => setExpanded((prev) => ({ ...prev, [i]: !prev[i] }));
 
@@ -29,8 +33,9 @@ export default function Projects() {
 
       <div className="max-w-6xl md:max-w-7xl w-full relative z-10">
         <div className="text-center mb-6 sm:mb-8 md:mb-10">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
-            💻 My Projects
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex items-center gap-2 sm:gap-3">
+            <FolderKanban className={`w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 drop-shadow-lg ${isLightMode ? "text-indigo-600" : "text-cyan-300"}`} />
+            <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">My Projects</span>
           </h2>
           <p className="text-white max-w-5xl mx-auto text-center text-sm sm:text-base md:text-lg px-2 leading-7">
             A selection of full-stack projects showcasing scalable architecture, secure authentication, API integrations, responsive user interfaces, and practical system design.
