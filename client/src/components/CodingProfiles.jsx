@@ -139,10 +139,10 @@ export default function CodingProfiles() {
           className="text-center mb-14 sm:mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
-            Coding Profiles
+            💻 Coding Profiles
           </h2>
-          <p className={`text-base sm:text-lg max-w-2xl mx-auto ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-            My problem-solving journey across platforms
+          <p className="text-white text-base sm:text-lg px-2 whitespace-nowrap">
+            A curated collection of coding profiles showcasing consistent practice in Data Structures & Algorithms, competitive problem-solving, and continuous skill development across LeetCode, GeeksforGeeks, and HackerRank.
           </p>
         </motion.div>
 
