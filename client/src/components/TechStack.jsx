@@ -157,6 +157,8 @@ const Marquee = ({ techs, direction = "left" }) => {
 
 export default function TechStack() {
   const { portfolio } = usePortfolio();
+  const { theme } = useTheme();
+  const isLightMode = theme === "light";
   const [leftCategoryIndex, setLeftCategoryIndex] = useState(0);
   const [rightCategoryIndex, setRightCategoryIndex] = useState(0);
 
