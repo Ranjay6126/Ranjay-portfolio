@@ -1,7 +1,7 @@
 import { faGithub, faLinkedin, faInstagram, faTwitter, faFacebookF } from "@fortawesome/free-brands-svg-icons";
 import { faFileAlt, faDownload, faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { SiLeetcode } from "react-icons/si";
+import { SiLeetcode, SiGeeksforgeeks, SiHackerrank } from "react-icons/si";
 import { motion } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
 import Body from "./Body";
@@ -19,6 +19,8 @@ export default function About({ profile }) {
 
   const handleGitHubClick = () => window.open(profile.github, "_blank");
   const handleLeetCodeClick = () => window.open("https://leetcode.com/u/Ranjay_201/", "_blank");
+  const handleGeeksforGeeksClick = () => window.open("https://www.geeksforgeeks.org/profile/panditrageon?tab=activity", "_blank");
+  const handleHackerRankClick = () => window.open("https://www.hackerrank.com/profile/panditranjay33", "_blank");
   const handleLinkedinClick = () => window.open(profile.linkedin, "_blank");
   const handleInstagramClick = () => window.open(profile.instagram, "_blank");
   const handleTwitterClick = () => window.open(profile.twitter || "https://x.com/Ranjay10220", "_blank");
@@ -132,6 +134,20 @@ export default function About({ profile }) {
                 aria-label="LeetCode"
               >
                 <SiLeetcode className="text-lg sm:text-xl" />
+              </button>
+              <button
+                onClick={handleGeeksforGeeksClick}
+                className="social-icon-btn flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer"
+                aria-label="GeeksforGeeks"
+              >
+                <SiGeeksforgeeks className="text-lg sm:text-xl" />
+              </button>
+              <button
+                onClick={handleHackerRankClick}
+                className="social-icon-btn flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer"
+                aria-label="HackerRank"
+              >
+                <SiHackerrank className="text-lg sm:text-xl" />
               </button>
               <button
                 onClick={handleLinkedinClick}
