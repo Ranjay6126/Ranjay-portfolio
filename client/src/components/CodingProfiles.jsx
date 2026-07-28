@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { SiLeetcode, SiGeeksforgeeks, SiHackerrank } from "react-icons/si";
+import { Code2 } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 
 // Triangle Card Component (using user-provided code)
@@ -115,6 +116,7 @@ const platformData = [
 
 export default function CodingProfiles() {
   const { theme } = useTheme();
+  const isLightMode = theme === "light";
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
@@ -138,12 +140,15 @@ export default function CodingProfiles() {
           transition={{ duration: 0.5 }}
           className="text-center mb-14 sm:mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
-            💻 Coding Profiles
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 inline-flex items-center gap-2 sm:gap-3">
+            <Code2 className={`w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 drop-shadow-lg ${isLightMode ? "text-indigo-600" : "text-cyan-300"}`} />
+            <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Coding Profiles</span>
           </h2>
-          <p className="text-white text-base sm:text-lg px-2 whitespace-nowrap">
-            A curated collection of coding profiles showcasing consistent practice in Data Structures & Algorithms, competitive problem-solving, and continuous skill development across LeetCode, GeeksforGeeks, and HackerRank.
-          </p>
+          <div className="px-2 w-full flex justify-center">
+            <p className="text-white text-[13px] sm:text-base md:text-lg leading-[1.65rem] sm:leading-7 md:leading-8 font-sans text-center max-w-[95%] sm:max-w-3xl md:max-w-4xl mx-auto break-words hyphens-auto">
+              A curated collection of coding profiles showcasing consistent practice in Data Structures &amp; Algorithms, competitive programming, and continuous skill development across LeetCode, GeeksforGeeks, and HackerRank.
+            </p>
+          </div>
         </motion.div>
 
         <motion.div
