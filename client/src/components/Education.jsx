@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { GraduationCap, Landmark, Calendar } from "lucide-react";
+import { usePortfolio } from "../hooks/usePortfolio";
 import { useTheme } from "../context/ThemeContext";
 
 export default function Education({ education = [] }) {
   const { theme } = useTheme();
   const isLightMode = theme === "light";
+  const { portfolio } = usePortfolio();
   return (
     <section id="education" className={`min-h-screen flex flex-col items-center px-6 py-10 relative overflow-hidden ${isLightMode ? "text-slate-900" : "text-white"}`}>
       <div className="max-w-7xl w-full relative z-10">
@@ -15,10 +17,15 @@ export default function Education({ education = [] }) {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
-            🎓 Education
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 inline-flex items-center gap-2 sm:gap-3">
+            <GraduationCap className={`w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 drop-shadow-lg ${isLightMode ? "text-indigo-600" : "text-cyan-300"}`} />
+            <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Education</span>
           </h2>
-          <p className={`${isLightMode ? "text-slate-600" : "text-white"} text-sm sm:text-base md:text-lg px-2 whitespace-nowrap`}>A comprehensive overview of my academic journey, showcasing educational milestones, institutions attended, completion timelines, academic performance CGPA, and the technical knowledge and professional skills developed throughout school, higher secondary, and university education.</p>
+          <div className="px-2 w-full flex justify-center">
+            <p className={`${isLightMode ? "text-slate-600" : "text-white"} text-[13px] sm:text-base md:text-lg leading-[1.65rem] sm:leading-7 md:leading-8 font-sans text-center max-w-[95%] sm:max-w-3xl md:max-w-4xl mx-auto break-words hyphens-auto`}>
+              A comprehensive overview of my academic journey, highlighting institutions, completion timelines, academic performance CGPA, and the technical and professional skills gained throughout my education.
+            </p>
+          </div>
 
         </motion.div>
 
