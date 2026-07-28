@@ -25,11 +25,11 @@ export default function Certificates({ certificates = [] }) {
 
       <div className="max-w-6xl md:max-w-7xl w-full relative z-10">
         <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} className="text-center mb-8 sm:mb-10">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
             🎓 Certificates
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-2">
-            Verified certifications showcasing my learning in cloud, security, and competitive coding.
+          <p className="text-white text-sm sm:text-base md:text-lg px-2 whitespace-nowrap">
+            Verified certifications validating technical knowledge and hands-on skills in Data Structures & Algorithms, Full-Stack Development, Frontend Engineering, Backend Development, Database Management, and Linux.
           </p>
         </motion.div>
 
