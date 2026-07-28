@@ -1,25 +1,27 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Landmark, Calendar } from "lucide-react";
-import { usePortfolio } from "../hooks/usePortfolio";
+import { Landmark, Calendar } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "../context/ThemeContext";
+import SectionIcon from "./SectionIcon";
+import { SECTION_EMOJIS } from "../constants/navIcons";
 
 export default function Education({ education = [] }) {
   const { theme } = useTheme();
   const isLightMode = theme === "light";
-  const { portfolio } = usePortfolio();
   return (
-    <section id="education" className={`min-h-screen flex flex-col items-center px-6 py-10 relative overflow-hidden ${isLightMode ? "text-slate-900" : "text-white"}`}>
+    <section id="education" className={`min-h-0 md:min-h-screen flex flex-col items-center px-4 sm:px-6 py-8 sm:py-10 relative overflow-hidden ${isLightMode ? "text-slate-900" : "text-white"}`}>
       <div className="max-w-7xl w-full relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 inline-flex items-center gap-2 sm:gap-3">
-            <GraduationCap className={`w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 drop-shadow-lg ${isLightMode ? "text-indigo-600" : "text-cyan-300"}`} />
-            <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Education</span>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+            <SectionIcon emoji={SECTION_EMOJIS.education} />
+            <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Education</span>
           </h2>
           <div className="px-2 w-full flex justify-center">
             <p className={`${isLightMode ? "text-slate-600" : "text-white"} text-[13px] sm:text-base md:text-lg leading-[1.65rem] sm:leading-7 md:leading-8 font-sans text-center max-w-[95%] sm:max-w-3xl md:max-w-4xl mx-auto break-words hyphens-auto`}>
@@ -52,11 +54,11 @@ export default function Education({ education = [] }) {
                     <span className="absolute -inset-1 rounded-full bg-green-500 opacity-75 animate-ping" />
                   )}
                 </div>
-                <div className="ml-6 md:ml-0 md:w-3/5">
-                  <div className={`w-full rounded-2xl p-6 sm:p-8 shadow-xl hover:border-indigo-500/40 transition-colors duration-300 ${isLightMode ? "bg-white border border-slate-200/80 text-slate-800" : "bg-[#12131a] border border-gray-800/80 text-gray-200"}`}>
+                <div className="ml-4 sm:ml-6 md:ml-0 md:w-3/5">
+                  <div className={`portfolio-card w-full rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl transition-colors duration-300 ${isLightMode ? "bg-white border border-slate-200/80 text-slate-800" : "bg-[#12131a] border border-gray-800/80 text-gray-200"}`}>
                     {/* Header: Degree Title */}
                     <div className="flex items-center gap-3 mb-4">
-                      <GraduationCap className="w-8 h-8 text-indigo-500 shrink-0" />
+                      <FontAwesomeIcon icon={faGraduationCap} className="w-7 h-7 sm:w-8 sm:h-8 text-indigo-500 shrink-0" />
                       <h2 className={`text-xl sm:text-2xl font-bold tracking-tight ${isLightMode ? "text-slate-900" : "text-white"}`}>
                         {edu.title}
                       </h2>
