@@ -189,8 +189,8 @@ export default function TechStack() {
           transition={{ duration: 0.5 }}
           className="text-center mb-6 sm:mb-8 md:mb-10"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent inline-block">
-            Technical Skills
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
+            ⚙️ Technical Skills
           </h2>
           <p className="text-white max-w-4xl mx-auto text-center text-sm sm:text-base md:text-lg px-2 leading-7">
             The tools, technologies, and frameworks I use to bring ideas to life by building secure, scalable, and high-performance applications.
