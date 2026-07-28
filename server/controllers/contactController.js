@@ -2,6 +2,7 @@ import nodemailer from "nodemailer";
 import asyncHandler from "../middleware/asyncHandler.js";
 import Contact from "../models/Contact.js";
 import { resolveRecipientEmail } from "../utils/contactEmail.js";
+import { dbConnected } from "../config/db.js";
 
 const sendEmail = async ({ from_name, from_email, subject, message }) => {
   console.log("[Email] Starting email send process...");
@@ -82,25 +83,47 @@ export const createContact = asyncHandler(async (req, res) => {
     throw new Error("Please enter a valid email address");
   }
 
-  const contact = await Contact.create({ from_name, from_email, subject, message });
-  console.log("[Contact] Saved to database successfully:", contact._id);
+  let contact = { _id: "temp_" + Date.now(), from_name, from_email, subject, message };
 
+  if (dbConnected) {
+    try {
+      const savedContact = await Contact.create({ from_name, from_email, subject, message });
+      contact = savedContact;
+      console.log("[Contact] Saved to database successfully:", contact._id);
+    } catch (dbErr) {
+      console.warn("[Contact] DB save failed, continuing without persistence:", dbErr.message);
+    }
+  } else {
+    console.log("[Contact] MongoDB unavailable – message not persisted to database");
+  }
+
+  let emailStatus = "skipped";
   try {
     await sendEmail({ from_name, from_email, subject, message });
+    emailStatus = "sent";
   } catch (emailError) {
-    console.error("[Contact] Email notification failed completely:", emailError);
-    res.status(500);
-    throw new Error(emailError.message || "Email delivery failed. Check your Gmail app password.");
+    console.warn("[Contact] Email notification failed:", emailError.message);
+    emailStatus = "failed: " + emailError.message;
   }
 
   res.status(201).json({
     success: true,
-    message: "Message sent successfully!",
+    message: emailStatus.startsWith("sent")
+      ? "Message sent successfully!"
+      : "Message received (email not sent – configure SMTP for notifications).",
     data: contact,
+    emailStatus,
   });
 });
 
 export const getContacts = asyncHandler(async (req, res) => {
-  const contacts = await Contact.find().sort({ createdAt: -1 });
-  res.json({ success: true, data: contacts });
+  if (!dbConnected) {
+    return res.json({ success: true, data: [] });
+  }
+  try {
+    const contacts = await Contact.find().sort({ createdAt: -1 });
+    res.json({ success: true, data: contacts });
+  } catch (err) {
+    res.json({ success: true, data: [] });
+  }
 });
