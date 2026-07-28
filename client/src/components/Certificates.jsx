@@ -1,11 +1,9 @@
 import { motion } from "framer-motion";
 import { FaExternalLinkAlt } from "react-icons/fa";
-import { Award } from "lucide-react";
-import { useTheme } from "../context/ThemeContext";
+import SectionIcon from "./SectionIcon";
+import { SECTION_EMOJIS } from "../constants/navIcons";
 
 export default function Certificates({ certificates = [] }) {
-  const { theme } = useTheme();
-  const isLightMode = theme === "light";
   const openInNewTab = (url) => {
     if (url && url !== "#") window.open(url, "_blank", "noopener,noreferrer");
   };
@@ -21,7 +19,7 @@ export default function Certificates({ certificates = [] }) {
   };
 
   return (
-    <section id="certificates" className="min-h-[70vh] flex py-6 px-4 sm:px-6 flex-col items-center relative overflow-hidden">
+    <section id="certificates" className="min-h-0 md:min-h-[70vh] flex py-6 px-4 sm:px-6 flex-col items-center relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
         <div className="absolute top-[20%] left-[10%] w-80 h-80 sm:w-96 sm:h-96 bg-indigo-500/10 rounded-full blur-[100px]" />
         <div className="absolute bottom-[20%] right-[10%] w-80 h-80 sm:w-96 sm:h-96 bg-purple-500/10 rounded-full blur-[100px]" />
@@ -29,9 +27,9 @@ export default function Certificates({ certificates = [] }) {
 
       <div className="max-w-6xl md:max-w-7xl w-full relative z-10">
         <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} className="text-center mb-8 sm:mb-10">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex items-center gap-2 sm:gap-3">
-            <Award className={`w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 drop-shadow-lg ${isLightMode ? "text-indigo-600" : "text-cyan-300"}`} />
-            <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Certificates</span>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+            <SectionIcon emoji={SECTION_EMOJIS.certificates} />
+            <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Certificates</span>
           </h2>
           <div className="px-2 w-full flex justify-center">
             <p className="text-white text-[13px] sm:text-base md:text-lg leading-[1.65rem] sm:leading-7 md:leading-8 font-sans text-center max-w-[95%] sm:max-w-3xl md:max-w-4xl mx-auto break-words hyphens-auto">
@@ -51,10 +49,10 @@ export default function Certificates({ certificates = [] }) {
               key={i}
               variants={cardVariants}
               whileHover={{ y: -10 }}
-              className="group bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-6 hover:border-white/20 transition duration-300"
+              className="group portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-6 transition duration-300"
             >
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3">
-                <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-indigo-400">{cert.title}</h3>
+                <h3 className="portfolio-card-title text-lg sm:text-xl font-bold text-white transition-colors">{cert.title}</h3>
                 <span className="text-xs text-indigo-300 bg-indigo-500/10 px-3 py-1 rounded-full whitespace-nowrap self-start">{cert.date}</span>
               </div>
               <p className="text-sm text-gray-400 mb-3">
@@ -67,7 +65,7 @@ export default function Certificates({ certificates = [] }) {
               )}
               <button
                 onClick={() => openInNewTab(cert.verifyLink)}
-                className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:scale-[1.02] transition"
+                className="btn-accent w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold"
               >
                 <FaExternalLinkAlt className="w-3 h-3" />
                 Verify Certificate
