@@ -136,8 +136,8 @@ export default function Contact() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
             📬 Get in Touch
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-2">
-            Have a question or want to work together? Drop me a message!
+          <p className="text-white max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-2">
+            Let's connect and build something exceptional together. Have a question or want to work together? Drop me a message!
           </p>
         </motion.div>
 
