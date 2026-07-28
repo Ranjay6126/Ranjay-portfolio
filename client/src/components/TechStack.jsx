@@ -31,9 +31,11 @@ import {
 import { VscVscodeInsiders } from "react-icons/vsc";
 import { PiFigmaLogoFill } from "react-icons/pi";
 import { GrMysql, GrDatabase } from "react-icons/gr";
+import { Wrench } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { usePortfolio } from "../hooks/usePortfolio";
+import { useTheme } from "../context/ThemeContext";
 
 const iconMap = {
   FaHtml5: FaHtml5,
@@ -189,8 +191,9 @@ export default function TechStack() {
           transition={{ duration: 0.5 }}
           className="text-center mb-6 sm:mb-8 md:mb-10"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
-            ⚙️ Technical Skills
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex items-center gap-2 sm:gap-3">
+            <Wrench className={`w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 drop-shadow-lg ${isLightMode ? "text-indigo-600" : "text-cyan-300"}`} />
+            <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Technical Skills</span>
           </h2>
           <p className="text-white max-w-4xl mx-auto text-center text-sm sm:text-base md:text-lg px-2 leading-7">
             The tools, technologies, and frameworks I use to bring ideas to life by building secure, scalable, and high-performance applications.
