@@ -3,9 +3,13 @@ import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { FaPaperPlane, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { Mail } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 import { api } from "../services/api";
 
 export default function Contact() {
+  const { theme } = useTheme();
+  const isLightMode = theme === "light";
   const formRef = useRef();
   const [isSending, setIsSending] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
@@ -133,8 +137,9 @@ export default function Contact() {
           transition={{ duration: 0.5 }}
           className="text-center mb-8 sm:mb-12 md:mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
-            📬 Get in Touch
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex items-center gap-2 sm:gap-3">
+            <Mail className={`w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 drop-shadow-lg ${isLightMode ? "text-indigo-600" : "text-cyan-300"}`} />
+            <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Get in Touch</span>
           </h2>
           <p className="text-white max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-2">
             Let's connect and build something exceptional together. Have a question or want to work together? Drop me a message!
