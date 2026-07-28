@@ -1,24 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHouse,
-  faAddressBook,
-  faTools,
-  faLaptopCode,
-  faCode,
-  faGraduationCap,
-} from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
 import { useTheme } from "../context/ThemeContext";
-
-const NAV_ITEMS = [
-  { id: "about", label: "Home", icon: faHouse },
-  { id: "skills", label: "Skills", icon: faTools },
-  { id: "projects", label: "Projects", icon: faLaptopCode },
-  { id: "coding", label: "Coding", icon: faCode },
-  { id: "education", label: "Education", icon: faGraduationCap },
-  { id: "contact", label: "Contact", icon: faAddressBook },
-];
+import { NAV_ITEMS } from "../constants/navIcons";
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("about");
@@ -79,8 +63,11 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className={`flex items-center ${
           isMobile ? "justify-around px-2" : "gap-1"
-        } backdrop-blur-md border border-white/10 rounded-full p-1.5 shadow-lg`}
-        style={{ backgroundColor: "var(--navbar-bg)" }}
+        } backdrop-blur-md rounded-full p-1.5 shadow-lg`}
+        style={{
+          backgroundColor: "var(--navbar-bg)",
+          border: "1px solid var(--navbar-border)",
+        }}
       >
         {NAV_ITEMS.map((item) => (
           <button
