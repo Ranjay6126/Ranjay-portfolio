@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { Award } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 
 export default function Certificates({ certificates = [] }) {
+  const { theme } = useTheme();
+  const isLightMode = theme === "light";
   const openInNewTab = (url) => {
     if (url && url !== "#") window.open(url, "_blank", "noopener,noreferrer");
   };
@@ -25,12 +29,15 @@ export default function Certificates({ certificates = [] }) {
 
       <div className="max-w-6xl md:max-w-7xl w-full relative z-10">
         <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} className="text-center mb-8 sm:mb-10">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
-            🎓 Certificates
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex items-center gap-2 sm:gap-3">
+            <Award className={`w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 drop-shadow-lg ${isLightMode ? "text-indigo-600" : "text-cyan-300"}`} />
+            <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Certificates</span>
           </h2>
-          <p className="text-white text-sm sm:text-base md:text-lg px-2 whitespace-nowrap">
-            Verified certifications validating technical knowledge and hands-on skills in Data Structures & Algorithms, Full-Stack Development, Frontend Engineering, Backend Development, Database Management, and Linux.
-          </p>
+          <div className="px-2 w-full flex justify-center">
+            <p className="text-white text-[13px] sm:text-base md:text-lg leading-[1.65rem] sm:leading-7 md:leading-8 font-sans text-center max-w-[95%] sm:max-w-3xl md:max-w-4xl mx-auto break-words hyphens-auto">
+              Verified certifications validating technical knowledge and hands-on skills in Data Structures &amp; Algorithms, Full-Stack Development, Frontend Engineering, Backend Development, Database Management, and Linux.
+            </p>
+          </div>
         </motion.div>
 
         <motion.div
