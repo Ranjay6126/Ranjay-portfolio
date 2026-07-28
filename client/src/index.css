@@ -17,6 +17,13 @@
   --scrollbar-track: #000;
   --nav-active-bg: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
   --nav-active-shadow: rgba(37,99,235,0.3);
+  --navbar-border: rgba(255, 255, 255, 0.22);
+  --btn-green-from: #4a6b5c;
+  --btn-green-to: #5a7d6c;
+  --btn-green-shadow: rgba(74, 107, 92, 0.22);
+  --card-border-hover: rgba(255, 255, 255, 0.38);
+  --title-hover: #ffffff;
+  --footer-divider: rgba(255, 255, 255, 0.28);
 }
 
 html.light {
@@ -34,6 +41,13 @@ html.light {
   --scrollbar-track: #e2e8f0;
   --nav-active-bg: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
   --nav-active-shadow: rgba(14,165,233,0.25);
+  --navbar-border: rgba(0, 0, 0, 0.12);
+  --btn-green-from: #6b8f7a;
+  --btn-green-to: #7a9d88;
+  --btn-green-shadow: rgba(90, 125, 108, 0.2);
+  --card-border-hover: rgba(0, 0, 0, 0.2);
+  --title-hover: #0f172a;
+  --footer-divider: rgba(0, 0, 0, 0.16);
 }
 
 body {
@@ -108,4 +122,87 @@ html.light .text-gray-300.border-white\/10 {
 
 html.light ::-webkit-scrollbar-track {
   background: var(--scrollbar-track);
+}
+
+.contact-form-label {
+  color: var(--text-primary);
+}
+
+.contact-form-input {
+  color: var(--text-primary);
+  background-color: var(--bg-card);
+  border-color: var(--border-color);
+}
+
+.contact-form-input::placeholder {
+  color: var(--text-muted);
+}
+
+.contact-form-input:focus {
+  border-color: rgba(59, 130, 246, 0.6);
+}
+
+html.light .contact-form-input {
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+html:not(.light) .contact-form-input {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.section-title-text {
+  display: inline-block;
+  padding-bottom: 0.15em;
+  line-height: 1.25;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.btn-accent {
+  background: linear-gradient(135deg, var(--btn-green-from), var(--btn-green-to));
+  color: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-accent:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px var(--btn-green-shadow);
+}
+
+.btn-accent:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.portfolio-card {
+  border-color: var(--border-color);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.portfolio-card:hover {
+  border-color: var(--card-border-hover) !important;
+}
+
+html:not(.light) .portfolio-card:hover {
+  box-shadow: 0 10px 28px rgba(255, 255, 255, 0.05);
+}
+
+html.light .portfolio-card:hover {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+}
+
+.group:hover .portfolio-card-title {
+  color: var(--title-hover) !important;
+}
+
+.coding-profile-card:hover .coding-profile-shape {
+  stroke: var(--card-border-hover);
+}
+
+.coding-profile-card:hover .coding-profile-title {
+  color: var(--title-hover) !important;
+}
+
+.footer-divider {
+  border-top: 1px solid var(--footer-divider);
 }
