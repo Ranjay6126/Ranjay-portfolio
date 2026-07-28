@@ -31,11 +31,11 @@ import {
 import { VscVscodeInsiders } from "react-icons/vsc";
 import { PiFigmaLogoFill } from "react-icons/pi";
 import { GrMysql, GrDatabase } from "react-icons/gr";
-import { Wrench } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { usePortfolio } from "../hooks/usePortfolio";
-import { useTheme } from "../context/ThemeContext";
+import SectionIcon from "./SectionIcon";
+import { SECTION_EMOJIS } from "../constants/navIcons";
 
 const iconMap = {
   FaHtml5: FaHtml5,
@@ -112,7 +112,7 @@ const IconRenderer = ({ iconKey, title }) => {
   return (
     <motion.div
       whileHover={{ rotate: [0, -6, 6, 0], scale: 1.04, transition: { duration: 0.35 } }}
-      className="flex flex-col items-center gap-2 min-w-[80px] sm:min-w-[100px] md:min-w-[110px]"
+      className="flex flex-col items-center gap-1.5 sm:gap-2 min-w-[64px] sm:min-w-[100px] md:min-w-[110px]"
     >
       <div className="p-2 sm:p-3 rounded-xl bg-black/30 border border-white/10">
         <motion.div
@@ -142,7 +142,7 @@ const Marquee = ({ techs, direction = "left" }) => {
           x: {
             repeat: Infinity,
             repeatType: "loop",
-            duration: 20,
+            duration: 13,
             ease: "linear",
           },
         }}
@@ -157,8 +157,6 @@ const Marquee = ({ techs, direction = "left" }) => {
 
 export default function TechStack() {
   const { portfolio } = usePortfolio();
-  const { theme } = useTheme();
-  const isLightMode = theme === "light";
   const [leftCategoryIndex, setLeftCategoryIndex] = useState(0);
   const [rightCategoryIndex, setRightCategoryIndex] = useState(0);
 
@@ -193,9 +191,9 @@ export default function TechStack() {
           transition={{ duration: 0.5 }}
           className="text-center mb-6 sm:mb-8 md:mb-10"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex items-center gap-2 sm:gap-3">
-            <Wrench className={`w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 drop-shadow-lg ${isLightMode ? "text-indigo-600" : "text-cyan-300"}`} />
-            <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Technical Skills</span>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+            <SectionIcon emoji={SECTION_EMOJIS.skills} />
+            <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Technical Skills</span>
           </h2>
           <p className="text-white max-w-4xl mx-auto text-center text-sm sm:text-base md:text-lg px-2 leading-7">
             The tools, technologies, and frameworks I use to bring ideas to life by building secure, scalable, and high-performance applications.
@@ -226,7 +224,7 @@ export default function TechStack() {
                 </motion.div>
               </AnimatePresence>
             </div>
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-tl-[2.5rem] sm:rounded-tl-[3rem] rounded-br-[2.5rem] sm:rounded-br-[3rem] p-2 sm:p-3 overflow-hidden">
+            <div className="portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-tl-[2.5rem] sm:rounded-tl-[3rem] rounded-br-[2.5rem] sm:rounded-br-[3rem] p-2 sm:p-3 overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`left-tech-${leftCategoryIndex}`}
@@ -264,7 +262,7 @@ export default function TechStack() {
                 </motion.div>
               </AnimatePresence>
             </div>
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-tl-[2.5rem] sm:rounded-tl-[3rem] rounded-br-[2.5rem] sm:rounded-br-[3rem] p-2 sm:p-3 overflow-hidden">
+            <div className="portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-tl-[2.5rem] sm:rounded-tl-[3rem] rounded-br-[2.5rem] sm:rounded-br-[3rem] p-2 sm:p-3 overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`right-tech-${rightCategoryIndex}`}
