@@ -5,16 +5,6 @@ import { usePortfolio } from "../hooks/usePortfolio";
 
 const DESCRIPTION_LIMIT = 120;
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-};
-
 export default function Projects() {
   const [expanded, setExpanded] = useState({});
   const { portfolio } = usePortfolio();
@@ -30,7 +20,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative flex flex-col items-center px-4 pb-5 pt-3 sm:px-6 sm:pt-4 md:pt-5 lg:pt-6 overflow-hidden"
+      className="relative flex min-h-[70vh] md:min-h-[80vh] lg:min-h-[85vh] flex-col items-center px-4 pb-8 pt-8 sm:px-6 sm:pt-10 sm:pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16 overflow-hidden"
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
         <div className="absolute top-[20%] left-[10%] w-80 h-80 sm:w-96 sm:h-96 bg-indigo-500/10 rounded-full blur-[100px]" />
@@ -38,28 +28,16 @@ export default function Projects() {
       </div>
 
       <div className="max-w-6xl md:max-w-7xl w-full relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-6 sm:mb-8 md:mb-10"
-        >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent inline-block">
+        <div className="text-center mb-6 sm:mb-8 md:mb-10">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
             💻 My Projects
           </h2>
           <p className="text-white max-w-5xl mx-auto text-center text-sm sm:text-base md:text-lg px-2 leading-7">
             A selection of full-stack projects showcasing scalable architecture, secure authentication, API integrations, responsive user interfaces, and practical system design.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 lg:gap-6 md:items-stretch"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 lg:gap-6 md:items-stretch">
           {projects.map((project, i) => {
             const isLive = project.liveLink && project.liveLink !== "#";
             const hasGithub = project.githubLink && project.githubLink !== "#";
@@ -67,7 +45,7 @@ export default function Projects() {
             return (
               <motion.article
                 key={i}
-                variants={cardVariants}
+                initial={{ opacity: 1, y: 0 }}
                 whileHover={{ y: -10 }}
                 className="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:p-5 hover:border-white/20 transition-colors duration-300 flex flex-col h-full"
               >
@@ -142,7 +120,7 @@ export default function Projects() {
               </motion.article>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
