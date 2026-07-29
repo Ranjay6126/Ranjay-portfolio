@@ -8,6 +8,7 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("about");
   const [isMobile, setIsMobile] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const isLightMode = theme === "light";
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -61,14 +62,35 @@ export default function Navbar() {
         initial={{ y: isMobile ? 100 : -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className={`flex items-center ${
+        className={`relative overflow-hidden flex items-center ${
           isMobile ? "justify-around px-2" : "gap-1"
-        } backdrop-blur-md rounded-full p-1.5 shadow-lg`}
+        } backdrop-blur-2xl rounded-full p-1.5 shadow-[0_18px_50px_rgba(0,0,0,0.35)]`}
         style={{
-          backgroundColor: "var(--navbar-bg)",
-          border: "1px solid var(--navbar-border)",
+          backgroundColor: isLightMode ? "rgba(248,250,252,0.55)" : "rgba(0,0,0,0.32)",
+          border: isLightMode ? "1px solid rgba(0,0,0,0.10)" : "1px solid rgba(255,255,255,0.16)",
+          boxShadow: isLightMode
+            ? "0 18px 50px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.8)"
+            : "0 18px 50px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.12)",
         }}
       >
+        <span
+          aria-hidden="true"
+          className={`pointer-events-none absolute inset-0 rounded-full ${
+            isLightMode ? "bg-gradient-to-br from-white/80 via-white/30 to-white/10" : "bg-gradient-to-br from-white/12 via-white/6 to-transparent"
+          }`}
+        />
+        <span
+          aria-hidden="true"
+          className={`pointer-events-none absolute -top-10 left-10 h-16 w-40 rotate-12 rounded-full blur-2xl ${
+            isLightMode ? "bg-white/70" : "bg-white/12"
+          }`}
+        />
+        <span
+          aria-hidden="true"
+          className={`pointer-events-none absolute -bottom-12 right-8 h-20 w-44 -rotate-12 rounded-full blur-2xl ${
+            isLightMode ? "bg-sky-400/20" : "bg-sky-400/12"
+          }`}
+        />
         {NAV_ITEMS.map((item) => (
           <button
             key={item.id}
