@@ -28,13 +28,16 @@ export async function ensureSeeded() {
     const expectedRotating = JSON.stringify(portfolioSeedData.profile.rotatingTexts);
     const currentLocation = existingPortfolio?.profile?.location ?? "";
     const expectedLocation = portfolioSeedData.profile.location;
+    const currentEducation = JSON.stringify(existingPortfolio?.education ?? []);
+    const expectedEducation = JSON.stringify(portfolioSeedData.education ?? []);
 
     const needsFullUpdate =
       currentName !== expectedName ||
       currentDesc !== expectedDesc ||
       currentImage !== expectedImage ||
       currentRotating !== expectedRotating ||
-      currentLocation !== expectedLocation;
+      currentLocation !== expectedLocation ||
+      currentEducation !== expectedEducation;
 
     if (needsFullUpdate) {
       await Portfolio.updateMany({}, { $set: portfolioSeedData });

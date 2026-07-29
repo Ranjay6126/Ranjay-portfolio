@@ -75,6 +75,8 @@ const portfolioSchema = new mongoose.Schema(
         institution: String,
         duration: String,
         grade: String,
+        description: String,
+        points: [String],
       },
     ],
   },

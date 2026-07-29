@@ -262,23 +262,36 @@ export const portfolioSeedData = {
   ],
   education: [
     {
-      title: "Bachelor of Technology - B.Tech (CSE)",
+      title: "B.Tech in Computer Science & Engineering",
       institution: "Lovely Professional University, Punjab",
       duration: "Aug 2021 – May 2025",
       grade: "CGPA: 6.7",
-      description: "With a strong foundation in HTML, CSS, JavaScript, and the MERN stack, I am proficient in both frontend and backend development. I have hands-on experience with Git, GitHub, Postman, and MongoDB. Additionally, I am familiar with cybersecurity tools and technologies, including Wireshark, Nmap, Linux, Burp Suite, and Metasploit.",
+      points: [
+        "Learned C++, JavaScript, Data Structures & Algorithms (DSA), Object-Oriented Programming (OOP), Software Engineering, and full-stack development using React.js, Node.js, Express.js, MongoDB, MySQL, and REST APIs.",
+        "Built a strong foundation in Operating Systems, DBMS, Computer Networks, Cloud Computing, Cyber Security, System Design & Software Development Life Cycle (SDLC).",
+        "Understanding of network security, ethical hacking, cryptography, secure coding, vulnerability assessment, and web application security following OWASP Top 10 and OSINT.",
+        "Hands-on experience with Wireshark, Nmap, Metasploit, Burp Suite, Nessus, Nikto, Kali Linux, John the Ripper, Hashcat, Autopsy, Splunk, and Snort for network analysis, penetration testing, digital forensics, vulnerability assessment, and security monitoring.",
+      ],
     },
     {
       title: "National Examinations Board (XI) & (XII)",
       institution: "Hetauda School of Management",
       duration: "Apr 2018 – Mar 2020",
-      grade: "Percentage: 71.25%  CGPA: 7.1",
+      grade: "CGPA: 7.1",
+      points: [
+        "Studied the fundamentals of C programming, HTML, CSS, JavaScript, and basic software development concepts.",
+        "Acquired a strong understanding of Mathematics, Physics, Chemistry, and English, supporting technical learning and effective communication.",
+      ],
     },
     {
       title: "Secondary Education Examination (X)",
-      institution: "Adhunik Rastriya Secondary School",
+      institution: "Shree Adhunik Rastriya Secondary School",
       duration: "Apr 2017 – Mar 2018",
       grade: "CGPA: 8.12",
+      points: [
+        "Gained knowledge of computer fundamentals, networking devices, MS Office, basic coding concepts, and the use of Paint and QBASIC.",
+        "Completed foundational education with coursework in Mathematics, Science, English, Social Studies, and basic computer literacy.",
+      ],
     },
   ],
 };
