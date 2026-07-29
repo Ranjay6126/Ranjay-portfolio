@@ -203,11 +203,11 @@ export default function Contact() {
           <div className="text-center pt-4 sm:pt-6">
             <button
               type="submit"
-              disabled={isSending || !isFormValid()}
-              className={`w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 rounded-2xl font-bold flex items-center justify-center gap-3 mx-auto text-sm sm:text-base ${
-                isSending || !isFormValid()
-                  ? "bg-white/5 text-gray-500 cursor-not-allowed border border-white/5"
-                  : "btn-accent cursor-pointer"
+              disabled={isSending}
+              className={`w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 rounded-full font-bold inline-flex items-center justify-center gap-3 mx-auto text-sm sm:text-base transition-all duration-300 border ${
+                isSending
+                  ? "bg-white/5 text-gray-500 cursor-not-allowed border-white/5"
+                  : "bg-green-500/10 border-green-500/20 text-green-400 hover:bg-green-500/20 hover:border-green-500/30 hover:text-green-300 hover:scale-[1.02] cursor-pointer"
               }`}
             >
               {isSending ? "Sending..." : <><FaPaperPlane className="text-sm sm:text-base" /> Send Message</>}
