@@ -65,7 +65,7 @@ export default function Certificates({ certificates = [] }) {
               )}
               <button
                 onClick={() => openInNewTab(cert.verifyLink)}
-                className="btn-accent w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold"
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border bg-green-500/10 border-green-500/20 text-green-400 hover:bg-green-500/20 hover:border-green-500/30 hover:text-green-300"
               >
                 <FaExternalLinkAlt className="w-3 h-3" />
                 Verify Certificate
