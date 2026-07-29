@@ -224,7 +224,10 @@ export default function TechStack() {
                 </motion.div>
               </AnimatePresence>
             </div>
-            <div className="portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-tl-[2.5rem] sm:rounded-tl-[3rem] rounded-br-[2.5rem] sm:rounded-br-[3rem] p-2 sm:p-3 overflow-hidden">
+            <div className="portfolio-card relative bg-white/5 backdrop-blur-2xl backdrop-saturate-200 border border-white/10 rounded-tl-[2.5rem] sm:rounded-tl-[3rem] rounded-br-[2.5rem] sm:rounded-br-[3rem] p-2 sm:p-3 overflow-hidden shadow-[0_20px_70px_rgba(0,0,0,0.28)]">
+              <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-transparent" />
+              <span aria-hidden="true" className="pointer-events-none absolute -top-10 left-12 h-16 w-40 rotate-12 rounded-full blur-2xl bg-white/12" />
+              <span aria-hidden="true" className="pointer-events-none absolute -bottom-12 right-10 h-20 w-44 -rotate-12 rounded-full blur-2xl bg-indigo-400/12" />
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`left-tech-${leftCategoryIndex}`}
@@ -232,6 +235,7 @@ export default function TechStack() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 1.05 }}
                   transition={{ duration: 0.5 }}
+                  className="relative"
                 >
                   <Marquee techs={leftCategories[leftCategoryIndex]?.tech || []} direction="left" />
                 </motion.div>
@@ -262,7 +266,10 @@ export default function TechStack() {
                 </motion.div>
               </AnimatePresence>
             </div>
-            <div className="portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-tl-[2.5rem] sm:rounded-tl-[3rem] rounded-br-[2.5rem] sm:rounded-br-[3rem] p-2 sm:p-3 overflow-hidden">
+            <div className="portfolio-card relative bg-white/5 backdrop-blur-2xl backdrop-saturate-200 border border-white/10 rounded-tl-[2.5rem] sm:rounded-tl-[3rem] rounded-br-[2.5rem] sm:rounded-br-[3rem] p-2 sm:p-3 overflow-hidden shadow-[0_20px_70px_rgba(0,0,0,0.28)]">
+              <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-transparent" />
+              <span aria-hidden="true" className="pointer-events-none absolute -top-10 left-12 h-16 w-40 rotate-12 rounded-full blur-2xl bg-white/12" />
+              <span aria-hidden="true" className="pointer-events-none absolute -bottom-12 right-10 h-20 w-44 -rotate-12 rounded-full blur-2xl bg-purple-400/12" />
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`right-tech-${rightCategoryIndex}`}
@@ -270,6 +277,7 @@ export default function TechStack() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 1.05 }}
                   transition={{ duration: 0.5 }}
+                  className="relative"
                 >
                   <Marquee techs={rightCategories[rightCategoryIndex]?.tech || []} direction="right" />
                 </motion.div>

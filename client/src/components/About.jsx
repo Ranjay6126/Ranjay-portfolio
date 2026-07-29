@@ -113,7 +113,7 @@ export default function About({ profile }) {
               href={profile.resumePdf}
               target="_blank"
               rel="noopener noreferrer"
-              className="about-action-btn h-10 sm:h-12 px-5 sm:px-8 rounded-2xl bg-white text-black font-bold transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] flex items-center justify-center gap-2 cursor-pointer text-sm sm:text-base w-full sm:w-auto"
+              className="glass-button about-action-btn h-10 sm:h-12 px-5 sm:px-8 rounded-2xl bg-white/10 border border-white/10 text-white font-bold transition-all hover:bg-white/20 hover:border-white/20 hover:scale-105 flex items-center justify-center gap-2 cursor-pointer text-sm sm:text-base w-full sm:w-auto backdrop-blur-xl"
             >
               <FontAwesomeIcon icon={faFileAlt} />
               <span>Resume</span>
@@ -123,56 +123,56 @@ export default function About({ profile }) {
             <div className="flex gap-2 sm:gap-3 flex-wrap justify-center sm:justify-start w-full sm:w-auto">
               <button
                 onClick={handleGitHubClick}
-                className="social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer"
+                className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer backdrop-blur-xl"
                 aria-label="GitHub"
               >
                 <FontAwesomeIcon icon={faGithub} className="text-lg sm:text-xl" />
               </button>
               <button
                 onClick={handleLeetCodeClick}
-                className="social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer"
+                className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer backdrop-blur-xl"
                 aria-label="LeetCode"
               >
                 <SiLeetcode className="text-lg sm:text-xl" />
               </button>
               <button
                 onClick={handleGeeksforGeeksClick}
-                className="social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer"
+                className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer backdrop-blur-xl"
                 aria-label="GeeksforGeeks"
               >
                 <SiGeeksforgeeks className="text-lg sm:text-xl" />
               </button>
               <button
                 onClick={handleHackerRankClick}
-                className="social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer"
+                className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer backdrop-blur-xl"
                 aria-label="HackerRank"
               >
                 <SiHackerrank className="text-lg sm:text-xl" />
               </button>
               <button
                 onClick={handleLinkedinClick}
-                className="social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#0A66C2] to-[#0077B5] transition-all hover:scale-105 cursor-pointer shadow-md"
+                className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#0A66C2] to-[#0077B5] transition-all hover:scale-105 cursor-pointer shadow-md backdrop-blur-xl"
                 aria-label="LinkedIn"
               >
                 <FontAwesomeIcon icon={faLinkedin} className="text-lg sm:text-xl" />
               </button>
               <button
                 onClick={handleInstagramClick}
-                className="social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] transition-all hover:scale-105 cursor-pointer shadow-md"
+                className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] transition-all hover:scale-105 cursor-pointer shadow-md backdrop-blur-xl"
                 aria-label="Instagram"
               >
                 <FontAwesomeIcon icon={faInstagram} className="text-lg sm:text-xl" />
               </button>
               <button
                 onClick={handleTwitterClick}
-                className="social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#1DA1F2] to-[#0D8BD9] transition-all hover:scale-105 cursor-pointer shadow-md"
+                className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#1DA1F2] to-[#0D8BD9] transition-all hover:scale-105 cursor-pointer shadow-md backdrop-blur-xl"
                 aria-label="Twitter"
               >
                 <FontAwesomeIcon icon={faTwitter} className="text-lg sm:text-xl" />
               </button>
               <button
                 onClick={handleFacebookClick}
-                className="social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#1877F2] to-[#0E5BD3] transition-all hover:scale-105 cursor-pointer shadow-md"
+                className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#1877F2] to-[#0E5BD3] transition-all hover:scale-105 cursor-pointer shadow-md backdrop-blur-xl"
                 aria-label="Facebook"
               >
                 <FontAwesomeIcon icon={faFacebookF} className="text-lg sm:text-xl" />

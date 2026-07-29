@@ -151,19 +151,31 @@ export default function Contact() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="relative z-50 pointer-events-auto portfolio-card bg-white/5 backdrop-blur-2xl border border-white/10 p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl space-y-5 sm:space-y-6 shadow-2xl"
+          className="relative z-50 pointer-events-auto portfolio-card contact-form-surface backdrop-blur-2xl p-5 sm:p-8 md:p-12 rounded-tl-none rounded-br-none rounded-tr-3xl rounded-bl-3xl space-y-5 sm:space-y-6 shadow-2xl"
         >
+          <span
+            aria-hidden="true"
+            className="contact-form-glow pointer-events-none absolute inset-0 z-0 rounded-tr-3xl rounded-bl-3xl bg-gradient-to-br from-white/10 via-white/5 to-transparent"
+          />
+          <span
+            aria-hidden="true"
+            className="contact-form-glow pointer-events-none absolute -top-16 left-10 z-0 h-28 w-64 rotate-12 rounded-full blur-3xl bg-sky-400/10"
+          />
+          <span
+            aria-hidden="true"
+            className="contact-form-glow pointer-events-none absolute -bottom-20 right-10 z-0 h-36 w-72 -rotate-12 rounded-full blur-3xl bg-fuchsia-400/10"
+          />
           
-          <div className="relative">
+          <div className="relative z-10">
             <label className="contact-form-label block text-xs sm:text-sm font-semibold mb-2 sm:mb-3">Your Name</label>
             <input
               name="from_name"
               required
-              className="contact-form-input w-full px-4 sm:px-5 py-3 sm:py-4 rounded-2xl border focus:ring-2 focus:ring-blue-500/50 outline-none transition-all duration-300 hover:border-white/20 text-sm sm:text-base"
+              className="contact-form-input w-full px-4 sm:px-5 py-3 sm:py-4 rounded-tl-none rounded-br-none rounded-tr-2xl rounded-bl-2xl border focus:ring-2 focus:ring-blue-500/50 outline-none transition-all duration-300 hover:border-white/20 text-sm sm:text-base"
               placeholder="John Doe"
             />
           </div>
-          <div className="relative">
+          <div className="relative z-10">
             <label className="contact-form-label block text-xs sm:text-sm font-semibold mb-2 sm:mb-3">Your Email</label>
             <input
               name="from_email"
@@ -172,7 +184,7 @@ export default function Contact() {
               value={email}
               onChange={handleEmailChange}
               onBlur={() => validateEmailValue(email)}
-              className={`contact-form-input w-full px-4 sm:px-5 py-3 sm:py-4 rounded-2xl border outline-none transition-all duration-300 hover:border-white/20 text-sm sm:text-base ${
+              className={`contact-form-input w-full px-4 sm:px-5 py-3 sm:py-4 rounded-tl-none rounded-br-none rounded-tr-2xl rounded-bl-2xl border outline-none transition-all duration-300 hover:border-white/20 text-sm sm:text-base ${
                 emailError
                   ? "border-red-500/60 focus:border-red-500 focus:ring-2 focus:ring-red-500/50"
                   : "focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50"
@@ -181,30 +193,30 @@ export default function Contact() {
             />
             {emailError && <p className="mt-2 text-xs text-red-400 font-medium">{emailError}</p>}
           </div>
-          <div className="relative">
+          <div className="relative z-10">
             <label className="contact-form-label block text-xs sm:text-sm font-semibold mb-2 sm:mb-3">Subject</label>
             <input
               name="subject"
               required
-              className="contact-form-input w-full px-4 sm:px-5 py-3 sm:py-4 rounded-2xl border focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 outline-none transition-all duration-300 hover:border-white/20 text-sm sm:text-base"
-              placeholder="Project Inquiry"
+              className="contact-form-input w-full px-4 sm:px-5 py-3 sm:py-4 rounded-tl-none rounded-br-none rounded-tr-2xl rounded-bl-2xl border focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 outline-none transition-all duration-300 hover:border-white/20 text-sm sm:text-base"
+              placeholder="Collaboration Request"
             />
           </div>
-          <div className="relative">
+          <div className="relative z-10">
             <label className="contact-form-label block text-xs sm:text-sm font-semibold mb-2 sm:mb-3">Message</label>
             <textarea
               name="message"
               rows="4"
               required
-              className="contact-form-input w-full px-4 sm:px-5 py-3 sm:py-4 rounded-2xl border focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 outline-none transition-all duration-300 resize-none hover:border-white/20 text-sm sm:text-base"
-              placeholder="Tell me about your project..."
+              className="contact-form-input w-full px-4 sm:px-5 py-3 sm:py-4 rounded-tl-none rounded-br-none rounded-tr-2xl rounded-bl-2xl border focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 outline-none transition-all duration-300 resize-none hover:border-white/20 text-sm sm:text-base"
+              placeholder="Share your idea, goals, and timeline..."
             />
           </div>
-          <div className="text-center pt-4 sm:pt-6">
+          <div className="relative z-10 text-center pt-4 sm:pt-6">
             <button
               type="submit"
               disabled={isSending}
-              className={`w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 rounded-full font-bold inline-flex items-center justify-center gap-3 mx-auto text-sm sm:text-base transition-all duration-300 border ${
+              className={`glass-button w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 rounded-full font-bold inline-flex items-center justify-center gap-3 mx-auto text-sm sm:text-base transition-all duration-300 border ${
                 isSending
                   ? "bg-white/5 text-gray-500 cursor-not-allowed border-white/5"
                   : "bg-green-500/10 border-green-500/20 text-green-400 hover:bg-green-500/20 hover:border-green-500/30 hover:text-green-300 hover:scale-[1.02] cursor-pointer"

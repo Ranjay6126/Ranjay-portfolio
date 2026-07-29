@@ -56,7 +56,7 @@ export default function Achievements({ achievements = [] }) {
               <p className="text-gray-400 text-sm mb-6 leading-relaxed">{ach.description}</p>
               <button
                 onClick={() => openInNewTab(ach.link)}
-                className="mt-auto flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:scale-[1.02] transition"
+                className="glass-button mt-auto flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold bg-gradient-to-r from-indigo-600/90 to-purple-600/90 text-white border border-white/10 hover:border-white/20 hover:scale-[1.02] transition"
               >
                 <FaExternalLinkAlt className="w-3 h-3" />
                 View Profile

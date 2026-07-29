@@ -64,19 +64,12 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className={`relative overflow-hidden flex items-center ${
           isMobile ? "justify-around px-2" : "gap-1"
-        } backdrop-blur-2xl rounded-full p-1.5 shadow-[0_18px_50px_rgba(0,0,0,0.35)]`}
-        style={{
-          backgroundColor: isLightMode ? "rgba(248,250,252,0.55)" : "rgba(0,0,0,0.32)",
-          border: isLightMode ? "1px solid rgba(0,0,0,0.10)" : "1px solid rgba(255,255,255,0.16)",
-          boxShadow: isLightMode
-            ? "0 18px 50px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.8)"
-            : "0 18px 50px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.12)",
-        }}
+        } navbar-glass backdrop-blur-3xl backdrop-saturate-200 rounded-full p-1.5`}
       >
         <span
           aria-hidden="true"
           className={`pointer-events-none absolute inset-0 rounded-full ${
-            isLightMode ? "bg-gradient-to-br from-white/80 via-white/30 to-white/10" : "bg-gradient-to-br from-white/12 via-white/6 to-transparent"
+            isLightMode ? "bg-gradient-to-br from-white/85 via-white/35 to-white/10" : "bg-gradient-to-br from-white/16 via-white/8 to-transparent"
           }`}
         />
         <span
@@ -88,19 +81,25 @@ export default function Navbar() {
         <span
           aria-hidden="true"
           className={`pointer-events-none absolute -bottom-12 right-8 h-20 w-44 -rotate-12 rounded-full blur-2xl ${
-            isLightMode ? "bg-sky-400/20" : "bg-sky-400/12"
+            isLightMode ? "bg-sky-400/22" : "bg-sky-400/14"
+          }`}
+        />
+        <span
+          aria-hidden="true"
+          className={`pointer-events-none absolute -top-12 right-10 h-16 w-36 -rotate-6 rounded-full blur-2xl ${
+            isLightMode ? "bg-fuchsia-400/14" : "bg-fuchsia-400/10"
           }`}
         />
         {NAV_ITEMS.map((item) => (
           <button
             key={item.id}
             onClick={() => scrollToSection(item.id)}
-            className={`relative rounded-full text-sm font-medium transition-all duration-300 flex items-center justify-center gap-2 ${
+            className={`navbar-item relative rounded-full text-sm font-medium transition-all duration-300 flex items-center justify-center gap-2 ${
               isMobile ? "p-3" : "px-5 py-2.5"
             } ${
               activeSection === item.id
                 ? "text-white shadow-lg"
-                : "text-white hover:text-gray-100 hover:bg-white/5 hover:cursor-pointer"
+                : "text-white hover:text-gray-100 hover:cursor-pointer"
             }`}
             style={activeSection === item.id ? {
               background: "var(--nav-active-bg)",
@@ -114,9 +113,9 @@ export default function Navbar() {
         <button
           onClick={toggleTheme}
           title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
-          className={`relative rounded-full transition-all duration-300 flex items-center justify-center ${
+          className={`navbar-item relative rounded-full transition-all duration-300 flex items-center justify-center ${
             isMobile ? "p-3" : "px-3 py-2.5"
-          } text-white hover:text-gray-100 hover:bg-white/5 hover:cursor-pointer`}
+          } text-white hover:text-gray-100 hover:cursor-pointer`}
         >
           {theme === "dark" ? (
             <svg

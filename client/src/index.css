@@ -12,6 +12,11 @@
   --text-secondary: #a0aec0;
   --text-muted: #718096;
   --navbar-bg: rgba(15,15,22,0.9);
+  --navbar-glass-bg: rgba(0,0,0,0.28);
+  --navbar-glass-border: 1px solid rgba(255,255,255,0.22);
+  --navbar-glass-border-hover: 1px solid rgba(255,255,255,0.32);
+  --navbar-glass-shadow: 0 20px 70px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 0 rgba(255,255,255,0.08);
+  --navbar-glass-shadow-hover: 0 26px 90px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -1px 0 rgba(255,255,255,0.10);
   --glow-a: rgba(59,130,246,0.1);
   --glow-b: rgba(14,165,233,0.1);
   --scrollbar-track: #000;
@@ -36,6 +41,11 @@ html.light {
   --text-secondary: #475569;
   --text-muted: #64748b;
   --navbar-bg: rgba(248,250,252,0.9);
+  --navbar-glass-bg: rgba(248,250,252,0.42);
+  --navbar-glass-border: 0.5px solid rgba(0,0,0,0.18);
+  --navbar-glass-border-hover: 0.5px solid rgba(0,0,0,0.28);
+  --navbar-glass-shadow: 0 20px 70px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.92), inset 0 -1px 0 rgba(255,255,255,0.18);
+  --navbar-glass-shadow-hover: 0 24px 90px rgba(0,0,0,0.16), inset 0 1px 0 rgba(255,255,255,0.96), inset 0 -1px 0 rgba(255,255,255,0.22);
   --glow-a: rgba(59,130,246,0.15);
   --glow-b: rgba(14,165,233,0.1);
   --scrollbar-track: #e2e8f0;
@@ -102,6 +112,60 @@ html.light .text-gray-300 {
 
 html.light .text-white {
   color: var(--text-primary) !important;
+}
+
+.navbar-glass {
+  background-color: var(--navbar-glass-bg);
+  border: var(--navbar-glass-border);
+  box-shadow: var(--navbar-glass-shadow);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-glass:hover {
+  border: var(--navbar-glass-border-hover);
+  box-shadow: var(--navbar-glass-shadow-hover);
+  transform: translateY(-1px);
+}
+
+.navbar-item {
+  border: 0.5px solid transparent;
+}
+
+.navbar-item:hover {
+  background-color: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.14);
+}
+
+html.light .navbar-item:hover {
+  background-color: rgba(15,23,42,0.05);
+  border-color: rgba(0,0,0,0.18);
+}
+
+.glass-button {
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.glass-button:hover:not(:disabled) {
+  box-shadow: inset 0 0 0 0.5px rgba(255,255,255,0.14);
+}
+
+html.light .glass-button:hover:not(:disabled) {
+  box-shadow: inset 0 0 0 0.5px rgba(0,0,0,0.18);
+}
+
+.contact-form-surface {
+  background-color: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+html.light .contact-form-surface {
+  background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(255,255,255,0.72));
+  border: 0.5px solid rgba(0,0,0,0.14);
+}
+
+html:not(.light) .contact-form-glow {
+  display: none;
 }
 
 
@@ -188,7 +252,7 @@ html:not(.light) .portfolio-card:hover {
 }
 
 html.light .portfolio-card:hover {
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+  box-shadow: inset 0 0 0 0.5px rgba(0,0,0,0.14), 0 10px 28px rgba(0, 0, 0, 0.08);
 }
 
 .group:hover .portfolio-card-title {

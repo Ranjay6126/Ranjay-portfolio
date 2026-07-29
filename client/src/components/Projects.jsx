@@ -37,7 +37,7 @@ export default function Projects() {
   };
 
   const actionButtonBase =
-    "flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border";
+    "glass-button flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border";
   const actionButtonEnabled =
     "bg-green-500/10 border-green-500/20 text-green-400 hover:bg-green-500/20 hover:border-green-500/30 hover:text-green-300 hover:scale-[1.02] cursor-pointer";
   const actionButtonEnabledNeutral =
@@ -103,7 +103,7 @@ export default function Projects() {
                   {project.description.length > DESCRIPTION_LIMIT && (
                     <button
                       onClick={() => toggleExpand(i)}
-                      className="mt-1 text-indigo-400 text-xs font-semibold hover:text-indigo-300 transition-colors"
+                      className="glass-button mt-2 inline-flex items-center px-3 py-1 rounded-full border border-white/10 bg-white/5 text-indigo-400 text-xs font-semibold hover:bg-white/10 hover:border-white/20 hover:text-indigo-300 transition-colors"
                     >
                       {expanded[i] ? "See less ▲" : "See more ▼"}
                     </button>
@@ -128,7 +128,7 @@ export default function Projects() {
                     className={`${actionButtonBase} ${hasGithub ? actionButtonEnabledNeutral : actionButtonDisabled}`}
                   >
                     <FaGithub className="w-4 h-4" />
-                    <span>Source</span>
+                    <span>Source Code</span>
                   </button>
                   <button
                     onClick={() => isLive && openInNewTab(project.liveLink)}

@@ -44,7 +44,7 @@ export default function Education({ education = [] }) {
             <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Education</span>
           </h2>
           <div className="px-2 w-full flex justify-center">
-            <p className={`${isLightMode ? "text-slate-600" : "text-white"} text-[13px] sm:text-base md:text-lg leading-[1.65rem] sm:leading-7 md:leading-8 font-sans text-center max-w-[95%] sm:max-w-3xl md:max-w-4xl mx-auto break-words hyphens-auto`}>
+            <p className={`${isLightMode ? "text-black" : "text-white"} text-[13px] sm:text-base md:text-lg leading-[1.65rem] sm:leading-7 md:leading-8 font-sans text-center max-w-[95%] sm:max-w-3xl md:max-w-4xl mx-auto break-words hyphens-auto`}>
               A comprehensive overview of my academic journey, highlighting institutions, completion timelines, academic performance CGPA, and the technical and professional skills gained throughout my education.
             </p>
           </div>
@@ -112,7 +112,7 @@ export default function Education({ education = [] }) {
 
                     {points.length > 0 ? (
                       <div>
-                        <ul className={`space-y-2 text-sm sm:text-base ${isLightMode ? "text-slate-600" : "text-gray-300"}`}>
+                        <ul className={`space-y-2 text-sm sm:text-base ${isLightMode ? "text-black" : "text-white"}`}>
                         {visiblePoints.map((point, i) => (
                           <li key={i} className="flex items-start gap-3 leading-relaxed">
                             <span className={`mt-2 h-1.5 w-1.5 rounded-full ${isLightMode ? "bg-black" : "bg-white"} shrink-0`} />
@@ -124,7 +124,7 @@ export default function Education({ education = [] }) {
                           <button
                             type="button"
                             onClick={() => togglePoints(index)}
-                            className={`mt-3 text-xs sm:text-sm font-semibold ${isLightMode ? "text-slate-900" : "text-white"} hover:opacity-80`}
+                            className={`glass-button mt-3 inline-flex items-center px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs sm:text-sm font-semibold ${isLightMode ? "text-slate-900" : "text-white"} hover:bg-white/10 hover:border-white/20`}
                           >
                             {isExpanded ? "See Less" : "See More"}
                           </button>
