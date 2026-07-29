@@ -17,6 +17,33 @@ export default function Projects() {
     if (url && url !== "#") window.open(url, "_blank", "noopener,noreferrer");
   };
 
+  const projectTitleWithEmoji = (title = "") => {
+    const cleanTitle = String(title).trim();
+    if (!cleanTitle) return "";
+    if (/\p{Extended_Pictographic}$/u.test(cleanTitle)) return cleanTitle;
+
+    const t = cleanTitle.toLowerCase();
+    const emoji =
+      (t.includes("attendance") && "📍") ||
+      (t.includes("chat") && "💬") ||
+      (t.includes("book") && "📚") ||
+      ((t.includes("url") || t.includes("short")) && "🔗") ||
+      (t.includes("food") && "🍔") ||
+      (t.includes("amazon") && "🛒") ||
+      (t.includes("portfolio") && "🌐") ||
+      "🚀";
+
+    return `${cleanTitle} ${emoji}`;
+  };
+
+  const actionButtonBase =
+    "flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border";
+  const actionButtonEnabled =
+    "bg-green-500/10 border-green-500/20 text-green-400 hover:bg-green-500/20 hover:border-green-500/30 hover:text-green-300 hover:scale-[1.02] cursor-pointer";
+  const actionButtonEnabledNeutral =
+    "bg-white/10 border-white/10 text-white hover:bg-white/20 hover:scale-[1.02] cursor-pointer";
+  const actionButtonDisabled = "bg-white/5 text-gray-500 cursor-not-allowed border-white/5";
+
   const projects = portfolio?.projects || [];
 
   return (
@@ -54,7 +81,7 @@ export default function Projects() {
               >
                 <div className="flex items-start justify-between mb-3 gap-2">
                   <h3 className="portfolio-card-title text-base sm:text-lg font-bold text-white transition-colors">
-                    {project.title}
+                    {projectTitleWithEmoji(project.title)}
                   </h3>
                   <span className="text-xs font-medium text-indigo-300 bg-indigo-500/10 px-2 sm:px-3 py-1 rounded-full border border-indigo-500/20 whitespace-nowrap">
                     {project.date}
@@ -98,11 +125,7 @@ export default function Projects() {
                   <button
                     onClick={() => hasGithub && openInNewTab(project.githubLink)}
                     disabled={!hasGithub}
-                    className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
-                      hasGithub
-                        ? "bg-white/10 text-white hover:bg-white/20 hover:scale-[1.02] cursor-pointer border border-white/10"
-                        : "bg-white/5 text-gray-500 cursor-not-allowed border border-white/5"
-                    }`}
+                    className={`${actionButtonBase} ${hasGithub ? actionButtonEnabledNeutral : actionButtonDisabled}`}
                   >
                     <FaGithub className="w-4 h-4" />
                     <span>Source</span>
@@ -110,11 +133,7 @@ export default function Projects() {
                   <button
                     onClick={() => isLive && openInNewTab(project.liveLink)}
                     disabled={!isLive}
-                    className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
-                      isLive
-                        ? "btn-accent cursor-pointer"
-                        : "bg-white/5 text-gray-500 cursor-not-allowed border border-white/5"
-                    }`}
+                    className={`${actionButtonBase} ${isLive ? actionButtonEnabled : actionButtonDisabled}`}
                   >
                     <FaExternalLinkAlt className="w-3 h-3" />
                     <span>Live Demo</span>
