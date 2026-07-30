@@ -42,6 +42,7 @@ export default function Education({ education = [] }) {
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             <SectionIcon emoji={SECTION_EMOJIS.education} />
             <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Education</span>
+            <SectionIcon emoji={SECTION_EMOJIS.education} />
           </h2>
           <div className="px-2 w-full flex justify-center">
             <p className={`${isLightMode ? "text-black" : "text-white"} text-[13px] sm:text-base md:text-lg leading-[1.65rem] sm:leading-7 md:leading-8 font-sans text-center max-w-[95%] sm:max-w-3xl md:max-w-4xl mx-auto break-words hyphens-auto`}>
@@ -52,7 +53,20 @@ export default function Education({ education = [] }) {
         </motion.div>
 
         <div className="relative">
-          <div className={`absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-px ${isLightMode ? "bg-gradient-to-b from-slate-200/0 via-slate-400/40 to-slate-200/0" : "bg-gradient-to-b from-indigo-500/0 via-indigo-500/50 to-indigo-500/0"}`} />
+          <div
+            className={`absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-[3px] ${
+              isLightMode
+                ? "bg-gradient-to-b from-slate-200/0 via-slate-400/50 to-slate-200/0"
+                : "bg-gradient-to-b from-indigo-500/0 via-indigo-500/60 to-indigo-500/0"
+            }`}
+          />
+          <div
+            className={`absolute left-4 md:left-1/2 transform md:-translate-x-1/2 md:-ml-7 h-full w-[3px] ${
+              isLightMode
+                ? "bg-gradient-to-b from-slate-200/0 via-slate-400/45 to-slate-200/0"
+                : "bg-gradient-to-b from-indigo-500/0 via-indigo-500/55 to-indigo-500/0"
+            }`}
+          />
           <div className="space-y-12">
             {education.map((edu, index) => {
               const points = normalizePoints(edu);

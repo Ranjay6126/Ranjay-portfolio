@@ -138,6 +138,7 @@ export default function Contact() {
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             <SectionIcon emoji={SECTION_EMOJIS.contact} />
             <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Get in Touch</span>
+            <SectionIcon emoji={SECTION_EMOJIS.contact} />
           </h2>
           <p className="text-white max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-2">
             Let's connect and build something exceptional together. Have a question or want to work together? Drop me a message!
@@ -151,7 +152,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="relative z-50 pointer-events-auto portfolio-card contact-form-surface backdrop-blur-2xl p-5 sm:p-8 md:p-12 rounded-tl-none rounded-br-none rounded-tr-3xl rounded-bl-3xl space-y-5 sm:space-y-6 shadow-2xl"
+          className="relative z-50 pointer-events-auto portfolio-card contact-form-surface backdrop-blur-2xl p-5 sm:p-7 md:p-9 rounded-tl-none rounded-br-none rounded-tr-3xl rounded-bl-3xl space-y-4 sm:space-y-5 shadow-2xl"
         >
           <span
             aria-hidden="true"
@@ -206,7 +207,7 @@ export default function Contact() {
             <label className="contact-form-label block text-xs sm:text-sm font-semibold mb-2 sm:mb-3">Message</label>
             <textarea
               name="message"
-              rows="4"
+              rows="3"
               required
               className="contact-form-input w-full px-4 sm:px-5 py-3 sm:py-4 rounded-tl-none rounded-br-none rounded-tr-2xl rounded-bl-2xl border focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 outline-none transition-all duration-300 resize-none hover:border-white/20 text-sm sm:text-base"
               placeholder="Share your idea, goals, and timeline..."
