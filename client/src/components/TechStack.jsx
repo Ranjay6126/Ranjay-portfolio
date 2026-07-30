@@ -39,41 +39,46 @@ import { useTheme } from "../context/ThemeContext";
 
 const JwtTokenIcon = ({ className }) => (
   <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="12" r="3.2" stroke="currentColor" strokeWidth="1.8" />
     <path
-      d="M8.3 4.2h7.4l3.7 6.4-3.7 6.4H8.3L4.6 10.6 8.3 4.2Z"
+      d="M12 2.9c5.03 0 9.1 4.07 9.1 9.1 0 5.03-4.07 9.1-9.1 9.1-5.03 0-9.1-4.07-9.1-9.1 0-5.03 4.07-9.1 9.1-9.1Z"
       stroke="currentColor"
       strokeWidth="1.8"
-      strokeLinejoin="round"
+      opacity="0.35"
     />
-    <path d="M8.8 12.3 12 9.1l3.2 3.2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M8.8 12.3 12 15.5l3.2-3.2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" opacity="0.75" />
-    <path d="M12 7.6v8.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.65" />
+    <path d="M12 8.9V7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.7" />
+    <path d="M12 17v-1.9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.7" />
+    <path d="M15.5 10.6l1.6-.9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.7" />
+    <path d="M6.9 14.3l1.6-.9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.7" />
+    <path d="M15.5 13.4l1.6.9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.7" />
+    <path d="M6.9 9.7l1.6.9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.7" />
+    <circle cx="12" cy="6.8" r="1.05" fill="currentColor" opacity="0.9" />
+    <circle cx="12" cy="17.2" r="1.05" fill="currentColor" opacity="0.9" />
+    <circle cx="17.6" cy="9.8" r="1.05" fill="currentColor" opacity="0.9" />
+    <circle cx="6.4" cy="14.2" r="1.05" fill="currentColor" opacity="0.9" />
+    <circle cx="17.6" cy="14.2" r="1.05" fill="currentColor" opacity="0.9" />
+    <circle cx="6.4" cy="9.8" r="1.05" fill="currentColor" opacity="0.9" />
   </svg>
 );
 
 const ToolWireshark = ({ className }) => (
   <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3.2 15.2c2.1 0 2.6-1.6 4.7-1.6 2.1 0 2.6 1.6 4.7 1.6 2.1 0 2.6-1.6 4.7-1.6 2.1 0 2.6 1.6 4.8 1.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
     <path
-      d="M3.8 13.9c3.2-3 6.2-4.6 9.2-4.7 3.2-.1 5.7 1.5 7.2 4.7"
+      d="M5.4 12.2c2.3-1.3 4.4-2 6.7-2 3.7 0 5.6 1.7 6.4 3.3"
       stroke="currentColor"
       strokeWidth="1.8"
       strokeLinecap="round"
+      opacity="0.55"
     />
     <path
-      d="M6.5 15.6c2.6-2.4 5.1-3.7 7.7-3.8 2.2-.1 4.2.8 5.9 2.8"
+      d="M10.4 12.1c.4-2.2 1.7-5.1 5.6-6.2-.4 2.2-1.6 5.1-5.6 6.2Z"
       stroke="currentColor"
       strokeWidth="1.8"
-      strokeLinecap="round"
-      opacity="0.6"
-    />
-    <path
-      d="M15.2 9.3c.6-1.1 1.7-1.9 3.1-2.3-1 1.4-1 2.9 0 4.2"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <path d="M10.4 10.6 9.3 9.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.7" />
+    <path d="M15.8 8.1h2.4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.4" />
+    <path d="M15.2 6.7l1.8-1.2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.35" />
   </svg>
 );
 
@@ -91,25 +96,22 @@ const ToolMetasploit = ({ className }) => (
   <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M12 3.2a8.8 8.8 0 1 0 0 17.6 8.8 8.8 0 0 0 0-17.6Z" stroke="currentColor" strokeWidth="1.8" />
     <path
-      d="M7.6 15.8V8.2l3 3.1 1.4-1.4 1.4 1.4 3-3.1v7.6"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinejoin="round"
-      strokeLinecap="round"
+      d="M7.8 16V8.2h1.8l2.4 4.1 2.4-4.1h1.8V16h-1.7v-5l-2 3.4h-1l-2-3.4v5H7.8Z"
+      fill="currentColor"
+      opacity="0.82"
     />
-    <path d="M9.1 13.2h5.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.5" />
+    <path d="M7.2 17.8h9.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.25" />
   </svg>
 );
 
 const ToolBurpSuite = ({ className }) => (
   <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M6.2 4.6h7.6c2.7 0 4.6 1.6 4.6 4 0 1.9-1.1 3.1-2.7 3.6 2.2.6 3.4 2 3.4 4.1 0 2.8-2.2 4.1-5.2 4.1H6.2V4.6Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+    <path d="M12 3.3 19 7.4v9.2l-7 4.1-7-4.1V7.4l7-4.1Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
     <path
-      d="M8.3 6.8h4.9c1.7 0 2.7.8 2.7 2 0 1.3-1 2-2.7 2H8.3V6.8Z"
+      d="M10.1 7.9h2.9c1.5 0 2.5.8 2.5 2 0 .9-.5 1.5-1.2 1.8 1 .3 1.6 1.1 1.6 2.1 0 1.4-1.1 2.3-2.8 2.3h-3V7.9Zm2.8 3.2c.7 0 1.1-.3 1.1-.8s-.4-.8-1.1-.8h-1.2v1.6h1.2Zm.2 4.3c.8 0 1.3-.4 1.3-1s-.5-1-1.3-1h-1.4v2h1.4Z"
       fill="currentColor"
-      opacity="0.75"
+      opacity="0.82"
     />
-    <path d="M8.3 12.8h5.6c2 0 3.1.8 3.1 2.3 0 1.5-1.1 2.3-3.1 2.3H8.3v-4.6Z" fill="currentColor" opacity="0.55" />
   </svg>
 );
 
@@ -131,13 +133,21 @@ const ToolNikto = ({ className }) => (
 
 const ToolKaliLinux = ({ className }) => (
   <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 3.2a8.8 8.8 0 1 0 0 17.6 8.8 8.8 0 0 0 0-17.6Z" stroke="currentColor" strokeWidth="1.8" />
     <path
-      d="M9 16V8h2.3v3.1L14.3 8H17l-3.6 3.8L17.2 16h-2.7l-2.2-2.7-1 1V16H9Z"
-      fill="currentColor"
-      opacity="0.82"
+      d="M20 7.5c-1.8-1.8-4.2-2.7-6.7-2.7-4 0-7.3 2.3-8.7 6.1-.9 2.5-.7 5.5 1.4 7.6 1.2 1.2 2.7 1.9 4.4 1.9 2.3 0 4.2-1.2 5.2-3"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
     />
-    <path d="M8.3 9.2c.4-1.3 1.6-2.2 3.1-2.4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.45" />
+    <path
+      d="M9.2 13.4c2.2.4 4.4-.2 6.1-1.6"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      opacity="0.55"
+    />
+    <path d="M15.6 9.3c.9-.1 1.9.2 2.7.9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.45" />
+    <circle cx="17.9" cy="11.2" r="0.9" fill="currentColor" opacity="0.9" />
   </svg>
 );
 
@@ -199,6 +209,10 @@ const iconMap = {
   SiReactrouter: SiReactrouter,
   SiCplusplus: SiCplusplus,
   SiTypescript: SiTypescript,
+  SiWireshark: ToolWireshark,
+  SiMetasploit: ToolMetasploit,
+  SiKalilinux: ToolKaliLinux,
+  SiBurpsuite: ToolBurpSuite,
   SiJsonwebtokens: JwtTokenIcon,
   SiGraphql: SiGraphql,
   VscVscodeInsiders: VscVscodeInsiders,
@@ -252,13 +266,17 @@ const IconRenderer = ({ iconKey, title, isLightMode }) => {
       FaAws: "#ff9900",
       FaLinux: "#fcc624",
       FaCode: "#61DAFB",
-      ToolWireshark: "#60a5fa",
       ToolNmap: "#f97316",
+      ToolWireshark: "#60a5fa",
+      SiWireshark: "#60a5fa",
       ToolMetasploit: "#c084fc",
+      SiMetasploit: "#c084fc",
       ToolBurpSuite: "#ef4444",
+      SiBurpsuite: "#ef4444",
       ToolNessus: "#22c55e",
       ToolNikto: "#f43f5e",
       ToolKaliLinux: "#38bdf8",
+      SiKalilinux: "#38bdf8",
       ToolJohnTheRipper: "#fbbf24",
       ToolHashcat: "#a3a3a3",
       ToolAutopsy: "#e879f9",
@@ -347,6 +365,8 @@ export default function TechStack() {
 
   return (
     <section id="skills" className="flex py-3 px-4 sm:px-6 sm:py-4 md:py-5 flex-col items-center relative overflow-hidden">
+      <div className="absolute top-20 left-[-10%] w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-20 right-[-10%] w-96 h-96 bg-cyan-500/20 blur-[120px] rounded-full pointer-events-none" />
       <div className="container mx-auto max-w-6xl md:max-w-7xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -389,7 +409,7 @@ export default function TechStack() {
                 </motion.div>
               </AnimatePresence>
             </div>
-            <div className="portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:p-5 overflow-hidden transition-colors duration-300">
+            <div className="portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-tl-[2.5rem] sm:rounded-tl-[3rem] rounded-br-[2.5rem] sm:rounded-br-[3rem] p-2 sm:p-3 overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`left-tech-${leftCategoryIndex}`}
@@ -432,7 +452,7 @@ export default function TechStack() {
                 </motion.div>
               </AnimatePresence>
             </div>
-            <div className="portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:p-5 overflow-hidden transition-colors duration-300">
+            <div className="portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-tl-[2.5rem] sm:rounded-tl-[3rem] rounded-br-[2.5rem] sm:rounded-br-[3rem] p-2 sm:p-3 overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`right-tech-${rightCategoryIndex}`}
