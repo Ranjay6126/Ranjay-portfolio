@@ -25,7 +25,6 @@ import {
   SiReactrouter,
   SiCplusplus,
   SiTypescript,
-  SiJsonwebtokens,
   SiGraphql,
 } from "react-icons/si";
 import { VscVscodeInsiders } from "react-icons/vsc";
@@ -36,6 +35,144 @@ import { useEffect, useState } from "react";
 import { usePortfolio } from "../hooks/usePortfolio";
 import SectionIcon from "./SectionIcon";
 import { SECTION_EMOJIS } from "../constants/navIcons";
+import { useTheme } from "../context/ThemeContext";
+
+const JwtTokenIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M8.3 4.2h7.4l3.7 6.4-3.7 6.4H8.3L4.6 10.6 8.3 4.2Z"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinejoin="round"
+    />
+    <path d="M8.8 12.3 12 9.1l3.2 3.2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M8.8 12.3 12 15.5l3.2-3.2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" opacity="0.75" />
+    <path d="M12 7.6v8.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.65" />
+  </svg>
+);
+
+const ToolWireshark = ({ className }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M3.8 13.9c3.2-3 6.2-4.6 9.2-4.7 3.2-.1 5.7 1.5 7.2 4.7"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+    />
+    <path
+      d="M6.5 15.6c2.6-2.4 5.1-3.7 7.7-3.8 2.2-.1 4.2.8 5.9 2.8"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      opacity="0.6"
+    />
+    <path
+      d="M15.2 9.3c.6-1.1 1.7-1.9 3.1-2.3-1 1.4-1 2.9 0 4.2"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path d="M10.4 10.6 9.3 9.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.7" />
+  </svg>
+);
+
+const ToolNmap = ({ className }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 3.1a8.9 8.9 0 1 0 0 17.8 8.9 8.9 0 0 0 0-17.8Z" stroke="currentColor" strokeWidth="1.8" />
+    <path d="M12 12l5.6-3.4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    <path d="M12 12a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z" fill="currentColor" />
+    <path d="M7 16a7.2 7.2 0 0 1 10.2-8" stroke="currentColor" strokeWidth="1.8" opacity="0.45" />
+    <path d="M8.1 8.4a6.2 6.2 0 0 1 7.8 0" stroke="currentColor" strokeWidth="1.8" opacity="0.35" strokeLinecap="round" />
+  </svg>
+);
+
+const ToolMetasploit = ({ className }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 3.2a8.8 8.8 0 1 0 0 17.6 8.8 8.8 0 0 0 0-17.6Z" stroke="currentColor" strokeWidth="1.8" />
+    <path
+      d="M7.6 15.8V8.2l3 3.1 1.4-1.4 1.4 1.4 3-3.1v7.6"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinejoin="round"
+      strokeLinecap="round"
+    />
+    <path d="M9.1 13.2h5.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.5" />
+  </svg>
+);
+
+const ToolBurpSuite = ({ className }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6.2 4.6h7.6c2.7 0 4.6 1.6 4.6 4 0 1.9-1.1 3.1-2.7 3.6 2.2.6 3.4 2 3.4 4.1 0 2.8-2.2 4.1-5.2 4.1H6.2V4.6Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+    <path
+      d="M8.3 6.8h4.9c1.7 0 2.7.8 2.7 2 0 1.3-1 2-2.7 2H8.3V6.8Z"
+      fill="currentColor"
+      opacity="0.75"
+    />
+    <path d="M8.3 12.8h5.6c2 0 3.1.8 3.1 2.3 0 1.5-1.1 2.3-3.1 2.3H8.3v-4.6Z" fill="currentColor" opacity="0.55" />
+  </svg>
+);
+
+const ToolNessus = ({ className }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 3.3 19 7.4v9.2l-7 4.1-7-4.1V7.4l7-4.1Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+    <path d="M9 16V8l6 8V8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const ToolNikto = ({ className }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 3.2a8.8 8.8 0 1 0 0 17.6 8.8 8.8 0 0 0 0-17.6Z" stroke="currentColor" strokeWidth="1.8" />
+    <path d="M9 16V8l6 8V8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M7.3 12h9.4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.55" />
+    <path d="M12 7.5v9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.35" />
+  </svg>
+);
+
+const ToolKaliLinux = ({ className }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 3.2a8.8 8.8 0 1 0 0 17.6 8.8 8.8 0 0 0 0-17.6Z" stroke="currentColor" strokeWidth="1.8" />
+    <path
+      d="M9 16V8h2.3v3.1L14.3 8H17l-3.6 3.8L17.2 16h-2.7l-2.2-2.7-1 1V16H9Z"
+      fill="currentColor"
+      opacity="0.82"
+    />
+    <path d="M8.3 9.2c.4-1.3 1.6-2.2 3.1-2.4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.45" />
+  </svg>
+);
+
+const ToolJohnTheRipper = ({ className }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 3.2a8.8 8.8 0 1 0 0 17.6 8.8 8.8 0 0 0 0-17.6Z" stroke="currentColor" strokeWidth="1.8" />
+    <path d="M9 8.2v7.2c0 .9-.7 1.5-1.6 1.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    <path
+      d="M12.2 16V8.2h2.7c1.5 0 2.4.8 2.4 2.1 0 1.2-.8 1.9-1.8 2.2L17.3 16h-2.1l-1.4-2.7h-.9V16h-1.6Z"
+      fill="currentColor"
+      opacity="0.78"
+    />
+    <path d="M12.2 11.1h2.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.35" />
+  </svg>
+);
+
+const ToolHashcat = ({ className }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 7.1h12v9.8H6V7.1Z" stroke="currentColor" strokeWidth="1.8" />
+    <path d="M8.2 6.1v11.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    <path d="M15.8 6.1v11.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    <path d="M6.8 10.2h10.4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.65" />
+    <path d="M6.8 13.8h10.4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.45" />
+    <path d="M11.2 9.2v5.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.35" />
+  </svg>
+);
+
+const ToolAutopsy = ({ className }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10.7 4.6a6.9 6.9 0 1 0 0 13.8 6.9 6.9 0 0 0 0-13.8Z" stroke="currentColor" strokeWidth="1.8" />
+    <path d="M15.9 15.9 20 20" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    <path d="M7.7 12.8 9.1 10l1.6 2.8L12.3 10l1.6 2.8L15.4 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M8.2 9.1h5.2" stroke="currentColor" strokeWidth="1.8" opacity="0.25" strokeLinecap="round" />
+  </svg>
+);
 
 const iconMap = {
   FaHtml5: FaHtml5,
@@ -62,22 +199,32 @@ const iconMap = {
   SiReactrouter: SiReactrouter,
   SiCplusplus: SiCplusplus,
   SiTypescript: SiTypescript,
-  SiJsonwebtokens: SiJsonwebtokens,
+  SiJsonwebtokens: JwtTokenIcon,
   SiGraphql: SiGraphql,
   VscVscodeInsiders: VscVscodeInsiders,
   PiFigmaLogoFill: PiFigmaLogoFill,
   GrMysql: GrMysql,
   GrDatabase: GrDatabase,
+  ToolWireshark: ToolWireshark,
+  ToolNmap: ToolNmap,
+  ToolMetasploit: ToolMetasploit,
+  ToolBurpSuite: ToolBurpSuite,
+  ToolNessus: ToolNessus,
+  ToolNikto: ToolNikto,
+  ToolKaliLinux: ToolKaliLinux,
+  ToolJohnTheRipper: ToolJohnTheRipper,
+  ToolHashcat: ToolHashcat,
+  ToolAutopsy: ToolAutopsy,
 };
 
-const IconRenderer = ({ iconKey, title }) => {
+const IconRenderer = ({ iconKey, title, isLightMode }) => {
   const IconComponent = iconMap[iconKey];
   if (!IconComponent) return null;
 
   const getColor = (key) => {
     const colorMap = {
       FaReact: "#20d9ff",
-      SiExpress: "#e2e8f0",
+      SiExpress: isLightMode ? "#0f172a" : "#e2e8f0",
       FaNodeJs: "#3c873a",
       SiMongodb: "#4db33d",
       FaHtml5: "#f75403",
@@ -91,10 +238,10 @@ const IconRenderer = ({ iconKey, title }) => {
       FaPython: "#3776AB",
       SiTypescript: "#3178c6",
       GrMysql: "#00758F",
-      SiJsonwebtokens: "#000",
+      SiJsonwebtokens: "#22c55e",
       SiGraphql: "#e535ab",
       FaGitAlt: "#f05032",
-      FaGithub: "#ffffff",
+      FaGithub: isLightMode ? "#0f172a" : "#ffffff",
       FaDocker: "#2496ED",
       VscVscodeInsiders: "#3e9dd7",
       SiPostman: "#f75403",
@@ -105,6 +252,16 @@ const IconRenderer = ({ iconKey, title }) => {
       FaAws: "#ff9900",
       FaLinux: "#fcc624",
       FaCode: "#61DAFB",
+      ToolWireshark: "#60a5fa",
+      ToolNmap: "#f97316",
+      ToolMetasploit: "#c084fc",
+      ToolBurpSuite: "#ef4444",
+      ToolNessus: "#22c55e",
+      ToolNikto: "#f43f5e",
+      ToolKaliLinux: "#38bdf8",
+      ToolJohnTheRipper: "#fbbf24",
+      ToolHashcat: "#a3a3a3",
+      ToolAutopsy: "#e879f9",
     };
     return colorMap[key] || "#ffffff";
   };
@@ -123,32 +280,37 @@ const IconRenderer = ({ iconKey, title }) => {
           <IconComponent className="text-3xl sm:text-4xl" style={{ color: getColor(iconKey) }} />
         </motion.div>
       </div>
-      <span className="text-[11px] sm:text-xs font-medium text-gray-400 whitespace-nowrap">{title}</span>
+      <span className="text-[11px] sm:text-xs font-medium text-white opacity-80 whitespace-nowrap">{title}</span>
     </motion.div>
   );
 };
 
-const Marquee = ({ techs, direction = "left" }) => {
+const Marquee = ({ techs, direction = "left", isLightMode }) => {
   const combinedTechs = [...techs, ...techs];
 
   return (
     <div className="w-full overflow-hidden">
       <motion.div
-        className="flex gap-4 sm:gap-6 md:gap-8"
+        className="flex w-max gap-4 sm:gap-6 md:gap-8"
         animate={{
-          x: direction === "left" ? [0, -1200] : [-1200, 0],
+          x: direction === "left" ? ["0%", "-50%"] : ["-50%", "0%"],
         }}
         transition={{
           x: {
             repeat: Infinity,
             repeatType: "loop",
-            duration: 13,
+            duration: 10,
             ease: "linear",
           },
         }}
       >
         {combinedTechs.map((tech, i) => (
-          <IconRenderer key={`${tech.title}-${i}`} iconKey={tech.iconKey} title={tech.title} />
+          <IconRenderer
+            key={`${tech.title}-${i}`}
+            iconKey={tech.iconKey}
+            title={tech.title}
+            isLightMode={isLightMode}
+          />
         ))}
       </motion.div>
     </div>
@@ -157,6 +319,8 @@ const Marquee = ({ techs, direction = "left" }) => {
 
 export default function TechStack() {
   const { portfolio } = usePortfolio();
+  const { theme } = useTheme();
+  const isLightMode = theme === "light";
   const [leftCategoryIndex, setLeftCategoryIndex] = useState(0);
   const [rightCategoryIndex, setRightCategoryIndex] = useState(0);
 
@@ -194,6 +358,7 @@ export default function TechStack() {
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             <SectionIcon emoji={SECTION_EMOJIS.skills} />
             <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Technical Skills</span>
+            <SectionIcon emoji={SECTION_EMOJIS.skills} />
           </h2>
           <p className="text-white max-w-4xl mx-auto text-center text-sm sm:text-base md:text-lg px-2 leading-7">
             The tools, technologies, and frameworks I use to bring ideas to life by building secure, scalable, and high-performance applications.
@@ -220,14 +385,11 @@ export default function TechStack() {
                   className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-indigo-500/20 border border-indigo-500/30"
                 >
                   <span className="text-xl sm:text-2xl">{leftCategories[leftCategoryIndex]?.icon}</span>
-                  <h3 className="text-lg sm:text-xl font-bold text-indigo-300">{leftCategories[leftCategoryIndex]?.title}</h3>
+                  <h3 className="text-lg sm:text-xl font-bold text-white">{leftCategories[leftCategoryIndex]?.title}</h3>
                 </motion.div>
               </AnimatePresence>
             </div>
-            <div className="portfolio-card relative bg-white/5 backdrop-blur-2xl backdrop-saturate-200 border border-white/10 rounded-tl-[2.5rem] sm:rounded-tl-[3rem] rounded-br-[2.5rem] sm:rounded-br-[3rem] p-2 sm:p-3 overflow-hidden shadow-[0_20px_70px_rgba(0,0,0,0.28)]">
-              <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-transparent" />
-              <span aria-hidden="true" className="pointer-events-none absolute -top-10 left-12 h-16 w-40 rotate-12 rounded-full blur-2xl bg-white/12" />
-              <span aria-hidden="true" className="pointer-events-none absolute -bottom-12 right-10 h-20 w-44 -rotate-12 rounded-full blur-2xl bg-indigo-400/12" />
+            <div className="portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:p-5 overflow-hidden transition-colors duration-300">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`left-tech-${leftCategoryIndex}`}
@@ -237,7 +399,11 @@ export default function TechStack() {
                   transition={{ duration: 0.5 }}
                   className="relative"
                 >
-                  <Marquee techs={leftCategories[leftCategoryIndex]?.tech || []} direction="left" />
+                  <Marquee
+                    techs={leftCategories[leftCategoryIndex]?.tech || []}
+                    direction="left"
+                    isLightMode={isLightMode}
+                  />
                 </motion.div>
               </AnimatePresence>
             </div>
@@ -262,14 +428,11 @@ export default function TechStack() {
                   className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-purple-500/20 border border-purple-500/30"
                 >
                   <span className="text-xl sm:text-2xl">{rightCategories[rightCategoryIndex]?.icon}</span>
-                  <h3 className="text-lg sm:text-xl font-bold text-purple-300">{rightCategories[rightCategoryIndex]?.title}</h3>
+                  <h3 className="text-lg sm:text-xl font-bold text-white">{rightCategories[rightCategoryIndex]?.title}</h3>
                 </motion.div>
               </AnimatePresence>
             </div>
-            <div className="portfolio-card relative bg-white/5 backdrop-blur-2xl backdrop-saturate-200 border border-white/10 rounded-tl-[2.5rem] sm:rounded-tl-[3rem] rounded-br-[2.5rem] sm:rounded-br-[3rem] p-2 sm:p-3 overflow-hidden shadow-[0_20px_70px_rgba(0,0,0,0.28)]">
-              <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-transparent" />
-              <span aria-hidden="true" className="pointer-events-none absolute -top-10 left-12 h-16 w-40 rotate-12 rounded-full blur-2xl bg-white/12" />
-              <span aria-hidden="true" className="pointer-events-none absolute -bottom-12 right-10 h-20 w-44 -rotate-12 rounded-full blur-2xl bg-purple-400/12" />
+            <div className="portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:p-5 overflow-hidden transition-colors duration-300">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`right-tech-${rightCategoryIndex}`}
@@ -279,7 +442,11 @@ export default function TechStack() {
                   transition={{ duration: 0.5 }}
                   className="relative"
                 >
-                  <Marquee techs={rightCategories[rightCategoryIndex]?.tech || []} direction="right" />
+                  <Marquee
+                    techs={rightCategories[rightCategoryIndex]?.tech || []}
+                    direction="right"
+                    isLightMode={isLightMode}
+                  />
                 </motion.div>
               </AnimatePresence>
             </div>

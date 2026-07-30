@@ -51,7 +51,7 @@ export const portfolioSeedData = {
       ],
     },
     {
-      title: "Languages",
+      title: "Language",
       icon: "💻",
       tech: [
         { title: "C++", iconKey: "SiCplusplus" },
@@ -79,6 +79,16 @@ export const portfolioSeedData = {
       title: "Tools",
       icon: "🧰",
       tech: [
+        { title: "Wireshark", iconKey: "ToolWireshark" },
+        { title: "Nmap", iconKey: "ToolNmap" },
+        { title: "Metasploit", iconKey: "ToolMetasploit" },
+        { title: "Burp Suite", iconKey: "ToolBurpSuite" },
+        { title: "Nessus", iconKey: "ToolNessus" },
+        { title: "Nikto", iconKey: "ToolNikto" },
+        { title: "Kali Linux", iconKey: "ToolKaliLinux" },
+        { title: "John the Ripper", iconKey: "ToolJohnTheRipper" },
+        { title: "Hashcat", iconKey: "ToolHashcat" },
+        { title: "Autopsy", iconKey: "ToolAutopsy" },
         { title: "Git", iconKey: "FaGitAlt" },
         { title: "GitHub", iconKey: "FaGithub" },
         { title: "Docker", iconKey: "FaDocker" },

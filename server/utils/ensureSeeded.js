@@ -30,6 +30,10 @@ export async function ensureSeeded() {
     const expectedLocation = portfolioSeedData.profile.location;
     const currentEducation = JSON.stringify(existingPortfolio?.education ?? []);
     const expectedEducation = JSON.stringify(portfolioSeedData.education ?? []);
+    const currentLeftSkills = JSON.stringify(existingPortfolio?.leftSkillCategories ?? []);
+    const expectedLeftSkills = JSON.stringify(portfolioSeedData.leftSkillCategories ?? []);
+    const currentRightSkills = JSON.stringify(existingPortfolio?.rightSkillCategories ?? []);
+    const expectedRightSkills = JSON.stringify(portfolioSeedData.rightSkillCategories ?? []);
 
     const needsFullUpdate =
       currentName !== expectedName ||
@@ -37,7 +41,9 @@ export async function ensureSeeded() {
       currentImage !== expectedImage ||
       currentRotating !== expectedRotating ||
       currentLocation !== expectedLocation ||
-      currentEducation !== expectedEducation;
+      currentEducation !== expectedEducation ||
+      currentLeftSkills !== expectedLeftSkills ||
+      currentRightSkills !== expectedRightSkills;
 
     if (needsFullUpdate) {
       await Portfolio.updateMany({}, { $set: portfolioSeedData });
