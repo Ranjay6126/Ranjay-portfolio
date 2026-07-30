@@ -30,14 +30,14 @@ export default function Education({ education = [] }) {
   };
 
   return (
-    <section id="education" className={`min-h-0 md:min-h-screen flex flex-col items-center px-4 sm:px-6 py-8 sm:py-10 relative overflow-hidden ${isLightMode ? "text-slate-900" : "text-white"}`}>
+    <section id="education" className={`min-h-0 md:min-h-screen flex flex-col items-center px-4 sm:px-6 py-6 sm:py-8 relative overflow-hidden ${isLightMode ? "text-slate-900" : "text-white"}`}>
       <div className="max-w-7xl w-full relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-10 sm:mb-16"
+          className="text-center mb-8 sm:mb-10"
         >
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             <SectionIcon emoji={SECTION_EMOJIS.education} />

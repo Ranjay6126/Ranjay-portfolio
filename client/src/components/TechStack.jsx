@@ -364,7 +364,7 @@ export default function TechStack() {
   }, [rightCategories.length]);
 
   return (
-    <section id="skills" className="flex py-3 px-4 sm:px-6 sm:py-4 md:py-5 flex-col items-center relative overflow-hidden">
+    <section id="skills" className="flex py-2 px-4 sm:px-6 sm:py-3 md:py-4 flex-col items-center relative overflow-hidden">
       <div className="absolute top-20 left-[-10%] w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-20 right-[-10%] w-96 h-96 bg-cyan-500/20 blur-[120px] rounded-full pointer-events-none" />
       <div className="container mx-auto max-w-6xl md:max-w-7xl relative z-10">
@@ -373,7 +373,7 @@ export default function TechStack() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-6 sm:mb-8 md:mb-10"
+          className="text-center mb-5 sm:mb-7 md:mb-8"
         >
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             <SectionIcon emoji={SECTION_EMOJIS.skills} />

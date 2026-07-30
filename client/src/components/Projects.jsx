@@ -49,13 +49,13 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative flex min-h-0 md:min-h-[80vh] flex-col items-center px-4 pb-8 pt-6 sm:px-6 sm:pt-10 sm:pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16 overflow-hidden"
+      className="relative flex min-h-0 md:min-h-[80vh] flex-col items-center px-4 pb-6 pt-4 sm:px-6 sm:pt-8 sm:pb-8 md:pt-10 md:pb-10 lg:pt-12 lg:pb-12 overflow-hidden"
     >
       <div className="absolute top-20 left-[-10%] w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-20 right-[-10%] w-96 h-96 bg-cyan-500/20 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-6xl md:max-w-7xl w-full relative z-10">
-        <div className="text-center mb-6 sm:mb-8 md:mb-10">
+        <div className="text-center mb-5 sm:mb-7 md:mb-8">
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-baseline justify-center gap-2 sm:gap-3">
             <SectionIcon emoji={SECTION_EMOJIS.projects} />
             <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">My Projects</span>

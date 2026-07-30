@@ -126,14 +126,14 @@ export default function Contact() {
   const isFormValid = () => email && !emailError;
 
   return (
-    <section id="contact" className="py-8 sm:py-10 px-4 sm:px-6 min-h-0 md:min-h-screen flex items-center flex-col relative overflow-hidden">
+    <section id="contact" className="py-6 sm:py-8 px-4 sm:px-6 min-h-0 md:min-h-screen flex items-center flex-col relative overflow-hidden">
       <div className="max-w-3xl w-full relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8 sm:mb-12 md:mb-16"
+          className="text-center mb-6 sm:mb-8 md:mb-10"
         >
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             <SectionIcon emoji={SECTION_EMOJIS.contact} />
@@ -152,7 +152,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="relative z-50 pointer-events-auto portfolio-card contact-form-surface backdrop-blur-2xl p-5 sm:p-7 md:p-9 rounded-tl-none rounded-br-none rounded-tr-3xl rounded-bl-3xl space-y-4 sm:space-y-5 shadow-2xl"
+          className="relative z-50 pointer-events-auto portfolio-card contact-form-surface backdrop-blur-2xl p-4 sm:p-6 md:p-8 rounded-tl-none rounded-br-none rounded-tr-3xl rounded-bl-3xl space-y-4 sm:space-y-5 shadow-2xl"
         >
           <span
             aria-hidden="true"
@@ -238,7 +238,7 @@ export default function Contact() {
         </motion.form>
       </div>
 
-      <footer className="w-full mt-12 sm:mt-16 md:mt-20 text-center text-xs sm:text-sm" style={{ color: "var(--text-primary)" }}>
+      <footer className="w-full mt-8 sm:mt-10 md:mt-12 text-center text-xs sm:text-sm" style={{ color: "var(--text-primary)" }}>
         {/* Social Links */}
         <div className="flex justify-center gap-5 sm:gap-8 mb-4 sm:mb-6">
           <a href="https://www.facebook.com/mrranjay.prajapati/" target="_blank" rel="noopener noreferrer" className="transition-colors hover:opacity-70" style={{ color: "var(--text-primary)" }}>
@@ -255,7 +255,7 @@ export default function Contact() {
           </a>
         </div>
         {/* Line */}
-        <div className="footer-divider w-3/4 mx-auto mb-6" />
+        <div className="footer-divider w-3/4 mx-auto mb-5" />
         <p className="font-medium">© 2025 All Rights Reserved | Powered by Ranjay Prajapati</p>
         <p className="mt-3 font-medium">Thank you 😍 for visiting my Portfolio</p>
       </footer>

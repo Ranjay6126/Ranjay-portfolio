@@ -131,7 +131,7 @@ export default function CodingProfiles() {
   return (
     <section
       id="coding"
-      className="min-h-[70vh] flex flex-col items-center px-4 sm:px-6 py-10 sm:py-12 relative overflow-hidden pointer-events-auto"
+      className="min-h-0 md:min-h-[70vh] flex flex-col items-center px-4 sm:px-6 py-6 sm:py-8 relative overflow-hidden pointer-events-auto"
     >
       <div className="absolute top-20 left-[-10%] w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-20 right-[-10%] w-96 h-96 bg-cyan-500/20 blur-[120px] rounded-full pointer-events-none" />
@@ -141,7 +141,7 @@ export default function CodingProfiles() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-14 sm:mb-16"
+          className="text-center mb-8 sm:mb-10"
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 inline-flex items-center gap-2 sm:gap-3">
             <SectionIcon emoji={SECTION_EMOJIS.coding} />
