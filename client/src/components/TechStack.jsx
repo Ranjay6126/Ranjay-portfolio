@@ -25,6 +25,10 @@ import {
   SiReactrouter,
   SiCplusplus,
   SiTypescript,
+  SiWireshark,
+  SiMetasploit,
+  SiKalilinux,
+  SiBurpsuite,
   SiGraphql,
 } from "react-icons/si";
 import { VscVscodeInsiders } from "react-icons/vsc";
@@ -38,116 +42,49 @@ import { SECTION_EMOJIS } from "../constants/navIcons";
 import { useTheme } from "../context/ThemeContext";
 
 const JwtTokenIcon = ({ className }) => (
-  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="12" cy="12" r="3.2" stroke="currentColor" strokeWidth="1.8" />
+  <svg viewBox="0 0 24 24" className={className} xmlns="http://www.w3.org/2000/svg">
     <path
-      d="M12 2.9c5.03 0 9.1 4.07 9.1 9.1 0 5.03-4.07 9.1-9.1 9.1-5.03 0-9.1-4.07-9.1-9.1 0-5.03 4.07-9.1 9.1-9.1Z"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      opacity="0.35"
+      fill="currentColor"
+      d="M10.2 0v6.456L12 8.928l1.8-2.472V0zm3.6 6.456v3.072l2.904-.96L20.52 3.36l-2.928-2.136zm2.904 2.112l-1.8 2.496 2.928.936 6.144-1.992-1.128-3.432zM17.832 12l-2.928.936 1.8 2.496 6.144 1.992 1.128-3.432zm-1.128 3.432l-2.904-.96v3.072l3.792 5.232 2.928-2.136zM13.8 17.544L12 15.072l-1.8 2.472V24h3.6zm-3.6 0v-3.072l-2.904.96L3.48 20.64l2.928 2.136zm-2.904-2.112l1.8-2.496L6.168 12 .024 13.992l1.128 3.432zM6.168 12l2.928-.936-1.8-2.496-6.144-1.992-1.128 3.432zm1.128-3.432l2.904.96V6.456L6.408 1.224 3.48 3.36Z"
     />
-    <path d="M12 8.9V7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.7" />
-    <path d="M12 17v-1.9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.7" />
-    <path d="M15.5 10.6l1.6-.9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.7" />
-    <path d="M6.9 14.3l1.6-.9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.7" />
-    <path d="M15.5 13.4l1.6.9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.7" />
-    <path d="M6.9 9.7l1.6.9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.7" />
-    <circle cx="12" cy="6.8" r="1.05" fill="currentColor" opacity="0.9" />
-    <circle cx="12" cy="17.2" r="1.05" fill="currentColor" opacity="0.9" />
-    <circle cx="17.6" cy="9.8" r="1.05" fill="currentColor" opacity="0.9" />
-    <circle cx="6.4" cy="14.2" r="1.05" fill="currentColor" opacity="0.9" />
-    <circle cx="17.6" cy="14.2" r="1.05" fill="currentColor" opacity="0.9" />
-    <circle cx="6.4" cy="9.8" r="1.05" fill="currentColor" opacity="0.9" />
-  </svg>
-);
-
-const ToolWireshark = ({ className }) => (
-  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M3.2 15.2c2.1 0 2.6-1.6 4.7-1.6 2.1 0 2.6 1.6 4.7 1.6 2.1 0 2.6-1.6 4.7-1.6 2.1 0 2.6 1.6 4.8 1.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    <path
-      d="M5.4 12.2c2.3-1.3 4.4-2 6.7-2 3.7 0 5.6 1.7 6.4 3.3"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      opacity="0.55"
-    />
-    <path
-      d="M10.4 12.1c.4-2.2 1.7-5.1 5.6-6.2-.4 2.2-1.6 5.1-5.6 6.2Z"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinejoin="round"
-    />
-    <path d="M15.8 8.1h2.4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.4" />
-    <path d="M15.2 6.7l1.8-1.2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.35" />
   </svg>
 );
 
 const ToolNmap = ({ className }) => (
   <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 3.1a8.9 8.9 0 1 0 0 17.8 8.9 8.9 0 0 0 0-17.8Z" stroke="currentColor" strokeWidth="1.8" />
-    <path d="M12 12l5.6-3.4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    <path d="M12 12a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z" fill="currentColor" />
-    <path d="M7 16a7.2 7.2 0 0 1 10.2-8" stroke="currentColor" strokeWidth="1.8" opacity="0.45" />
-    <path d="M8.1 8.4a6.2 6.2 0 0 1 7.8 0" stroke="currentColor" strokeWidth="1.8" opacity="0.35" strokeLinecap="round" />
-  </svg>
-);
-
-const ToolMetasploit = ({ className }) => (
-  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 3.2a8.8 8.8 0 1 0 0 17.6 8.8 8.8 0 0 0 0-17.6Z" stroke="currentColor" strokeWidth="1.8" />
     <path
-      d="M7.8 16V8.2h1.8l2.4 4.1 2.4-4.1h1.8V16h-1.7v-5l-2 3.4h-1l-2-3.4v5H7.8Z"
-      fill="currentColor"
-      opacity="0.82"
+      d="M2.2 12s3.6-6.8 9.8-6.8S21.8 12 21.8 12s-3.6 6.8-9.8 6.8S2.2 12 2.2 12Z"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinejoin="round"
     />
-    <path d="M7.2 17.8h9.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.25" />
-  </svg>
-);
-
-const ToolBurpSuite = ({ className }) => (
-  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 3.3 19 7.4v9.2l-7 4.1-7-4.1V7.4l7-4.1Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-    <path
-      d="M10.1 7.9h2.9c1.5 0 2.5.8 2.5 2 0 .9-.5 1.5-1.2 1.8 1 .3 1.6 1.1 1.6 2.1 0 1.4-1.1 2.3-2.8 2.3h-3V7.9Zm2.8 3.2c.7 0 1.1-.3 1.1-.8s-.4-.8-1.1-.8h-1.2v1.6h1.2Zm.2 4.3c.8 0 1.3-.4 1.3-1s-.5-1-1.3-1h-1.4v2h1.4Z"
-      fill="currentColor"
-      opacity="0.82"
-    />
+    <circle cx="12" cy="12" r="2.6" stroke="currentColor" strokeWidth="1.8" />
+    <circle cx="12" cy="12" r="1.1" fill="currentColor" />
+    <path d="M4.6 12c2.1-2.9 4.7-4.3 7.4-4.3 2.7 0 5.3 1.4 7.4 4.3" stroke="currentColor" strokeWidth="1.8" opacity="0.35" strokeLinecap="round" />
   </svg>
 );
 
 const ToolNessus = ({ className }) => (
   <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 3.3 19 7.4v9.2l-7 4.1-7-4.1V7.4l7-4.1Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+    <path
+      d="M12 3.2 19 6.9v6.2c0 4.2-2.7 7.2-7 8.7-4.3-1.5-7-4.5-7-8.7V6.9l7-3.7Z"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinejoin="round"
+    />
     <path d="M9 16V8l6 8V8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
 const ToolNikto = ({ className }) => (
   <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 3.2a8.8 8.8 0 1 0 0 17.6 8.8 8.8 0 0 0 0-17.6Z" stroke="currentColor" strokeWidth="1.8" />
-    <path d="M9 16V8l6 8V8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M7.3 12h9.4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.55" />
-    <path d="M12 7.5v9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.35" />
-  </svg>
-);
-
-const ToolKaliLinux = ({ className }) => (
-  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="12" r="8.8" stroke="currentColor" strokeWidth="1.8" />
     <path
-      d="M20 7.5c-1.8-1.8-4.2-2.7-6.7-2.7-4 0-7.3 2.3-8.7 6.1-.9 2.5-.7 5.5 1.4 7.6 1.2 1.2 2.7 1.9 4.4 1.9 2.3 0 4.2-1.2 5.2-3"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
+      d="M8.6 16V8h1.8l4 5.6V8h1.8v8h-1.8l-4-5.6V16H8.6Z"
+      fill="currentColor"
+      opacity="0.82"
     />
-    <path
-      d="M9.2 13.4c2.2.4 4.4-.2 6.1-1.6"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      opacity="0.55"
-    />
-    <path d="M15.6 9.3c.9-.1 1.9.2 2.7.9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.45" />
-    <circle cx="17.9" cy="11.2" r="0.9" fill="currentColor" opacity="0.9" />
+    <path d="M7.2 17.6h9.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.25" />
   </svg>
 );
 
@@ -166,12 +103,15 @@ const ToolJohnTheRipper = ({ className }) => (
 
 const ToolHashcat = ({ className }) => (
   <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M6 7.1h12v9.8H6V7.1Z" stroke="currentColor" strokeWidth="1.8" />
-    <path d="M8.2 6.1v11.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    <path d="M15.8 6.1v11.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    <path d="M6.8 10.2h10.4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.65" />
-    <path d="M6.8 13.8h10.4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.45" />
-    <path d="M11.2 9.2v5.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.35" />
+    <path
+      d="M7.2 9.2 5.3 7.1V13c0 3.3 2.8 6 6.2 6h1c3.4 0 6.2-2.7 6.2-6V7.1l-1.9 2.1-1.5-2.1-1.6 2.1L12 7.1l-1.6 2.1-1.6-2.1Z"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinejoin="round"
+    />
+    <circle cx="10.2" cy="12.2" r="0.9" fill="currentColor" opacity="0.9" />
+    <circle cx="13.8" cy="12.2" r="0.9" fill="currentColor" opacity="0.9" />
+    <path d="M10.7 15c.7.8 1.9.8 2.6 0" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.65" />
   </svg>
 );
 
@@ -179,8 +119,8 @@ const ToolAutopsy = ({ className }) => (
   <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M10.7 4.6a6.9 6.9 0 1 0 0 13.8 6.9 6.9 0 0 0 0-13.8Z" stroke="currentColor" strokeWidth="1.8" />
     <path d="M15.9 15.9 20 20" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    <path d="M7.7 12.8 9.1 10l1.6 2.8L12.3 10l1.6 2.8L15.4 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M8.2 9.1h5.2" stroke="currentColor" strokeWidth="1.8" opacity="0.25" strokeLinecap="round" />
+    <path d="M8.1 14.6 10.7 7.5l2.6 7.1" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M9 12.1h3.4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.5" />
   </svg>
 );
 
@@ -209,23 +149,23 @@ const iconMap = {
   SiReactrouter: SiReactrouter,
   SiCplusplus: SiCplusplus,
   SiTypescript: SiTypescript,
-  SiWireshark: ToolWireshark,
-  SiMetasploit: ToolMetasploit,
-  SiKalilinux: ToolKaliLinux,
-  SiBurpsuite: ToolBurpSuite,
+  SiWireshark: SiWireshark,
+  SiMetasploit: SiMetasploit,
+  SiKalilinux: SiKalilinux,
+  SiBurpsuite: SiBurpsuite,
   SiJsonwebtokens: JwtTokenIcon,
   SiGraphql: SiGraphql,
   VscVscodeInsiders: VscVscodeInsiders,
   PiFigmaLogoFill: PiFigmaLogoFill,
   GrMysql: GrMysql,
   GrDatabase: GrDatabase,
-  ToolWireshark: ToolWireshark,
+  ToolWireshark: SiWireshark,
   ToolNmap: ToolNmap,
-  ToolMetasploit: ToolMetasploit,
-  ToolBurpSuite: ToolBurpSuite,
+  ToolMetasploit: SiMetasploit,
+  ToolBurpSuite: SiBurpsuite,
   ToolNessus: ToolNessus,
   ToolNikto: ToolNikto,
-  ToolKaliLinux: ToolKaliLinux,
+  ToolKaliLinux: SiKalilinux,
   ToolJohnTheRipper: ToolJohnTheRipper,
   ToolHashcat: ToolHashcat,
   ToolAutopsy: ToolAutopsy,
