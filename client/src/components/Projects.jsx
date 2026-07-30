@@ -61,6 +61,7 @@ export default function Projects() {
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-baseline justify-center gap-2 sm:gap-3">
             <SectionIcon emoji={SECTION_EMOJIS.projects} />
             <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">My Projects</span>
+            <SectionIcon emoji={SECTION_EMOJIS.projects} />
           </h2>
           <p className="text-white max-w-5xl mx-auto text-center text-sm sm:text-base md:text-lg px-2 leading-7">
             A selection of full-stack projects showcasing scalable architecture, secure authentication, API integrations, responsive user interfaces, and practical system design.

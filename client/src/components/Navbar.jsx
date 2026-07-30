@@ -5,7 +5,7 @@ import { useTheme } from "../context/ThemeContext";
 import { NAV_ITEMS } from "../constants/navIcons";
 
 export default function Navbar() {
-  const [activeSection, setActiveSection] = useState("about");
+  const [activeSection, setActiveSection] = useState(NAV_ITEMS[0].id);
   const [isMobile, setIsMobile] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const isLightMode = theme === "light";
@@ -28,6 +28,11 @@ export default function Navbar() {
   };
 
   const updateActiveSection = useCallback(() => {
+    if (window.scrollY < 20) {
+      setActiveSection(NAV_ITEMS[0].id);
+      return;
+    }
+
     const offset = isMobile ? 180 : 120;
     let current = NAV_ITEMS[0].id;
 

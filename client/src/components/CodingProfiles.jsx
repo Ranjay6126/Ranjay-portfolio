@@ -144,6 +144,7 @@ export default function CodingProfiles() {
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 inline-flex items-center gap-2 sm:gap-3">
             <SectionIcon emoji={SECTION_EMOJIS.coding} />
             <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Coding Profiles</span>
+            <SectionIcon emoji={SECTION_EMOJIS.coding} />
           </h2>
           <div className="px-2 w-full flex justify-center">
             <p className="text-white text-[13px] sm:text-base md:text-lg leading-[1.65rem] sm:leading-7 md:leading-8 font-sans text-center max-w-[95%] sm:max-w-3xl md:max-w-4xl mx-auto break-words hyphens-auto">
