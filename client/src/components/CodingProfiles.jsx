@@ -133,6 +133,8 @@ export default function CodingProfiles() {
       id="coding"
       className="min-h-[70vh] flex flex-col items-center px-4 sm:px-6 py-10 sm:py-12 relative overflow-hidden pointer-events-auto"
     >
+      <div className="absolute top-20 left-[-10%] w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-20 right-[-10%] w-96 h-96 bg-cyan-500/20 blur-[120px] rounded-full pointer-events-none" />
       <div className="max-w-7xl w-full relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}

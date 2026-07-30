@@ -45,7 +45,7 @@ function Portfolio() {
       {isLoading && <Loading onComplete={handleLoadingComplete} />}
       <div
         className="min-h-screen relative overflow-hidden"
-        style={{ backgroundColor: "var(--bg-primary)", color: "var(--text-primary)" }}
+        style={{ background: "var(--bg-portfolio)", color: "var(--text-primary)" }}
       >
         <Suspense fallback={null}>
           <Background3D />

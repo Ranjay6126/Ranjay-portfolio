@@ -20,10 +20,8 @@ export default function Certificates({ certificates = [] }) {
 
   return (
     <section id="certificates" className="min-h-0 md:min-h-[70vh] flex py-6 px-4 sm:px-6 flex-col items-center relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
-        <div className="absolute top-[20%] left-[10%] w-80 h-80 sm:w-96 sm:h-96 bg-indigo-500/10 rounded-full blur-[100px]" />
-        <div className="absolute bottom-[20%] right-[10%] w-80 h-80 sm:w-96 sm:h-96 bg-purple-500/10 rounded-full blur-[100px]" />
-      </div>
+      <div className="absolute top-20 left-[-10%] w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-20 right-[-10%] w-96 h-96 bg-cyan-500/20 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-6xl md:max-w-7xl w-full relative z-10">
         <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} className="text-center mb-8 sm:mb-10">
