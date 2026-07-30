@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
 import { usePortfolio } from "./hooks/usePortfolio";
@@ -10,9 +10,10 @@ import Certificates from "./components/Certificates";
 import CodingProfiles from "./components/CodingProfiles";
 import Education from "./components/Education";
 import Contact from "./components/Contact";
-import Background3D from "./components/Background3D";
 import Loading from "./components/Loading";
 import Resume from "./pages/Resume";
+
+const Background3D = lazy(() => import("./components/Background3D"));
 
 function Portfolio() {
   const { portfolio, error } = usePortfolio();
@@ -46,7 +47,9 @@ function Portfolio() {
         className="min-h-screen relative overflow-hidden"
         style={{ backgroundColor: "var(--bg-primary)", color: "var(--text-primary)" }}
       >
-        <Background3D />
+        <Suspense fallback={null}>
+          <Background3D />
+        </Suspense>
 
         <header className="fixed top-0 w-full z-50 pointer-events-auto">
           <Navbar />

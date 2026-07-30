@@ -12,4 +12,23 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ["react", "react-dom", "react-router-dom"],
+          motion: ["framer-motion"],
+          three: ["three", "@react-three/fiber", "@react-three/drei"],
+          icons: [
+            "react-icons",
+            "@fortawesome/react-fontawesome",
+            "@fortawesome/fontawesome-svg-core",
+            "@fortawesome/free-solid-svg-icons",
+            "@fortawesome/free-brands-svg-icons",
+            "lucide-react",
+          ],
+        },
+      },
+    },
+  },
 });
