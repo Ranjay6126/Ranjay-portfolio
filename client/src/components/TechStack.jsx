@@ -257,7 +257,13 @@ const IconRenderer = ({ iconKey, title, isLightMode }) => {
           <IconComponent className="w-8 h-8 sm:w-10 sm:h-10" style={{ color: getColor(iconKey) }} />
         </motion.div>
       </div>
-      <span className="text-[11px] sm:text-xs font-medium text-white opacity-80 whitespace-nowrap">{title}</span>
+      <span
+        className={`text-[11px] sm:text-xs font-medium opacity-80 whitespace-nowrap ${
+          isLightMode ? "text-slate-900" : "text-white"
+        }`}
+      >
+        {title}
+      </span>
     </motion.div>
   );
 };
