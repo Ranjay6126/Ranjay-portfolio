@@ -49,7 +49,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative flex min-h-0 md:min-h-[80vh] flex-col items-center px-4 pb-5 pt-3 sm:px-6 sm:pt-6 sm:pb-7 md:pt-8 md:pb-8 lg:pt-10 lg:pb-10 overflow-hidden"
+      className="relative flex min-h-0 md:min-h-[80vh] flex-col items-center px-4 pb-4 pt-2 sm:px-6 sm:pt-5 sm:pb-6 md:pt-7 md:pb-7 lg:pt-8 lg:pb-8 overflow-hidden"
     >
       <div className="absolute top-20 left-[-10%] w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-20 right-[-10%] w-96 h-96 bg-cyan-500/20 blur-[120px] rounded-full pointer-events-none" />
@@ -58,7 +58,7 @@ export default function Projects() {
         <div className="text-center mb-4 sm:mb-6 md:mb-7">
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-baseline justify-center gap-2 sm:gap-3">
             <SectionIcon emoji={SECTION_EMOJIS.projects} />
-            <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent relative after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-1 sm:after:-bottom-1.5 after:h-[2px] after:w-14 sm:after:w-20 md:after:w-24 after:rounded-full after:bg-black/35 dark:after:bg-white/30">
+            <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block relative after:content-[''] after:absolute after:left-0 after:right-0 after:-bottom-[1px] after:h-[2px] after:rounded-full after:bg-black/35 dark:after:bg-white/30">
               My Projects
             </span>
             <SectionIcon emoji={SECTION_EMOJIS.projects} />

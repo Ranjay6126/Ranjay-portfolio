@@ -19,15 +19,15 @@ export default function Certificates({ certificates = [] }) {
   };
 
   return (
-    <section id="certificates" className="min-h-0 md:min-h-[70vh] flex py-3 sm:py-4 px-4 sm:px-6 flex-col items-center relative overflow-hidden">
+    <section id="certificates" className="min-h-0 md:min-h-[70vh] flex py-2 sm:py-3 px-4 sm:px-6 flex-col items-center relative overflow-hidden">
       <div className="absolute top-20 left-[-10%] w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-20 right-[-10%] w-96 h-96 bg-cyan-500/20 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-6xl md:max-w-7xl w-full relative z-10">
-        <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} className="text-center mb-5 sm:mb-7">
+        <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} className="text-center mb-4 sm:mb-6">
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             <SectionIcon emoji={SECTION_EMOJIS.certificates} />
-            <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent relative after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-1 sm:after:-bottom-1.5 after:h-[2px] after:w-14 sm:after:w-20 md:after:w-24 after:rounded-full after:bg-black/35 dark:after:bg-white/30">
+            <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block relative after:content-[''] after:absolute after:left-0 after:right-0 after:-bottom-[1px] after:h-[2px] after:rounded-full after:bg-black/35 dark:after:bg-white/30">
               Certificates
             </span>
             <SectionIcon emoji={SECTION_EMOJIS.certificates} />
