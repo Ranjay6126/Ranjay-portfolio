@@ -126,18 +126,20 @@ export default function Contact() {
   const isFormValid = () => email && !emailError;
 
   return (
-    <section id="contact" className="py-6 sm:py-8 px-4 sm:px-6 min-h-0 md:min-h-screen flex items-center flex-col relative overflow-hidden">
+    <section id="contact" className="py-5 sm:py-7 px-4 sm:px-6 min-h-0 md:min-h-screen flex items-center flex-col relative overflow-hidden">
       <div className="max-w-3xl w-full relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-6 sm:mb-8 md:mb-10"
+          className="text-center mb-5 sm:mb-7 md:mb-8"
         >
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             <SectionIcon emoji={SECTION_EMOJIS.contact} />
-            <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Get in Touch</span>
+            <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent relative after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-1 sm:after:-bottom-1.5 after:h-[2px] after:w-14 sm:after:w-20 md:after:w-24 after:rounded-full after:bg-black/35 dark:after:bg-white/30">
+              Get in Touch
+            </span>
             <SectionIcon emoji={SECTION_EMOJIS.contact} />
           </h2>
           <p className="text-white max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-2">
@@ -238,7 +240,7 @@ export default function Contact() {
         </motion.form>
       </div>
 
-      <footer className="w-full mt-8 sm:mt-10 md:mt-12 text-center text-xs sm:text-sm" style={{ color: "var(--text-primary)" }}>
+      <footer className="w-full mt-6 sm:mt-8 md:mt-9 text-center text-xs sm:text-sm" style={{ color: "var(--text-primary)" }}>
         {/* Social Links */}
         <div className="flex justify-center gap-5 sm:gap-8 mb-4 sm:mb-6">
           <a href="https://www.facebook.com/mrranjay.prajapati/" target="_blank" rel="noopener noreferrer" className="transition-colors hover:opacity-70" style={{ color: "var(--text-primary)" }}>

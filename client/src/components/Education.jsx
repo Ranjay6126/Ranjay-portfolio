@@ -30,18 +30,24 @@ export default function Education({ education = [] }) {
   };
 
   return (
-    <section id="education" className={`min-h-0 md:min-h-screen flex flex-col items-center px-4 sm:px-6 py-6 sm:py-8 relative overflow-hidden ${isLightMode ? "text-slate-900" : "text-white"}`}>
+    <section id="education" className={`min-h-0 md:min-h-screen flex flex-col items-center px-4 sm:px-6 py-5 sm:py-7 relative overflow-hidden ${isLightMode ? "text-slate-900" : "text-white"}`}>
       <div className="max-w-7xl w-full relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8 sm:mb-10"
+          className="text-center mb-7 sm:mb-9"
         >
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             <SectionIcon emoji={SECTION_EMOJIS.education} />
-            <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Education</span>
+            <span
+              className={`section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent relative after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-1 sm:after:-bottom-1.5 after:h-[2px] after:w-14 sm:after:w-20 md:after:w-24 after:rounded-full ${
+                isLightMode ? "after:bg-black/35" : "after:bg-white/30"
+              }`}
+            >
+              Education
+            </span>
             <SectionIcon emoji={SECTION_EMOJIS.education} />
           </h2>
           <div className="px-2 w-full flex justify-center">
