@@ -258,7 +258,7 @@ export default function Contact() {
         </div>
         {/* Line */}
         <div className="footer-divider w-3/4 mx-auto mb-5" />
-        <p className="font-medium">© 2025 All Rights Reserved | Powered by Ranjay Prajapati</p>
+        <p className="font-medium">© 2026 All Rights Reserved | Powered by Ranjay Prajapati</p>
         <p className="mt-3 font-medium">Thank you 😍 for visiting my Portfolio</p>
       </footer>
     </section>
