@@ -9,6 +9,7 @@ import Projects from "./components/Projects";
 import Certificates from "./components/Certificates";
 import CodingProfiles from "./components/CodingProfiles";
 import Education from "./components/Education";
+import Services from "./components/Services";
 import Contact from "./components/Contact";
 import Loading from "./components/Loading";
 import Resume from "./pages/Resume";
@@ -68,6 +69,7 @@ function Portfolio() {
               <Certificates certificates={portfolio?.certificates} />
               <CodingProfiles profiles={portfolio?.codingProfiles} />
               <Education education={portfolio?.education} />
+              <Services />
               <Contact />
             </>
           )}
