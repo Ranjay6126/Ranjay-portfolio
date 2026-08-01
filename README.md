@@ -1,6 +1,6 @@
 # Ranjay Prajapati - Portfolio
 
-A modern, fully responsive personal portfolio website built with the MERN stack, showcasing projects, technical skills, education, certifications, and coding profiles. Features a clean UI, smooth animations, and contact form with email notifications.
+A modern, fully responsive personal portfolio website built with the MERN stack, showcasing projects, technical skills, education, certifications, and coding profiles. Features a clean UI, smooth animations, AI chatbot, and contact form with email notifications.
 
 ## 📋 Table of Contents
 - [Features](#-features)
@@ -19,7 +19,6 @@ A modern, fully responsive personal portfolio website built with the MERN stack,
 - **Smooth Animations**: Powered by Framer Motion for fluid transitions
 - **3D Background**: Interactive 3D background using Three.js and React Three Fiber
 - **Loading Screen**: Custom animated loading screen
-- **Theme Support**: Dark/Light mode toggle
 - **Sections**:
   - About Me with profile and stats
   - Technical Skills (marquee animation, dual-column display)
@@ -27,9 +26,9 @@ A modern, fully responsive personal portfolio website built with the MERN stack,
   - Certifications
   - Coding Profiles (LeetCode, GeeksforGeeks, HackerRank)
   - Education
-  - Services
   - Contact Form with email notifications
-- **Contact Form**: Sends emails via multiple methods (EmailJS, FormSubmit, backend API)
+  - AI Chatbot (optional, uses Gemini API)
+- **Contact Form**: Sends emails via SMTP and saves to MongoDB
 - **Auto-Seeding**: Portfolio data is automatically seeded on first server start
 
 ## 🛠️ Tech Stack
@@ -48,6 +47,7 @@ A modern, fully responsive personal portfolio website built with the MERN stack,
 - **Runtime**: Node.js
 - **Database**: MongoDB with Mongoose ODM
 - **Email**: Nodemailer
+- **AI Integration**: Google Generative AI (Gemini)
 - **CORS**: Configured for cross-origin requests
 
 ### Dev Tools
@@ -132,7 +132,16 @@ SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your-email@gmail.com
 SMTP_PASS=your-app-password  # For Gmail, use App Password
+
+# Gemini AI Chatbot (optional)
+GEMINI_API_KEY=your-gemini-api-key
 ```
+
+### Gmail Setup Notes
+To use Gmail as your SMTP provider:
+1. Enable 2-Step Verification on your Google Account
+2. Create an App Password at https://myaccount.google.com/apppasswords
+3. Use that App Password as `SMTP_PASS`
 
 ## 📡 API Endpoints
 
@@ -141,6 +150,7 @@ SMTP_PASS=your-app-password  # For Gmail, use App Password
 | GET    | `/api/health`    | Health check - confirms API is running           |
 | GET    | `/api/portfolio` | Retrieve all portfolio content (profile, skills, projects, etc.) |
 | POST   | `/api/contact`   | Submit contact form (saves to DB + sends email)  |
+| POST   | `/api/chat`      | Send message to AI chatbot                       |
 
 ## 📜 Scripts
 

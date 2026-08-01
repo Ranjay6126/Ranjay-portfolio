@@ -58,7 +58,7 @@ export default function Projects() {
         <div className="text-center mb-4 sm:mb-6 md:mb-7">
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-baseline justify-center gap-2 sm:gap-3">
             <SectionIcon emoji={SECTION_EMOJIS.projects} />
-            <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
+            <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block relative after:content-[''] after:absolute after:left-0 after:right-0 after:-bottom-[1px] after:h-[2px] after:rounded-full after:bg-black/35 dark:after:bg-white/30">
               My Projects
             </span>
             <SectionIcon emoji={SECTION_EMOJIS.projects} />
@@ -78,9 +78,9 @@ export default function Projects() {
                 key={i}
                 initial={{ opacity: 1, y: 0 }}
                 whileHover={{ y: -10 }}
-                className="group relative portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-3 sm:p-4 transition-colors duration-300 flex flex-col h-full"
+                className="group relative portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:p-5 transition-colors duration-300 flex flex-col h-full"
               >
-                <div className="flex items-start justify-between mb-2 gap-2">
+                <div className="flex items-start justify-between mb-3 gap-2">
                   <h3 className="portfolio-card-title text-base sm:text-lg font-bold text-white transition-colors">
                     {projectTitleWithEmoji(project.title)}
                   </h3>
@@ -90,12 +90,12 @@ export default function Projects() {
                 </div>
 
                 {project.img && (
-                  <div className="mb-2">
-                    <img src={project.img} alt={project.title} className="w-full h-40 sm:h-44 rounded-2xl object-cover" />
+                  <div className="mb-3">
+                    <img src={project.img} alt={project.title} className="w-full h-auto rounded-2xl object-cover" />
                   </div>
                 )}
 
-                <div className="mb-3">
+                <div className="mb-4">
                   <p className="text-gray-400 text-sm leading-relaxed">
                     {project.description.length > DESCRIPTION_LIMIT && !expanded[i]
                       ? project.description.slice(0, DESCRIPTION_LIMIT) + "…"
