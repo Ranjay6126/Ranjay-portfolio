@@ -5,33 +5,33 @@ import { SECTION_EMOJIS } from "../constants/navIcons";
 export default function Services() {
   const services = [
     {
-      title: "Full-Stack Development",
-      description: "Designing and delivering end-to-end web applications with modern architecture, secure authentication, and scalable deployment strategies.",
+      title: "Custom Web Development",
+      description: "Building responsive, scalable websites and applications with a strong focus on performance, usability, and long-term maintainability.",
       icon: "🌐"
     },
     {
-      title: "Frontend Development",
-      description: "Crafting responsive, high-performance interfaces with React and modern UI practices that feel intuitive, fast, and polished.",
+      title: "Performance Optimization",
+      description: "Improving loading speed, responsiveness, and overall efficiency through thoughtful development and clean system design.",
+      icon: "⚡"
+    },
+    {
+      title: "UI/UX Design",
+      description: "Crafting polished, intuitive interfaces that balance visual appeal, clarity, and smooth user interaction.",
       icon: "🎨"
     },
     {
       title: "Backend Development",
-      description: "Building robust server-side systems with Node.js, Express, and databases, focused on reliability, security, and clean API design.",
+      description: "Designing reliable server-side solutions with secure APIs, structured logic, and robust database integration.",
       icon: "⚙️"
     },
     {
-      title: "Database Management",
-      description: "Designing efficient data models and optimizing database performance with MongoDB and MySQL to ensure integrity, scalability, and maintainability.",
-      icon: "🗄️"
+      title: "Reliable Support",
+      description: "Providing dependable maintenance, issue resolution, and ongoing improvements that help products evolve with confidence.",
+      icon: "🛠️"
     },
     {
-      title: "API Development",
-      description: "Creating secure, well-documented APIs with strong validation, authentication, and error handling to support dependable integrations.",
-      icon: "🔌"
-    },
-    {
-      title: "Security Consulting",
-      description: "Providing strategic cybersecurity guidance, risk assessment, and implementation support to strengthen systems and reduce vulnerabilities.",
+      title: "Security Awareness",
+      description: "Applying practical security principles and best practices to strengthen systems and reduce avoidable risks.",
       icon: "🔒"
     }
   ];
@@ -51,11 +51,6 @@ export default function Services() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="pointer-events-auto portfolio-card bg-white/5 backdrop-blur-2xl border border-white/10 p-5 sm:p-10 md:p-12 rounded-3xl sm:rounded-[2.5rem] max-w-6xl md:max-w-7xl w-full relative z-10 shadow-2xl"
       >
-        <img
-          src="/images/study.png"
-          alt="Study"
-          className="pointer-events-none absolute right-4 top-4 w-10 sm:w-12 md:w-14 h-auto opacity-95"
-        />
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -72,11 +67,10 @@ export default function Services() {
           </h2>
           <div className="px-2 w-full flex justify-center">
             <p className="text-white text-[13px] sm:text-base md:text-lg leading-[1.65rem] sm:leading-7 md:leading-8 font-sans text-center max-w-[95%] sm:max-w-3xl md:max-w-4xl mx-auto break-words hyphens-auto">
-              Professional services tailored to your needs, from full-stack development to security consulting, delivering high-quality solutions with modern technologies.
+              Delivering professional digital solutions with a strong focus on quality, efficiency, and long-term value for modern businesses and projects.
             </p>
           </div>
         </motion.div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-7">
           {services.map((service, index) => (
             <motion.div

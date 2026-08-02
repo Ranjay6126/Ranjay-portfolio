@@ -108,7 +108,7 @@ export default function Contact() {
       formRef.current.reset();
       setEmail("");
       setEmailError("");
-    } catch (error) {
+    } catch {
       try {
         const res = await api.sendContact(payload);
         setStatusMessage("✅ " + res.message);
@@ -122,8 +122,6 @@ export default function Contact() {
       setIsSending(false);
     }
   };
-
-  const isFormValid = () => email && !emailError;
 
   return (
     <section id="contact" className="py-4 sm:py-6 px-4 sm:px-6 min-h-0 md:min-h-screen flex items-center flex-col relative overflow-hidden">
@@ -168,7 +166,7 @@ export default function Contact() {
             aria-hidden="true"
             className="contact-form-glow pointer-events-none absolute -bottom-20 right-10 z-0 h-36 w-72 -rotate-12 rounded-full blur-3xl bg-fuchsia-400/10"
           />
-          
+
           <div className="relative z-10">
             <label className="contact-form-label block text-xs sm:text-sm font-semibold mb-2 sm:mb-3">Your Name</label>
             <input
@@ -241,7 +239,6 @@ export default function Contact() {
       </div>
 
       <footer className="w-full mt-6 sm:mt-8 md:mt-9 text-center text-xs sm:text-sm" style={{ color: "var(--text-primary)" }}>
-        {/* Social Links */}
         <div className="flex justify-center gap-5 sm:gap-8 mb-4 sm:mb-6">
           <a href="https://www.facebook.com/mrranjay.prajapati/" target="_blank" rel="noopener noreferrer" className="transition-colors hover:opacity-70" style={{ color: "var(--text-primary)" }}>
             <FaFacebook className="text-2xl sm:text-3xl" />
@@ -256,7 +253,6 @@ export default function Contact() {
             <FaLinkedin className="text-2xl sm:text-3xl" />
           </a>
         </div>
-        {/* Line */}
         <div className="footer-divider w-3/4 mx-auto mb-5" />
         <p className="font-medium">© 2026 All Rights Reserved | Powered by Ranjay Prajapati</p>
         <p className="mt-3 font-medium">Thank you 😍 for visiting my Portfolio</p>

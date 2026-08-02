@@ -60,16 +60,16 @@ export default function Navbar() {
   return (
     <div
       className={`fixed z-50 left-1/2 -translate-x-1/2 transition-all duration-300 ${
-        isMobile ? "bottom-6 w-[95%] max-w-[500px]" : "top-6"
+        isMobile ? "bottom-2.5 w-[99%] max-w-[520px] px-0.5" : "top-6"
       }`}
     >
       <motion.nav
         initial={{ y: isMobile ? 100 : -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className={`relative overflow-hidden flex items-center ${
-          isMobile ? "justify-between px-3" : "gap-1"
-        } navbar-glass backdrop-blur-3xl backdrop-saturate-200 rounded-full p-1.5`}
+        className={`relative overflow-hidden ${
+          isMobile ? "flex items-center justify-between gap-1 px-1.5 py-1.5" : "flex items-center gap-1"
+        } navbar-glass backdrop-blur-3xl backdrop-saturate-200 rounded-full p-1`}
       >
         <span
           aria-hidden="true"
@@ -100,7 +100,7 @@ export default function Navbar() {
             key={item.id}
             onClick={() => scrollToSection(item.id)}
             className={`navbar-item relative rounded-full text-sm font-medium transition-all duration-300 flex items-center justify-center gap-2 ${
-              isMobile ? "p-3" : "px-5 py-2.5"
+              isMobile ? "p-1.5 min-w-[38px] min-h-[38px]" : "px-5 py-2.5"
             } ${
               activeSection === item.id
                 ? "text-white shadow-lg"
@@ -111,7 +111,7 @@ export default function Navbar() {
               boxShadow: "0 10px 25px -5px var(--nav-active-shadow)"
             } : {}}
           >
-            <FontAwesomeIcon icon={item.icon} className={isMobile ? "w-5 h-5" : "w-4 h-4"} />
+            <FontAwesomeIcon icon={item.icon} className={isMobile ? "w-4 h-4" : "w-4 h-4"} />
             <span className={isMobile ? "hidden" : "hidden md:inline"}>{item.label}</span>
           </button>
         ))}
@@ -119,11 +119,9 @@ export default function Navbar() {
           onClick={toggleTheme}
           title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
           className={`navbar-item relative rounded-full transition-all duration-300 flex items-center justify-center ${
-            isMobile ? "p-4" : "px-3 py-2.5"
+            isMobile ? "p-1.5 min-w-[38px] min-h-[38px]" : "px-3 py-2.5"
           } text-white hover:text-gray-100 hover:cursor-pointer`}
           style={{ 
-            minWidth: isMobile ? "48px" : "auto",
-            minHeight: isMobile ? "48px" : "auto",
             flexShrink: 0
           }}
         >

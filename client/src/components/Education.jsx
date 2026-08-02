@@ -100,7 +100,6 @@ export default function Education({ education = [] }) {
                 </div>
                 <div className="ml-4 sm:ml-6 md:ml-0 md:w-3/5">
                   <div className={`portfolio-card w-full rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl transition-colors duration-300 ${isLightMode ? "bg-white border border-slate-200/80 text-slate-800" : "bg-[#12131a] border border-gray-800/80 text-gray-200"}`}>
-                    {/* Header: Degree Title */}
                     <div className="flex items-center gap-3 mb-4">
                       <FontAwesomeIcon icon={faGraduationCap} className="w-7 h-7 sm:w-8 sm:h-8 text-indigo-500 shrink-0" />
                       <h2 className={`text-xl sm:text-2xl font-bold tracking-tight ${isLightMode ? "text-slate-900" : "text-white"}`}>
