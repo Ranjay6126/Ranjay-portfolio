@@ -1,4 +1,4 @@
-# Ranjay Prajapati - Portfolio
+# Ranjay Prajapati - Portfolio/
 
 A modern, fully responsive personal portfolio website built with the MERN stack, showcasing projects, technical skills, education, certifications, and coding profiles. Features a clean UI, smooth animations, and contact form with email notifications.
 
