@@ -220,6 +220,8 @@ html:not(.light) .contact-form-input {
   line-height: 1.25;
   background-clip: text;
   -webkit-background-clip: text;
+  text-decoration: none;
+  border-bottom: none;
 }
 
 .btn-accent {

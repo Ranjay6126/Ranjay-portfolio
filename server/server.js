@@ -7,7 +7,6 @@ import connectDB from "./config/db.js";
 import errorHandler from "./middleware/errorHandler.js";
 import portfolioRoutes from "./routes/portfolioRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
-import chatRoutes from "./routes/chatRoutes.js";
 import { ensureSeeded } from "./utils/ensureSeeded.js";
 
 dotenv.config();
@@ -37,7 +36,6 @@ const startServer = async () => {
 
   app.use("/api/portfolio", portfolioRoutes);
   app.use("/api/contact", contactRoutes);
-  app.use("/api/chat", chatRoutes);
 
   if (process.env.NODE_ENV === "production") {
     const clientDist = path.join(__dirname, "..", "client", "dist");

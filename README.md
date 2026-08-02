@@ -1,17 +1,17 @@
 # Ranjay Prajapati - Portfolio/
 
-A modern, fully responsive personal portfolio website built with the MERN stack, showcasing projects, technical skills, education, certifications, and coding profiles. Features a clean UI, smooth animations, and contact form with email notifications.
+A modern, fully responsive personal portfolio website built with the MERN stack, showcasing projects, technical skills, education, certifications, coding profiles, services, and a contact form with email notifications.
 
 ## 📋 Table of Contents
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Project Structure](#-project-structure)
-- [Getting Started](#-getting-started)
-- [Environment Variables](#-environment-variables)
-- [API Endpoints](#-api-endpoints)
-- [Scripts](#-scripts)
-- [Production Deployment](#-production-deployment)
-- [License](#-license)
+- Features
+- Tech Stack
+- Project Structure
+- Getting Started
+- Environment Variables
+- API Endpoints
+- Scripts
+- Production Deployment
+- License
 
 ## ✨ Features
 
@@ -20,6 +20,7 @@ A modern, fully responsive personal portfolio website built with the MERN stack,
 - **3D Background**: Interactive 3D background using Three.js and React Three Fiber
 - **Loading Screen**: Custom animated loading screen
 - **Theme Support**: Dark/Light mode toggle
+- **Fast Data Rendering**: LocalStorage cache with stale-while-revalidate behavior for a snappy experience
 - **Sections**:
   - About Me with profile and stats
   - Technical Skills (marquee animation, dual-column display)
@@ -29,7 +30,7 @@ A modern, fully responsive personal portfolio website built with the MERN stack,
   - Education
   - Services
   - Contact Form with email notifications
-- **Contact Form**: Sends emails via multiple methods (EmailJS, FormSubmit, backend API)
+- **Contact Form**: Sends emails via EmailJS (optional), FormSubmit fallback, and backend API fallback
 - **Auto-Seeding**: Portfolio data is automatically seeded on first server start
 
 ## 🛠️ Tech Stack
@@ -39,7 +40,7 @@ A modern, fully responsive personal portfolio website built with the MERN stack,
 - **Build Tool**: Vite
 - **Styling**: Tailwind CSS
 - **Animations**: Framer Motion
-- **Icons**: Font Awesome, React Icons
+- **Icons**: Font Awesome, Lucide, React Icons
 - **3D Graphics**: Three.js, React Three Fiber, @react-three/drei
 - **Routing**: React Router DOM
 
@@ -132,6 +133,14 @@ SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your-email@gmail.com
 SMTP_PASS=your-app-password  # For Gmail, use App Password
+```
+
+Optional EmailJS variables in `client/.env`:
+
+```env
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
 ```
 
 ## 📡 API Endpoints
