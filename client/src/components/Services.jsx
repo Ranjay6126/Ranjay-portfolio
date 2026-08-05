@@ -1,45 +1,19 @@
 import { motion } from "framer-motion";
+import { useTheme } from "../context/ThemeContext";
 import SectionIcon from "./SectionIcon";
 import { SECTION_EMOJIS } from "../constants/navIcons";
 
 export default function Services() {
-  const services = [
-    {
-      title: "Custom Web Development",
-      description: "Building responsive, scalable websites and applications with a strong focus on performance, usability, and long-term maintainability.",
-      icon: "🌐"
-    },
-    {
-      title: "Performance Optimization",
-      description: "Improving loading speed, responsiveness, and overall efficiency through thoughtful development and clean system design.",
-      icon: "⚡"
-    },
-    {
-      title: "UI/UX Design",
-      description: "Crafting polished, intuitive interfaces that balance visual appeal, clarity, and smooth user interaction.",
-      icon: "🎨"
-    },
-    {
-      title: "Backend Development",
-      description: "Designing reliable server-side solutions with secure APIs, structured logic, and robust database integration.",
-      icon: "⚙️"
-    },
-    {
-      title: "Reliable Support",
-      description: "Providing dependable maintenance, issue resolution, and ongoing improvements that help products evolve with confidence.",
-      icon: "🛠️"
-    },
-    {
-      title: "Security Awareness",
-      description: "Applying practical security principles and best practices to strengthen systems and reduce avoidable risks.",
-      icon: "🔒"
-    }
-  ];
+  const { theme } = useTheme();
+  const isLightMode = theme === "light";
+  const headingTextClass = isLightMode ? "text-slate-950" : "text-white";
+  const bodyTextClass = isLightMode ? "text-slate-700" : "text-gray-300";
+  const panelTextClass = isLightMode ? "text-slate-950" : "text-white";
 
   return (
-    <section 
-      id="services" 
-      className="min-h-0 sm:min-h-[36vh] lg:min-h-[33vh] flex flex-col items-center justify-start relative overflow-hidden px-4 py-6 pb-4 sm:px-6 sm:py-8 md:py-6"
+    <section
+      id="services"
+      className="min-h-0 sm:min-h-[34vh] lg:min-h-[40vh] flex flex-col items-center justify-start relative overflow-hidden px-4 py-5 pb-3 sm:px-5 sm:py-6 md:py-5"
     >
       <div className="absolute top-20 left-[-10%] w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-20 right-[-10%] w-96 h-96 bg-cyan-500/20 blur-[120px] rounded-full pointer-events-none" />
@@ -66,43 +40,103 @@ export default function Services() {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 45 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="pointer-events-auto portfolio-card bg-white/5 backdrop-blur-2xl border border-white/10 p-5 sm:p-10 md:p-12 rounded-3xl sm:rounded-[2.5rem] max-w-6xl md:max-w-7xl w-full relative z-10 shadow-2xl"
+        className="pointer-events-auto portfolio-card bg-white/5 backdrop-blur-2xl border border-white/10 p-5 sm:p-8 md:p-10 rounded-3xl sm:rounded-[2.5rem] max-w-6xl md:max-w-7xl w-full relative z-10 shadow-2xl"
       >
-        <div className="flex justify-center mb-6 sm:mb-8">
+        <div className="mb-3 flex justify-center">
           <a
             href="#contact"
-            className="glass-button about-action-btn inline-flex items-center justify-center gap-2 rounded-full border border-emerald-400/30 bg-gradient-to-r from-emerald-500/20 via-green-500/20 to-lime-500/20 px-5 py-3 text-sm font-semibold text-emerald-100 transition-all duration-300 hover:scale-[1.02] hover:border-emerald-300/50 hover:bg-gradient-to-r hover:from-emerald-500/30 hover:via-green-500/25 hover:to-lime-500/25 sm:px-6 sm:py-3.5 sm:text-base backdrop-blur-xl"
+            className="relative glass-button about-action-btn inline-flex items-center justify-center gap-3 rounded-full border border-emerald-400/30 bg-gradient-to-r from-emerald-500/20 via-green-500/20 to-lime-500/20 px-6 py-3 text-sm font-semibold text-white shadow-[0_0_45px_rgba(16,185,129,0.22)] transition-all duration-300 hover:scale-[1.02] hover:border-emerald-300/50 hover:bg-gradient-to-r hover:from-emerald-500/30 hover:via-green-500/25 hover:to-lime-500/25 sm:px-8 sm:text-base backdrop-blur-xl"
           >
-            <span className="text-base sm:text-lg">🚀</span>
-            <span>Open to Full-Time Opportunities &amp; Freelance Projects</span>
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+            </span>
+            <span>Open to Full-Time Opportunities & Freelance Projects</span>
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+            </span>
           </a>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-7">
-          {services.map((service, index) => (
+
+        <div className="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr] gap-5 sm:gap-6 lg:gap-7">
+          <div className="grid grid-cols-1 gap-5 sm:gap-6">
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-6 transition duration-300"
+              transition={{ duration: 0.5 }}
+              className="portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-3 sm:p-4"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-3xl sm:text-4xl">{service.icon}</span>
-                <h3 className="text-xl sm:text-2xl font-bold text-white">
-                  {service.title}
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-3xl">🌐</span>
+                <h3 className={`text-sm sm:text-base font-bold ${headingTextClass}`}>
+                  Website & Mobile Application📱
                 </h3>
               </div>
-              <p className="text-sm sm:text-base leading-relaxed text-gray-300">
-                {service.description}
+              <p className={`text-base leading-relaxed ${bodyTextClass}`}>
+                I provide end-to-end website and mobile application development services. Building responsive, scalable and user friendly solutions. I build fast, reliable, easy to maintain applications – from modern UI/UX design and secure backend APIs to database integration and real-time features. I also deploy on cloud platforms like AWS, configure Docker and CI/CD pipelines and optimize performance to make your app secure, scalable and production ready.
               </p>
             </motion.div>
-          ))}
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-3 sm:p-4"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-3xl">🛡️</span>
+                <h3 className={`text-sm sm:text-base font-bold ${headingTextClass}`}>
+                  SOC (Security Operations Center)🔐
+                </h3>
+              </div>
+              <p className={`text-base leading-relaxed ${bodyTextClass}`}>
+                I offer SOC Analyst services focused on continuous security monitoring, threat detection, and incident analysis to help protect your systems and networks. I investigate security alerts, analyze logs, identify potential threats, and support incident response using industry-standard SIEM tools and security best practices. My goal is to strengthen your organization's security posture through proactive monitoring, timely alert investigation, and effective risk mitigation.
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-5 sm:gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="rounded-3xl overflow-hidden"
+            >
+              <img
+                src="/images/boy.png"
+                alt="Developer portrait"
+                className="h-full w-full object-cover"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.25 }}
+              className="portfolio-card bg-slate-950/10 backdrop-blur-xl border border-white/10 rounded-3xl p-4 sm:p-6 w-full max-w-md"
+            >
+              <div className="space-y-2 text-sm leading-relaxed">
+                <h4 className={`text-sm font-semibold ${panelTextClass} inline-flex items-center gap-2`}>
+                  <span className="inline-block h-2 w-2 rounded-full bg-emerald-400 mr-2 align-middle animate-pulse" />Available Work & Freelance : (₹ 60K / Month)
+                </h4>
+                <p className={`${panelTextClass} text-sm`}>
+                  <span className="mr-2">📍</span>Address : Bengaluru, Whitefield
+                </p>
+                <p className={`${panelTextClass} text-sm`}>
+                  <span className="mr-2">📧</span>Email : panditranjay33@gmail.com
+                </p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </motion.div>
     </section>
