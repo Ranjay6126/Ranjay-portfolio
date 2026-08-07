@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   FaCss3,
   FaDocker,
@@ -40,17 +40,18 @@ const skillIcons = [
   { name: "Linux", Icon: FaLinux, color: "#eab308", x: -68, y: -166, rotate: -4 },
 ];
 
+const ICON_ANIMATION_DURATION = 2.6;
+const ICON_INITIAL_DELAY = 0.06;
+const ICON_STAGGER_DELAY = 0;
+const LOADING_DURATION = (ICON_ANIMATION_DURATION + ICON_INITIAL_DELAY + (skillIcons.length - 1) * ICON_STAGGER_DELAY) * 1000;
+
 export default function Loading({ onComplete }) {
   const [visible, setVisible] = useState(true);
 
-  useEffect(() => {
-    const timer = window.setTimeout(() => {
-      setVisible(false);
-      onComplete?.();
-    }, 2350);
-
-    return () => window.clearTimeout(timer);
-  }, [onComplete]);
+  const handleCircleComplete = () => {
+    setVisible(false);
+    onComplete?.();
+  };
 
   if (!visible) return null;
 
@@ -63,43 +64,59 @@ export default function Loading({ onComplete }) {
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
       <div className="relative h-full w-full">
-        <div className="absolute left-1/2 top-1/2 h-0 w-0 -translate-x-1/2 -translate-y-1/2">
+        <div className="absolute left-1/2 top-1/2 h-0 w-0 -translate-x-1/2 -translate-y-1/2 scale-[0.72] sm:scale-100">
+          <div className="absolute left-1/2 top-1/2 z-10 h-72 w-72 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border border-white/20 bg-white/10 shadow-[0_12px_28px_rgba(0,0,0,0.24)] sm:h-96 sm:w-96">
+            <motion.img
+              initial={{ opacity: 0, scale: 0.7 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.45, ease: "easeOut", delay: ICON_INITIAL_DELAY }}
+              src="/images/boy.png"
+              alt="Ranjay"
+              className="h-full w-full object-cover"
+            />
+          </div>
+
           {skillIcons.map((skill, index) => {
             const Icon = skill.Icon;
 
             return (
-              <motion.div
+              <div
                 key={skill.name}
+                className="absolute left-1/2 top-1/2 z-20 h-12 w-12 -translate-x-1/2 -translate-y-1/2 sm:h-14 sm:w-14"
+              >
+                <motion.div
                 initial={{ opacity: 0, x: 0, y: 0, scale: 0.18, rotate: 0 }}
                 animate={{
-                  opacity: [0, 0, 1, 1, 0],
+                  opacity: [0, 0, 1],
                   x: [0, 0, skill.x],
                   y: [0, 0, skill.y],
-                  scale: [0.18, 0.22, 1, 1, 0.86],
+                  scale: [0.18, 0.22, 1],
                   rotate: [0, 0, skill.rotate],
                 }}
                 transition={{
-                  duration: 2.35,
-                  times: [0, 0.24, 0.6, 0.88, 1],
+                  duration: ICON_ANIMATION_DURATION,
+                  times: [0, 0.02, 1],
                   ease: [0.22, 1, 0.36, 1],
-                  delay: 0.06 + index * 0.018,
+                  delay: ICON_INITIAL_DELAY + index * ICON_STAGGER_DELAY,
                 }}
-                className="pointer-events-none absolute left-1/2 top-1/2 z-20 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl border border-white/10 bg-white/5 shadow-[0_12px_28px_rgba(0,0,0,0.24)] backdrop-blur-xl sm:h-14 sm:w-14"
+                onAnimationComplete={index === skillIcons.length - 1 ? handleCircleComplete : undefined}
+                className="pointer-events-none flex h-full w-full items-center justify-center rounded-2xl border border-white/10 bg-white/5 shadow-[0_12px_28px_rgba(0,0,0,0.24)] backdrop-blur-xl"
                 style={{ transformOrigin: "center center" }}
               >
                 <Icon className="text-[1.45rem] sm:text-[1.65rem]" style={{ color: skill.color }} />
               </motion.div>
+              </div>
             );
           })}
         </div>
 
 
-          <motion.p
+        <motion.p
           initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: [0, 1, 1, 0], y: [14, 0, 0, -8] }}
-          transition={{ duration: 1.85, times: [0, 0.18, 0.8, 1], ease: [0.22, 1, 0.36, 1], delay: 0.06 }}
+          animate={{ opacity: [0, 1, 1, 1], y: [14, 0, 0, 0] }}
+          transition={{ duration: LOADING_DURATION / 1000, times: [0, 0.08, 0.99, 1], ease: [0.22, 1, 0.36, 1] }}
           className="absolute top-1/2 z-40 w-max text-center text-sm font-semibold tracking-[0.2em] text-white"
-          style={{ left: "calc(50% - 3cm)", marginTop: "4cm" }}
+          style={{ left: "calc(50% - 3cm)", marginTop: "6.5cm" }}
         >
           Initializing Ranjay Portfolio...
         </motion.p>

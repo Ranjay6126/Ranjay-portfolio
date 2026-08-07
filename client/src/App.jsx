@@ -35,10 +35,8 @@ function Portfolio() {
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
-    setTimeout(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-      window.location.hash = "";
-    }, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    window.location.hash = "";
   };
 
   return (
