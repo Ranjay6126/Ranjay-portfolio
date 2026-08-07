@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 export default function Body({ profileImage }) {
-  const imageSrc = profileImage || "/images/Ranjay image.png";
+  const imageSrc = profileImage || "/images/Ranjay_boys.jpg";
 
   return (
     <motion.div

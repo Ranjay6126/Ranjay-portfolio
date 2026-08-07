@@ -182,7 +182,7 @@ export default function About({ profile }) {
         </div>
 
         <div className="order-1 md:order-2 md:col-span-2 flex justify-center items-center">
-          <Body profileImage={profile.profileImage} />
+          <Body profileImage="/images/Ranjay_boys.jpg" />
         </div>
       </motion.div>
     </section>
