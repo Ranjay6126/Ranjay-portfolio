@@ -1,4 +1,5 @@
 const API_BASE = import.meta.env.VITE_API_URL || "/api";
+let portfolioRequest = null;
 
 async function request(endpoint, options = {}) {
   const response = await fetch(`${API_BASE}${endpoint}`, {
@@ -24,7 +25,15 @@ async function request(endpoint, options = {}) {
 }
 
 export const api = {
-  getPortfolio: () => request("/portfolio"),
+  getPortfolio: () => {
+    if (!portfolioRequest) {
+      portfolioRequest = request("/portfolio").finally(() => {
+        portfolioRequest = null;
+      });
+    }
+
+    return portfolioRequest;
+  },
   sendContact: (body) =>
     request("/contact", { method: "POST", body: JSON.stringify(body) }),
 };

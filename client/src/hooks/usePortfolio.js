@@ -11,12 +11,14 @@ export function usePortfolio() {
 
   useEffect(() => {
     let cancelled = false;
+    let hasFreshCache = false;
 
     try {
       const cached = localStorage.getItem(CACHE_KEY);
       if (cached) {
         const parsed = JSON.parse(cached);
         if (Date.now() - parsed.timestamp < CACHE_TTL) {
+          hasFreshCache = true;
           if (!cancelled) {
             setPortfolio(parsed.data);
             setLoading(false);
@@ -40,7 +42,7 @@ export function usePortfolio() {
       .catch((err) => {
         if (cancelled) return;
         setPortfolio((prev) => prev || null);
-        if (!portfolio) setError(err.message);
+        if (!hasFreshCache) setError(err.message);
       })
       .finally(() => {
         if (cancelled) return;
