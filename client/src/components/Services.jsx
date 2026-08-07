@@ -7,7 +7,7 @@ export default function Services() {
   const { theme } = useTheme();
   const isLightMode = theme === "light";
   const headingTextClass = isLightMode ? "text-slate-950" : "text-white";
-  const bodyTextClass = isLightMode ? "text-slate-700" : "text-gray-300";
+  const bodyTextClass = isLightMode ? "text-black" : "text-white";
   const panelTextClass = isLightMode ? "text-slate-950" : "text-white";
 
   return (
@@ -44,12 +44,12 @@ export default function Services() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="pointer-events-auto portfolio-card bg-white/5 backdrop-blur-2xl border border-white/10 p-5 sm:p-8 md:p-10 rounded-3xl sm:rounded-[2.5rem] max-w-6xl md:max-w-7xl w-full relative z-10 shadow-2xl"
+        className="pointer-events-auto portfolio-card bg-white/5 backdrop-blur-2xl border border-white/10 p-4 sm:p-6 md:p-8 rounded-3xl sm:rounded-[2.25rem] max-w-6xl md:max-w-7xl w-full relative z-10 shadow-2xl"
       >
         <div className="mb-3 flex justify-center">
           <a
             href="#contact"
-            className="relative glass-button about-action-btn inline-flex items-center justify-center gap-3 rounded-full border border-emerald-400/30 bg-gradient-to-r from-emerald-500/20 via-green-500/20 to-lime-500/20 px-6 py-3 text-sm font-semibold text-white shadow-[0_0_45px_rgba(16,185,129,0.22)] transition-all duration-300 hover:scale-[1.02] hover:border-emerald-300/50 hover:bg-gradient-to-r hover:from-emerald-500/30 hover:via-green-500/25 hover:to-lime-500/25 sm:px-8 sm:text-base backdrop-blur-xl"
+            className="service-opportunity-button relative glass-button inline-flex items-center justify-center gap-3 rounded-full border bg-gradient-to-r from-emerald-500/20 via-green-500/20 to-lime-500/20 px-6 py-3 text-sm font-semibold text-white shadow-[0_0_45px_rgba(16,185,129,0.22)] transition-all duration-300 hover:scale-[1.02] hover:bg-gradient-to-r hover:from-emerald-500/30 hover:via-green-500/25 hover:to-lime-500/25 sm:px-8 sm:text-base backdrop-blur-xl"
           >
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -63,14 +63,16 @@ export default function Services() {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr] gap-5 sm:gap-6 lg:gap-7">
-          <div className="grid grid-cols-1 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr] gap-4 sm:gap-5 lg:gap-6">
+          <div className="grid grid-cols-1 gap-4 sm:gap-5">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-3 sm:p-4"
+              className={`portfolio-card backdrop-blur-xl border rounded-tr-3xl rounded-bl-3xl p-3 sm:p-4 ${
+                isLightMode ? "bg-white border-slate-200/80" : "bg-[#12131a] border-gray-800/80"
+              }`}
             >
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🌐</span>
@@ -78,7 +80,7 @@ export default function Services() {
                   Website & Mobile Application📱
                 </h3>
               </div>
-              <p className={`text-base leading-relaxed ${bodyTextClass}`}>
+              <p className={`text-sm sm:text-base leading-relaxed ${bodyTextClass}`}>
                 I provide end-to-end website and mobile application development services. Building responsive, scalable and user friendly solutions. I build fast, reliable, easy to maintain applications – from modern UI/UX design and secure backend APIs to database integration and real-time features. I also deploy on cloud platforms like AWS, configure Docker and CI/CD pipelines and optimize performance to make your app secure, scalable and production ready.
               </p>
             </motion.div>
@@ -88,7 +90,9 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-3 sm:p-4"
+              className={`portfolio-card backdrop-blur-xl border rounded-tr-3xl rounded-bl-3xl p-3 sm:p-4 ${
+                isLightMode ? "bg-white border-slate-200/80" : "bg-[#12131a] border-gray-800/80"
+              }`}
             >
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🛡️</span>
@@ -96,24 +100,24 @@ export default function Services() {
                   SOC (Security Operations Center)🔐
                 </h3>
               </div>
-              <p className={`text-base leading-relaxed ${bodyTextClass}`}>
+              <p className={`text-sm sm:text-base leading-relaxed ${bodyTextClass}`}>
                 I offer SOC Analyst services focused on continuous security monitoring, threat detection, and incident analysis to help protect your systems and networks. I investigate security alerts, analyze logs, identify potential threats, and support incident response using industry-standard SIEM tools and security best practices. My goal is to strengthen your organization's security posture through proactive monitoring, timely alert investigation, and effective risk mitigation.
               </p>
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 gap-4 sm:gap-5">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="rounded-3xl overflow-hidden"
+              className="max-h-64 overflow-hidden rounded-tl-3xl rounded-tr-3xl lg:max-h-72"
             >
               <img
                 src="/images/boy.png"
                 alt="Developer portrait"
-                className="h-full w-full object-cover"
+                className="h-56 sm:h-64 lg:h-72 w-full object-contain"
               />
             </motion.div>
 
@@ -122,16 +126,16 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.25 }}
-              className="portfolio-card bg-slate-950/10 backdrop-blur-xl border border-white/10 rounded-3xl p-4 sm:p-6 w-full max-w-md"
+              className="portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-tl-3xl rounded-tr-3xl p-3 sm:p-5 w-full max-w-md"
             >
               <div className="space-y-2 text-sm leading-relaxed">
-                <h4 className={`text-sm font-semibold ${panelTextClass} inline-flex items-center gap-2`}>
+                <h4 className={`whitespace-nowrap text-[11px] sm:text-sm font-bold ${panelTextClass} inline-flex items-center gap-1.5 sm:gap-2`}>
                   <span className="inline-block h-2 w-2 rounded-full bg-emerald-400 mr-2 align-middle animate-pulse" />Available Work & Freelance : (₹ 60K / Month)
                 </h4>
-                <p className={`${panelTextClass} text-sm`}>
+                <p className={`${panelTextClass} text-[11px] sm:text-sm font-semibold`}>
                   <span className="mr-2">📍</span>Address : Bengaluru, Whitefield
                 </p>
-                <p className={`${panelTextClass} text-sm`}>
+                <p className={`${panelTextClass} text-[11px] sm:text-sm font-semibold`}>
                   <span className="mr-2">📧</span>Email : panditranjay33@gmail.com
                 </p>
               </div>
