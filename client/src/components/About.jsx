@@ -30,7 +30,7 @@ export default function About({ profile }) {
   return (
     <section
       id="about"
-      className="min-h-0 sm:min-h-[72vh] lg:min-h-[66vh] flex items-center justify-center relative overflow-hidden px-4 py-6 pb-4 sm:px-6 sm:py-8 md:py-6"
+      className="min-h-0 sm:min-h-[calc(72vh-114px)] lg:min-h-[calc(66vh-114px)] flex items-center justify-center relative overflow-hidden px-4 py-6 pb-4 sm:px-6 sm:py-8 md:py-6"
     >
       <div className="absolute top-20 left-[-10%] w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-20 right-[-10%] w-96 h-96 bg-cyan-500/20 blur-[120px] rounded-full pointer-events-none" />
@@ -40,7 +40,7 @@ export default function About({ profile }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="pointer-events-auto portfolio-card bg-white/5 backdrop-blur-2xl border border-white/10 p-5 sm:p-10 md:p-14 rounded-3xl sm:rounded-[2.5rem] max-w-6xl md:max-w-7xl w-full grid grid-cols-1 md:grid-cols-6 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center relative z-10 shadow-2xl"
+        className="pointer-events-auto portfolio-card bg-white/5 backdrop-blur-2xl border border-white/10 p-5 sm:px-10 sm:py-8 md:px-14 md:py-9 rounded-3xl sm:rounded-[2.5rem] max-w-6xl md:max-w-7xl w-full grid grid-cols-1 md:grid-cols-6 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center relative z-10 shadow-2xl"
       >
         <div className="space-y-6 sm:space-y-8 order-2 md:order-1 md:col-span-4">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs sm:text-sm font-medium">
@@ -182,7 +182,7 @@ export default function About({ profile }) {
         </div>
 
         <div className="order-1 md:order-2 md:col-span-2 flex justify-center items-center">
-          <Body profileImage="/images/Ranjay_boys.jpg" />
+          <Body profileImage="/images/Ranjay_boys.png" />
         </div>
       </motion.div>
     </section>
