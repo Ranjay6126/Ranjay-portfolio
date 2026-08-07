@@ -56,13 +56,21 @@ export default function Projects() {
 
       <div className="max-w-6xl md:max-w-7xl w-full relative z-10">
         <div className="text-center mb-4 sm:mb-6 md:mb-7">
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-baseline justify-center gap-2 sm:gap-3">
-            <SectionIcon emoji={SECTION_EMOJIS.projects} />
-            <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
-              My Projects
-            </span>
-            <SectionIcon emoji={SECTION_EMOJIS.projects} />
-          </h2>
+          <a
+            href="https://github.com/Ranjay6126?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Ranjay's GitHub repositories"
+            className="inline-flex rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+          >
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-baseline justify-center gap-2 sm:gap-3">
+              <SectionIcon emoji={SECTION_EMOJIS.projects} />
+              <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
+                My Projects
+              </span>
+              <SectionIcon emoji={SECTION_EMOJIS.projects} />
+            </h2>
+          </a>
           <p className="text-white max-w-5xl mx-auto text-center text-sm sm:text-base md:text-lg px-2 leading-7">
             A selection of full-stack projects showcasing scalable architecture, secure authentication, API integrations, responsive user interfaces, and practical system design.
           </p>

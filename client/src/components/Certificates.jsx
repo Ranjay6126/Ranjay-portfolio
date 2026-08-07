@@ -25,13 +25,21 @@ export default function Certificates({ certificates = [] }) {
 
       <div className="max-w-6xl md:max-w-7xl w-full relative z-10">
         <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} className="text-center mb-4 sm:mb-6">
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-            <SectionIcon emoji={SECTION_EMOJIS.certificates} />
-            <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
-              Certificates
-            </span>
-            <SectionIcon emoji={SECTION_EMOJIS.certificates} />
-          </h2>
+          <a
+            href="https://drive.google.com/drive/folders/19VfUvD9pBOhp_Cxpikjv8AUoMv6oojyz?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Ranjay's certificates"
+            className="inline-flex rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+          >
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+              <SectionIcon emoji={SECTION_EMOJIS.certificates} />
+              <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
+                Certificates
+              </span>
+              <SectionIcon emoji={SECTION_EMOJIS.certificates} />
+            </h2>
+          </a>
           <div className="px-2 w-full flex justify-center">
             <p className="text-white text-[13px] sm:text-base md:text-lg leading-[1.65rem] sm:leading-7 md:leading-8 font-sans text-center max-w-[95%] sm:max-w-3xl md:max-w-4xl mx-auto break-words hyphens-auto">
               Verified certifications validating technical knowledge and hands-on skills in Data Structures &amp; Algorithms, Full-Stack Development, Frontend Engineering, Backend Development, Database Management, and Linux.
