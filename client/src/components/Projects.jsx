@@ -86,7 +86,7 @@ export default function Projects() {
                 key={i}
                 initial={{ opacity: 1, y: 0 }}
                 whileHover={{ y: -10 }}
-                className="group relative portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-3 sm:p-4 transition-colors duration-300 flex flex-col h-full"
+                className="projects-certificates-card group relative portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-3 sm:p-4 transition-colors duration-300 flex flex-col h-full"
               >
                 <div className="flex items-start justify-between mb-2 gap-2">
                   <h3 className="portfolio-card-title text-base sm:text-lg font-bold text-white transition-colors">

@@ -58,7 +58,7 @@ export default function Certificates({ certificates = [] }) {
               key={i}
               variants={cardVariants}
               whileHover={{ y: -10 }}
-              className="group portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-6 transition duration-300"
+              className="projects-certificates-card group portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-6 transition duration-300"
             >
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3">
                 <h3 className="portfolio-card-title text-lg sm:text-xl font-bold text-white transition-colors">{cert.title}</h3>
