@@ -1,14 +1,37 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { useTheme } from "../context/ThemeContext";
 import SectionIcon from "./SectionIcon";
 import { SECTION_EMOJIS } from "../constants/navIcons";
 
 export default function Services() {
+  const [sparkRun, setSparkRun] = useState(0);
+  const availabilityCardRef = useRef(null);
+  const isAvailabilityCardInView = useInView(availabilityCardRef, { once: true, amount: 0.45 });
   const { theme } = useTheme();
   const isLightMode = theme === "light";
   const headingTextClass = isLightMode ? "text-slate-950" : "text-white";
   const bodyTextClass = isLightMode ? "text-black" : "text-white";
   const panelTextClass = isLightMode ? "text-slate-950" : "text-white";
+
+  useEffect(() => {
+    const replaySpark = () => setSparkRun((run) => run + 1);
+
+    window.addEventListener("services-nav-click", replaySpark);
+    return () => {
+      window.removeEventListener("services-nav-click", replaySpark);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isAvailabilityCardInView) return undefined;
+
+    const sparkInterval = window.setInterval(() => {
+      setSparkRun((run) => run + 1);
+    }, 30_000);
+
+    return () => window.clearInterval(sparkInterval);
+  }, [isAvailabilityCardInView]);
 
   return (
     <section
@@ -44,12 +67,12 @@ export default function Services() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="pointer-events-auto portfolio-card bg-white/5 backdrop-blur-2xl border border-white/10 p-4 sm:p-6 md:p-8 rounded-3xl sm:rounded-[2.25rem] max-w-6xl md:max-w-7xl w-full relative z-10 shadow-2xl"
+        className="pointer-events-auto portfolio-card bg-white/5 backdrop-blur-2xl border border-white/10 p-4 sm:p-6 md:p-8 rounded-3xl sm:rounded-[2.25rem] max-w-6xl md:max-w-7xl w-full relative z-10 shadow-[0_12px_28px_rgba(0,0,0,0.28)]"
       >
         <div className="mb-3 flex justify-center">
           <a
             href="#contact"
-            className="service-opportunity-button relative glass-button inline-flex items-center justify-center gap-3 rounded-full border bg-gradient-to-r from-emerald-500/20 via-green-500/20 to-lime-500/20 px-6 py-3 text-sm font-semibold text-white shadow-[0_0_45px_rgba(16,185,129,0.22)] transition-all duration-300 hover:scale-[1.02] hover:bg-gradient-to-r hover:from-emerald-500/30 hover:via-green-500/25 hover:to-lime-500/25 sm:px-8 sm:text-base backdrop-blur-xl"
+            className="service-opportunity-button relative glass-button inline-flex items-center justify-center gap-3 rounded-full border bg-gradient-to-r from-emerald-500/20 via-green-500/20 to-lime-500/20 px-6 py-3 text-sm font-semibold text-white shadow-[0_0_45px_rgba(16,185,129,0.22),0_10px_24px_rgba(0,0,0,0.24)] transition-all duration-300 hover:scale-[1.02] hover:bg-gradient-to-r hover:from-emerald-500/30 hover:via-green-500/25 hover:to-lime-500/25 sm:px-8 sm:text-base backdrop-blur-xl"
           >
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -70,7 +93,7 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className={`portfolio-card backdrop-blur-xl border rounded-tr-3xl rounded-bl-3xl p-3 sm:p-4 ${
+              className={`portfolio-card shadow-[0_10px_24px_rgba(0,0,0,0.24)] backdrop-blur-xl border rounded-tr-3xl rounded-bl-3xl p-3 sm:p-4 ${
                 isLightMode ? "bg-white border-slate-200/80" : "bg-[#12131a] border-gray-800/80"
               }`}
             >
@@ -90,7 +113,7 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className={`portfolio-card backdrop-blur-xl border rounded-tr-3xl rounded-bl-3xl p-3 sm:p-4 ${
+              className={`portfolio-card shadow-[0_10px_24px_rgba(0,0,0,0.24)] backdrop-blur-xl border rounded-tr-3xl rounded-bl-3xl p-3 sm:p-4 ${
                 isLightMode ? "bg-white border-slate-200/80" : "bg-[#12131a] border-gray-800/80"
               }`}
             >
@@ -122,12 +145,22 @@ export default function Services() {
             </motion.div>
 
             <motion.div
+              ref={availabilityCardRef}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.25 }}
-              className="portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-tl-3xl rounded-tr-3xl p-3 sm:p-5 w-full max-w-md"
+              className="service-contact-card portfolio-card bg-white/5 shadow-[0_16px_38px_rgba(0,0,0,0.48),0_0_28px_rgba(16,185,129,0.12)] backdrop-blur-xl border border-white/10 rounded-tl-3xl rounded-tr-3xl rounded-br-3xl p-3 sm:p-5 w-full max-w-md"
             >
+              <motion.span
+                key={sparkRun}
+                aria-hidden="true"
+                className="service-contact-spark absolute z-10 h-2 w-2 rounded-full bg-emerald-400 pointer-events-none"
+                initial={{ opacity: 0, offsetDistance: "0%" }}
+                whileInView={{ opacity: [0, 1, 1, 0], offsetDistance: "100%" }}
+                viewport={{ once: true, amount: 0.45 }}
+                transition={{ duration: 4, ease: "easeInOut", times: [0, 0.06, 0.92, 1] }}
+              />
               <div className="space-y-2 text-sm leading-relaxed">
                 <h4 className={`whitespace-nowrap text-[11px] sm:text-sm font-bold ${panelTextClass} inline-flex items-center gap-1.5 sm:gap-2`}>
                   <span className="inline-block h-2 w-2 rounded-full bg-emerald-400 mr-2 align-middle animate-pulse" />Available Work & Freelance : (₹ 60K / Month)
