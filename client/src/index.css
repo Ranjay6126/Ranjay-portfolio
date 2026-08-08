@@ -29,6 +29,7 @@
   --card-border-hover: rgba(255, 255, 255, 0.38);
   --title-hover: #ffffff;
   --footer-divider: rgba(255, 255, 255, 0.28);
+  --content-card-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
 }
 
 html.light {
@@ -58,6 +59,7 @@ html.light {
   --card-border-hover: rgba(0, 0, 0, 0.2);
   --title-hover: #0f172a;
   --footer-divider: rgba(0, 0, 0, 0.16);
+  --content-card-shadow: 0 12px 28px rgba(59, 130, 246, 0.16);
 }
 
 body {
@@ -160,6 +162,56 @@ html.light .glass-button:hover:not(:disabled) {
   border: 1px solid rgba(255,255,255,0.10);
 }
 
+.contact-form-rgb-border {
+  padding: 1px;
+  background: linear-gradient(90deg, #ef4444, #22c55e, #3b82f6, #ef4444);
+  background-size: 250% 100%;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: contact-rgb-border 10s linear infinite;
+}
+
+.profile-image-rgb-border {
+  padding: 1px;
+  background: linear-gradient(90deg, #ef4444, #22c55e, #3b82f6, #ef4444);
+  background-size: 250% 100%;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: profile-image-rgb-border 7s linear forwards;
+}
+
+@keyframes contact-rgb-border {
+  0% {
+    opacity: 1;
+    background-position: 0 0;
+  }
+
+  30% {
+    opacity: 1;
+    background-position: 250% 0;
+  }
+
+  30.1%,
+  100% {
+    opacity: 0;
+    background-position: 250% 0;
+  }
+}
+
+@keyframes profile-image-rgb-border {
+  0% {
+    opacity: 1;
+    background-position: 0 0;
+  }
+
+  100% {
+    opacity: 1;
+    background-position: 250% 0;
+  }
+}
+
 html.light .contact-form-surface {
   background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(255,255,255,0.72));
   border: 0.5px solid rgba(0,0,0,0.14);
@@ -181,6 +233,16 @@ html.light .profile-image-ring {
 
 html.light .service-opportunity-button {
   border-color: rgba(0, 0, 0, 0.72) !important;
+}
+
+html.light .service-contact-card {
+  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.24), 0 0 28px rgba(16, 185, 129, 0.1) !important;
+}
+
+.service-contact-spark {
+  offset-path: inset(1px round 1.5rem);
+  offset-rotate: 0deg;
+  box-shadow: 0 0 8px 3px rgba(52, 211, 153, 0.9), 0 0 18px 5px rgba(16, 185, 129, 0.45);
 }
 
 html.light section {
@@ -252,6 +314,26 @@ html:not(.light) .contact-form-input {
 .portfolio-card {
   border-color: var(--border-color);
   transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.projects-certificates-card {
+  box-shadow: var(--content-card-shadow);
+  border-color: rgba(148, 163, 184, 0.34) !important;
+}
+
+#projects .projects-certificates-card:hover,
+#certificates .projects-certificates-card:hover {
+  box-shadow: var(--content-card-shadow);
+  border-color: rgba(203, 213, 225, 0.5) !important;
+}
+
+html.light .projects-certificates-card {
+  border-color: rgba(30, 41, 59, 0.3) !important;
+}
+
+html.light #projects .projects-certificates-card:hover,
+html.light #certificates .projects-certificates-card:hover {
+  border-color: rgba(30, 41, 59, 0.46) !important;
 }
 
 .portfolio-card:hover {
