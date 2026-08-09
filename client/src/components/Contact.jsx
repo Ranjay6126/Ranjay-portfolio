@@ -163,10 +163,6 @@ export default function Contact() {
         >
           <span
             aria-hidden="true"
-            className="contact-form-rgb-border pointer-events-none absolute inset-0 z-[1] rounded-tr-3xl rounded-bl-3xl"
-          />
-          <span
-            aria-hidden="true"
             className="contact-form-glow pointer-events-none absolute inset-0 z-0 rounded-tr-3xl rounded-bl-3xl bg-gradient-to-br from-white/10 via-white/5 to-transparent"
           />
           <span
@@ -228,10 +224,10 @@ export default function Contact() {
             <button
               type="submit"
               disabled={isSending}
-              className={`glass-button w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 rounded-full font-bold inline-flex items-center justify-center gap-3 mx-auto text-sm sm:text-base transition-all duration-300 border ${
+              className={`glass-button persistent-rgb-border w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 rounded-full font-bold inline-flex items-center justify-center gap-3 mx-auto text-sm sm:text-base transition-all duration-300 border ${
                 isSending
                   ? "bg-white/5 text-gray-500 cursor-not-allowed border-white/5"
-                  : "bg-green-500/10 border-green-500/20 text-green-400 hover:bg-green-500/20 hover:border-green-500/30 hover:text-green-300 hover:scale-[1.02] cursor-pointer"
+                  : "bg-green-500/10 border-green-500/20 text-white hover:bg-green-500/20 hover:border-green-500/30 hover:text-white hover:scale-[1.02] cursor-pointer"
               }`}
             >
               {isSending ? "Sending..." : <><FaPaperPlane className="text-sm sm:text-base" /> Send Message</>}
