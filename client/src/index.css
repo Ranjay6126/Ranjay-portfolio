@@ -162,14 +162,25 @@ html.light .glass-button:hover:not(:disabled) {
   border: 1px solid rgba(255,255,255,0.10);
 }
 
-.contact-form-rgb-border {
+.persistent-rgb-border {
+  isolation: isolate;
+  position: relative;
+}
+
+.persistent-rgb-border::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
   padding: 1px;
+  pointer-events: none;
   background: linear-gradient(90deg, #ef4444, #22c55e, #3b82f6, #ef4444);
   background-size: 250% 100%;
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  animation: contact-rgb-border 10s linear infinite;
+  animation: action-rgb-border 10s linear infinite;
 }
 
 .profile-image-rgb-border {
@@ -182,20 +193,14 @@ html.light .glass-button:hover:not(:disabled) {
   animation: profile-image-rgb-border 7s linear forwards;
 }
 
-@keyframes contact-rgb-border {
+@keyframes action-rgb-border {
   0% {
     opacity: 1;
     background-position: 0 0;
   }
 
-  30% {
-    opacity: 1;
-    background-position: 250% 0;
-  }
-
-  30.1%,
   100% {
-    opacity: 0;
+    opacity: 1;
     background-position: 250% 0;
   }
 }

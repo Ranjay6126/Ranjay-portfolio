@@ -113,7 +113,7 @@ export default function About({ profile }) {
               href={profile.resumePdf}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-button about-action-btn h-10 sm:h-12 px-5 sm:px-8 rounded-2xl bg-white/10 border border-white/10 text-white font-bold transition-all hover:bg-white/20 hover:border-white/20 hover:scale-105 flex items-center justify-center gap-2 cursor-pointer text-sm sm:text-base w-full sm:w-auto backdrop-blur-xl"
+              className="glass-button about-action-btn persistent-rgb-border h-10 sm:h-12 px-5 sm:px-8 rounded-2xl bg-white/10 border border-white/10 text-white font-bold transition-all hover:bg-white/20 hover:border-white/20 hover:scale-105 flex items-center justify-center gap-2 cursor-pointer text-sm sm:text-base w-full sm:w-auto backdrop-blur-xl"
             >
               <FontAwesomeIcon icon={faFileAlt} />
               <span>Resume</span>
