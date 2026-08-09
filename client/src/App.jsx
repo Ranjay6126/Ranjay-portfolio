@@ -17,6 +17,7 @@ import Resume from "./pages/Resume";
 const Background3D = lazy(() => import("./components/Background3D"));
 
 function Portfolio() {
+  // Load portfolio content once and pass it to sections that need it.
   const { portfolio, error } = usePortfolio();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -62,8 +63,8 @@ function Portfolio() {
           ) : (
             <>
               <About profile={portfolio?.profile} />
-              <TechStack />
-              <Projects />
+              <TechStack portfolio={portfolio} />
+              <Projects portfolio={portfolio} />
               <Certificates certificates={portfolio?.certificates} />
               <CodingProfiles profiles={portfolio?.codingProfiles} />
               <Education education={portfolio?.education} />

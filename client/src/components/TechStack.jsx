@@ -36,7 +36,6 @@ import { PiFigmaLogoFill } from "react-icons/pi";
 import { GrMysql, GrDatabase } from "react-icons/gr";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { usePortfolio } from "../hooks/usePortfolio";
 import SectionIcon from "./SectionIcon";
 import { SECTION_EMOJIS } from "../constants/navIcons";
 import { useTheme } from "../context/ThemeContext";
@@ -300,8 +299,7 @@ const Marquee = ({ techs, direction = "left", isLightMode, duration = 10 }) => {
   );
 };
 
-export default function TechStack() {
-  const { portfolio } = usePortfolio();
+export default function TechStack({ portfolio }) {
   const { theme } = useTheme();
   const isLightMode = theme === "light";
   const [leftCategoryIndex, setLeftCategoryIndex] = useState(0);

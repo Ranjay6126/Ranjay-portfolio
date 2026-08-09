@@ -6,7 +6,6 @@ const CACHE_TTL = 5 * 60 * 1000;
 
 export function usePortfolio() {
   const [portfolio, setPortfolio] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -14,18 +13,16 @@ export function usePortfolio() {
     let hasFreshCache = false;
 
     try {
+      // Render cached content immediately, then refresh it in the background.
       const cached = localStorage.getItem(CACHE_KEY);
       if (cached) {
         const parsed = JSON.parse(cached);
         if (Date.now() - parsed.timestamp < CACHE_TTL) {
           hasFreshCache = true;
-          if (!cancelled) {
-            setPortfolio(parsed.data);
-            setLoading(false);
-          }
+          if (!cancelled) setPortfolio(parsed.data);
         }
       }
-    } catch (_) {}
+    } catch {}
 
     api
       .getPortfolio()
@@ -43,10 +40,6 @@ export function usePortfolio() {
         if (cancelled) return;
         setPortfolio((prev) => prev || null);
         if (!hasFreshCache) setError(err.message);
-      })
-      .finally(() => {
-        if (cancelled) return;
-        setLoading(false);
       });
 
     return () => {
@@ -54,5 +47,5 @@ export function usePortfolio() {
     };
   }, []);
 
-  return { portfolio, loading, error };
+  return { portfolio, error };
 }

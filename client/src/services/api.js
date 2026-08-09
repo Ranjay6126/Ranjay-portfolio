@@ -1,4 +1,5 @@
 const API_BASE = import.meta.env.VITE_API_URL || "/api";
+// Reuse the request when several sections mount at the same time.
 let portfolioRequest = null;
 
 async function request(endpoint, options = {}) {
@@ -13,7 +14,7 @@ async function request(endpoint, options = {}) {
   let data;
   try {
     data = await response.json();
-  } catch (e) {
+  } catch {
     data = { message: "Invalid server response. Please try again later." };
   }
 

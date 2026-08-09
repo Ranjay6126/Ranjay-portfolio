@@ -3,7 +3,8 @@ import { createContext, useContext, useEffect, useState } from "react";
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState("dark");
+  // Read the saved choice once to prevent a light/dark flash on first render.
+  const [theme, setTheme] = useState(() => localStorage.getItem("portfolio-theme") || "dark");
 
   useEffect(() => {
     const root = document.documentElement;
