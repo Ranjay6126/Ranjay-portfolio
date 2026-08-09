@@ -72,7 +72,7 @@ export default function Services() {
         <div className="mb-3 flex justify-center">
           <a
             href="#contact"
-            className="service-opportunity-button relative glass-button inline-flex items-center justify-center gap-3 rounded-full border bg-gradient-to-r from-emerald-500/20 via-green-500/20 to-lime-500/20 px-6 py-3 text-sm font-semibold text-white shadow-[0_0_45px_rgba(16,185,129,0.22),0_10px_24px_rgba(0,0,0,0.24)] transition-all duration-300 hover:scale-[1.02] hover:bg-gradient-to-r hover:from-emerald-500/30 hover:via-green-500/25 hover:to-lime-500/25 sm:px-8 sm:text-base backdrop-blur-xl"
+            className="service-opportunity-button persistent-rgb-border relative glass-button inline-flex items-center justify-center gap-3 rounded-full border bg-gradient-to-r from-emerald-500/20 via-green-500/20 to-lime-500/20 px-6 py-3 text-sm font-semibold text-white shadow-[0_0_45px_rgba(16,185,129,0.22),0_10px_24px_rgba(0,0,0,0.24)] transition-all duration-300 hover:scale-[1.02] hover:bg-gradient-to-r hover:from-emerald-500/30 hover:via-green-500/25 hover:to-lime-500/25 sm:px-8 sm:text-base backdrop-blur-xl"
           >
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
