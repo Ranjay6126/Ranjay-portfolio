@@ -15,6 +15,13 @@ export default function Contact() {
   const [emailError, setEmailError] = useState("");
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const celebrationBursts = [
+    { left: "18%", delay: 0, rise: -38, rotate: -14 },
+    { left: "33%", delay: 0.12, rise: -58, rotate: 12 },
+    { left: "50%", delay: 0.04, rise: -70, rotate: -8 },
+    { left: "67%", delay: 0.18, rise: -56, rotate: 15 },
+    { left: "82%", delay: 0.08, rise: -38, rotate: -12 },
+  ];
 
   const validateEmailValue = (value) => {
     if (!value) {
@@ -156,6 +163,10 @@ export default function Contact() {
         >
           <span
             aria-hidden="true"
+            className="contact-form-rgb-border pointer-events-none absolute inset-0 z-[1] rounded-tr-3xl rounded-bl-3xl"
+          />
+          <span
+            aria-hidden="true"
             className="contact-form-glow pointer-events-none absolute inset-0 z-0 rounded-tr-3xl rounded-bl-3xl bg-gradient-to-br from-white/10 via-white/5 to-transparent"
           />
           <span
@@ -238,7 +249,22 @@ export default function Contact() {
         </motion.form>
       </div>
 
-      <footer className="w-full mt-6 sm:mt-8 md:mt-9 text-center text-xs sm:text-sm" style={{ color: "var(--text-primary)" }}>
+      <footer className="relative z-10 w-full mt-6 sm:mt-8 md:mt-9 text-center text-xs sm:text-sm" style={{ color: "var(--text-primary)" }}>
+        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-4 h-20">
+          {celebrationBursts.map((burst, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0, y: 18, scale: 0.45, rotate: 0 }}
+              whileInView={{ opacity: [0, 1, 1, 0], y: [18, burst.rise, burst.rise - 10], scale: [0.45, 1, 0.85], rotate: burst.rotate }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: 1.5, delay: burst.delay, ease: "easeOut", times: [0, 0.18, 0.7, 1] }}
+              className="absolute bottom-0 text-xl sm:text-2xl drop-shadow-[0_0_10px_rgba(250,204,21,0.8)]"
+              style={{ left: burst.left }}
+            >
+              🎉
+            </motion.span>
+          ))}
+        </div>
         <div className="flex justify-center gap-5 sm:gap-8 mb-4 sm:mb-6">
           <a href="https://www.facebook.com/mrranjay.prajapati/" target="_blank" rel="noopener noreferrer" className="transition-colors hover:opacity-70" style={{ color: "var(--text-primary)" }}>
             <FaFacebook className="text-2xl sm:text-3xl" />

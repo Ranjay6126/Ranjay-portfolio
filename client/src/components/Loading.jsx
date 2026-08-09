@@ -65,7 +65,11 @@ export default function Loading({ onComplete }) {
 
       <div className="relative h-full w-full">
         <div className="absolute left-1/2 top-1/2 h-0 w-0 -translate-x-1/2 -translate-y-1/2 scale-[0.72] sm:scale-100">
-          <div className="absolute left-1/2 top-1/2 z-10 h-72 w-72 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border border-white/20 bg-white/10 shadow-[0_12px_28px_rgba(0,0,0,0.24)] sm:h-96 sm:w-96">
+          <div className="absolute left-1/2 top-1/2 z-10 h-72 w-72 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border border-white/20 bg-white/10 shadow-[0_12px_28px_rgba(0,0,0,0.24)] sm:h-96 sm:w-96 lg:h-[calc(24rem-2.5cm)] lg:w-[calc(24rem-2.5cm)]">
+            <span
+              aria-hidden="true"
+              className="profile-image-rgb-border pointer-events-none absolute inset-0 z-20 rounded-full"
+            />
             <motion.img
               initial={{ opacity: 0, scale: 0.7 }}
               animate={{ opacity: 1, scale: 1 }}
