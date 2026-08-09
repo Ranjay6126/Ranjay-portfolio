@@ -69,7 +69,7 @@ export default function Certificates({ certificates = [] }) {
               </p>
               {cert.img && (
                 <div className="mb-4 overflow-hidden rounded-xl">
-                  <img src={cert.img} alt={cert.title} className="w-full h-36 sm:h-40 object-cover transition-transform duration-300 group-hover:scale-105" />
+                  <img src={cert.img} alt={cert.title} loading="lazy" decoding="async" className="w-full h-36 sm:h-40 object-cover transition-transform duration-300 group-hover:scale-105" />
                 </div>
               )}
               <button

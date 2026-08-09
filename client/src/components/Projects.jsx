@@ -1,15 +1,13 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
-import { usePortfolio } from "../hooks/usePortfolio";
 import SectionIcon from "./SectionIcon";
 import { SECTION_EMOJIS } from "../constants/navIcons";
 
 const DESCRIPTION_LIMIT = 120;
 
-export default function Projects() {
+export default function Projects({ portfolio }) {
   const [expanded, setExpanded] = useState({});
-  const { portfolio } = usePortfolio();
 
   const toggleExpand = (i) => setExpanded((prev) => ({ ...prev, [i]: !prev[i] }));
 
@@ -99,7 +97,7 @@ export default function Projects() {
 
                 {project.img && (
                   <div className="mb-2">
-                    <img src={project.img} alt={project.title} className="w-full h-40 sm:h-44 rounded-2xl object-cover" />
+                    <img src={project.img} alt={project.title} loading="lazy" decoding="async" className="w-full h-40 sm:h-44 rounded-2xl object-cover" />
                   </div>
                 )}
 

@@ -1,12 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useTheme } from "../context/ThemeContext";
 import { NAV_ITEMS } from "../constants/navIcons";
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState(NAV_ITEMS[0].id);
   const [isMobile, setIsMobile] = useState(false);
+  const scrollFrame = useRef(null);
   const { theme, toggleTheme } = useTheme();
   const isLightMode = theme === "light";
 
@@ -47,15 +48,25 @@ export default function Navbar() {
       }
     }
 
-    setActiveSection(current);
+    setActiveSection((previous) => (previous === current ? previous : current));
   }, [isMobile]);
 
   useEffect(() => {
     updateActiveSection();
-    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    // Limit layout measurements to one animation frame while the user scrolls.
+    const handleScroll = () => {
+      if (scrollFrame.current !== null) return;
+      scrollFrame.current = window.requestAnimationFrame(() => {
+        scrollFrame.current = null;
+        updateActiveSection();
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", updateActiveSection);
     return () => {
-      window.removeEventListener("scroll", updateActiveSection);
+      if (scrollFrame.current !== null) window.cancelAnimationFrame(scrollFrame.current);
+      window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", updateActiveSection);
     };
   }, [updateActiveSection]);
