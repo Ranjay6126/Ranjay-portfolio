@@ -7,12 +7,16 @@ import { NAV_ITEMS } from "../constants/navIcons";
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState(NAV_ITEMS[0].id);
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
   const scrollFrame = useRef(null);
   const { theme, toggleTheme } = useTheme();
   const isLightMode = theme === "light";
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1024);
+    };
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
@@ -74,7 +78,11 @@ export default function Navbar() {
   return (
     <div
       className={`fixed z-50 left-1/2 -translate-x-1/2 transition-all duration-300 ${
-        isMobile ? "bottom-2.5 w-[99%] max-w-[520px] px-0.5" : "top-6"
+        isMobile
+          ? "bottom-2.5 w-[99%] max-w-[520px] px-0.5"
+          : isTablet
+            ? "top-4 w-[calc(100%-2rem)] max-w-[700px]"
+            : "top-6"
       }`}
     >
       <motion.nav
@@ -82,7 +90,7 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className={`relative overflow-hidden ${
-          isMobile ? "flex items-center justify-between gap-1 px-1.5 py-1.5" : "flex items-center gap-1"
+          isMobile || isTablet ? "flex items-center justify-between gap-1 px-1.5 py-1.5" : "flex items-center gap-1"
         } navbar-glass backdrop-blur-3xl backdrop-saturate-200 rounded-full p-1`}
       >
         <span
@@ -114,7 +122,7 @@ export default function Navbar() {
             key={item.id}
             onClick={() => scrollToSection(item.id)}
             className={`navbar-item relative rounded-full text-sm font-medium transition-all duration-300 flex items-center justify-center gap-2 ${
-              isMobile ? "p-1.5 min-w-[38px] min-h-[38px]" : "px-5 py-2.5"
+              isMobile || isTablet ? "p-1.5 min-w-[38px] min-h-[38px]" : "px-5 py-2.5"
             } ${
               activeSection === item.id
                 ? "text-white shadow-lg"
@@ -125,15 +133,15 @@ export default function Navbar() {
               boxShadow: "0 10px 25px -5px var(--nav-active-shadow)"
             } : {}}
           >
-            <FontAwesomeIcon icon={item.icon} className={isMobile ? "w-4 h-4" : "w-4 h-4"} />
-            <span className={isMobile ? "hidden" : "hidden md:inline"}>{item.label}</span>
+            <FontAwesomeIcon icon={item.icon} className="w-4 h-4" />
+            <span className={isMobile || isTablet ? "hidden" : "hidden md:inline"}>{item.label}</span>
           </button>
         ))}
         <button
           onClick={toggleTheme}
           title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
           className={`navbar-item relative rounded-full transition-all duration-300 flex items-center justify-center ${
-            isMobile ? "p-1.5 min-w-[38px] min-h-[38px]" : "px-3 py-2.5"
+            isMobile || isTablet ? "p-1.5 min-w-[38px] min-h-[38px]" : "px-3 py-2.5"
           } text-white hover:text-gray-100 hover:cursor-pointer`}
           style={{ 
             flexShrink: 0
@@ -144,7 +152,7 @@ export default function Navbar() {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className={`${isMobile ? "w-7 h-7" : "w-4 h-4"} text-yellow-300`}
+              className={`${isMobile || isTablet ? "w-5 h-5" : "w-4 h-4"} text-yellow-300`}
             >
               <path d="M12 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm0 16a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm9-5a1 1 0 010 2h-1a1 1 0 110-2h1zM4 11a1 1 0 010 2H3a1 1 0 110-2h1zm13.657-6.657a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707zM6.343 17.657a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707zM17.657 17.657a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 011.414-1.414l.707.707zM6.343 6.343a1 1 0 01-1.414 1.414l-.707-.707A1 1 0 015.636 5.636l.707.707zM12 7a5 5 0 100 10A5 5 0 0012 7z" />
             </svg>
@@ -153,7 +161,7 @@ export default function Navbar() {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className={`${isMobile ? "w-7 h-7" : "w-4 h-4"} text-indigo-300`}
+              className={`${isMobile || isTablet ? "w-5 h-5" : "w-4 h-4"} text-indigo-300`}
             >
               <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
             </svg>
