@@ -7,7 +7,7 @@ import { useTheme } from "../context/ThemeContext";
 import Body from "./Body";
 import RotatingText from "./RotatingText";
 
-export default function About({ profile }) {
+export default function About({ profile, onInstallApp }) {
   if (!profile) return null;
 
   const { theme } = useTheme();
@@ -25,7 +25,6 @@ export default function About({ profile }) {
   const handleInstagramClick = () => window.open(profile.instagram, "_blank");
   const handleTwitterClick = () => window.open(profile.twitter || "https://x.com/Ranjay10220", "_blank");
   const handleFacebookClick = () => window.open(profile.facebook || "https://www.facebook.com/mrranjay.prajapati/", "_blank");
-  const handleGmailClick = () => window.open(`mailto:${profile.email}`, "_blank");
 
   return (
     <section
@@ -40,15 +39,48 @@ export default function About({ profile }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="pointer-events-auto portfolio-card bg-white/5 backdrop-blur-2xl border border-white/10 p-5 sm:px-10 sm:py-8 md:px-14 md:py-9 rounded-3xl sm:rounded-[2.5rem] max-w-6xl md:max-w-7xl w-full grid grid-cols-1 md:grid-cols-6 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center relative z-10 shadow-2xl"
+        className="pointer-events-auto portfolio-card bg-white/5 backdrop-blur-2xl border border-white/10 p-5 sm:px-10 sm:py-8 md:px-14 md:py-9 rounded-3xl sm:rounded-[2.5rem] max-w-6xl md:max-w-7xl w-full grid grid-cols-1 lg:grid-cols-6 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center relative z-10 shadow-2xl"
       >
-        <div className="space-y-6 sm:space-y-8 order-2 md:order-1 md:col-span-4">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs sm:text-sm font-medium">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-            </span>
-            Available for Work
+        <button
+          type="button"
+          onClick={(event) => {
+            event.stopPropagation();
+            onInstallApp();
+          }}
+          className="hidden md:inline-flex absolute top-9 right-14 z-[60] pointer-events-auto cursor-pointer items-center gap-2 px-4 py-2 rounded-full border text-sm font-medium transition-opacity hover:opacity-85"
+          style={{
+            backgroundColor: "rgba(34, 197, 94, 0.1)",
+            borderColor: "rgba(34, 197, 94, 0.2)",
+            color: isLightMode ? "#000000" : "#ffffff",
+          }}
+          aria-label="Download Ranjay Portfolio app"
+        >
+          <FontAwesomeIcon icon={faDownload} />
+          Download Apps
+        </button>
+        <div className="space-y-6 sm:space-y-8 order-2 md:order-1 lg:col-span-4">
+          <div className="flex items-center justify-between gap-3">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs sm:text-sm font-medium">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              Available for Work
+            </div>
+            <button
+              type="button"
+              onClick={onInstallApp}
+              className="inline-flex md:hidden shrink-0 items-center gap-2 px-4 py-2 rounded-full border text-xs sm:text-sm font-medium transition-opacity hover:opacity-85"
+              style={{
+                backgroundColor: "rgba(34, 197, 94, 0.1)",
+                borderColor: "rgba(34, 197, 94, 0.2)",
+                color: isLightMode ? "#000000" : "#ffffff",
+              }}
+              aria-label="Download Ranjay Portfolio app"
+            >
+              <FontAwesomeIcon icon={faDownload} />
+              Download Apps
+            </button>
           </div>
 
           <div>
@@ -88,20 +120,26 @@ export default function About({ profile }) {
           </p>
 
           <div className="border-t border-white/10 pt-5 sm:pt-8">
-            <div className="flex gap-4 sm:gap-7 md:gap-8 flex-wrap items-center">
+            <div className="flex gap-4 sm:gap-7 md:gap-2 lg:gap-8 flex-wrap md:flex-nowrap items-center md:justify-between">
               {profile.stats.map((stat, i) => (
-                <div key={i} className="flex flex-col items-center">
-                  <h4 className="text-2xl sm:text-3xl font-bold text-white">{stat.value}</h4>
-                  <p className="text-xs sm:text-sm text-gray-400">{stat.label}</p>
+                <div key={i} className="flex flex-col items-center shrink-0">
+                  <h4 className="text-2xl sm:text-3xl md:text-2xl lg:text-3xl font-bold text-white">{stat.value}</h4>
+                  <p className="text-xs sm:text-sm md:text-[11px] lg:text-sm text-gray-400 whitespace-nowrap">{stat.label}</p>
                 </div>
               ))}
-              <div className="flex items-center gap-2 sm:gap-3 text-white ml-0 font-normal sm:font-medium text-sm sm:text-base">
-                <FontAwesomeIcon icon={faEnvelope} className="text-base sm:text-xl text-white" />
-                <span className="break-all">{profile.email}</span>
+              <div className="flex items-center gap-2 sm:gap-3 md:gap-1.5 lg:gap-3 text-white ml-0 font-normal sm:font-medium text-sm sm:text-base md:text-xs lg:text-base shrink-0">
+                <FontAwesomeIcon icon={faEnvelope} className="text-base sm:text-xl md:text-base lg:text-xl text-white" />
+                <a
+                  href={`mailto:${profile.email}`}
+                  className="break-all md:whitespace-nowrap hover:underline underline-offset-4"
+                  aria-label={`Email ${profile.email}`}
+                >
+                  {profile.email}
+                </a>
               </div>
               {profile.location && (
-                <div className="flex items-center gap-2 sm:gap-3 text-white ml-0 font-normal sm:font-medium text-sm sm:text-base">
-                  <FontAwesomeIcon icon={faLocationDot} className="text-base sm:text-xl text-white" />
+                <div className="flex items-center gap-2 sm:gap-3 md:gap-1.5 lg:gap-3 text-white ml-0 font-normal sm:font-medium text-sm sm:text-base md:text-xs lg:text-base shrink-0">
+                  <FontAwesomeIcon icon={faLocationDot} className="text-base sm:text-xl md:text-base lg:text-xl text-white" />
                   <span className="whitespace-nowrap">{profile.location}</span>
                 </div>
               )}
@@ -181,7 +219,7 @@ export default function About({ profile }) {
           </div>
         </div>
 
-        <div className="order-1 md:order-2 md:col-span-2 flex justify-center items-center">
+        <div className="order-1 md:order-2 lg:col-span-2 flex justify-center items-center">
           <Body profileImage="/images/Ranjay_boys.png" />
         </div>
       </motion.div>

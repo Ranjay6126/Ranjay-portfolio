@@ -171,7 +171,14 @@ export default function Services() {
                   <span className="mr-2">📍</span>Address : Bengaluru, Whitefield
                 </p>
                 <p className={`${panelTextClass} text-[11px] sm:text-sm font-semibold`}>
-                  <span className="mr-2">📧</span>Email : panditranjay33@gmail.com
+                  <span className="mr-2">📧</span>Email : {" "}
+                  <a
+                    href="mailto:panditranjay33@gmail.com"
+                    className="hover:underline underline-offset-4"
+                    aria-label="Email panditranjay33@gmail.com"
+                  >
+                    panditranjay33@gmail.com
+                  </a>
                 </p>
               </div>
             </motion.div>
