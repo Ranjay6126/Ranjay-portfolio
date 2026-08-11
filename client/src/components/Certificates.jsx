@@ -8,23 +8,13 @@ export default function Certificates({ certificates = [] }) {
     if (url && url !== "#") window.open(url, "_blank", "noopener,noreferrer");
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
-
   return (
     <section id="certificates" className="min-h-0 md:min-h-[70vh] flex py-2 sm:py-3 px-4 sm:px-6 flex-col items-center relative overflow-hidden">
       <div className="absolute top-20 left-[-10%] w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-20 right-[-10%] w-96 h-96 bg-cyan-500/20 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-6xl md:max-w-7xl w-full relative z-10">
-        <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} className="text-center mb-4 sm:mb-6">
+        <div className="text-center mb-4 sm:mb-6">
           <a
             href="https://drive.google.com/drive/folders/19VfUvD9pBOhp_Cxpikjv8AUoMv6oojyz?usp=sharing"
             target="_blank"
@@ -45,18 +35,12 @@ export default function Certificates({ certificates = [] }) {
               Verified certifications validating technical knowledge and hands-on skills in Data Structures &amp; Algorithms, Full-Stack Development, Frontend Engineering, Backend Development, Database Management, and Linux.
             </p>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:gap-7"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:gap-7">
           {certificates.map((cert, i) => (
             <motion.article
               key={i}
-              variants={cardVariants}
               whileHover={{ y: -10 }}
               className="projects-certificates-card group portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-6 transition duration-300"
             >
@@ -69,7 +53,7 @@ export default function Certificates({ certificates = [] }) {
               </p>
               {cert.img && (
                 <div className="mb-4 overflow-hidden rounded-xl">
-                  <img src={cert.img} alt={cert.title} loading="lazy" decoding="async" className="w-full h-36 sm:h-40 object-cover transition-transform duration-300 group-hover:scale-105" />
+                  <img src={cert.img} alt={cert.title} loading="eager" decoding="async" className="w-full h-36 sm:h-40 object-cover transition-transform duration-300 group-hover:scale-105" />
                 </div>
               )}
               <button
@@ -81,7 +65,7 @@ export default function Certificates({ certificates = [] }) {
               </button>
             </motion.article>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

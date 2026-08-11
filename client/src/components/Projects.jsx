@@ -97,7 +97,7 @@ export default function Projects({ portfolio }) {
 
                 {project.img && (
                   <div className="mb-2">
-                    <img src={project.img} alt={project.title} loading="lazy" decoding="async" className="w-full h-40 sm:h-44 rounded-2xl object-cover" />
+                    <img src={project.img} alt={project.title} loading="eager" decoding="async" className="w-full h-40 sm:h-44 rounded-2xl object-cover" />
                   </div>
                 )}
 

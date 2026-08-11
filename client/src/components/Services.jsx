@@ -140,7 +140,7 @@ export default function Services() {
               <img
                 src="/images/boy.png"
                 alt="Developer portrait"
-                loading="lazy"
+                loading="eager"
                 decoding="async"
                 className="h-56 sm:h-64 lg:h-72 w-full object-contain"
               />
