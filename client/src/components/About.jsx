@@ -187,7 +187,7 @@ export default function About({ profile }) {
         </div>
 
         <div className="order-1 md:order-2 lg:col-span-2 flex justify-center items-center">
-          <Body profileImage="/images/Ranjay_boys.png" />
+          <Body profileImage="images/Ranjay_boys.png" />
         </div>
       </motion.div>
     </section>

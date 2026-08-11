@@ -138,7 +138,7 @@ export default function Services() {
               className="max-h-64 overflow-hidden rounded-tl-3xl rounded-tr-3xl lg:max-h-72"
             >
               <img
-                src="/images/boy.png"
+                src="images/boy.png"
                 alt="Developer portrait"
                 loading="eager"
                 decoding="async"
