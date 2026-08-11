@@ -1,164 +1,136 @@
-export default function Resume() {
-  return (
-    <div className="flex flex-col justify-center items-center min-h-screen bg-gray-100 p-8 font-sans">
-      <style>
-        {`
-          @media print {
-            @page { margin: 0; }
-            body { margin: 0; }
-            .print-hidden { display: none !important; }
-          }
-        `}
-      </style>
+const resumeData = {
+  name: "Ranjay Prajapati",
+  title: "Full-Stack Software Engineer",
+  email: "panditranjay33@gmail.com",
+  phone: "+91 8271440846",
+  location: "Bengaluru, Whitefield",
+  linkedin: "https://www.linkedin.com/in/ranjay-pandit-prajapati/",
+  github: "https://github.com/Ranjay6126",
+  summary:
+    "Results-driven Full-Stack Software Engineer with a B.Tech. in Computer Science and Engineering, specializing in Software Engineering and Cyber Security. Experienced in building secure, scalable, user-centric MERN applications with clean architecture and maintainable code.",
+  skills: [
+    ["Languages", "C++, Java, Python, JavaScript, TypeScript"],
+    ["Frontend", "HTML5, CSS, React, React Router, Redux, Tailwind CSS"],
+    ["Backend & Databases", "Node.js, Express.js, MongoDB, MySQL, GraphQL, JWT"],
+    ["Tools & Platforms", "Git, GitHub, Docker, VS Code, Postman, Figma, AWS, Linux"],
+    ["Security", "Wireshark, Nmap, Metasploit, Burp Suite, Nessus, Nikto, Kali Linux, OWASP Top 10"],
+  ],
+  projects: [
+    {
+      title: "Attendance Management System",
+      date: "Nov 2025 - Mar 2026",
+      tech: "MERN Stack, Tailwind CSS, JWT, MongoDB",
+      link: "https://github.com/Ranjay6126/Attendance-Management-System",
+      description:
+        "Built a role-based attendance system for Super Admin, Admin, and Employees with live selfie attendance, GPS tracking, admin verification, attendance rectification, Excel export, notifications, and secure MongoDB storage.",
+    },
+    {
+      title: "Quick Chat App",
+      date: "Jun 2025 - Aug 2025",
+      tech: "React.js, Node.js, Express.js, MongoDB, Socket.io",
+      link: "https://github.com/Ranjay6126/Quick-Chat",
+      description:
+        "Created a real-time MERN chat application with Socket.io, secure authentication, chat rooms, live updates, and a responsive interface for smooth multi-user communication.",
+    },
+    {
+      title: "Book Store System",
+      date: "Sep 2024 - Dec 2025",
+      tech: "React.js, Node.js, Express.js, MongoDB",
+      link: "https://github.com/Ranjay6126/Book-Store-Project-",
+      description:
+        "Developed a full-stack bookstore application with browsing, search, and CRUD book management, focused on efficient data handling and a responsive user interface.",
+    },
+    {
+      title: "URL Shortener",
+      date: "Mar 2024 - May 2024",
+      tech: "Node.js, Express.js, MongoDB, JWT, EJS",
+      link: "https://github.com/Ranjay6126/URL-SHORTENER",
+      description:
+        "Built an MVC-based URL shortener with JWT authentication, short-link creation and management, and a responsive interface.",
+    },
+  ],
+  certificates: [
+    ["Full Stack Web Development - Skill Up", "GeeksforGeeks", "Jan 2026", "https://www.geeksforgeeks.org/certificate/1a7269239921954f96d5f50c9ba65c08"],
+    ["Data Structures and Algorithms", "GeeksforGeeks", "Jun 2024", "https://drive.google.com/file/d/1XAzkNBXkmUcf_1YEM2i1ag_R64hN3cM6/view"],
+    ["Backend Development Course", "Physics Wallah", "Aug 2024", "https://drive.google.com/file/d/143N_LTE5ygGV9YWAIHYzkpghRl7QBsjF/view?pli=1"],
+    ["SQL (Structured Query Language)", "Great Learning", "Nov 2023", "https://drive.google.com/file/d/1nA9xuBUdikGHf30lr-xhtET2UmOjwpZN/view"],
+    ["CompTIA Linux+ XK0-005", "Cybrary", "Sep 2024", "https://drive.google.com/file/d/1WUCJAAewLZO0XnL5WlGujsPqO_s6tUgx/view"],
+  ],
+  education: [
+    ["B.Tech. in Computer Science & Engineering", "Lovely Professional University, Punjab", "Aug 2021 - May 2025", "CGPA: 6.7"],
+    ["National Examinations Board (XI) & (XII)", "Hetauda School of Management", "Apr 2018 - Mar 2020", "CGPA: 7.1"],
+    ["Secondary Education Examination (X)", "Shree Adhunik Rastriya Secondary School", "Apr 2017 - Mar 2018", "CGPA: 8.12"],
+  ],
+};
 
-      <button
-        onClick={() => window.print()}
-        className="mb-6 px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-colors print-hidden"
-      >
+export default function Resume() {
+  const { name, title, email, phone, location, linkedin, github, summary, skills, projects, certificates, education } = resumeData;
+
+  return (
+    <div className="flex flex-col items-center min-h-screen bg-gray-100 p-4 font-sans sm:p-8">
+      <style>{`@media print { @page { margin: 0; } body { margin: 0; } .print-hidden { display: none !important; } }`}</style>
+
+      <button onClick={() => window.print()} className="print-hidden mb-6 rounded-lg bg-blue-600 px-6 py-2 font-semibold text-white shadow-md transition-colors hover:bg-blue-700">
         Download PDF
       </button>
 
-      {/* A4 Paper Container */}
-      <div className="bg-white text-gray-800 w-[210mm] min-h-[297mm] shadow-2xl p-6 text-[14px] leading-normal relative print:shadow-none print:w-full print:h-auto print:p-0">
-
-        {/* Header */}
-        <header className="flex justify-between items-start mb-4 border-b-2 border-gray-300 pb-2">
-          <div>
-            <h1 className="text-4xl font-bold text-blue-800 mb-1">Ranjay Prajapati</h1>
-            <div className="text-gray-700 font-medium">
-              <p>LinkedIn: <a href="https://www.linkedin.com/in/ranjay-pandit-prajapati/" className="text-blue-600 hover:underline">ranjay-pandit-prajapati</a></p>
-              <p>GitHub: <a href="https://github.com/Ranjay6126" className="text-blue-600 hover:underline">Ranjay6126</a></p>
-            </div>
-          </div>
-          <div className="text-right text-gray-700 font-medium">
-            <p>Email: <a href="mailto:panditranjay33@gmail.com" className="text-blue-600 hover:underline">panditranjay33@gmail.com</a></p>
-            <p>Mobile: +91-8789429404</p>
+      <main className="relative w-full max-w-[210mm] bg-white p-6 text-[13px] leading-normal text-gray-800 shadow-2xl print:w-full print:max-w-none print:p-0 print:shadow-none">
+        <header className="mb-4 border-b-2 border-gray-300 pb-3">
+          <h1 className="mb-1 text-4xl font-bold text-blue-800">{name}</h1>
+          <p className="mb-2 font-semibold text-gray-700">{title}</p>
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-gray-700">
+            <a href={linkedin} className="text-blue-600 hover:underline">LinkedIn</a>
+            <a href={github} className="text-blue-600 hover:underline">GitHub</a>
+            <a href={`mailto:${email}`} className="text-blue-600 hover:underline">{email}</a>
+            <span>{phone}</span>
+            <span>{location}</span>
           </div>
         </header>
 
-        {/* Skills */}
-        <section className="mb-4">
-          <h2 className="text-blue-800 font-bold text-lg uppercase border-b border-gray-300 mb-2 tracking-wide">Skills</h2>
+        <ResumeSection title="Profile">
+          <p>{summary}</p>
+        </ResumeSection>
+
+        <ResumeSection title="Skills">
           <ul className="space-y-1">
-            <li><span className="font-bold text-blue-900">Languages:</span> C++, JavaScript, Java, Python</li>
-            <li><span className="font-bold text-blue-900">Frameworks:</span> React.js, Node.js, Express.js, Next.js, Tailwind CSS</li>
-            <li><span className="font-bold text-blue-900">Databases:</span> MongoDB, MySQL</li>
-            <li><span className="font-bold text-blue-900">Tools & Platform:</span> Git, GitHub, Docker, VS Code, Postman</li>
-            <li><span className="font-bold text-blue-900">Soft Skills:</span> Problem-Solving, Quick Learner</li>
+            {skills.map(([label, values]) => <li key={label}><span className="font-bold text-blue-900">{label}:</span> {values}</li>)}
           </ul>
-        </section>
+        </ResumeSection>
 
-        {/* Projects */}
-        <section className="mb-4">
-          <h2 className="text-blue-800 font-bold text-lg uppercase border-b border-gray-300 mb-2 tracking-wide">Projects</h2>
-
-          <div className="mb-4">
-            <div className="flex justify-between items-baseline mb-1">
-              <h3 className="font-bold text-blue-900 text-sm">
-                CodeNexus - Online Coding Practice & Evaluation <span className="text-black font-normal">| React.js, Node.js, Redis, MongoDB |</span> <a href="#" className="text-blue-600 hover:underline">Github</a>
-              </h3>
-              <span className="text-gray-600 font-medium text-sm">Nov '25</span>
-            </div>
-            <ul className="list-disc list-outside ml-5 space-y-1 text-gray-700">
-              <li>Developed a full-stack coding platform enabling real-time code execution and evaluation across multiple languages through the <span className="font-bold text-black">Judge0</span> API.</li>
-              <li>Integrated the <span className="font-bold text-black">Monaco Code Editor</span> to provides a VS Code-like environment with syntax highlighting, autocompletion and real-time code editing.</li>
-              <li>Built an <span className="font-bold text-black">AI Debugging</span> agent that interprets compiler/runtime errors and provides guided fixes for faster debugging.</li>
-            </ul>
+        <ResumeSection title="Projects">
+          <div className="space-y-3">
+            {projects.map((project) => (
+              <article key={project.title}>
+                <div className="flex flex-wrap justify-between gap-x-3">
+                  <h3 className="font-bold text-blue-900">{project.title} <span className="font-normal text-black">| {project.tech} |</span> <a href={project.link} className="font-normal text-blue-600 hover:underline">GitHub</a></h3>
+                  <span className="text-sm font-medium text-gray-600">{project.date}</span>
+                </div>
+                <p className="mt-1 text-gray-700">{project.description}</p>
+              </article>
+            ))}
           </div>
+        </ResumeSection>
 
-          <div>
-            <div className="flex justify-between items-baseline mb-1">
-              <h3 className="font-bold text-blue-900 text-[15px]">
-                GST Invoice Generator <span className="text-black font-normal">| React.js, Node.js, Bootstrap, MongoDB |</span> <a href="#" className="text-blue-600 hover:underline">Github</a>
-              </h3>
-              <span className="text-gray-600 font-medium text-sm">Aug '25</span>
-            </div>
-            <ul className="list-disc list-outside ml-5 space-y-1 text-gray-700">
-              <li>Built a responsive GST billing application that enables users to generate GST-compliant invoices with automated CGST, SGST and IGST calculation.</li>
-              <li>Implemented real-time invoice creation with dynamic item management, auto-calculated totals and download PDF invoices.</li>
-              <li>Integrated MongoDB to store shop details, transport ID with optimized schema design for fast retrieval.</li>
-            </ul>
-          </div>
-        </section>
+        <ResumeSection title="Achievements">
+          <p>• Solved 300+ Data Structures and Algorithms problems across LeetCode and GeeksforGeeks.</p>
+        </ResumeSection>
 
-        {/* Achievements */}
-        <section className="mb-4">
-          <h2 className="text-blue-800 font-bold text-lg uppercase border-b border-gray-300 mb-2 tracking-wide">Achievements</h2>
+        <ResumeSection title="Certificates">
           <ul className="space-y-1">
-            <li className="flex justify-between">
-              <span><span className="text-black">•</span> Solved 220+ DSA problems on LeetCode/GFG.</span>
-              <span className="text-gray-600 font-medium text-sm">Oct '25</span>
-            </li>
-            <li className="flex justify-between">
-              <span><span className="text-black">•</span> Secured AIR-7 in Coding Ninja Premier League coding completion.</span>
-              <span className="text-gray-600 font-medium text-sm">May 24</span>
-            </li>
+            {certificates.map(([certificate, issuer, date, link]) => <li key={certificate} className="flex flex-wrap justify-between gap-x-3"><span>• {certificate} - <a href={link} className="text-blue-600 hover:underline">{issuer}</a></span><span className="text-sm font-medium text-gray-600">{date}</span></li>)}
           </ul>
-        </section>
+        </ResumeSection>
 
-        {/* Certificates */}
-        <section className="mb-4">
-          <h2 className="text-blue-800 font-bold text-lg uppercase border-b border-gray-300 mb-2 tracking-wide">Certificates</h2>
-          <ul className="space-y-1">
-            <li className="flex justify-between">
-              <span><span className="text-black">•</span> Privacy and Security in Online Social Media - <a href="#" className="text-blue-600 hover:underline">NPTEL</a></span>
-              <span className="text-gray-600 font-medium text-sm">Oct '25</span>
-            </li>
-            <li className="flex justify-between">
-              <span><span className="text-black">•</span> Data Structures and Algorithms Certification - <a href="#" className="text-blue-600 hover:underline">LPU</a></span>
-              <span className="text-gray-600 font-medium text-sm">Jul '25</span>
-            </li>
-            <li className="flex justify-between">
-              <span><span className="text-black">•</span> Cloud Computing - <a href="#" className="text-blue-600 hover:underline">NPTEL</a></span>
-              <span className="text-gray-600 font-medium text-sm">Apr '25</span>
-            </li>
-            <li className="flex justify-between">
-              <span><span className="text-black">•</span> Coding Ninja Preimier League - <a href="#" className="text-blue-600 hover:underline">Coding Ninja</a></span>
-              <span className="text-gray-600 font-medium text-sm">May 24</span>
-            </li>
-          </ul>
-        </section>
-
-        {/* Education */}
-        <section>
-          <h2 className="text-blue-800 font-bold text-lg uppercase border-b border-gray-300 mb-2 tracking-wide">Education</h2>
-
-          <div className="mb-3">
-            <div className="flex justify-between font-bold text-blue-900">
-              <h3>Lovely Professional University</h3>
-              <span className="text-gray-600 font-medium text-sm text-black">Punjab, India</span>
-            </div>
-            <div className="flex justify-between">
-              <p className="text-gray-800">Bachelor of Technology - Computer Science and Engineering: <span className="font-bold">CGPA: 7.64</span></p>
-              <span className="text-gray-600 font-medium text-sm">Aug '23 - Present</span>
-            </div>
+        <ResumeSection title="Education" last>
+          <div className="space-y-3">
+            {education.map(([degree, institution, duration, grade]) => <div key={degree}><div className="flex flex-wrap justify-between gap-x-3 font-bold text-blue-900"><h3>{institution}</h3><span className="text-sm font-medium text-gray-600">{duration}</span></div><p>{degree}: <span className="font-bold">{grade}</span></p></div>)}
           </div>
-
-          <div className="mb-3">
-            <div className="flex justify-between font-bold text-blue-900">
-              <h3>B.N Saha DAV Public School</h3>
-              <span className="text-gray-600 font-medium text-sm text-black">Giridih, Jharkhand</span>
-            </div>
-            <div className="flex justify-between">
-              <p className="text-gray-800">Intermediate: <span className="font-bold">Percentage: 83%</span></p>
-              <span className="text-gray-600 font-medium text-sm">Apr '20 - Mar ' 22</span>
-            </div>
-          </div>
-
-          <div>
-            <div className="flex justify-between font-bold text-blue-900">
-              <h3>B.N Saha DAV Public School</h3>
-              <span className="text-gray-600 font-medium text-sm text-black">Giridih, Jharkhand</span>
-            </div>
-            <div className="flex justify-between">
-              <p className="text-gray-800">Matriculation: <span className="font-bold">Percentage: 82%</span></p>
-              <span className="text-gray-600 font-medium text-sm">Apr '19 - Mar ' 20</span>
-            </div>
-          </div>
-
-        </section>
-
-      </div>
+        </ResumeSection>
+      </main>
     </div>
   );
+}
+
+function ResumeSection({ title, children, last = false }) {
+  return <section className={last ? "" : "mb-4"}><h2 className="mb-2 border-b border-gray-300 text-lg font-bold uppercase tracking-wide text-blue-800">{title}</h2>{children}</section>;
 }
