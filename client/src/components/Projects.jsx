@@ -66,6 +66,7 @@ export default function Projects({ portfolio }) {
               <span className="section-title-text bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
                 My Projects
               </span>
+              <FaExternalLinkAlt className="h-4 w-4 shrink-0 text-cyan-400 sm:h-5 sm:w-5" aria-hidden="true" />
               <SectionIcon emoji={SECTION_EMOJIS.projects} />
             </h2>
           </a>

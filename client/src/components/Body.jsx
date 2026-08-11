@@ -49,10 +49,10 @@ export default function Body({ profileImage }) {
               className="profile-image-rgb-border pointer-events-none absolute inset-0 z-20 rounded-full"
             />
           ))}
-          <div className="profile-image-ring w-full h-full rounded-full overflow-hidden border border-white/20 relative z-10 bg-white shadow-sm shadow-black/10">
+          <div className="profile-image-ring profile-image-shadow w-full h-full rounded-full overflow-hidden border border-white/20 relative z-10 bg-white">
             <img
               src={imageSrc}
-              alt="Profile"
+              alt="Ranjay Prajapati, Full-Stack Software Engineer"
               className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
             />
           </div>
