@@ -20,33 +20,6 @@ function Portfolio() {
   // Load portfolio content once and pass it to sections that need it.
   const { portfolio, error } = usePortfolio();
   const [isLoading, setIsLoading] = useState(true);
-  const [installPrompt, setInstallPrompt] = useState(() => window.deferredInstallPrompt);
-
-  useEffect(() => {
-    const captureInstallPrompt = () => setInstallPrompt(window.deferredInstallPrompt);
-
-    const markInstalled = () => {
-      window.deferredInstallPrompt = null;
-      setInstallPrompt(null);
-    };
-
-    window.addEventListener("ranjay-install-available", captureInstallPrompt);
-    window.addEventListener("appinstalled", markInstalled);
-    return () => {
-      window.removeEventListener("ranjay-install-available", captureInstallPrompt);
-      window.removeEventListener("appinstalled", markInstalled);
-    };
-  }, []);
-
-  const handleInstall = async () => {
-    const prompt = installPrompt || window.deferredInstallPrompt;
-    if (!prompt) return;
-
-    await prompt.prompt();
-    await prompt.userChoice;
-    window.deferredInstallPrompt = null;
-    setInstallPrompt(null);
-  };
 
   useEffect(() => {
     const disableContextMenu = (e) => e.preventDefault();
@@ -89,10 +62,7 @@ function Portfolio() {
             </div>
           ) : (
             <>
-              <About
-                profile={portfolio?.profile}
-                onInstallApp={handleInstall}
-              />
+              <About profile={portfolio?.profile} />
               <TechStack portfolio={portfolio} />
               <Projects portfolio={portfolio} />
               <Certificates certificates={portfolio?.certificates} />

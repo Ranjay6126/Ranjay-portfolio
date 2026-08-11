@@ -7,7 +7,7 @@ import { useTheme } from "../context/ThemeContext";
 import Body from "./Body";
 import RotatingText from "./RotatingText";
 
-export default function About({ profile, onInstallApp }) {
+export default function About({ profile }) {
   if (!profile) return null;
 
   const { theme } = useTheme();
@@ -41,46 +41,13 @@ export default function About({ profile, onInstallApp }) {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="pointer-events-auto portfolio-card bg-white/5 backdrop-blur-2xl border border-white/10 p-5 sm:px-10 sm:py-8 md:px-14 md:py-9 rounded-3xl sm:rounded-[2.5rem] max-w-6xl md:max-w-7xl w-full grid grid-cols-1 lg:grid-cols-6 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center relative z-10 shadow-2xl"
       >
-        <button
-          type="button"
-          onClick={(event) => {
-            event.stopPropagation();
-            onInstallApp();
-          }}
-          className="hidden md:inline-flex absolute top-9 right-14 z-[60] pointer-events-auto cursor-pointer items-center gap-2 px-4 py-2 rounded-full border text-sm font-medium transition-opacity hover:opacity-85"
-          style={{
-            backgroundColor: "rgba(34, 197, 94, 0.1)",
-            borderColor: "rgba(34, 197, 94, 0.2)",
-            color: isLightMode ? "#000000" : "#ffffff",
-          }}
-          aria-label="Download Ranjay Portfolio app"
-        >
-          <FontAwesomeIcon icon={faDownload} />
-          Download Apps
-        </button>
         <div className="space-y-6 sm:space-y-8 order-2 md:order-1 lg:col-span-4">
-          <div className="flex items-center justify-between gap-3">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs sm:text-sm font-medium">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs sm:text-sm font-medium">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
               </span>
               Available for Work
-            </div>
-            <button
-              type="button"
-              onClick={onInstallApp}
-              className="inline-flex md:hidden shrink-0 items-center gap-2 px-4 py-2 rounded-full border text-xs sm:text-sm font-medium transition-opacity hover:opacity-85"
-              style={{
-                backgroundColor: "rgba(34, 197, 94, 0.1)",
-                borderColor: "rgba(34, 197, 94, 0.2)",
-                color: isLightMode ? "#000000" : "#ffffff",
-              }}
-              aria-label="Download Ranjay Portfolio app"
-            >
-              <FontAwesomeIcon icon={faDownload} />
-              Download Apps
-            </button>
           </div>
 
           <div>
