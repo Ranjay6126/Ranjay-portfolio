@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Resume() {
   return (
     <div className="flex flex-col justify-center items-center min-h-screen bg-gray-100 p-8 font-sans">
@@ -26,14 +24,14 @@ export default function Resume() {
         {/* Header */}
         <header className="flex justify-between items-start mb-4 border-b-2 border-gray-300 pb-2">
           <div>
-            <h1 className="text-4xl font-bold text-blue-800 mb-1">Raj Kumar Verma</h1>
+            <h1 className="text-4xl font-bold text-blue-800 mb-1">Ranjay Prajapati</h1>
             <div className="text-gray-700 font-medium">
-              <p>LinkedIn: <a href="https://linkedin.com/in/rajverma04" className="text-blue-600 hover:underline">rajverma04</a></p>
-              <p>GitHub: <a href="https://github.com/rajverma04" className="text-blue-600 hover:underline">rajverma04</a></p>
+              <p>LinkedIn: <a href="https://www.linkedin.com/in/ranjay-pandit-prajapati/" className="text-blue-600 hover:underline">ranjay-pandit-prajapati</a></p>
+              <p>GitHub: <a href="https://github.com/Ranjay6126" className="text-blue-600 hover:underline">Ranjay6126</a></p>
             </div>
           </div>
           <div className="text-right text-gray-700 font-medium">
-            <p>Email: <a href="mailto:rajkumargrd56@gmail.com" className="text-blue-600 hover:underline">rajkumargrd56@gmail.com</a></p>
+            <p>Email: <a href="mailto:panditranjay33@gmail.com" className="text-blue-600 hover:underline">panditranjay33@gmail.com</a></p>
             <p>Mobile: +91-8789429404</p>
           </div>
         </header>
@@ -164,4 +162,3 @@ export default function Resume() {
     </div>
   );
 }
-
