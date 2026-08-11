@@ -4,7 +4,7 @@ import Portfolio from "../models/Portfolio.js";
 
 dotenv.config();
 
-export const portfolioSeedData = {
+export const myData = {
   profile: {
     name: "<Ranjay Prajapati/>",
     firstName: "Ranjay",
@@ -306,13 +306,13 @@ export const portfolioSeedData = {
   ],
 };
 
-const seedDatabase = async () => {
+const seedMyData = async () => {
   const uri = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/portfolio";
 
   try {
     await mongoose.connect(uri);
     await Portfolio.deleteMany({});
-    await Portfolio.create(portfolioSeedData);
+    await Portfolio.create(myData);
     console.log("Portfolio database seeded successfully!");
     process.exit(0);
   } catch (error) {
@@ -321,7 +321,7 @@ const seedDatabase = async () => {
   }
 };
 
-const isDirectRun = process.argv[1]?.includes("seedData.js");
+const isDirectRun = process.argv[1]?.includes("MyData.js");
 if (isDirectRun) {
-  seedDatabase();
+  seedMyData();
 }

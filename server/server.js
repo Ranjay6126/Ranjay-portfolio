@@ -7,7 +7,7 @@ import connectDB from "./config/db.js";
 import errorHandler from "./middleware/errorHandler.js";
 import portfolioRoutes from "./routes/portfolioRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
-import { ensureSeeded } from "./utils/ensureSeeded.js";
+import { sureData } from "./utils/sureData.js";
 
 dotenv.config();
 
@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
   await connectDB();
-  await ensureSeeded();
+  await sureData();
 
   app.use(
     cors({

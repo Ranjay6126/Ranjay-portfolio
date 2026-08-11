@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 import asyncHandler from "../middleware/asyncHandler.js";
 import Contact from "../models/Contact.js";
-import { resolveRecipientEmail } from "../utils/contactEmail.js";
+import { resolveInfoEmail } from "../utils/InfoEmail.js";
 import { dbConnected } from "../config/db.js";
 
 const sendEmail = async ({ from_name, from_email, subject, message }) => {
@@ -46,8 +46,8 @@ const sendEmail = async ({ from_name, from_email, subject, message }) => {
     );
   }
 
-  const recipientEmail = resolveRecipientEmail({
-    contactEmail: process.env.CONTACT_EMAIL,
+  const recipientEmail = resolveInfoEmail({
+    infoEmail: process.env.CONTACT_EMAIL,
     smtpUser: process.env.SMTP_USER,
   });
 
