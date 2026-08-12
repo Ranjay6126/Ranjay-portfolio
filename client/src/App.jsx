@@ -18,7 +18,7 @@ const Background3D = lazy(() => import("./components/Background3D"));
 
 function Portfolio() {
   // Load portfolio content once and pass it to sections that need it.
-  const { portfolio, error } = usePortfolio();
+  const { portfolio } = usePortfolio();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -56,22 +56,16 @@ function Portfolio() {
         </header>
 
         <main className="relative z-10 pt-4 sm:pt-8 md:pt-10 pb-16 md:pb-8">
-          {error ? (
-            <div className="min-h-screen flex items-center justify-center text-red-400 px-6 text-center">
-              {error}. Make sure the server is running and database is seeded.
-            </div>
-          ) : (
-            <>
-              <About profile={portfolio?.profile} />
-              <TechStack portfolio={portfolio} />
-              <Projects portfolio={portfolio} />
-              <Certificates certificates={portfolio?.certificates} />
-              <CodingProfiles profiles={portfolio?.codingProfiles} />
-              <Education education={portfolio?.education} />
-              <Services />
-              <Contact />
-            </>
-          )}
+          <>
+            <About profile={portfolio?.profile} />
+            <TechStack portfolio={portfolio} />
+            <Projects portfolio={portfolio} />
+            <Certificates certificates={portfolio?.certificates} />
+            <CodingProfiles profiles={portfolio?.codingProfiles} />
+            <Education education={portfolio?.education} />
+            <Services />
+            <Contact />
+          </>
         </main>
       </div>
     </>
