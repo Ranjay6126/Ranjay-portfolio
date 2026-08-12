@@ -68,12 +68,6 @@ export default function Resume() {
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-gray-100 p-4 font-sans sm:p-8">
-      <style>{`@media print { @page { margin: 0; } body { margin: 0; } .print-hidden { display: none !important; } }`}</style>
-
-      <button onClick={() => window.print()} className="print-hidden mb-6 rounded-lg bg-blue-600 px-6 py-2 font-semibold text-white shadow-md transition-colors hover:bg-blue-700">
-        Download PDF
-      </button>
-
       <main className="relative w-full max-w-[210mm] bg-white p-6 text-[13px] leading-normal text-gray-800 shadow-2xl print:w-full print:max-w-none print:p-0 print:shadow-none">
         <header className="mb-4 border-b-2 border-gray-300 pb-3">
           <h1 className="mb-1 text-4xl font-bold text-blue-800">{name}</h1>
