@@ -1,5 +1,5 @@
 import { faGithub, faLinkedin, faInstagram, faTwitter, faFacebookF } from "@fortawesome/free-brands-svg-icons";
-import { faFileAlt, faDownload, faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faFileAlt, faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SiLeetcode, SiGeeksforgeeks, SiHackerrank } from "react-icons/si";
 import { motion } from "framer-motion";
@@ -122,7 +122,6 @@ export default function About({ profile }) {
             >
               <FontAwesomeIcon icon={faFileAlt} />
               <span>Resume</span>
-              <FontAwesomeIcon icon={faDownload} className="text-xs sm:text-sm" />
             </a>
 
             <div className="flex gap-2 sm:gap-3 flex-wrap justify-center sm:justify-start w-full sm:w-auto">
