@@ -18,7 +18,7 @@ const Background3D = lazy(() => import("./components/Background3D"));
 
 function Portfolio() {
   // Load portfolio content once and pass it to sections that need it.
-  const { portfolio } = usePortfolio();
+  const { portfolio, error, isPortfolioLoading } = usePortfolio();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -56,16 +56,26 @@ function Portfolio() {
         </header>
 
         <main className="relative z-10 pt-4 sm:pt-8 md:pt-10 pb-16 md:pb-8">
-          <>
-            <About profile={portfolio?.profile} />
-            <TechStack portfolio={portfolio} />
-            <Projects portfolio={portfolio} />
-            <Certificates certificates={portfolio?.certificates} />
-            <CodingProfiles profiles={portfolio?.codingProfiles} />
-            <Education education={portfolio?.education} />
-            <Services />
-            <Contact />
-          </>
+          {isPortfolioLoading ? (
+            <div className="min-h-screen flex items-center justify-center px-6 text-center text-gray-300">
+              Connecting to the portfolio server...
+            </div>
+          ) : error ? (
+            <div className="min-h-screen flex items-center justify-center text-red-400 px-6 text-center">
+              {error}. Make sure the backend server and MongoDB are running.
+            </div>
+          ) : (
+            <>
+              <About profile={portfolio?.profile} />
+              <TechStack portfolio={portfolio} />
+              <Projects portfolio={portfolio} />
+              <Certificates certificates={portfolio?.certificates} />
+              <CodingProfiles profiles={portfolio?.codingProfiles} />
+              <Education education={portfolio?.education} />
+              <Services />
+              <Contact />
+            </>
+          )}
         </main>
       </div>
     </>
