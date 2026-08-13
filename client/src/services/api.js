@@ -1,4 +1,4 @@
-const API_BASE = import.meta.env.VITE_API_URL || "/api";
+const API_BASE = import.meta.env.VITE_API_URL || "/portfolio-api";
 // Reuse the request when several sections mount at the same time.
 let portfolioRequest = null;
 
@@ -28,7 +28,7 @@ async function request(endpoint, options = {}) {
 export const api = {
   getPortfolio: () => {
     if (!portfolioRequest) {
-      portfolioRequest = request("/portfolio").finally(() => {
+      portfolioRequest = request("/profile").finally(() => {
         portfolioRequest = null;
       });
     }
@@ -36,5 +36,5 @@ export const api = {
     return portfolioRequest;
   },
   sendContact: (body) =>
-    request("/contact", { method: "POST", body: JSON.stringify(body) }),
+    request("/messages", { method: "POST", body: JSON.stringify(body) }),
 };

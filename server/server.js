@@ -30,18 +30,18 @@ const startServer = async () => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
-  app.get("/api/health", (req, res) => {
-    res.json({ success: true, message: "Portfolio API is running" });
+  app.get("/portfolio-api/status", (req, res) => {
+    res.json({ success: true, message: "Portfolio service is running" });
   });
 
-  app.use("/api/portfolio", portfolioRoutes);
-  app.use("/api/contact", contactRoutes);
+  app.use("/portfolio-api/profile", portfolioRoutes);
+  app.use("/portfolio-api/messages", contactRoutes);
 
   if (process.env.NODE_ENV === "production") {
     const clientDist = path.join(__dirname, "..", "client", "dist");
     app.use(express.static(clientDist));
     app.get("*", (req, res, next) => {
-      if (req.path.startsWith("/api")) return next();
+      if (req.path.startsWith("/portfolio-api")) return next();
       res.sendFile(path.join(clientDist, "index.html"));
     });
   }
