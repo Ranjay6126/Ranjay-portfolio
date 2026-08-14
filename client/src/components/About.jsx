@@ -89,10 +89,17 @@ export default function About({ profile }) {
           <div className="border-t border-white/10 pt-5 sm:pt-8">
             <div className="flex gap-4 sm:gap-7 md:gap-2 lg:gap-8 flex-wrap md:flex-nowrap items-center md:justify-between">
               {profile.stats.map((stat, i) => (
-                <div key={i} className="flex flex-col items-center shrink-0">
+                <a
+                  key={i}
+                  href={stat.value === "300+" ? "https://leetcode.com/u/Ranjay_201/" : "https://github.com/Ranjay6126"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center shrink-0 transition-opacity hover:opacity-80"
+                  aria-label={`View ${stat.label}`}
+                >
                   <h4 className="text-2xl sm:text-3xl md:text-2xl lg:text-3xl font-bold text-white">{stat.value}</h4>
                   <p className="text-xs sm:text-sm md:text-[11px] lg:text-sm text-gray-400 whitespace-nowrap">{stat.label}</p>
-                </div>
+                </a>
               ))}
               <div className="flex items-center gap-2 sm:gap-3 md:gap-1.5 lg:gap-3 text-white ml-0 font-normal sm:font-medium text-sm sm:text-base md:text-xs lg:text-base shrink-0">
                 <FontAwesomeIcon icon={faEnvelope} className="text-base sm:text-xl md:text-base lg:text-xl text-white" />
@@ -107,7 +114,14 @@ export default function About({ profile }) {
               {profile.location && (
                 <div className="flex items-center gap-2 sm:gap-3 md:gap-1.5 lg:gap-3 text-white ml-0 font-normal sm:font-medium text-sm sm:text-base md:text-xs lg:text-base shrink-0">
                   <FontAwesomeIcon icon={faLocationDot} className="text-base sm:text-xl md:text-base lg:text-xl text-white" />
-                  <span className="whitespace-nowrap">{profile.location}</span>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Google+India+Private+Limited+Alembic+City+Whitefield+Bengaluru"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="whitespace-nowrap hover:underline underline-offset-4"
+                  >
+                    Bengaluru, Whitefield
+                  </a>
                 </div>
               )}
             </div>
