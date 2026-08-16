@@ -287,7 +287,7 @@ html.light .service-contact-spark {
 }
 
 .service-contact-details {
-  font-size: clamp(9px, 3.3cqw, 14px);
+  font-size: clamp(11px, 4.2cqw, 18px);
 }
 
 html.light section {

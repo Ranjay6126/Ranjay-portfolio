@@ -12,7 +12,7 @@ export default function Services() {
   const headingTextClass = isLightMode ? "text-slate-950" : "text-white";
   const bodyTextClass = isLightMode ? "text-black" : "text-white";
   const panelTextClass = isLightMode ? "text-slate-950" : "text-white";
-  const availabilityTextClass = `service-contact-details w-full whitespace-nowrap font-semibold ${panelTextClass}`;
+  const availabilityTextClass = `service-contact-details flex w-full items-center font-semibold leading-relaxed ${panelTextClass}`;
 
   return (
     <section
@@ -133,7 +133,7 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.25 }}
-              className="service-contact-card portfolio-card bg-white/5 shadow-[0_16px_38px_rgba(0,0,0,0.48),0_0_28px_rgba(16,185,129,0.12)] backdrop-blur-xl border border-white/10 rounded-tl-3xl rounded-tr-3xl rounded-br-3xl p-3 sm:p-5 w-full max-w-md"
+              className="service-contact-card portfolio-card self-stretch bg-white/5 shadow-[0_16px_38px_rgba(0,0,0,0.48),0_0_28px_rgba(16,185,129,0.12)] backdrop-blur-xl border border-white/10 rounded-tl-3xl rounded-tr-3xl rounded-br-3xl p-3 sm:p-5 w-full"
             >
               <motion.span
                 aria-hidden="true"
@@ -144,18 +144,21 @@ export default function Services() {
               >
                 ➤
               </motion.span>
-              <div className="space-y-2 text-sm leading-relaxed">
-                <h4 className={`${availabilityTextClass} inline-flex items-center gap-1.5`}>
-                  <span className="inline-block h-2 w-2 shrink-0 rounded-full bg-emerald-400 mr-1 align-middle animate-pulse" />Available for Work & Freelance : (₹ 60K / Month)
+              <div className="space-y-2.5">
+                <h4 className={`${availabilityTextClass} gap-1.5`}>
+                  <span className="inline-block h-2 w-2 shrink-0 rounded-full bg-emerald-400 mr-1 animate-pulse" />
+                  <span>Available for Work & Freelance : (₹ 60K / Month)</span>
                 </h4>
                 <p className={availabilityTextClass}>
-                  <span className="mr-2">📍</span>Address : Bengaluru, Whitefield
+                  <span className="mr-2 shrink-0">📍</span>
+                  <span>Address : Bengaluru, Whitefield</span>
                 </p>
                 <p className={availabilityTextClass}>
-                  <span className="mr-2">📧</span>Email : {" "}
+                  <span className="mr-2 shrink-0">📧</span>
+                  <span className="mr-1">Email :</span>
                   <a
                     href="mailto:panditranjay33@gmail.com"
-                    className="hover:underline underline-offset-4"
+                    className="min-w-0 break-all hover:underline underline-offset-4"
                     aria-label="Email panditranjay33@gmail.com"
                   >
                     panditranjay33@gmail.com
