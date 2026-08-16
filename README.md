@@ -1,30 +1,27 @@
-# Ranjay Prajapati Portfolio
+# Ranjay Prajapati — Developer Portfolio
 
-A responsive personal portfolio built with React, Vite, Express, and MongoDB. It presents profile information, skills, projects, certificates, coding profiles, education, services, and a contact form.
+A responsive full-stack portfolio that presents my education, technical skills, projects, certifications, coding profiles, services, and contact details. The interface is built with React, Vite, Tailwind CSS, Framer Motion, and Three.js; an Express and MongoDB API provides portfolio content and contact-message handling.
 
-## Features
+## Tech stack
 
-- Responsive light and dark interface with Framer Motion animations.
-- Interactive Three.js background and a loading animation.
-- Portfolio content served by the Express backend and stored in MongoDB.
-- Automatic database seeding when the portfolio collection is empty.
-- Contact form that can save messages to MongoDB and send an SMTP email notification.
-- The portfolio content only appears after the backend successfully returns profile data.
+- **Frontend:** React 18, Vite, Tailwind CSS, Framer Motion, React Three Fiber, Three.js
+- **Backend:** Node.js, Express, MongoDB, Mongoose
+- **Tooling:** Nodemon and Concurrently
 
-## Requirements
+## Quick start
 
-- Node.js 18 or later
-- MongoDB running locally, or a MongoDB Atlas connection string
-
-## Install
+### 1. Install dependencies
 
 ```powershell
 git clone https://github.com/Ranjay6126/Ranjay-portfolio.git
 cd Ranjay-portfolio
-npm.cmd run install:all
+npm install
+npm run install:all
 ```
 
-Create `server/.env` from `server/.env.example`, then set at least these values:
+### 2. Configure environment variables
+
+Copy `server/.env.example` to `server/.env`, then set your local values:
 
 ```env
 PORT=5000
@@ -32,60 +29,57 @@ MONGODB_URI=mongodb://127.0.0.1:27017/portfolio
 CLIENT_URL=http://localhost:5173
 ```
 
-For contact email notifications, also configure `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, and `CONTACT_EMAIL`.
+Email configuration is optional. When configured, contact form submissions can also trigger an SMTP notification.
 
-## Run locally
-
-From the project root, start frontend and backend together:
+### 3. Run the app
 
 ```powershell
-npm.cmd run dev
+npm run dev
 ```
 
-The frontend runs at `http://localhost:5173` and the backend runs at `http://localhost:5000`.
+- Portfolio UI: `http://localhost:5173`
+- Portfolio API: `http://localhost:5000`
 
-To run them separately, use two terminals:
-
-```powershell
-# Project root: start the backend first
-npm.cmd run server
-```
-
-```powershell
-# client folder: start Vite
-npm.cmd run dev
-```
-
-`npm run dev` inside `client/` starts only the frontend. Without the backend running, the site displays a connection error instead of portfolio content.
-
-## Portfolio service routes
-
-All backend routes use the `/portfolio-api` prefix:
-
-- `GET /portfolio-api/status` — confirms that the portfolio backend is running.
-- `GET /portfolio-api/profile` — returns all portfolio profile and section data.
-- `POST /portfolio-api/messages` — submits a contact form message.
-- `GET /portfolio-api/messages` — returns stored contact messages when MongoDB is available.
+The backend automatically seeds and synchronizes the portfolio data in MongoDB when it connects.
 
 ## Scripts
 
-- `npm.cmd run dev` — start frontend and backend together.
-- `npm.cmd run client` — start only the Vite frontend.
-- `npm.cmd run server` — start only the Express backend with file watching.
-- `npm.cmd run seed` — seed MongoDB with the portfolio data.
-- `npm.cmd run build` — create the frontend production build.
-- `npm.cmd start` — run the production Express server, which serves `client/dist`.
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Starts the Vite frontend and nodemon backend together. |
+| `npm run client` | Starts only the Vite frontend. |
+| `npm run server` | Starts the backend through nodemon. |
+| `npm start` | Starts the backend through nodemon. |
+| `npm run seed` | Recreates portfolio data in MongoDB from the seed file. |
+| `npm run build` | Creates an optimized frontend build. |
+
+To run only the backend:
+
+```powershell
+cd server
+npm start
+```
+
+Nodemon watches backend files and restarts the API automatically after changes.
+
+## API
+
+All API routes use the `/portfolio-api` prefix.
+
+- `GET /portfolio-api/status` — API health check
+- `GET /portfolio-api/profile` — portfolio profile and section content
+- `POST /portfolio-api/messages` — submits a contact message
+- `GET /portfolio-api/messages` — lists saved messages when MongoDB is connected
 
 ## Production
 
-Build the frontend, set `NODE_ENV=production` and production environment values, then start the server:
-
 ```powershell
-npm.cmd run build
-npm.cmd start
+npm run build
+$env:NODE_ENV = "production"
+npm start
 ```
 
-The Express server serves the compiled frontend from `client/dist` and the portfolio service from `/portfolio-api`.
+In production, Express serves the built client from `client/dist` and continues to expose the API under `/portfolio-api`.
 
 ## License
 
