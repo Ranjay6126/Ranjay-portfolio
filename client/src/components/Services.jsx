@@ -137,10 +137,10 @@ export default function Services() {
             >
               <motion.span
                 aria-hidden="true"
-                className="service-contact-spark absolute z-10 text-[10px] leading-none text-emerald-400 pointer-events-none"
-                initial={{ opacity: 0, offsetDistance: "0%" }}
-                animate={isAvailabilityCardInView ? { opacity: 1, offsetDistance: "100%" } : { opacity: 0, offsetDistance: "0%" }}
-                transition={{ duration: 7, ease: "linear", repeat: Infinity, repeatType: "loop" }}
+                className="service-contact-spark absolute z-10 text-base leading-none text-green-400 pointer-events-none"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: isAvailabilityCardInView ? 1 : 0 }}
+                transition={{ duration: 0.3 }}
               >
                 ➤
               </motion.span>

@@ -267,9 +267,23 @@ html.light .service-contact-card {
 }
 
 .service-contact-spark {
-  offset-path: inset(1px round 1.5rem);
+  color: #4ade80;
+  offset-path: inset(0 round 1.5rem);
+  offset-anchor: 50% 50%;
   offset-rotate: auto;
-  box-shadow: 0 0 8px 3px rgba(52, 211, 153, 0.9), 0 0 18px 5px rgba(16, 185, 129, 0.45);
+  filter: drop-shadow(0 0 5px rgba(74, 222, 128, 0.95)) drop-shadow(0 0 12px rgba(22, 163, 74, 0.7));
+  animation: service-arrow-orbit 11s linear infinite;
+  will-change: offset-distance;
+}
+
+html.light .service-contact-spark {
+  color: #0f172a;
+  filter: drop-shadow(0 0 4px rgba(15, 23, 42, 0.5));
+}
+
+@keyframes service-arrow-orbit {
+  from { offset-distance: 0%; }
+  to { offset-distance: 100%; }
 }
 
 .service-contact-details {
