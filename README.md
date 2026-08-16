@@ -1,6 +1,6 @@
 # Ranjay Prajapati — Developer Portfolio
 
-A responsive full-stack portfolio that presents my education, technical skills, projects, certifications, coding profiles, services, and contact details. The interface is built with React, Vite, Tailwind CSS, Framer Motion, and Three.js; an Express and MongoDB API provides portfolio content and contact-message handling.
+A responsive full-stack portfolio that presents my education, technical skills, projects, certifications, coding profiles, services, and contact details. The interface is built with React, Vite, Tailwind CSS, Framer Motion, and an Express and MongoDB API provides portfolio content and contact-message handling.
 
 ## Tech stack
 
