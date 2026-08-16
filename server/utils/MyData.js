@@ -277,10 +277,10 @@ export const myData = {
       duration: "Aug 2021 – May 2025",
       grade: "CGPA: 6.7",
       points: [
-        "Learned C++, JavaScript, Data Structures & Algorithms (DSA), Object-Oriented Programming (OOP), Software Engineering, and full-stack development using React.js, Node.js, Express.js, MongoDB, MySQL, and REST APIs.",
-        "Built a strong foundation in Operating Systems, DBMS, Computer Networks, Cloud Computing, Cyber Security, System Design & Software Development Life Cycle (SDLC).",
-        "Understanding of network security, ethical hacking, cryptography, secure coding, vulnerability assessment, and web application security following OWASP Top 10 and OSINT.",
-        "Hands-on experience with Wireshark, Nmap, Metasploit, Burp Suite, Nessus, Nikto, Kali Linux, John the Ripper, Hashcat, Autopsy, Splunk, and Snort for network analysis, penetration testing, digital forensics, vulnerability assessment, and security monitoring.",
+        "I learned C++, JavaScript, Data Structures & Algorithms (DSA), Object-Oriented Programming (OOP), and full-stack software engineering using React.js, Node.js, Express.js, MongoDB, MySQL, REST APIs, Nginx, JWT tokens, GraphQL, and AWS (Amazon Web Services).",
+        "I built a strong foundation in Operating Systems, DBMS (Database Management System), Computer Networks, Cloud Computing, Cyber Security, and Software Development Life Cycle (SDLC).",
+        "I developed an understanding of network security, ethical hacking, cryptography, secure coding, vulnerability assessment, and web application security following OWASP Top 10 and OSINT practices.",
+        "I gained hands-on experience with Wireshark, Nmap, Metasploit, Recon-ng, Burp Suite, Nessus, Nikto, Kali Linux, John the Ripper, Hashcat, Autopsy, Splunk, and Snort for network analysis, penetration testing, digital forensics, vulnerability assessment, and security monitoring.",
       ],
     },
     {
@@ -289,8 +289,8 @@ export const myData = {
       duration: "Apr 2018 – Mar 2020",
       grade: "CGPA: 7.1",
       points: [
-        "Studied the fundamentals of C programming, HTML, CSS, JavaScript, and basic software development concepts.",
-        "Acquired a strong understanding of Mathematics, Physics, Chemistry, and English, supporting technical learning and effective communication.",
+        "I studied the fundamentals of C programming, logic gates, HTML, CSS, JavaScript, network devices, computer generations, and basic software development concepts.",
+        "I acquired a strong understanding of Mathematics, Physics, Chemistry, and English, supporting technical learning and effective communication.",
       ],
     },
     {
@@ -299,8 +299,8 @@ export const myData = {
       duration: "Apr 2017 – Mar 2018",
       grade: "CGPA: 8.12",
       points: [
-        "Gained knowledge of computer fundamentals, networking devices, MS Office, basic coding concepts, and the use of Paint and QBASIC.",
-        "Completed foundational education with coursework in Mathematics, Science, English, Social Studies, and basic computer literacy.",
+        "I gained knowledge of computer fundamentals, networking devices, MS Office, very basic coding concepts, and the use of Paint and QBasic.",
+        "I completed foundational education with coursework in Mathematics, Science, English, Social Studies, and basic computer literacy.",
       ],
     },
   ],

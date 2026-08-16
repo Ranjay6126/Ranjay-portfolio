@@ -141,9 +141,9 @@ export default function Education({ education = [] }) {
                           <button
                             type="button"
                             onClick={() => togglePoints(index)}
-                            className={`glass-button mt-3 inline-flex items-center px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs sm:text-sm font-semibold ${isLightMode ? "text-slate-900" : "text-white"} hover:bg-white/10 hover:border-white/20`}
+                            className="glass-button mt-3 inline-flex items-center px-3 py-1 rounded-full border border-white/10 bg-white/5 text-indigo-400 text-xs sm:text-sm font-semibold transition-colors hover:bg-white/10 hover:border-white/20 hover:text-indigo-300"
                           >
-                            {isExpanded ? "See Less" : "See More"}
+                            {isExpanded ? "See Less ▲" : "See More ▼"}
                           </button>
                         )}
                       </div>
