@@ -38,7 +38,7 @@ export default function Services() {
         </h2>
         <div className="px-2 w-full flex justify-center">
           <p className="text-white text-[13px] sm:text-base md:text-lg leading-[1.65rem] sm:leading-7 md:leading-8 font-sans text-center max-w-[95%] sm:max-w-3xl md:max-w-4xl mx-auto break-words hyphens-auto">
-            Delivering professional digital solutions with a strong focus on quality, efficiency, and long-term value for modern businesses and projects.
+            Provide enterprise level professional digital solutions with equal emphasis on quality, value and cost efficiency for modern businesses and projects.
           </p>
         </div>
       </motion.div>
@@ -81,11 +81,11 @@ export default function Services() {
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🌐</span>
                 <h3 className={`text-sm sm:text-base font-bold ${headingTextClass}`}>
-                  Website & Mobile Application📱
+                  Website &amp; Mobile Application
                 </h3>
               </div>
               <p className={`text-sm sm:text-base leading-relaxed ${bodyTextClass}`}>
-                I provide end-to-end website and mobile application development services. Building responsive, scalable and user friendly solutions. I build fast, reliable, easy to maintain applications – from modern UI/UX design and secure backend APIs to database integration and real-time features. I also deploy on cloud platforms like AWS, configure Docker and CI/CD pipelines and optimize performance to make your app secure, scalable and production ready.
+                I provide end-to-end web application and mobile application development services. Building responsive, scalable and user friendly solutions. I build fast, reliable, easy to maintain applications – from modern UI/UX design and secure backend APIs to database integration and real-time features. I also deploy on cloud platforms like AWS, configure Docker and CI/CD pipelines and optimize performance to make your app secure, scalable and production ready.
               </p>
             </motion.div>
 
@@ -101,7 +101,7 @@ export default function Services() {
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🛡️</span>
                 <h3 className={`text-sm sm:text-base font-bold ${headingTextClass}`}>
-                  SOC (Security Operations Center)🔐
+                  SOC (Security Operations Center)
                 </h3>
               </div>
               <p className={`text-sm sm:text-base leading-relaxed ${bodyTextClass}`}>
@@ -147,15 +147,15 @@ export default function Services() {
               <div className="space-y-2.5">
                 <h4 className={`${availabilityTextClass} gap-1.5`}>
                   <span className="inline-block h-2 w-2 shrink-0 rounded-full bg-emerald-400 mr-1 animate-pulse" />
-                  <span>Available for Work & Freelance : (₹ 60K / Month)</span>
+                  <span>Available for Work &amp; Freelance : (₹ 60K / Month)</span>
                 </h4>
                 <p className={availabilityTextClass}>
-                  <span className="mr-2 shrink-0">📍</span>
-                  <span>Address : Bengaluru, Whitefield</span>
+                  <span className="mr-2 shrink-0 font-bold text-indigo-400">A</span>
+                  <span>ddress : Bengaluru, Whitefield</span>
                 </p>
                 <p className={availabilityTextClass}>
-                  <span className="mr-2 shrink-0">📧</span>
-                  <span className="mr-1">Email :</span>
+                  <span className="mr-2 shrink-0 font-bold text-indigo-400">E</span>
+                  <span className="mr-1">mail :</span>
                   <a
                     href="mailto:panditranjay33@gmail.com"
                     className="min-w-0 break-all hover:underline underline-offset-4"

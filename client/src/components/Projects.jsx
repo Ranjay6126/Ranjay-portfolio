@@ -16,22 +16,7 @@ export default function Projects({ portfolio }) {
   };
 
   const projectTitleWithEmoji = (title = "") => {
-    const cleanTitle = String(title).trim();
-    if (!cleanTitle) return "";
-    if (/\p{Extended_Pictographic}$/u.test(cleanTitle)) return cleanTitle;
-
-    const t = cleanTitle.toLowerCase();
-    const emoji =
-      (t.includes("attendance") && "📍") ||
-      (t.includes("chat") && "💬") ||
-      (t.includes("book") && "📚") ||
-      ((t.includes("url") || t.includes("short")) && "🔗") ||
-      (t.includes("food") && "🍔") ||
-      (t.includes("amazon") && "🛒") ||
-      (t.includes("portfolio") && "🌐") ||
-      "🚀";
-
-    return `${cleanTitle} ${emoji}`;
+    return String(title).trim();
   };
 
   const actionButtonBase =
@@ -71,7 +56,7 @@ export default function Projects({ portfolio }) {
             </h2>
           </a>
           <p className="text-white max-w-5xl mx-auto text-center text-sm sm:text-base md:text-lg px-2 leading-7">
-            A selection of full-stack projects showcasing scalable architecture, secure authentication, API integrations, responsive user interfaces, and practical system design.
+            User experience (UX) focused API integrations, secure authentication, and scalable architecture implemented in full stack applications.
           </p>
         </div>
 

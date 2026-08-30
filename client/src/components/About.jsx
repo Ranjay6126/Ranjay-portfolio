@@ -91,7 +91,13 @@ export default function About({ profile }) {
               {profile.stats.map((stat, i) => (
                 <a
                   key={i}
-                  href={stat.value === "300+" ? "https://leetcode.com/u/Ranjay_201/" : "https://github.com/Ranjay6126"}
+                  href={
+                    stat.label === "Projects Completed"
+                      ? "https://github.com/Ranjay6126?tab=stars"
+                      : stat.value === "300+"
+                        ? "https://leetcode.com/u/Ranjay_201/"
+                        : "https://github.com/Ranjay6126"
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-col items-center shrink-0 transition-opacity hover:opacity-80"
@@ -127,7 +133,7 @@ export default function About({ profile }) {
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-2 sm:gap-4 pt-2 items-center">
+          <div className="flex flex-wrap gap-2 sm:gap-4 pt-2 items-center justify-between">
             <a
               href={profile.resumePdf}
               target="_blank"

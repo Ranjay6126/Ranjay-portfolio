@@ -50,7 +50,7 @@ export default function Education({ education = [] }) {
           </h2>
           <div className="px-2 w-full flex justify-center">
             <p className={`${isLightMode ? "text-black" : "text-white"} text-[13px] sm:text-base md:text-lg leading-[1.65rem] sm:leading-7 md:leading-8 font-sans text-center max-w-[95%] sm:max-w-3xl md:max-w-4xl mx-auto break-words hyphens-auto`}>
-              A comprehensive overview of my academic journey, highlighting institutions, completion timelines, academic performance CGPA, and the technical and professional skills gained throughout my education.
+              Key factors and highlights of my educational background on the institutions, durations, academic performance CGPA, and skills gained throughout technical and professional education.
             </p>
           </div>
 

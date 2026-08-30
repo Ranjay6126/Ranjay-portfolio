@@ -15,13 +15,7 @@ export default function Contact() {
   const [emailError, setEmailError] = useState("");
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const celebrationBursts = [
-    { left: "18%", delay: 0, rise: -38, rotate: -14 },
-    { left: "33%", delay: 0.12, rise: -58, rotate: 12 },
-    { left: "50%", delay: 0.04, rise: -70, rotate: -8 },
-    { left: "67%", delay: 0.18, rise: -56, rotate: 15 },
-    { left: "82%", delay: 0.08, rise: -38, rotate: -12 },
-  ];
+  const celebrationBursts = [];
 
   const validateEmailValue = (value) => {
     if (!value) {
@@ -44,7 +38,7 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateEmailValue(email)) {
-      setStatusMessage("❌ Please fix the form errors before sending.");
+      setStatusMessage("Please fix the form errors before sending.");
       return;
     }
 
@@ -79,7 +73,7 @@ export default function Contact() {
         );
 
         if (emailResult.status === 200) {
-          setStatusMessage("✅ Message sent successfully!");
+          setStatusMessage("Message sent successfully!");
           formRef.current.reset();
           setEmail("");
           setEmailError("");
@@ -111,19 +105,19 @@ export default function Contact() {
         throw new Error("Unable to deliver the message right now.");
       }
 
-      setStatusMessage("✅ Message sent successfully!");
+      setStatusMessage("Message sent successfully!");
       formRef.current.reset();
       setEmail("");
       setEmailError("");
     } catch {
       try {
         const res = await api.sendContact(payload);
-        setStatusMessage("✅ " + res.message);
+        setStatusMessage(res.message);
         formRef.current.reset();
         setEmail("");
         setEmailError("");
       } catch (fallbackError) {
-        setStatusMessage("❌ " + (fallbackError.message || "Failed to send. Please try again later."));
+        setStatusMessage(fallbackError.message || "Failed to send. Please try again later.");
       }
     } finally {
       setIsSending(false);
@@ -236,7 +230,7 @@ export default function Contact() {
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className={`mt-4 sm:mt-5 text-sm font-semibold ${statusMessage.includes("✅") ? "text-green-400" : "text-red-400"}`}
+                className={`mt-4 sm:mt-5 text-sm font-semibold ${statusMessage.toLowerCase().includes("success") || statusMessage.toLowerCase().includes("sent") ? "text-green-400" : "text-red-400"}`}
               >
                 {statusMessage}
               </motion.p>
@@ -276,7 +270,7 @@ export default function Contact() {
           </a>
         </div>
         <div className="footer-divider w-3/4 mx-auto mb-5" />
-        <p className="font-medium">© 2026 All Rights Reserved | Powered by Ranjay Prajapati</p>
+        <p className="font-medium">© 2026 All Rights Reserved | Crafted by Ranjay Prajapati</p>
         <p className="mt-3 font-medium">Thank you 😍 for visiting my Portfolio</p>
       </footer>
     </section>

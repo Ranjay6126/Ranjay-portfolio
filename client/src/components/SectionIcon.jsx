@@ -17,6 +17,10 @@ export default function SectionIcon({ icon, emoji }) {
     );
   }
 
+  if (!icon) {
+    return null;
+  }
+
   return (
     <FontAwesomeIcon
       icon={icon}

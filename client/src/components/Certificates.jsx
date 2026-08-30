@@ -33,7 +33,7 @@ export default function Certificates({ certificates = [] }) {
           </a>
           <div className="px-2 w-full flex justify-center">
             <p className="text-white text-[13px] sm:text-base md:text-lg leading-[1.65rem] sm:leading-7 md:leading-8 font-sans text-center max-w-[95%] sm:max-w-3xl md:max-w-4xl mx-auto break-words hyphens-auto">
-              Verified certifications validating technical knowledge and hands-on skills in Data Structures &amp; Algorithms, Full-Stack Development, Frontend Engineering, Backend Development, Database Management, and Linux.
+              Data structures and algorithms with full-stack, front-end, back-end, and database development as well as Linux, through a variety of earned certifications.
             </p>
           </div>
         </div>
