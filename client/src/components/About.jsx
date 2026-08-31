@@ -1,5 +1,5 @@
 import { faGithub, faLinkedin, faInstagram, faTwitter, faFacebookF } from "@fortawesome/free-brands-svg-icons";
-import { faFileAlt, faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faFileAlt, faEnvelope, faLocationDot, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SiLeetcode, SiGeeksforgeeks, SiHackerrank } from "react-icons/si";
 import { motion } from "framer-motion";
@@ -133,18 +133,19 @@ export default function About({ profile }) {
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-2 sm:gap-4 pt-2 items-center justify-between">
+          <div className="flex flex-wrap gap-2 sm:gap-3 pt-2 items-center">
             <a
               href={profile.resumePdf}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-button about-action-btn persistent-rgb-border h-10 sm:h-12 px-5 sm:px-8 rounded-2xl bg-white/10 border border-white/10 text-white font-bold transition-all hover:bg-white/20 hover:border-white/20 hover:scale-105 flex items-center justify-center gap-2 cursor-pointer text-sm sm:text-base w-full sm:w-auto backdrop-blur-xl"
+              className="glass-button about-action-btn persistent-rgb-border h-10 sm:h-12 px-5 sm:px-8 rounded-2xl bg-white/10 border border-white/10 text-white font-bold transition-all hover:bg-white/20 hover:border-white/20 hover:scale-105 flex items-center justify-center gap-2 cursor-pointer text-sm sm:text-base backdrop-blur-xl"
             >
               <FontAwesomeIcon icon={faFileAlt} />
               <span>Resume</span>
+              <FontAwesomeIcon icon={faDownload} className="text-xs sm:text-sm" />
             </a>
 
-            <div className="flex gap-2 sm:gap-3 flex-wrap justify-center sm:justify-start w-full sm:w-auto">
+            <div className="flex gap-2 sm:gap-3 flex-wrap items-center">
               <button
                 onClick={handleGitHubClick}
                 className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer backdrop-blur-xl"
