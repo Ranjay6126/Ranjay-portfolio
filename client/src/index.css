@@ -398,11 +398,12 @@ html.light .portfolio-card:hover {
 }
 
 .coding-profile-card:hover .coding-profile-shape {
-  stroke: var(--card-border-hover);
+  stroke: #e2e8f0;
+  stroke-opacity: 0.22;
 }
 
 .coding-profile-card:hover .coding-profile-title {
-  color: var(--title-hover) !important;
+  color: var(--profile-accent) !important;
 }
 
 .footer-divider {
