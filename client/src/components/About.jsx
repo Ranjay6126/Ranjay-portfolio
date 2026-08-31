@@ -42,8 +42,8 @@ export default function About({ profile }) {
         className="pointer-events-auto portfolio-card bg-white/5 backdrop-blur-2xl border border-white/10 p-5 sm:px-10 sm:py-8 md:px-14 md:py-9 rounded-3xl sm:rounded-[2.5rem] max-w-6xl md:max-w-7xl w-full grid grid-cols-1 lg:grid-cols-6 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center relative z-10 shadow-2xl"
       >
         <div className="space-y-6 sm:space-y-8 order-2 md:order-1 lg:col-span-4">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs sm:text-sm font-medium">
-              <span className="relative flex h-2 w-2">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-[11px] sm:text-sm font-medium whitespace-nowrap">
+              <span className="relative flex h-2 w-2 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
               </span>
@@ -68,7 +68,7 @@ export default function About({ profile }) {
               <span className="whitespace-nowrap">I am a</span>
               <RotatingText
                 texts={["Full-Stack Software Engineer", "Problem Solver & Cyber Security Enthusiast"]}
-                mainClassName="text-blue-400 font-semibold whitespace-nowrap italic"
+                mainClassName="text-[13px] sm:text-xl md:text-2xl text-blue-400 font-semibold italic"
                 staggerFrom="first"
                 splitBy="words"
                 initial={{ y: "120%", opacity: 0 }}
@@ -76,6 +76,7 @@ export default function About({ profile }) {
                 exit={{ y: "-120%", opacity: 0 }}
                 staggerDuration={0.08}
                 splitLevelClassName="overflow-hidden pb-0.5"
+                noWrap
                 transition={{ type: "spring", damping: 45, stiffness: 140 }}
                 rotationInterval={4500}
               />
@@ -87,26 +88,28 @@ export default function About({ profile }) {
           </p>
 
           <div className="border-t border-white/10 pt-5 sm:pt-8">
-            <div className="flex gap-4 sm:gap-7 md:gap-2 lg:gap-8 flex-wrap md:flex-nowrap items-center md:justify-between">
-              {profile.stats.map((stat, i) => (
-                <a
-                  key={i}
-                  href={
-                    stat.label === "Projects Completed"
-                      ? "https://github.com/Ranjay6126?tab=stars"
-                      : stat.value === "300+"
-                        ? "https://leetcode.com/u/Ranjay_201/"
-                        : "https://github.com/Ranjay6126"
-                  }
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center shrink-0 transition-opacity hover:opacity-80"
-                  aria-label={`View ${stat.label}`}
-                >
-                  <h4 className="text-2xl sm:text-3xl md:text-2xl lg:text-3xl font-bold text-white">{stat.value}</h4>
-                  <p className="text-xs sm:text-sm md:text-[11px] lg:text-sm text-gray-400 whitespace-nowrap">{stat.label}</p>
-                </a>
-              ))}
+            <div className="flex gap-4 sm:gap-7 md:gap-2 lg:gap-8 flex-wrap md:flex-nowrap md:max-lg:gap-3 items-center md:justify-between">
+              <div className="flex w-full justify-between sm:contents">
+                {profile.stats.map((stat, i) => (
+                  <a
+                    key={i}
+                    href={
+                      stat.label === "Projects Completed"
+                        ? "https://github.com/Ranjay6126?tab=stars"
+                        : stat.value === "300+"
+                          ? "https://leetcode.com/u/Ranjay_201/"
+                          : "https://github.com/Ranjay6126"
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center shrink-0 transition-opacity hover:opacity-80"
+                    aria-label={`View ${stat.label}`}
+                  >
+                    <h4 className="text-2xl sm:text-3xl md:text-2xl lg:text-3xl font-bold text-white">{stat.value}</h4>
+                    <p className="text-xs sm:text-sm md:text-[11px] lg:text-sm text-gray-400 whitespace-nowrap">{stat.label}</p>
+                  </a>
+                ))}
+              </div>
               <div className="flex items-center gap-2 sm:gap-3 md:gap-1.5 lg:gap-3 text-white ml-0 font-normal sm:font-medium text-sm sm:text-base md:text-xs lg:text-base shrink-0">
                 <FontAwesomeIcon icon={faEnvelope} className="text-base sm:text-xl md:text-base lg:text-xl text-white" />
                 <a
@@ -133,75 +136,139 @@ export default function About({ profile }) {
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-2 sm:gap-3 pt-2 items-center">
+          <div className="flex flex-col sm:flex-row md:max-lg:flex-nowrap gap-4 sm:gap-3 pt-2 items-start sm:items-center w-full">
             <a
               href={profile.resumePdf}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-button about-action-btn persistent-rgb-border h-10 sm:h-12 px-5 sm:px-8 rounded-2xl bg-white/10 border border-white/10 text-white font-bold transition-all hover:bg-white/20 hover:border-white/20 hover:scale-105 flex items-center justify-center gap-2 cursor-pointer text-sm sm:text-base backdrop-blur-xl"
+              className="glass-button about-action-btn persistent-rgb-border w-full sm:w-auto h-12 sm:h-12 px-5 sm:px-8 rounded-3xl sm:rounded-2xl bg-white/10 border border-white/10 text-white font-bold transition-all hover:bg-white/20 hover:border-white/20 hover:scale-[1.02] sm:hover:scale-105 flex items-center justify-center gap-3 sm:gap-2 cursor-pointer text-base sm:text-base backdrop-blur-xl shrink-0"
             >
-              <FontAwesomeIcon icon={faFileAlt} />
+              <FontAwesomeIcon icon={faFileAlt} className="text-lg sm:text-base" />
               <span>Resume</span>
-              <FontAwesomeIcon icon={faDownload} className="text-xs sm:text-sm" />
+              <FontAwesomeIcon icon={faDownload} className="text-sm sm:text-xs" />
             </a>
 
-            <div className="flex gap-2 sm:gap-3 flex-wrap items-center">
-              <button
-                onClick={handleGitHubClick}
-                className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer backdrop-blur-xl"
-                aria-label="GitHub"
-              >
-                <FontAwesomeIcon icon={faGithub} className="text-lg sm:text-xl" />
-              </button>
-              <button
-                onClick={handleLeetCodeClick}
-                className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer backdrop-blur-xl"
-                aria-label="LeetCode"
-              >
-                <SiLeetcode className="text-lg sm:text-xl" />
-              </button>
-              <button
-                onClick={handleGeeksforGeeksClick}
-                className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer backdrop-blur-xl"
-                aria-label="GeeksforGeeks"
-              >
-                <SiGeeksforgeeks className="text-lg sm:text-xl" />
-              </button>
-              <button
-                onClick={handleHackerRankClick}
-                className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer backdrop-blur-xl"
-                aria-label="HackerRank"
-              >
-                <SiHackerrank className="text-lg sm:text-xl" />
-              </button>
-              <button
-                onClick={handleLinkedinClick}
-                className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#0A66C2] to-[#0077B5] transition-all hover:scale-105 cursor-pointer shadow-md backdrop-blur-xl"
-                aria-label="LinkedIn"
-              >
-                <FontAwesomeIcon icon={faLinkedin} className="text-lg sm:text-xl" />
-              </button>
-              <button
-                onClick={handleInstagramClick}
-                className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] transition-all hover:scale-105 cursor-pointer shadow-md backdrop-blur-xl"
-                aria-label="Instagram"
-              >
-                <FontAwesomeIcon icon={faInstagram} className="text-lg sm:text-xl" />
-              </button>
-              <button
-                onClick={handleTwitterClick}
-                className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#1DA1F2] to-[#0D8BD9] transition-all hover:scale-105 cursor-pointer shadow-md backdrop-blur-xl"
-                aria-label="Twitter"
-              >
-                <FontAwesomeIcon icon={faTwitter} className="text-lg sm:text-xl" />
-              </button>
-              <button
-                onClick={handleFacebookClick}
-                className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#1877F2] to-[#0E5BD3] transition-all hover:scale-105 cursor-pointer shadow-md backdrop-blur-xl"
-                aria-label="Facebook"
-              >
-                <FontAwesomeIcon icon={faFacebookF} className="text-lg sm:text-xl" />
-              </button>
+            <div className="flex flex-col sm:flex-row md:max-lg:flex-nowrap gap-4 sm:gap-3 w-full sm:w-auto items-center sm:items-start sm:flex-wrap">
+              <div className="grid grid-cols-6 sm:hidden gap-2 w-full sm:w-auto">
+                <button
+                  onClick={handleGitHubClick}
+                  className="glass-button social-icon-btn flex h-11 w-full sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer backdrop-blur-xl"
+                  aria-label="GitHub"
+                >
+                  <FontAwesomeIcon icon={faGithub} className="text-lg sm:text-xl" />
+                </button>
+                <button
+                  onClick={handleLeetCodeClick}
+                  className="glass-button social-icon-btn flex h-11 w-full sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer backdrop-blur-xl"
+                  aria-label="LeetCode"
+                >
+                  <SiLeetcode className="text-lg sm:text-xl" />
+                </button>
+                <button
+                  onClick={handleGeeksforGeeksClick}
+                  className="glass-button social-icon-btn flex h-11 w-full sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer backdrop-blur-xl"
+                  aria-label="GeeksforGeeks"
+                >
+                  <SiGeeksforgeeks className="text-lg sm:text-xl" />
+                </button>
+                <button
+                  onClick={handleHackerRankClick}
+                  className="glass-button social-icon-btn flex h-11 w-full sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer backdrop-blur-xl"
+                  aria-label="HackerRank"
+                >
+                  <SiHackerrank className="text-lg sm:text-xl" />
+                </button>
+                <button
+                  onClick={handleLinkedinClick}
+                  className="glass-button social-icon-btn flex h-11 w-full sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#0A66C2] to-[#0077B5] transition-all hover:scale-105 cursor-pointer shadow-md backdrop-blur-xl"
+                  aria-label="LinkedIn"
+                >
+                  <FontAwesomeIcon icon={faLinkedin} className="text-lg sm:text-xl" />
+                </button>
+                <button
+                  onClick={handleInstagramClick}
+                  className="glass-button social-icon-btn flex h-11 w-full sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] transition-all hover:scale-105 cursor-pointer shadow-md backdrop-blur-xl"
+                  aria-label="Instagram"
+                >
+                  <FontAwesomeIcon icon={faInstagram} className="text-lg sm:text-xl" />
+                </button>
+              </div>
+
+              <div className="hidden sm:flex sm:gap-3 md:max-lg:gap-2 sm:flex-wrap md:max-lg:flex-nowrap sm:items-center">
+                <button
+                  onClick={handleGitHubClick}
+                  className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer backdrop-blur-xl"
+                  aria-label="GitHub"
+                >
+                  <FontAwesomeIcon icon={faGithub} className="text-lg sm:text-xl" />
+                </button>
+                <button
+                  onClick={handleLeetCodeClick}
+                  className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer backdrop-blur-xl"
+                  aria-label="LeetCode"
+                >
+                  <SiLeetcode className="text-lg sm:text-xl" />
+                </button>
+                <button
+                  onClick={handleGeeksforGeeksClick}
+                  className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer backdrop-blur-xl"
+                  aria-label="GeeksforGeeks"
+                >
+                  <SiGeeksforgeeks className="text-lg sm:text-xl" />
+                </button>
+                <button
+                  onClick={handleHackerRankClick}
+                  className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-white transition-all hover:bg-white/10 hover:scale-105 hover:border-white/20 cursor-pointer backdrop-blur-xl"
+                  aria-label="HackerRank"
+                >
+                  <SiHackerrank className="text-lg sm:text-xl" />
+                </button>
+                <button
+                  onClick={handleLinkedinClick}
+                  className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#0A66C2] to-[#0077B5] transition-all hover:scale-105 cursor-pointer shadow-md backdrop-blur-xl"
+                  aria-label="LinkedIn"
+                >
+                  <FontAwesomeIcon icon={faLinkedin} className="text-lg sm:text-xl" />
+                </button>
+                <button
+                  onClick={handleInstagramClick}
+                  className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] transition-all hover:scale-105 cursor-pointer shadow-md backdrop-blur-xl"
+                  aria-label="Instagram"
+                >
+                  <FontAwesomeIcon icon={faInstagram} className="text-lg sm:text-xl" />
+                </button>
+                <button
+                  onClick={handleTwitterClick}
+                  className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#1DA1F2] to-[#0D8BD9] transition-all hover:scale-105 cursor-pointer shadow-md backdrop-blur-xl"
+                  aria-label="Twitter"
+                >
+                  <FontAwesomeIcon icon={faTwitter} className="text-lg sm:text-xl" />
+                </button>
+                <button
+                  onClick={handleFacebookClick}
+                  className="glass-button social-icon-btn flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#1877F2] to-[#0E5BD3] transition-all hover:scale-105 cursor-pointer shadow-md backdrop-blur-xl"
+                  aria-label="Facebook"
+                >
+                  <FontAwesomeIcon icon={faFacebookF} className="text-lg sm:text-xl" />
+                </button>
+              </div>
+
+              <div className="flex sm:hidden gap-4 items-center">
+                <button
+                  onClick={handleTwitterClick}
+                  className="glass-button social-icon-btn flex h-11 w-11 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#1DA1F2] to-[#0D8BD9] transition-all hover:scale-105 cursor-pointer shadow-md backdrop-blur-xl"
+                  aria-label="Twitter"
+                >
+                  <FontAwesomeIcon icon={faTwitter} className="text-lg" />
+                </button>
+                <button
+                  onClick={handleFacebookClick}
+                  className="glass-button social-icon-btn flex h-11 w-11 items-center justify-center rounded-2xl text-white bg-gradient-to-tr from-[#1877F2] to-[#0E5BD3] transition-all hover:scale-105 cursor-pointer shadow-md backdrop-blur-xl"
+                  aria-label="Facebook"
+                >
+                  <FontAwesomeIcon icon={faFacebookF} className="text-lg" />
+                </button>
+              </div>
             </div>
           </div>
         </div>

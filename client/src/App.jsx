@@ -72,7 +72,7 @@ function Portfolio() {
               <Certificates certificates={portfolio?.certificates} />
               <CodingProfiles profiles={portfolio?.codingProfiles} />
               <Education education={portfolio?.education} />
-              <Services />
+              <Services portfolio={portfolio} />
               <Contact />
             </>
           )}

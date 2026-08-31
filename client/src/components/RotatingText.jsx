@@ -31,6 +31,7 @@ const RotatingText = forwardRef((props, ref) => {
     mainClassName,
     splitLevelClassName,
     elementLevelClassName,
+    noWrap = false,
     ...rest
   } = props;
 
@@ -144,7 +145,10 @@ const RotatingText = forwardRef((props, ref) => {
 
   return (
     <motion.span
-      className={cn("flex flex-wrap whitespace-pre-wrap relative", mainClassName)}
+      className={cn(
+        noWrap ? "flex flex-nowrap whitespace-nowrap relative" : "flex flex-wrap whitespace-pre-wrap relative",
+        mainClassName
+      )}
       {...rest}
       layout
       transition={transition}
@@ -156,7 +160,9 @@ const RotatingText = forwardRef((props, ref) => {
           className={cn(
             splitBy === "lines"
               ? "flex flex-col w-full"
-              : "flex flex-wrap whitespace-pre-wrap relative"
+              : noWrap
+                ? "flex flex-nowrap whitespace-nowrap relative"
+                : "flex flex-wrap whitespace-pre-wrap relative"
           )}
           layout
           aria-hidden="true"

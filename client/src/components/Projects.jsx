@@ -3,10 +3,13 @@ import { useState } from "react";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import SectionIcon from "./SectionIcon";
 import { SECTION_EMOJIS } from "../constants/navIcons";
+import { useTheme } from "../context/ThemeContext";
 
 const DESCRIPTION_LIMIT = 120;
 
 export default function Projects({ portfolio }) {
+  const { theme } = useTheme();
+  const isLightMode = theme === "light";
   const [expanded, setExpanded] = useState({});
 
   const toggleExpand = (i) => setExpanded((prev) => ({ ...prev, [i]: !prev[i] }));
@@ -73,7 +76,23 @@ export default function Projects({ portfolio }) {
                 className="projects-certificates-card group relative portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-3 sm:p-4 transition-colors duration-300 flex flex-col h-full"
               >
                 <div className="flex items-start justify-between mb-2 gap-2">
-                  <h3 className="portfolio-card-title text-base sm:text-lg font-bold text-white transition-colors underline underline-offset-4 decoration-2 decoration-white/30 hover:decoration-cyan-400/60">
+                  <h3
+                    className="portfolio-card-title text-base sm:text-lg font-bold transition-colors underline underline-offset-4 decoration-2"
+                    style={{
+                      color: isLightMode ? "#0f172a" : "#ffffff",
+                      textDecorationColor: isLightMode ? "rgba(15,23,42,0.35)" : "rgba(255,255,255,0.3)",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.textDecorationColor = isLightMode
+                        ? "rgba(14,165,233,0.75)"
+                        : "rgba(34,211,238,0.6)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.textDecorationColor = isLightMode
+                        ? "rgba(15,23,42,0.35)"
+                        : "rgba(255,255,255,0.3)";
+                    }}
+                  >
                     {projectTitleWithEmoji(project.title)}
                   </h3>
                   <span className="text-xs font-medium text-indigo-300 bg-indigo-500/10 px-2 sm:px-3 py-1 rounded-full border border-indigo-500/20 whitespace-nowrap">

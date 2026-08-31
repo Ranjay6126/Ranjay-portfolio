@@ -4,7 +4,7 @@ import { useTheme } from "../context/ThemeContext";
 import SectionIcon from "./SectionIcon";
 import { SECTION_EMOJIS } from "../constants/navIcons";
 
-export default function Services() {
+export default function Services({ portfolio }) {
   const availabilityCardRef = useRef(null);
   const isAvailabilityCardInView = useInView(availabilityCardRef, { once: true, amount: 0.45 });
   const { theme } = useTheme();
@@ -13,6 +13,33 @@ export default function Services() {
   const bodyTextClass = isLightMode ? "text-black" : "text-white";
   const panelTextClass = isLightMode ? "text-slate-950" : "text-white";
   const availabilityTextClass = `service-contact-details flex w-full items-center font-semibold leading-relaxed ${panelTextClass}`;
+
+  const services = portfolio?.services || {};
+  const introText =
+    services.intro ||
+    "Provide enterprise level professional digital solutions with equal emphasis on quality, value and cost efficiency for modern businesses and projects.";
+  const availabilityText =
+    services.availability || "Open to Full-Time Opportunities & Freelance Projects";
+  const serviceCards = services.cards && services.cards.length > 0
+    ? services.cards
+    : [
+        {
+          icon: "🌐",
+          title: "Website & Mobile Application",
+          description:
+            "I provide end-to-end web application and mobile application development services. Building responsive, scalable and user friendly solutions. I build fast, reliable, easy to maintain applications – from modern UI/UX design and secure backend APIs to database integration and real-time features. I also deploy on cloud platforms like AWS, configure Docker and CI/CD pipelines and optimize performance to make your app secure, scalable and production ready.",
+        },
+        {
+          icon: "🛡️",
+          title: "SOC (Security Operations Center)",
+          description:
+            "I offer SOC Analyst services focused on continuous security monitoring, threat detection, and incident analysis to help protect your systems and networks. I investigate security alerts, analyze logs, identify potential threats, and support incident response using industry-standard SIEM tools and security best practices. My goal is to strengthen your organization's security posture through proactive monitoring, timely alert investigation, and effective risk mitigation.",
+        },
+      ];
+  const contactCard = services.contactCard || {};
+  const rateText = contactCard.rate || "Available for Work & Freelance : (₹ 60K / Month)";
+  const addressText = contactCard.address || "Bengaluru, Whitefield";
+  const emailText = contactCard.email || "panditranjay33@gmail.com";
 
   return (
     <section
@@ -38,7 +65,7 @@ export default function Services() {
         </h2>
         <div className="px-2 w-full flex justify-center">
           <p className="text-white text-[13px] sm:text-base md:text-lg leading-[1.65rem] sm:leading-7 md:leading-8 font-sans text-center max-w-[95%] sm:max-w-3xl md:max-w-4xl mx-auto break-words hyphens-auto">
-            Provide enterprise level professional digital solutions with equal emphasis on quality, value and cost efficiency for modern businesses and projects.
+            {introText}
           </p>
         </div>
       </motion.div>
@@ -59,7 +86,7 @@ export default function Services() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
             </span>
-            <span>Open to Full-Time Opportunities & Freelance Projects</span>
+            <span>{availabilityText}</span>
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
@@ -69,45 +96,28 @@ export default function Services() {
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr] gap-4 sm:gap-5 lg:gap-6">
           <div className="grid grid-cols-1 gap-4 sm:gap-5">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className={`portfolio-card shadow-[0_10px_24px_rgba(0,0,0,0.24)] backdrop-blur-xl border rounded-tr-3xl rounded-bl-3xl p-3 sm:p-4 ${
-                isLightMode ? "bg-white border-slate-200/80" : "bg-[#12131a] border-gray-800/80"
-              }`}
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <span className="text-3xl">🌐</span>
-                <h3 className={`text-sm sm:text-base font-bold ${headingTextClass}`}>
-                  Website &amp; Mobile Application
-                </h3>
-              </div>
-              <p className={`text-sm sm:text-base leading-relaxed ${bodyTextClass}`}>
-                I provide end-to-end web application and mobile application development services. Building responsive, scalable and user friendly solutions. I build fast, reliable, easy to maintain applications – from modern UI/UX design and secure backend APIs to database integration and real-time features. I also deploy on cloud platforms like AWS, configure Docker and CI/CD pipelines and optimize performance to make your app secure, scalable and production ready.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className={`portfolio-card shadow-[0_10px_24px_rgba(0,0,0,0.24)] backdrop-blur-xl border rounded-tr-3xl rounded-bl-3xl p-3 sm:p-4 ${
-                isLightMode ? "bg-white border-slate-200/80" : "bg-[#12131a] border-gray-800/80"
-              }`}
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <span className="text-3xl">🛡️</span>
-                <h3 className={`text-sm sm:text-base font-bold ${headingTextClass}`}>
-                  SOC (Security Operations Center)
-                </h3>
-              </div>
-              <p className={`text-sm sm:text-base leading-relaxed ${bodyTextClass}`}>
-                I offer SOC Analyst services focused on continuous security monitoring, threat detection, and incident analysis to help protect your systems and networks. I investigate security alerts, analyze logs, identify potential threats, and support incident response using industry-standard SIEM tools and security best practices. My goal is to strengthen your organization's security posture through proactive monitoring, timely alert investigation, and effective risk mitigation.
-              </p>
-            </motion.div>
+            {serviceCards.map((card, i) => (
+              <motion.div
+                key={card.title || i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className={`portfolio-card shadow-[0_10px_24px_rgba(0,0,0,0.24)] backdrop-blur-xl border rounded-tr-3xl rounded-bl-3xl p-3 sm:p-4 ${
+                  isLightMode ? "bg-white border-slate-200/80" : "bg-[#12131a] border-gray-800/80"
+                }`}
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl">{card.icon}</span>
+                  <h3 className={`text-sm sm:text-base font-bold ${headingTextClass}`}>
+                    {card.title}
+                  </h3>
+                </div>
+                <p className={`text-sm sm:text-base leading-relaxed ${bodyTextClass}`}>
+                  {card.description}
+                </p>
+              </motion.div>
+            ))}
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:gap-5">
@@ -147,21 +157,21 @@ export default function Services() {
               <div className="space-y-2.5">
                 <h4 className={`${availabilityTextClass} gap-1.5`}>
                   <span className="inline-block h-2 w-2 shrink-0 rounded-full bg-emerald-400 mr-1 animate-pulse" />
-                  <span>Available for Work &amp; Freelance : (₹ 60K / Month)</span>
+                  <span>{rateText}</span>
                 </h4>
                 <p className={availabilityTextClass}>
                   <span className="mr-2 shrink-0 font-bold text-indigo-400">A</span>
-                  <span>ddress : Bengaluru, Whitefield</span>
+                  <span>ddress : {addressText}</span>
                 </p>
                 <p className={availabilityTextClass}>
                   <span className="mr-2 shrink-0 font-bold text-indigo-400">E</span>
                   <span className="mr-1">mail :</span>
                   <a
-                    href="mailto:panditranjay33@gmail.com"
+                    href={`mailto:${emailText}`}
                     className="min-w-0 break-all hover:underline underline-offset-4"
-                    aria-label="Email panditranjay33@gmail.com"
+                    aria-label={`Email ${emailText}`}
                   >
-                    panditranjay33@gmail.com
+                    {emailText}
                   </a>
                 </p>
               </div>

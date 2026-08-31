@@ -122,7 +122,11 @@ export default function Navbar() {
             key={item.id}
             onClick={() => scrollToSection(item.id)}
             className={`navbar-item relative rounded-full text-sm font-medium transition-all duration-300 flex items-center justify-center gap-2 ${
-              isMobile || isTablet ? "p-1.5 min-w-[38px] min-h-[38px]" : "px-5 py-2.5"
+              isMobile
+                ? "p-1.5 min-w-[38px] min-h-[38px]"
+                : isTablet
+                  ? "px-3 py-2 min-h-[40px]"
+                  : "px-5 py-2.5"
             } ${
               activeSection === item.id
                 ? "text-white shadow-lg"
@@ -134,14 +138,18 @@ export default function Navbar() {
             } : {}}
           >
             <FontAwesomeIcon icon={item.icon} className="w-4 h-4" />
-            <span className={isMobile || isTablet ? "hidden" : "hidden md:inline"}>{item.label}</span>
+            <span className={isMobile ? "hidden" : "inline"}>{item.label}</span>
           </button>
         ))}
         <button
           onClick={toggleTheme}
           title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
           className={`navbar-item relative rounded-full transition-all duration-300 flex items-center justify-center ${
-            isMobile || isTablet ? "p-1.5 min-w-[38px] min-h-[38px]" : "px-3 py-2.5"
+            isMobile
+              ? "p-1.5 min-w-[38px] min-h-[38px]"
+              : isTablet
+                ? "px-3 py-2 min-h-[40px]"
+                : "px-3 py-2.5"
           } text-white hover:text-gray-100 hover:cursor-pointer`}
           style={{ 
             flexShrink: 0
