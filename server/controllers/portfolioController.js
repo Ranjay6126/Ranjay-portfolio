@@ -1,5 +1,5 @@
 import asyncHandler from "../middleware/asyncHandler.js";
-import Portfolio from "../models/Portfolio.js";
+import Portfolio from "../models/portfolio.js";
 import { dbConnected } from "../config/db.js";
 
 export const getPortfolio = asyncHandler(async (req, res) => {

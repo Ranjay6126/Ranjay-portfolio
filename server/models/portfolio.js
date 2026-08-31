@@ -6,6 +6,7 @@ const portfolioSchema = new mongoose.Schema(
       name: String,
       firstName: String,
       lastName: String,
+      phone: String,
       rotatingTexts: [String],
       description: String,
       stats: [{ value: String, label: String }],
@@ -14,6 +15,7 @@ const portfolioSchema = new mongoose.Schema(
       github: String,
       linkedin: String,
       instagram: String,
+      twitter: String,
       facebook: String,
       resumePdf: String,
       profileImage: String,
@@ -79,6 +81,36 @@ const portfolioSchema = new mongoose.Schema(
         points: [String],
       },
     ],
+    services: {
+      intro: String,
+      availability: String,
+      cards: [
+        {
+          icon: String,
+          title: String,
+          description: String,
+        },
+      ],
+      contactCard: {
+        rate: String,
+        address: String,
+        email: String,
+      },
+    },
+    resume: {
+      summary: String,
+      skills: [[String]],
+      projects: [
+        {
+          title: String,
+          date: String,
+          tech: String,
+          link: String,
+          description: String,
+        },
+      ],
+      achievements: [String],
+    },
   },
   { timestamps: true }
 );

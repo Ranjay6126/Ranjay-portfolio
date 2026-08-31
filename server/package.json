@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server.js",
     "dev": "nodemon server.js",
-    "seed": "node utils/MyData.js"
+    "seed": "node scripts/seedPortfolio.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

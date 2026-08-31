@@ -13,7 +13,7 @@ const connectDB = async () => {
     console.log(`MongoDB connected: ${conn.connection.host}`);
   } catch (error) {
     console.warn(
-      `MongoDB connection failed (${error.message}). Running in standalone mode with static data. Install and start MongoDB to enable contact form persistence.`
+      `MongoDB connection failed (${error.message}). Portfolio API will be unavailable until MongoDB is started. Install and start MongoDB, then seed the database with "npm run seed".`
     );
     dbConnected = false;
   }

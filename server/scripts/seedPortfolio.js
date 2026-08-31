@@ -1,15 +1,16 @@
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import Portfolio from "../models/Portfolio.js";
+import Portfolio from "../models/portfolio.js";
 
 dotenv.config();
 
-export const myData = {
+const seedData = {
   profile: {
     name: "<Ranjay Prajapati/>",
     firstName: "Ranjay",
     lastName: "Prajapati",
-    rotatingTexts: ["Full-Stack Software Engineer", "Problem Solver & Cyber Security"],
+    phone: "+91 8271440846",
+    rotatingTexts: ["Full-Stack Software Engineer", "Problem Solver & Cyber Security Enthusiast"],
     description:
       "I am a results-driven Full Stack Software Engineer Graduate (B.Tech) in Computer Science and Engineering from Lovely Professional University with specializations in Software Engineering and Cyber Security. I have experience with the MERN Stack (MongoDB, Express.js, React.js, and Node.js.) and have built secure, scalable, and user-centric web applications that follow models for clean architecture and code that will not deteriorate. I have a high affinity toward data structures and algorithms. In fact, I have solved over 300+ coding problems. My favorite part of my job is creating cutting-edge software solutions to fulfill the visions and ideas that my peers and I come up with. Currently, I am driven by curiosity more than any other factor and consistently learn new technologies with a special interest in artificial intelligence.",
     stats: [
@@ -126,21 +127,20 @@ export const myData = {
         "RBAC",
         "JWT-based authentication and authorization",
         "Web Media API",
+        "Docker",
       ],
       liveLink: "https://attendance-management-system-client-tttw.onrender.com/login",
       githubLink: "https://github.com/Ranjay6126/Attendance-Management-System",
       date: "Nov 25 - Mar 26",
     },
     {
-      title: "Quick Chat & Call App",
+      title: "Quick Chat & Call Web-App",
       img: "/images/chat.png",
       description:
         "Quick Chat & call WebApplication is a real-time chat application built using the MERN stack and Socket.io. It allows users to messaging application for private text, image, and audio conversations. It pairs a responsive React i. The app includes secure user authentication, chat rooms, and responsive UI for seamless use across devices.",
       tech: [
-        "React.js",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
+        "MERN stack",
+        "Single Page Application (SPA)",
         "Web Socket.io",
         "WebRTC",
         "Middleware",
@@ -182,43 +182,21 @@ export const myData = {
         "URL Shortening",
         "Click Tracking",
         "Responsive UI",
-        "Git",
-        "GitHub",
       ],
-      liveLink: "https://url-shortener-frontend-eva1.onrender.com/signup",
+      liveLink: "#",
       githubLink: "https://github.com/Ranjay6126/URL-SHORTENER",
       date: "Mar 24 - May 24",
     },
     {
-      title: "Food-Order-App",
+      title: "Food Order App",
       img: "/images/food.png",
       description:
-        "Developed a beautiful and fully responsive food-ordering web application using HTML5, CSS3, and JavaScript (ES6+). Implemented dynamic food cards, food categories, search and filtering, an interactive slider, and a complete shopping cart system with add, remove, quantity management, and automatic total-price calculation. Used DOM manipulation, event handling, and Local Storage to create an interactive experience and persist cart data across page refreshes. Designed the interface with CSS Flexbox and Grid for a seamless experience across mobile, tablet, and desktop devices.",
+        "A full-stack food ordering application built with the MERN stack. Users can browse restaurants, add items to cart, place orders, and track order status. Features include user authentication, restaurant management, cart persistence, order history, and a responsive UI across devices.",
       tech: [
-        "HTML5",
-        "CSS3",
-        "JavaScript (ES6+)",
-        "DOM Manipulation",
-        "Event Handling",
-        "Local Storage",
-        "Flexbox",
-        "CSS Grid",
-        "Responsive Design",
-        "Dynamic Rendering",
-      ],
-      liveLink: "https://food-delivery-app-gilt-delta.vercel.app/",
-      githubLink: "https://github.com/Ranjay6126/Food-Delivery-App",
-      date: "Apr 23",
-    },
-    {
-      title: "Facebook Clone",
-      img: "/images/FaceBook clone.png",
-      description:
-        "Developed a fully responsive Facebook-inspired social media platform using the MERN stack (MongoDB, Express.js, React.js, Node.js) with modern social networking and real-time communication features. Implemented JWT authentication, complete CRUD operations, posts, likes, comments, shares, follow/friend requests, reels, media uploads, saved memories, notifications, and a shopping section. Integrated Socket.IO/WebSockets for real-time messaging and notifications and WebRTC for real-time audio and video calling. Designed a responsive UI closely inspired by Facebook for seamless experience across desktop, tablet, and mobile devices.",
-      tech: [
-        "MERN stack",
+        "MERN Stack",
+        "REST API",
+        "React Router",
         "Redux Toolkit",
-        "CRUD Operations",
         "Context API",
         "RESTful APIs",
         "Socket.IO / WebSockets",
@@ -227,6 +205,29 @@ export const myData = {
         "bcrypt",
         "Mongoose",
         "Tailwind CSS",
+      ],
+      liveLink: "#",
+      githubLink: "https://github.com/Ranjay6126/Food-Ordering-App",
+      date: "Jan 25 - Feb 25",
+    },
+    {
+      title: "Facebook Clone",
+      img: "/images/FaceBook clone.png",
+      description:
+        "A Facebook-inspired social network built with the MERN stack featuring user authentication, profile pages, posts, likes, comments, friend requests, real-time notifications, and a responsive UI. Built with secure authentication and scalable backend architecture.",
+      tech: [
+        "MERN Stack",
+        "User Authentication",
+        "JWT Authorization",
+        "bcrypt",
+        "MongoDB Aggregation",
+        "Real-time Notifications",
+        "Friend System",
+        "Posts / Likes / Comments",
+        "Profile Pages",
+        "Image Uploads",
+        "Mongoose",
+        "Responsive UI",
       ],
       liveLink: "https://github.com/Ranjay6126/FaceBook-clone",
       githubLink: "https://github.com/Ranjay6126/FaceBook-clone",
@@ -270,50 +271,44 @@ export const myData = {
       date: "Sep 24",
     },
     {
-      title: "HTML, CSS, JavaScript the Hard Way",
+      title: "Cyber Security Career Program (CCP)",
       issuer: "Udemy",
       img: "/images/udemy.png",
-      verifyLink: "https://drive.google.com/file/d/1olSimLZnFy8GSmHxR9qDvzlPj7JhKyxv/view",
-      date: "Nov 24",
+      verifyLink: "#",
+      date: "Oct 24",
     },
   ],
-  achievements: [
-    {
-      title: "DSA Problem Solving",
-      description: "Solved 300+ DSA problems across LeetCode and GeeksforGeeks platforms.",
-      link: "https://leetcode.com/u/Ranjay_201/",
-      date: "July 2026",
-    },
-  ],
+  achievements: [],
   codingProfiles: [
-    {
-      platform: "LeetCode",
-      link: "https://leetcode.com/u/Ranjay_201/",
-      iconKey: "SiLeetcode",
-      desc: "Solved 300+ DSA problems",
-      color: "from-orange-500 to-yellow-500"
-    },
     {
       platform: "GeeksforGeeks",
       link: "https://www.geeksforgeeks.org/profile/panditrageon?tab=activity",
       iconKey: "SiGeeksforgeeks",
-      desc: "Active problem solver",
-      color: "from-green-600 to-green-400"
+      desc: "Active Problem Solver",
+      color: "#00A86B",
+    },
+    {
+      platform: "LeetCode",
+      link: "https://leetcode.com/u/Ranjay_201/",
+      iconKey: "SiLeetcode",
+      desc: "Solved 300+ Problems",
+      color: "#FFA116",
     },
     {
       platform: "HackerRank",
       link: "https://www.hackerrank.com/profile/panditranjay33",
       iconKey: "SiHackerrank",
-      desc: "Competitive programming",
-      color: "from-green-500 to-emerald-400"
-    }
+      desc: "Competitive Programming",
+      color: "#2EC866",
+    },
   ],
   education: [
     {
-      title: "B.Tech in Computer Science & Engineering",
+      title: "B.Tech. in Computer Science & Engineering",
       institution: "Lovely Professional University, Punjab",
       duration: "Aug 2021 – May 2025",
       grade: "CGPA: 6.7",
+      description: "",
       points: [
         "I learned C++, Data Structures & Algorithms (DSA), Object-Oriented Programming (OOP), JavaScript and full stack software engineering using React.js, Node.js, REST APIs, Express.js, MongoDB, and server-side technologies like MySQL and Nginx, along with more advanced security features such as JWT, GraphQL, and AWS (Amazon Web Services).",
         "I built developing a deeper interest in Operating Systems, DBMS (Database Management System), Computer Networks, Cloud Computing, Cyber Security, and Software Development Life Cycle (SDLC).",
@@ -326,6 +321,7 @@ export const myData = {
       institution: "Hetauda School of Management",
       duration: "Apr 2018 – Mar 2020",
       grade: "CGPA: 7.1",
+      description: "",
       points: [
         "I learned about C programming, logic gates, HTML, CSS, Java Script, networking basics, and software development concepts.",
         "I developed strong understanding of Maths, Physics, Chemistry, and English which helped me focus on the technical aspects and formalities of communication.",
@@ -336,33 +332,118 @@ export const myData = {
       institution: "Shree Adhunik Rastriya Secondary School",
       duration: "Apr 2017 – Mar 2018",
       grade: "CGPA: 8.12",
+      description: "",
       points: [
         "I understood about computer fundamentals, networking basics, and some MS Office tools along with a little introduction to coding and Qbasic and Paint.",
-        "I finished my basic education with a rudimentary understanding of all core subjects (English, Science, Mathematics, Social Studies), and Computer Basics.",
+        "I finished my basic education with rudimentary understanding of all core subjects (English, Science, Mathematics, Social Studies), and Computer Basics.",
       ],
     },
   ],
+  services: {
+    intro:
+      "Provide enterprise level professional digital solutions with equal emphasis on quality, value and cost efficiency for modern businesses and projects.",
+    availability: "Open to Full-Time Opportunities & Freelance Projects",
+    cards: [
+      {
+        icon: "🌐",
+        title: "Website & Mobile Application",
+        description:
+          "I provide end-to-end web application and mobile application development services. Building responsive, scalable and user friendly solutions. I build fast, reliable, easy to maintain applications – from modern UI/UX design and secure backend APIs to database integration and real-time features. I also deploy on cloud platforms like AWS, configure Docker and CI/CD pipelines and optimize performance to make your app secure, scalable and production ready.",
+      },
+      {
+        icon: "🛡️",
+        title: "SOC (Security Operations Center)",
+        description:
+          "I offer SOC Analyst services focused on continuous security monitoring, threat detection, and incident analysis to help protect your systems and networks. I investigate security alerts, analyze logs, identify potential threats, and support incident response using industry-standard SIEM tools and security best practices. My goal is to strengthen your organization's security posture through proactive monitoring, timely alert investigation, and effective risk mitigation.",
+      },
+    ],
+    contactCard: {
+      rate: "Available for Work & Freelance : (₹ 60K / Month)",
+      address: "Bengaluru, Whitefield",
+      email: "panditranjay33@gmail.com",
+    },
+  },
+  resume: {
+    summary:
+      "Results-driven Full-Stack Software Engineer with a B.Tech. in Computer Science and Engineering, specializing in Software Engineering and Cyber Security. Experienced in building secure, scalable, user-centric MERN applications with clean architecture and maintainable code.",
+    skills: [
+      ["Languages", "C++, Java, Python, JavaScript, TypeScript"],
+      ["Frontend", "HTML5, CSS, React, React Router, Redux, Tailwind CSS"],
+      ["Backend & Databases", "Node.js, Express.js, MongoDB, MySQL, GraphQL, JWT"],
+      ["Tools & Platforms", "Git, GitHub, Docker, VS Code, Postman, Figma, AWS, Linux"],
+      ["Security", "Wireshark, Nmap, Metasploit, Burp Suite, Nessus, Nikto, Kali Linux, OWASP Top 10"],
+    ],
+    projects: [
+      {
+        title: "Attendance Management System",
+        date: "Nov 2025 - Mar 2026",
+        tech: "MERN Stack, Tailwind CSS, JWT, MongoDB",
+        link: "https://github.com/Ranjay6126/Attendance-Management-System",
+        description:
+          "Built a role-based attendance system for Super Admin, Admin, and Employees with live selfie attendance, GPS tracking, admin verification, attendance rectification, Excel export, notifications, and secure MongoDB storage.",
+      },
+      {
+        title: "Quick Chat App",
+        date: "Jun 2025 - Aug 2025",
+        tech: "React.js, Node.js, Express.js, MongoDB, Socket.io",
+        link: "https://github.com/Ranjay6126/Quick-Chat",
+        description:
+          "Created a real-time MERN chat application with Socket.io, secure authentication, chat rooms, live updates, and a responsive interface for smooth multi-user communication.",
+      },
+      {
+        title: "Book Store System",
+        date: "Sep 2024 - Dec 2025",
+        tech: "React.js, Node.js, Express.js, MongoDB",
+        link: "https://github.com/Ranjay6126/Book-Store-Project-",
+        description:
+          "Developed a full-stack bookstore application with browsing, search, and CRUD book management, focused on efficient data handling and a responsive user interface.",
+      },
+      {
+        title: "URL Shortener",
+        date: "Mar 2024 - May 2024",
+        tech: "Node.js, Express.js, MongoDB, JWT, EJS",
+        link: "https://github.com/Ranjay6126/URL-SHORTENER",
+        description:
+          "Built an MVC-based URL shortener with JWT authentication, short-link creation and management, and a responsive interface.",
+      },
+    ],
+    achievements: [
+      "Solved 300+ Data Structures and Algorithms problems across LeetCode and GeeksforGeeks.",
+    ],
+  },
 };
 
-const seedMyData = async () => {
+const seedPortfolio = async () => {
   const uri = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/portfolio";
+  const reset = process.argv.includes("--reset") || process.argv.includes("--force");
 
   try {
     await mongoose.connect(uri);
-    await Portfolio.deleteMany({});
-    await Portfolio.create(myData);
-    console.log("Portfolio database seeded successfully!");
+    console.log(`Connected to MongoDB: ${uri}`);
+
+    if (reset) {
+      await Portfolio.deleteMany({});
+      console.log("Cleared existing Portfolio collection (--reset).");
+    } else {
+      const count = await Portfolio.countDocuments();
+      if (count > 0) {
+        console.warn(
+          `Portfolio collection already has ${count} document(s). Aborting seed to avoid overwriting.\n` +
+            `  Use --reset to force a clean re-seed:\n` +
+            `    npm run seed -- --reset\n` +
+            `    node scripts/seedPortfolio.js --reset`
+        );
+        process.exit(1);
+      }
+    }
+
+    const created = await Portfolio.create(seedData);
+    console.log(`Portfolio database seeded successfully! Document ID: ${created._id}`);
     process.exit(0);
   } catch (error) {
-    console.error("Seed error:", error.message);
+    console.error("Seed failed:", error.message);
     process.exit(1);
   }
 };
 
-const isDirectRun = process.argv[1]?.includes("MyData.js");
-if (isDirectRun) {
-  seedMyData();
-}
-
-
-
+seedPortfolio();

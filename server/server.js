@@ -7,7 +7,6 @@ import connectDB from "./config/db.js";
 import errorHandler from "./middleware/errorHandler.js";
 import portfolioRoutes from "./routes/portfolioRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
-import { sureData } from "./utils/sureData.js";
 
 dotenv.config();
 
@@ -19,7 +18,6 @@ const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
   await connectDB();
-  await sureData();
 
   app.use(
     cors({
