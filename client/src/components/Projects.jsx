@@ -73,7 +73,7 @@ export default function Projects({ portfolio }) {
                 className="projects-certificates-card group relative portfolio-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-3 sm:p-4 transition-colors duration-300 flex flex-col h-full"
               >
                 <div className="flex items-start justify-between mb-2 gap-2">
-                  <h3 className="portfolio-card-title text-base sm:text-lg font-bold text-white transition-colors">
+                  <h3 className="portfolio-card-title text-base sm:text-lg font-bold text-white transition-colors underline underline-offset-4 decoration-2 decoration-white/30 hover:decoration-cyan-400/60">
                     {projectTitleWithEmoji(project.title)}
                   </h3>
                   <span className="text-xs font-medium text-indigo-300 bg-indigo-500/10 px-2 sm:px-3 py-1 rounded-full border border-indigo-500/20 whitespace-nowrap">
