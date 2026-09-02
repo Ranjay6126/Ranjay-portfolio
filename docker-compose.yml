@@ -2,6 +2,7 @@ services:
   # NGINX reverse proxy and static file server
   portfolio-nginx:
     container_name: portfolio-nginx
+    image: ${DOCKER_USERNAME:-ranjay8848}/portfolio-client:latest
     build:
       context: .
       dockerfile: docker/Dockerfile.client
@@ -28,6 +29,7 @@ services:
   # Node.js backend API server
   portfolio-server:
     container_name: portfolio-server
+    image: ${DOCKER_USERNAME:-ranjay8848}/portfolio-server:latest
     build:
       context: .
       dockerfile: docker/Dockerfile.server

@@ -154,6 +154,7 @@ jobs:
             cat > .env << EOF
             NODE_ENV=production
             PORT=5000
+            DOCKER_USERNAME=$DOCKER_USERNAME
             MONGODB_URI=${{ secrets.PROD_MONGODB_URI }}
             CLIENT_URL=${{ secrets.PROD_CLIENT_URL }}
             NGINX_PORT=80
@@ -168,8 +169,8 @@ jobs:
             # Stop and remove old containers
             docker compose down || true
             
-            # Start new containers with latest images
-            docker compose up -d
+            # Start the images built by GitHub Actions; do not rebuild on EC2
+            docker compose up -d --no-build
             
             # Wait for services to be healthy
             sleep 10
