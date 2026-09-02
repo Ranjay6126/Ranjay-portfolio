@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   # NGINX reverse proxy and static file server
   portfolio-nginx:
@@ -68,7 +66,7 @@ services:
   # For production: Use MongoDB Atlas (cloud)
   portfolio-mongodb:
     container_name: portfolio-mongodb
-    image: mongo:7-alpine
+    image: mongo:7.0-jammy
     expose:
       - "27017"
     environment:
