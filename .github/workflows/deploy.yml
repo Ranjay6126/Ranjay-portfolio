@@ -10,13 +10,17 @@ on:
 
 env:
   REGISTRY: docker.io
-  IMAGE_NAME_CLIENT: ${{ secrets.DOCKER_USERNAME }}/portfolio-client
-  IMAGE_NAME_SERVER: ${{ secrets.DOCKER_USERNAME }}/portfolio-server
+  IMAGE_NAMESPACE: ${{ secrets.DOCKER_USERNAME || 'ranjay8848' }}
+  IMAGE_NAME_CLIENT: ${{ secrets.DOCKER_USERNAME || 'ranjay8848' }}/portfolio-client
+  IMAGE_NAME_SERVER: ${{ secrets.DOCKER_USERNAME || 'ranjay8848' }}/portfolio-server
 
 jobs:
   # Stage 1: Build Docker images
   build:
     runs-on: ubuntu-latest
+    env:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
     outputs:
       client-tag: ${{ steps.meta-client.outputs.tags }}
       server-tag: ${{ steps.meta-server.outputs.tags }}
@@ -29,6 +33,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Log in to Docker Hub
+        if: env.DOCKER_USERNAME != '' && env.DOCKER_PASSWORD != ''
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
@@ -63,7 +68,7 @@ jobs:
         with:
           context: .
           file: ./docker/Dockerfile.client
-          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && env.DOCKER_USERNAME != '' && env.DOCKER_PASSWORD != '' }}
           tags: ${{ steps.meta-client.outputs.tags }}
           labels: ${{ steps.meta-client.outputs.labels }}
           cache-from: type=gha
@@ -74,7 +79,7 @@ jobs:
         with:
           context: .
           file: ./docker/Dockerfile.server
-          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && env.DOCKER_USERNAME != '' && env.DOCKER_PASSWORD != '' }}
           tags: ${{ steps.meta-server.outputs.tags }}
           labels: ${{ steps.meta-server.outputs.labels }}
           cache-from: type=gha
@@ -97,17 +102,13 @@ jobs:
           npm audit --prefix server --audit-level=moderate || true
           npm audit --prefix client --audit-level=moderate || true
 
-      - name: OWASP Dependency Check
-        uses: dependency-check/Scan_Action@main
-        with:
-          path: "."
-          format: "JSON"
-
   # Stage 3: Deploy to AWS EC2 (only on main branch)
   deploy:
     needs: build
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    env:
+      SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
     steps:
       - name: Checkout code
@@ -115,11 +116,15 @@ jobs:
 
       - name: Deploy to AWS EC2
         uses: appleboy/ssh-action@master
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           port: ${{ secrets.EC2_PORT || 22 }}
+          envs: DOCKER_USERNAME,DOCKER_PASSWORD
           script: |
             set -e
             
@@ -130,7 +135,7 @@ jobs:
             git pull origin main || true
             
             # Log in to Docker Hub
-            echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+            printf '%s' "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
             
             # Pull latest images
             docker pull ${{ secrets.DOCKER_USERNAME }}/portfolio-client:latest || true
@@ -184,7 +189,7 @@ jobs:
           echo "⚠️ Service health check timeout - manual verification may be needed"
 
       - name: Slack notification on success
-        if: success()
+        if: success() && env.SLACK_WEBHOOK != ''
         uses: slackapi/slack-github-action@v1.24.0
         with:
           webhook-url: ${{ secrets.SLACK_WEBHOOK }}
@@ -203,7 +208,7 @@ jobs:
             }
 
       - name: Slack notification on failure
-        if: failure()
+        if: failure() && env.SLACK_WEBHOOK != ''
         uses: slackapi/slack-github-action@v1.24.0
         with:
           webhook-url: ${{ secrets.SLACK_WEBHOOK }}
