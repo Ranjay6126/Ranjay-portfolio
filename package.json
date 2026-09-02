@@ -9,7 +9,13 @@
     "client": "npm run dev --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build": "npm run build --prefix client",
-    "start": "npm run start --prefix server"
+    "start": "npm run start --prefix server",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docker:prod:build": "docker-compose -f docker-compose.yml build --no-cache",
+    "docker:prod:up": "docker-compose -f docker-compose.yml up -d"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

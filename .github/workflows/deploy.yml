@@ -1,0 +1,222 @@
+name: CI/CD Pipeline - Build & Deploy to AWS EC2
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  REGISTRY: docker.io
+  IMAGE_NAME_CLIENT: ${{ secrets.DOCKER_USERNAME }}/portfolio-client
+  IMAGE_NAME_SERVER: ${{ secrets.DOCKER_USERNAME }}/portfolio-server
+
+jobs:
+  # Stage 1: Build Docker images
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      client-tag: ${{ steps.meta-client.outputs.tags }}
+      server-tag: ${{ steps.meta-server.outputs.tags }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Extract metadata for client
+        id: meta-client
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_CLIENT }}
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix={{branch}}-
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Extract metadata for server
+        id: meta-server
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_SERVER }}
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix={{branch}}-
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build and push client image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./docker/Dockerfile.client
+          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+          tags: ${{ steps.meta-client.outputs.tags }}
+          labels: ${{ steps.meta-client.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build and push server image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./docker/Dockerfile.server
+          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+          tags: ${{ steps.meta-server.outputs.tags }}
+          labels: ${{ steps.meta-server.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Image digest
+        run: |
+          echo "Client Image: ${{ steps.meta-client.outputs.tags }}"
+          echo "Server Image: ${{ steps.meta-server.outputs.tags }}"
+
+  # Stage 2: Security scanning (optional but recommended)
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run npm audit
+        run: |
+          npm audit --prefix server --audit-level=moderate || true
+          npm audit --prefix client --audit-level=moderate || true
+
+      - name: OWASP Dependency Check
+        uses: dependency-check/Scan_Action@main
+        with:
+          path: "."
+          format: "JSON"
+
+  # Stage 3: Deploy to AWS EC2 (only on main branch)
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to AWS EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          port: ${{ secrets.EC2_PORT || 22 }}
+          script: |
+            set -e
+            
+            # Navigate to deployment directory
+            cd ${{ secrets.DEPLOY_PATH || '~/portfolio' }}
+            
+            # Pull latest code
+            git pull origin main || true
+            
+            # Log in to Docker Hub
+            echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+            
+            # Pull latest images
+            docker pull ${{ secrets.DOCKER_USERNAME }}/portfolio-client:latest || true
+            docker pull ${{ secrets.DOCKER_USERNAME }}/portfolio-server:latest || true
+            
+            # Create .env file from secrets (for production)
+            cat > .env << EOF
+            NODE_ENV=production
+            PORT=5000
+            MONGODB_URI=${{ secrets.PROD_MONGODB_URI }}
+            CLIENT_URL=${{ secrets.PROD_CLIENT_URL }}
+            NGINX_PORT=80
+            SMTP_HOST=${{ secrets.SMTP_HOST }}
+            SMTP_PORT=${{ secrets.SMTP_PORT }}
+            SMTP_USER=${{ secrets.SMTP_USER }}
+            SMTP_PASS=${{ secrets.SMTP_PASS }}
+            CONTACT_EMAIL=${{ secrets.CONTACT_EMAIL }}
+            CONTACT_RECEIVER=${{ secrets.CONTACT_RECEIVER }}
+            EOF
+            
+            # Stop and remove old containers
+            docker-compose down || true
+            
+            # Start new containers with latest images
+            docker-compose up -d
+            
+            # Wait for services to be healthy
+            sleep 10
+            
+            # Verify deployment
+            curl -f http://localhost:80/health.html || exit 1
+            curl -f http://localhost/portfolio-api/status || exit 1
+            
+            # Clean up Docker resources
+            docker image prune -f --filter "until=72h"
+            docker system prune -f --filter "until=72h"
+            
+            echo "✓ Deployment successful!"
+
+      - name: Verify deployment
+        run: |
+          echo "Checking deployment status..."
+          for i in {1..5}; do
+            if curl -f -s ${{ secrets.EC2_HOST }}/health.html > /dev/null; then
+              echo "✓ Service is healthy"
+              exit 0
+            fi
+            echo "Attempt $i/5 - Service not yet ready, waiting..."
+            sleep 10
+          done
+          echo "⚠️ Service health check timeout - manual verification may be needed"
+
+      - name: Slack notification on success
+        if: success()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK }}
+          payload: |
+            {
+              "text": "✅ Portfolio deployment successful",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*✅ Portfolio Deployment Successful*\n*Repository:* ${{ github.repository }}\n*Branch:* ${{ github.ref_name }}\n*Commit:* ${{ github.sha }}\n*Author:* ${{ github.actor }}"
+                  }
+                }
+              ]
+            }
+
+      - name: Slack notification on failure
+        if: failure()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK }}
+          payload: |
+            {
+              "text": "❌ Portfolio deployment failed",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*❌ Portfolio Deployment Failed*\n*Repository:* ${{ github.repository }}\n*Branch:* ${{ github.ref_name }}\n*Commit:* ${{ github.sha }}\n*Author:* ${{ github.actor }}\n*Action:* <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View Logs>"
+                  }
+                }
+              ]
+            }

@@ -1,33 +1,156 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.production
+.env.staging
+
+# Dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.pnpm-store
+
+# Build outputs
+dist
+dist-ssr
+*.local
+build
+out
+.vite
+.turbo
+
+# IDE and editor files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+*.iml
+.sublime-workspace
+.sublime-project
+.vim
+.emacs
+
+# Git
+.git
+.gitattributes
+
 # Logs
 logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# OS files
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
+# Testing
+coverage
+.nyc_output
+.mocha_output
+.jest_cache
+.vitest
+cypress/screenshots
+cypress/videos
 
+# Database
+*.db
+*.sqlite
+*.sqlite3
+*.rdb
 
+# Docker
+.docker-compose.override.yml
+docker-compose.override.yml
 
+# Temporary files
+tmp
+temp
+*.tmp
+*.bak
+*.swp
+
+# IDE caches
+.eslintcache
+.stylelintcache
+.vite-cache
+
+# Package managers lock files (optional - uncomment if not using lock files)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# AWS/Deployment
+deploy-key.pem
+*.pem
+*.ppk
+aws-config.json
+
+# CI/CD
+.github/workflows/secrets.yml
+
+# Build artifacts
+server/dist
+client/dist
+
+# Misc
+.cache
+.next
+.nuxt
+dist
+.cache/
+*.code-workspace
+
+# Node
 node_modules/
-dist/
+.npm/
+.yarn/
+.pnp
+.pnp.js
+
+# Production builds shouldn't be committed
+*.min.js
+*.min.css
+
+# Environment-specific files
+.env.development
+.env.test
+.env.production
+
+# Crash dumps
+crash.log
+crash.dump
+
+# Dependency directories
+node_modules
+jspm_packages
+
+# Optional REPL history
+.node_repl_history
+.pry_history
+.irb_history
+
+# Yarn
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
 .env
 .DS_Store
 *.log

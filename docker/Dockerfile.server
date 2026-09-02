@@ -1,0 +1,57 @@
+# Multi-stage build for Node.js server
+# Stage 1: Build/Install dependencies
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+
+# Copy package files
+COPY server/package*.json ./
+
+# Install dependencies
+RUN npm ci --only=production && npm cache clean --force
+
+# Stage 2: Runtime
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Install dumb-init for proper signal handling
+RUN apk add --no-cache dumb-init curl
+
+# Create non-root user for security
+RUN addgroup -g 1001 -S nodejs && adduser -S nodejs -u 1001
+
+# Copy package files
+COPY server/package*.json ./
+
+# Copy dependencies from builder
+COPY --from=builder /app/node_modules ./node_modules
+
+# Copy application code
+COPY server/config ./config
+COPY server/controllers ./controllers
+COPY server/middleware ./middleware
+COPY server/models ./models
+COPY server/routes ./routes
+COPY server/scripts ./scripts
+COPY server/utils ./utils
+COPY server/server.js .
+
+# Change ownership to non-root user
+RUN chown -R nodejs:nodejs /app
+
+# Switch to non-root user
+USER nodejs
+
+# Expose port
+EXPOSE 5000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+  CMD curl -f http://localhost:5000/portfolio-api/status || exit 1
+
+# Use dumb-init to handle signals properly
+ENTRYPOINT ["dumb-init", "--"]
+
+# Start application
+CMD ["node", "server.js"]

@@ -1,0 +1,107 @@
+# Dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.pnpm-store
+
+# Build outputs
+dist
+dist-ssr
+*.local
+build
+out
+
+# IDE and editor files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+*.iml
+.sublime-workspace
+.sublime-project
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Environment and config
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Development
+.next
+.turbo
+coverage
+.nyc_output
+
+# Docker
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# CI/CD
+.github
+.gitlab-ci.yml
+.circleci
+
+# Documentation
+README.md
+docs
+*.md
+
+# Testing
+test
+tests
+__tests__
+jest.config.js
+vitest.config.js
+.mocharc.js
+cypress
+
+# Scripts
+scripts/seedPortfolio.js
+
+# Misc
+LICENSE
+.prettier*
+.eslint*
+tsconfig.json
+webpack.config.js
+rollup.config.js
+vite.config.js
+postcss.config.js
+tailwind.config.js
+.editorconfig
+
+# Package managers
+*.lock
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Caches
+.cache
+.eslintcache
+.stylelintcache
+
+# Temp files
+tmp
+temp
+*.tmp
+*.bak

@@ -1,86 +1,80 @@
-# Ranjay Prajapati — Developer Portfolio
+# Ranjay Prajapati - Developer Portfolio
 
-A responsive full-stack portfolio that presents my education, technical skills, projects, certifications, coding profiles, services, and contact details. The interface is built with React, Vite, Tailwind CSS, Framer Motion, and an Express and MongoDB API provides portfolio content and contact-message handling.
+A production-ready full-stack portfolio application showcasing education, technical skills, projects, certifications, coding profiles, services, and contact capabilities. Built with modern technologies and containerized for AWS EC2 deployment.
 
-## Tech stack
+## Tech Stack
 
 - **Frontend:** React 18, Vite, Tailwind CSS, Framer Motion, React Three Fiber, Three.js
-- **Backend:** Node.js, Express, MongoDB, Mongoose
-- **Tooling:** Nodemon and Concurrently
+- **Backend:** Node.js 18+, Express.js, MongoDB, Mongoose
+- **Deployment:** Docker, Docker Compose, NGINX, GitHub Actions, AWS EC2
+- **Security:** Helmet.js, Rate Limiting, CORS, Input Validation, gzip Compression
+- **Database:** MongoDB Atlas (Cloud)
 
-## Quick start
+# Ranjay Prajapati - Developer Portfolio
 
-### 1. Install dependencies
+This is my personal developer portfolio website.
 
-```powershell
-git clone https://github.com/Ranjay6126/Ranjay-portfolio.git
-cd Ranjay-portfolio
-npm install
-npm run install:all
-```
+I built this project to show my skills, education, projects, certifications, coding profiles, services, and contact information.
 
-### 2. Configure environment variables
+The frontend is built with React and the backend uses Node.js and Express. MongoDB is used to store my portfolio data.
 
-Copy `server/.env.example` to `server/.env`, then set your local values:
+I have also added Docker, NGINX, GitHub Actions, and AWS EC2 for deployment.
 
-```env
-PORT=5000
-MONGODB_URI=mongodb://127.0.0.1:27017/portfolio
-CLIENT_URL=http://localhost:5173
-```
+---
 
-Email configuration is optional. When configured, contact form submissions can also trigger an SMTP notification.
+## Features
 
-### 3. Run the app
+- About me
+- Education
+- Technical skills
+- Projects
+- Certifications
+- Coding profiles
+- Services
+- Resume
+- Contact form
+- MongoDB database
+- Responsive design
+- API for portfolio data
+- Docker support
+- AWS EC2 deployment
+- GitHub Actions CI/CD
 
-```powershell
-npm run dev
-```
+---
 
-- Portfolio UI: `http://localhost:5173`
-- Portfolio API: `http://localhost:5000`
+## Technologies Used
 
-The backend automatically seeds and synchronizes the portfolio data in MongoDB when it connects.
+### Frontend
 
-## Scripts
+- React 18
+- Vite
+- Tailwind CSS
+- Framer Motion
+- Three.js
+- React Three Fiber
 
-| Command | Description |
-| --- | --- |
-| `npm run dev` | Starts the Vite frontend and nodemon backend together. |
-| `npm run client` | Starts only the Vite frontend. |
-| `npm run server` | Starts the backend through nodemon. |
-| `npm start` | Starts the backend through nodemon. |
-| `npm run seed` | Recreates portfolio data in MongoDB from the seed file. |
-| `npm run build` | Creates an optimized frontend build. |
+### Backend
 
-To run only the backend:
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
 
-```powershell
-cd server
-npm start
-```
+### Deployment
 
-Nodemon watches backend files and restarts the API automatically after changes.
+- Docker
+- Docker Compose
+- NGINX
+- GitHub Actions
+- Docker Hub
+- AWS EC2
 
-## API
+### Security
 
-All API routes use the `/portfolio-api` prefix.
+- Helmet.js
+- CORS
+- Rate Limiting
+- Input Validation
+- Gzip Compression
 
-- `GET /portfolio-api/status` — API health check
-- `GET /portfolio-api/profile` — portfolio profile and section content
-- `POST /portfolio-api/messages` — submits a contact message
-- `GET /portfolio-api/messages` — lists saved messages when MongoDB is connected
-
-## Production
-
-```powershell
-npm run build
-$env:NODE_ENV = "production"
-npm start
-```
-
-In production, Express serves the built client from `client/dist` and continues to expose the API under `/portfolio-api`.
-
-## License
-
-Personal portfolio project.
+---

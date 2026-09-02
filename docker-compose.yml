@@ -1,0 +1,101 @@
+version: "3.8"
+
+services:
+  # NGINX reverse proxy and static file server
+  portfolio-nginx:
+    container_name: portfolio-nginx
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.client
+    ports:
+      - "${NGINX_PORT:-80}:80"
+    depends_on:
+      - portfolio-server
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/nginx.conf:ro
+    environment:
+      - NODE_ENV=${NODE_ENV:-development}
+    restart: unless-stopped
+    networks:
+      - portfolio-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health.html"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    labels:
+      - "com.example.description=Portfolio NGINX frontend"
+
+  # Node.js backend API server
+  portfolio-server:
+    container_name: portfolio-server
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.server
+    expose:
+      - "5000"
+    depends_on:
+      - portfolio-mongodb
+    environment:
+      - NODE_ENV=${NODE_ENV:-development}
+      - PORT=5000
+      - MONGODB_URI=${MONGODB_URI:-mongodb://portfolio-mongodb:27017/portfolio}
+      - CLIENT_URL=${CLIENT_URL:-http://localhost}
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASS=${SMTP_PASS}
+      - CONTACT_EMAIL=${CONTACT_EMAIL}
+      - CONTACT_RECEIVER=${CONTACT_RECEIVER}
+    restart: unless-stopped
+    networks:
+      - portfolio-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/portfolio-api/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    labels:
+      - "com.example.description=Portfolio Node.js backend API"
+    # Uncomment for development with hot reload
+    # volumes:
+    #   - ./server:/app:delegated
+    #   - /app/node_modules
+
+  # MongoDB database (local development only)
+  # For production: Use MongoDB Atlas (cloud)
+  portfolio-mongodb:
+    container_name: portfolio-mongodb
+    image: mongo:7-alpine
+    expose:
+      - "27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USERNAME:-root}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD:-password}
+      - MONGO_INITDB_DATABASE=portfolio
+    volumes:
+      - portfolio-db-data:/data/db
+      - portfolio-db-config:/data/configdb
+    restart: unless-stopped
+    networks:
+      - portfolio-network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+    labels:
+      - "com.example.description=Portfolio MongoDB database (development only)"
+
+volumes:
+  portfolio-db-data:
+    driver: local
+  portfolio-db-config:
+    driver: local
+
+networks:
+  portfolio-network:
+    driver: bridge

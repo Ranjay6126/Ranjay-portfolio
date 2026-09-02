@@ -189,7 +189,7 @@ export default function CodingProfiles({ profiles = [] }) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-8 md:gap-10 xl:gap-12 w-full"
+          className="flex flex-wrap justify-around gap-8 md:gap-10 xl:gap-12 w-full"
         >
           {activeProfiles.map((profile, index) => {
             const IconComp = iconResolver[profile.iconKey];
