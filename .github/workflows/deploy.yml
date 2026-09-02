@@ -123,6 +123,16 @@ jobs:
           test -n "$EC2_HOST" || { echo "Missing required GitHub secret: EC2_HOST (your EC2 public IPv4 address or DNS name)"; exit 1; }
           test -n "$EC2_SSH_KEY" || { echo "Missing required GitHub secret: EC2_SSH_KEY"; exit 1; }
 
+          # GitHub-hosted runners cannot reach an EC2 private address.
+          if [[ "$EC2_HOST" =~ ^10\. ]] || \
+             [[ "$EC2_HOST" =~ ^192\.168\. ]] || \
+             [[ "$EC2_HOST" =~ ^172\.(1[6-9]|2[0-9]|3[0-1])\. ]] || \
+             [[ "$EC2_HOST" =~ ^127\. ]] || \
+             [[ "$EC2_HOST" =~ ^169\.254\. ]]; then
+            echo "EC2_HOST=$EC2_HOST is a private or link-local address. Set EC2_HOST to the instance's public IPv4 address or public DNS name.";
+            exit 1;
+          fi
+
       - name: Deploy to AWS EC2
         uses: appleboy/ssh-action@master
         env:
@@ -133,6 +143,7 @@ jobs:
           username: ${{ env.EC2_USER }}
           key: ${{ env.EC2_SSH_KEY }}
           port: ${{ secrets.EC2_PORT || 22 }}
+          timeout: 30s
           command_timeout: 4m
           envs: DOCKER_USERNAME,DOCKER_PASSWORD
           script: |
