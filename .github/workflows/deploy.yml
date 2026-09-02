@@ -133,7 +133,7 @@ jobs:
           username: ${{ env.EC2_USER }}
           key: ${{ env.EC2_SSH_KEY }}
           port: ${{ secrets.EC2_PORT || 22 }}
-          command_timeout: 5m
+          command_timeout: 4m
           envs: DOCKER_USERNAME,DOCKER_PASSWORD
           script: |
             set -e
@@ -141,19 +141,19 @@ jobs:
             # Navigate to deployment directory
             cd ${{ secrets.DEPLOY_PATH || '/home/ubuntu/portfolio/Ranjay-portfolio' }}
             
-            # Pull latest code
-            git pull origin main || true
+            echo "Deployment started"
+
+            # Pull latest code without waiting indefinitely
+            timeout 30s git pull --ff-only origin main || true
+            echo "Repository ready"
             
             # Log in to Docker Hub
-            printf '%s' "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+            printf '%s' "$DOCKER_PASSWORD" | timeout 30s docker login --username "$DOCKER_USERNAME" --password-stdin
+            echo "Docker login complete"
             
-            # Pull both CI-built images in parallel, with a bounded wait
-            timeout 180s docker pull "$DOCKER_USERNAME/portfolio-client:latest" &
-            client_pull_pid=$!
-            timeout 180s docker pull "$DOCKER_USERNAME/portfolio-server:latest" &
-            server_pull_pid=$!
-            wait "$client_pull_pid"
-            wait "$server_pull_pid"
+            # Compose pulls both CI-built images in parallel
+            timeout 150s docker compose -f docker-compose.prod.yml pull
+            echo "Docker images ready"
             
             # Create .env file from secrets (for production)
             cat > .env << EOF
@@ -172,10 +172,11 @@ jobs:
             EOF
             
             # Stop only the production containers
-            docker compose -f docker-compose.prod.yml down --remove-orphans || true
+            timeout 30s docker compose -f docker-compose.prod.yml down --remove-orphans || true
             
             # Start the images built by GitHub Actions; do not rebuild on EC2
-            docker compose -f docker-compose.prod.yml up -d --no-build
+            timeout 60s docker compose -f docker-compose.prod.yml up -d --no-build
+            echo "Containers started"
             
             # Verify deployment without waiting on fixed delays
             for attempt in 1 2 3 4 5 6; do
