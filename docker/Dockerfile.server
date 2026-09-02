@@ -7,8 +7,8 @@ WORKDIR /app
 # Copy package files
 COPY server/package*.json ./
 
-# Install dependencies
-RUN npm ci --only=production && npm cache clean --force
+# Install runtime dependencies from the current package manifest
+RUN npm install --omit=dev && npm cache clean --force
 
 # Stage 2: Runtime
 FROM node:18-alpine
