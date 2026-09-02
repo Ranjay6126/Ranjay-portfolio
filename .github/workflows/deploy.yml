@@ -167,10 +167,10 @@ jobs:
             EOF
             
             # Stop and remove old containers
-            docker compose down || true
+            docker compose -f docker-compose.yml down || true
             
             # Start the images built by GitHub Actions; do not rebuild on EC2
-            docker compose up -d --no-build
+            docker compose -f docker-compose.prod.yml up -d --no-build
             
             # Wait for services to be healthy
             sleep 10
