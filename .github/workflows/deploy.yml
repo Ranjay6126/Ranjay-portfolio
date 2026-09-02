@@ -108,21 +108,30 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     env:
+      EC2_HOST: ${{ secrets.EC2_HOST }}
+      EC2_USER: ${{ secrets.EC2_USER || 'ubuntu' }}
+      EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME || 'ranjay8848' }}
       SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Validate deployment secrets
+        run: |
+          test -n "$EC2_HOST" || { echo "Missing required GitHub secret: EC2_HOST (your EC2 public IPv4 address or DNS name)"; exit 1; }
+          test -n "$EC2_SSH_KEY" || { echo "Missing required GitHub secret: EC2_SSH_KEY"; exit 1; }
+
       - name: Deploy to AWS EC2
         uses: appleboy/ssh-action@master
         env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME || 'ranjay8848' }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
+          host: ${{ env.EC2_HOST }}
+          username: ${{ env.EC2_USER }}
+          key: ${{ env.EC2_SSH_KEY }}
           port: ${{ secrets.EC2_PORT || 22 }}
           envs: DOCKER_USERNAME,DOCKER_PASSWORD
           script: |
@@ -138,8 +147,8 @@ jobs:
             printf '%s' "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
             
             # Pull latest images
-            docker pull ${{ secrets.DOCKER_USERNAME }}/portfolio-client:latest || true
-            docker pull ${{ secrets.DOCKER_USERNAME }}/portfolio-server:latest || true
+            docker pull ${{ env.DOCKER_USERNAME }}/portfolio-client:latest
+            docker pull ${{ env.DOCKER_USERNAME }}/portfolio-server:latest
             
             # Create .env file from secrets (for production)
             cat > .env << EOF
@@ -179,7 +188,7 @@ jobs:
         run: |
           echo "Checking deployment status..."
           for i in {1..5}; do
-            if curl -f -s ${{ secrets.EC2_HOST }}/health.html > /dev/null; then
+            if curl -f -s "http://${{ env.EC2_HOST }}/health.html" > /dev/null; then
               echo "✓ Service is healthy"
               exit 0
             fi
