@@ -166,10 +166,10 @@ jobs:
             EOF
             
             # Stop and remove old containers
-            docker-compose down || true
+            docker compose down || true
             
             # Start new containers with latest images
-            docker-compose up -d
+            docker compose up -d
             
             # Wait for services to be healthy
             sleep 10
