@@ -133,6 +133,7 @@ jobs:
           username: ${{ env.EC2_USER }}
           key: ${{ env.EC2_SSH_KEY }}
           port: ${{ secrets.EC2_PORT || 22 }}
+          command_timeout: 5m
           envs: DOCKER_USERNAME,DOCKER_PASSWORD
           script: |
             set -e
@@ -146,9 +147,13 @@ jobs:
             # Log in to Docker Hub
             printf '%s' "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
             
-            # Pull latest images
-            docker pull ${{ env.DOCKER_USERNAME }}/portfolio-client:latest
-            docker pull ${{ env.DOCKER_USERNAME }}/portfolio-server:latest
+            # Pull both CI-built images in parallel, with a bounded wait
+            timeout 180s docker pull "$DOCKER_USERNAME/portfolio-client:latest" &
+            client_pull_pid=$!
+            timeout 180s docker pull "$DOCKER_USERNAME/portfolio-server:latest" &
+            server_pull_pid=$!
+            wait "$client_pull_pid"
+            wait "$server_pull_pid"
             
             # Create .env file from secrets (for production)
             cat > .env << EOF
@@ -166,22 +171,28 @@ jobs:
             CONTACT_RECEIVER=${{ secrets.CONTACT_RECEIVER }}
             EOF
             
-            # Stop and remove old containers
-            docker compose -f docker-compose.yml down || true
+            # Stop only the production containers
+            docker compose -f docker-compose.prod.yml down --remove-orphans || true
             
             # Start the images built by GitHub Actions; do not rebuild on EC2
             docker compose -f docker-compose.prod.yml up -d --no-build
             
-            # Wait for services to be healthy
-            sleep 10
-            
-            # Verify deployment
-            curl -f http://localhost:80/health.html || exit 1
-            curl -f http://localhost/portfolio-api/status || exit 1
-            
-            # Clean up Docker resources
-            docker image prune -f --filter "until=72h"
-            docker system prune -f --filter "until=72h"
+            # Verify deployment without waiting on fixed delays
+            for attempt in 1 2 3 4 5 6; do
+              if curl -fsS http://localhost/health.html > /dev/null && \
+                 curl -fsS http://localhost/portfolio-api/status > /dev/null; then
+                echo "Services are healthy"
+                break
+              fi
+              if [[ "$attempt" -eq 6 ]]; then
+                docker compose -f docker-compose.prod.yml logs --tail=80
+                exit 1
+              fi
+              sleep 5
+            done
+
+            # Cleanup must not delay a successful deployment
+            docker image prune -f --filter "until=72h" || true
             
             echo "✓ Deployment successful!"
 
