@@ -7,8 +7,8 @@ WORKDIR /app
 # Copy package files
 COPY client/package*.json ./
 
-# Install dependencies
-RUN npm ci --only=production && npm cache clean --force
+# Install dependencies required by the production build, including Vite
+RUN npm ci && npm cache clean --force
 
 # Copy source code
 COPY client/src ./src
