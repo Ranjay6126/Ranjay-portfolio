@@ -77,4 +77,24 @@ I have also added Docker, NGINX, GitHub Actions, and AWS EC2 for deployment.
 - Input Validation
 - Gzip Compression
 
+## AWS Deployment Troubleshooting
+
+The EC2 instance must be running and reachable through its public address. For the current instance, AWS shows public IPv4 `100.24.35.189`.
+
+1. In AWS EC2, select `Portfolio_server` and copy its current **Public IPv4 address**. Do not use the private address `10.1.0.153`.
+2. Open **Security** → the attached security group → **Inbound rules** → **Edit inbound rules**.
+3. Add an inbound rule with type `SSH`, protocol `TCP`, port `22`, and source `0.0.0.0/0`. GitHub-hosted runner addresses are dynamic.
+4. Confirm the instance is running, has a public IPv4 address, and its subnet route table has a route to an Internet Gateway.
+5. In GitHub, open **Settings** → **Secrets and variables** → **Actions** and set `EC2_HOST` to the copied public address. Set `EC2_USER` to `ubuntu` and `EC2_PORT` to `22`.
+6. Confirm `EC2_SSH_KEY` contains the complete private key, including its `BEGIN` and `END` lines.
+7. Push a commit to `main` and rerun the workflow. The `Check EC2 SSH connectivity` step must pass before deployment starts.
+
+From Windows, port 22 can be tested with:
+
+```powershell
+Test-NetConnection 100.24.35.189 -Port 22
+```
+
+The result must show `TcpTestSucceeded : True`.
+
 ---

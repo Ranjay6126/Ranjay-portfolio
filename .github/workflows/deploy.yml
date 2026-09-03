@@ -121,6 +121,7 @@ jobs:
 
       - name: Validate deployment secrets
         run: |
+          echo "Deployment target: $EC2_HOST:$EC2_PORT"
           test -n "$EC2_HOST" || { echo "Missing required GitHub secret: EC2_HOST (your EC2 public IPv4 address or DNS name)"; exit 1; }
           test -n "$EC2_SSH_KEY" || { echo "Missing required GitHub secret: EC2_SSH_KEY"; exit 1; }
 
