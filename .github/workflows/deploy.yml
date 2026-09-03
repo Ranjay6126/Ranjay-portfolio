@@ -110,6 +110,7 @@ jobs:
     env:
       EC2_HOST: ${{ secrets.EC2_HOST || '100.24.35.189' }}
       EC2_USER: ${{ secrets.EC2_USER || 'ubuntu' }}
+      EC2_PORT: ${{ secrets.EC2_PORT || '22' }}
       EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME || 'ranjay8848' }}
       SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -133,6 +134,16 @@ jobs:
             exit 1;
           fi
 
+      - name: Check EC2 SSH connectivity
+        run: |
+          echo "Checking $EC2_HOST:$EC2_PORT from the GitHub runner..."
+          if ! timeout 15s bash -c "</dev/tcp/$EC2_HOST/$EC2_PORT" 2>/dev/null; then
+            echo "Cannot reach $EC2_HOST:$EC2_PORT. Verify EC2_HOST is the current public IPv4/DNS and that the AWS security group's inbound TCP $EC2_PORT rule allows this runner.";
+            echo "Also verify the instance is running, has a public IP, and its subnet route table has an Internet Gateway route.";
+            exit 1;
+          fi
+          echo "TCP connectivity is available."
+
       - name: Deploy to AWS EC2
         uses: appleboy/ssh-action@master
         env:
@@ -142,7 +153,7 @@ jobs:
           host: ${{ env.EC2_HOST }}
           username: ${{ env.EC2_USER }}
           key: ${{ env.EC2_SSH_KEY }}
-          port: ${{ secrets.EC2_PORT || 22 }}
+          port: ${{ env.EC2_PORT }}
           timeout: 30s
           command_timeout: 4m
           envs: DOCKER_USERNAME,DOCKER_PASSWORD
