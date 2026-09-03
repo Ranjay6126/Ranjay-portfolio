@@ -79,7 +79,7 @@ I have also added Docker, NGINX, GitHub Actions, and AWS EC2 for deployment.
 
 ## AWS Deployment Troubleshooting
 
-The EC2 instance must be running and reachable through its public address. For the current instance, AWS shows public IPv4 `100.24.35.189`.
+The EC2 instance must be running and reachable through its public address. The current public IPv4 is `100.53.83.160`; it may change after the instance stops unless you use an Elastic IP.
 
 1. In AWS EC2, select `Portfolio_server` and copy its current **Public IPv4 address**. Do not use the private address `10.1.0.153`.
 2. Open **Security** → the attached security group → **Inbound rules** → **Edit inbound rules**.
@@ -92,7 +92,7 @@ The EC2 instance must be running and reachable through its public address. For t
 From Windows, port 22 can be tested with:
 
 ```powershell
-Test-NetConnection 100.24.35.189 -Port 22
+Test-NetConnection 100.53.83.160 -Port 22
 ```
 
 The result must show `TcpTestSucceeded : True`.

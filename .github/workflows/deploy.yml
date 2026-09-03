@@ -108,7 +108,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     env:
-      EC2_HOST: ${{ secrets.EC2_HOST || '100.24.35.189' }}
+      EC2_HOST: ${{ secrets.EC2_HOST || '100.53.83.160' }}
       EC2_USER: ${{ secrets.EC2_USER || 'ubuntu' }}
       EC2_PORT: ${{ secrets.EC2_PORT || '22' }}
       EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
@@ -124,6 +124,7 @@ jobs:
           echo "Deployment target: $EC2_HOST:$EC2_PORT"
           test -n "$EC2_HOST" || { echo "Missing required GitHub secret: EC2_HOST (your EC2 public IPv4 address or DNS name)"; exit 1; }
           test -n "$EC2_SSH_KEY" || { echo "Missing required GitHub secret: EC2_SSH_KEY"; exit 1; }
+          test "$EC2_PORT" = "22" || { echo "EC2_PORT must be 22 for this EC2 instance."; exit 1; }
 
           # GitHub-hosted runners cannot reach an EC2 private address.
           if [[ "$EC2_HOST" =~ ^10\. ]] || \
