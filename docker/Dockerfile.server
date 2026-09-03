@@ -32,6 +32,7 @@ COPY server/config ./config
 COPY server/controllers ./controllers
 COPY server/middleware ./middleware
 COPY server/models ./models
+COPY server/models/Contact.js ./models/Contact.js
 COPY server/routes ./routes
 COPY server/scripts ./scripts
 COPY server/utils ./utils
@@ -39,6 +40,9 @@ COPY server/server.js .
 
 # Change ownership to non-root user
 RUN chown -R nodejs:nodejs /app
+
+# Fail the image build if a Linux deployment is missing a required model.
+RUN test -f /app/models/Contact.js
 
 # Switch to non-root user
 USER nodejs
