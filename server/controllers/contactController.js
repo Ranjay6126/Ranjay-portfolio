@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 import asyncHandler from "../middleware/asyncHandler.js";
-import Contact from "../models/Contact.js";
+import Contact from "../models/contact.js";
 import { resolveInfoEmail } from "../utils/InfoEmail.js";
 import { dbConnected } from "../config/db.js";
 
