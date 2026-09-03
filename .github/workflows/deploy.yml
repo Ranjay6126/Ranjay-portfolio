@@ -126,6 +126,14 @@ jobs:
           test -n "$EC2_SSH_KEY" || { echo "Missing required GitHub secret: EC2_SSH_KEY"; exit 1; }
           test "$EC2_PORT" = "22" || { echo "EC2_PORT must be 22 for this EC2 instance."; exit 1; }
 
+          printf '%s\n' "$EC2_SSH_KEY" > "$RUNNER_TEMP/ec2-deploy-key"
+          chmod 600 "$RUNNER_TEMP/ec2-deploy-key"
+          if ! ssh-keygen -y -f "$RUNNER_TEMP/ec2-deploy-key" > /dev/null 2>&1; then
+            echo "EC2_SSH_KEY is not a readable private key. Store the complete .pem contents in the secret, not the filename, public key, or a placeholder.";
+            echo "The key must begin with -----BEGIN and end with -----END, and an encrypted key needs its passphrase configured in the SSH action.";
+            exit 1;
+          fi
+
           # GitHub-hosted runners cannot reach an EC2 private address.
           if [[ "$EC2_HOST" =~ ^10\. ]] || \
              [[ "$EC2_HOST" =~ ^192\.168\. ]] || \
